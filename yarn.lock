@@ -121,6 +121,15 @@
     ora "5.4.1"
     rxjs "7.8.1"
 
+"@angular-slider/ngx-slider@^18.0.0":
+  version "18.0.0"
+  resolved "https://registry.yarnpkg.com/@angular-slider/ngx-slider/-/ngx-slider-18.0.0.tgz#262befda815d7273e2a5f5f360134653118ab8aa"
+  integrity sha512-QR5zP3B++cLCqUkfg7j65y+4wrt5xPrua6mANoClj2iaoHaAzf3qi+/ANgYTeZ9StoFu22r35uy5Qg0GigjhxQ==
+  dependencies:
+    detect-passive-events "^2.0.3"
+    rxjs "^7.8.1"
+    tslib "^2.3.0"
+
 "@angular/animations@^18.0.0":
   version "18.0.6"
   resolved "https://registry.yarnpkg.com/@angular/animations/-/animations-18.0.6.tgz#8bd25808fad010588accf0b37f800798d4bdbc73"
@@ -158,6 +167,15 @@
     undici "6.18.0"
     vite "5.2.11"
     watchpack "2.4.1"
+
+"@angular/cdk@^18.0.6":
+  version "18.0.6"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-18.0.6.tgz#8dc6c3c9214c6ab06a2a491b5d1cf7c455f21e44"
+  integrity sha512-9CmlQ8uZ0cHuj+1jDdabbFw90QpjrJzh1/cgeHN/8vAGE4ranxX3l6cqpVxuoWRLkB2ykTHt2xeoTM8y0d9ERA==
+  dependencies:
+    tslib "^2.3.0"
+  optionalDependencies:
+    parse5 "^7.1.2"
 
 "@angular/cli@^18.0.5":
   version "18.0.7"
@@ -5154,6 +5172,14 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+ng-select2-component@^15.0.0:
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/ng-select2-component/-/ng-select2-component-15.0.0.tgz#6b6f0f82b84b10b6450961ef4972f4e1b2388188"
+  integrity sha512-nMZXIxirqbkjNvWfDAdPN1Xc0BRNe7A1IAUcKbSw5/oGAhMJW0GKQd1E8cJbFmMXPKmJYF5+pM9nPGh0rBi6Ig==
+  dependencies:
+    ngx-infinite-scroll ">=18.0.0"
+    tslib "^2.3.0"
+
 ngx-image-zoom@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/ngx-image-zoom/-/ngx-image-zoom-3.0.0.tgz#4d49aa3c735136cbe80baaf85098fbf0d5c976ec"
@@ -5161,20 +5187,18 @@ ngx-image-zoom@^3.0.0:
   dependencies:
     tslib "^2.5.3"
 
+ngx-infinite-scroll@>=18.0.0:
+  version "18.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-infinite-scroll/-/ngx-infinite-scroll-18.0.0.tgz#1c22b9843a95f53088f1a60381238767a77915bf"
+  integrity sha512-D183TDwpsd9Zl56UmItsl3RzHdN25srAISfg6lc3A8mEKkEgOq0s7ZzRAYcx8DHsAkMgtZqjIPEvMifD3DOB/g==
+  dependencies:
+    tslib "^2.3.0"
+
 ngx-owl-carousel-o@^18.0.0:
   version "18.0.0"
   resolved "https://registry.yarnpkg.com/ngx-owl-carousel-o/-/ngx-owl-carousel-o-18.0.0.tgz#2b7fc350475434f17f5e554261d374af49d2366e"
   integrity sha512-3ukc6mDGseUXvYrpfV+Hm2O6cBOgV0p1bT51fykQQxAMZptbnzIQJ+U6ADbeds4tkZiwAHLK2a3qItlHz5YVOg==
   dependencies:
-    tslib "^2.3.0"
-
-ngx-slider-v2@^17.0.0:
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-slider-v2/-/ngx-slider-v2-17.0.0.tgz#b82172c2ce9c97a74f8c2cf29788fa5d377e34bb"
-  integrity sha512-226pb8TeZWhmMiQQnPVBZmos2qZua2NgMsuwumxatIBy7UwOGg8xkcUl8HvXVg+rO5w733uvPMN/yz//7rReJw==
-  dependencies:
-    detect-passive-events "^2.0.3"
-    rxjs "^7.8.1"
     tslib "^2.3.0"
 
 ngx-toastr@^19.0.0:
@@ -5542,7 +5566,7 @@ parse5-sax-parser@^7.0.0:
   dependencies:
     parse5 "^7.0.0"
 
-parse5@^7.0.0:
+parse5@^7.0.0, parse5@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-7.1.2.tgz#0736bebbfd77793823240a23b7fc5e010b7f8e32"
   integrity sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==
