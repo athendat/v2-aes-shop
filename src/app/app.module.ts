@@ -47,6 +47,7 @@ import { NotificationState } from './shared/state/notification.state';
 import { QuestionAnswersState } from './shared/state/questions-answers.state';
 import { ReviewState } from './shared/state/review.state';
 import { CouponState } from './shared/state/coupon.state';
+import { CookieService } from 'ngx-cookie-service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -125,7 +126,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         provideHttpClient(
             withFetch(),
             withInterceptorsFromDi()
-        )
+        ),
+        CookieService,
     ],
     bootstrap: [AppComponent]
 })

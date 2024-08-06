@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, ViewChild } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AccountUser } from '../../../../interface/account.interface';
@@ -8,23 +8,23 @@ import { Logout } from '../../../../action/auth.action';
 import { ConfirmationModalComponent } from '../../../widgets/modal/confirmation-modal/confirmation-modal.component';
 
 @Component({
-  selector: 'app-my-account',
-  templateUrl: './my-account.component.html',
-  styleUrls: ['./my-account.component.scss']
+    selector: 'app-my-account',
+    templateUrl: './my-account.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MyAccountComponent {
 
-  @Input() style: string = 'basic';
+    @Input() style: string = 'basic';
 
-  @Select(AuthState.isAuthenticated) isAuthenticated$: Observable<string>;
-  @Select(AccountState.user) user$: Observable<AccountUser>;
+    @Select(AuthState.isAuthenticated) isAuthenticated$: Observable<string>;
+    @Select(AccountState.user) user$: Observable<AccountUser>;
 
-  @ViewChild("confirmationModal") ConfirmationModal: ConfirmationModalComponent;
+    @ViewChild("confirmationModal") ConfirmationModal: ConfirmationModalComponent;
 
-  constructor(private store: Store) {}
+    constructor(private store: Store) { }
 
-  logout() {
-    this.store.dispatch(new Logout());
-  }
+    logout() {
+        this.store.dispatch(new Logout());
+    }
 
 }

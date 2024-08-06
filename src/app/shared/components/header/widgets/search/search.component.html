@@ -1,6 +1,6 @@
 <!-- Search Basic Style -->
 <div class="input-group" *ngIf="style == 'basic'">
-    <input type="search" class="form-control" placeholder="Search here.." [formControl]="term">
+    <input type="search" class="form-control" placeholder="Escriba para buscar.." [formControl]="term">
     <app-button [type]="'button'" [class]="'btn'" [spinner]="false" [id]="'basic_search_btn'" (click)="redirectToSearch()">
       <i class="ri-search-line"></i>
     </app-button>
@@ -34,7 +34,7 @@
         <span class="input-group-text">
             <i class="ri-search-line font-light"></i>
         </span>
-        <input type="text" class="form-control search-type" placeholder="Search here.." [formControl]="term">
+        <input type="text" class="form-control search-type" placeholder="Escriba para buscar.." [formControl]="term">
         <span class="input-group-text close-search" (click)="toggleSearchBox()">
             <i class="ri-close-line"></i>
         </span>

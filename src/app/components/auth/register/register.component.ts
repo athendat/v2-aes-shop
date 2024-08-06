@@ -1,60 +1,119 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+// Angular Modules
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+
 import { Store } from '@ngxs/store';
+
+// Services
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { NotificationService } from 'src/app/shared/services/notification.service';
+
 import { CustomValidators } from '../../../shared/validator/password-match';
-import { Register } from '../../../shared/action/auth.action';
+
 import { Breadcrumb } from '../../../shared/interface/breadcrumb';
 import * as data from '../../../shared/data/country-code';
+
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
-  public form: FormGroup;
-  public breadcrumb: Breadcrumb = {
-    title: "Sign In",
-    items: [{ label: 'Sign In', active: true }]
-  }
-  public codes = data.countryCodes;
-  public tnc = new FormControl(false, [Validators.requiredTrue]);
-
-  constructor(
-    private store: Store,
-    private router: Router,
-    private formBuilder: FormBuilder
-  ) {
-    this.form = this.formBuilder.group({
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]*$/)]),
-      country_code: new FormControl('91', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      password_confirmation: new FormControl('', [Validators.required]),
-    },{validator : CustomValidators.MatchValidator('password', 'password_confirmation')});
-  }
-
-  get passwordMatchError() {
-    return (
-      this.form.getError('mismatch') &&
-      this.form.get('password_confirmation')?.touched
-    );
-  }
-
-  submit() {
-    this.form.markAllAsTouched();
-    if(this.tnc.invalid){
-      return
+    // Public Properties
+    form: FormGroup;
+    breadcrumb: Breadcrumb = {
+        title: "Autenticación",
+        items: [{ label: 'Crear Cuenta', active: true }]
     }
-    if(this.form.valid) {
-      this.store.dispatch(new Register(this.form.value)).subscribe({
-          complete: () => {
-            this.router.navigateByUrl('/account/dashboard');
-          }
+    codes = data.countryCodes;
+    tnc = new FormControl(false, [Validators.requiredTrue]);
+
+    // Private Properties
+    #authService = inject(AuthService);
+    #notificationService = inject(NotificationService);
+    #router = inject(Router);
+    #store = inject(Store);
+    #destroyRef = inject(DestroyRef);
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Accessors
+    // -----------------------------------------------------------------------------------------------------
+
+    get passwordMatchError() {
+        return (
+            this.form.getError('mismatch') &&
+            this.form.get('password_confirmation')?.touched
+        );
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On Init
+     */
+    ngOnInit() {
+
+        this.form = new FormGroup({
+            name: new FormControl('Frank Rodríguez López', [Validators.required]),
+            email: new FormControl('fr20587@gmail.com', [Validators.required, Validators.email]),
+            phone: new FormControl('52541322', [Validators.required, Validators.pattern(/^[0-9]*$/)]),
+            country_code: new FormControl('53', [Validators.required]),
+            password: new FormControl('P@ssw0rd', [Validators.required]),
+            password_confirmation: new FormControl('P@ssw0rd', [Validators.required]),
+        }, { validators: CustomValidators.MatchValidator('password', 'password_confirmation') });
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Public Methods
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * Submit     *
+     *
+     * @returns
+     */
+    submit() {
+
+
+        this.form.markAllAsTouched();
+        if (this.tnc.invalid) {
+            return
         }
-      );
+        if (this.form.valid) {
+
+            // Crear usuario
+            this.#authService.signUp(this.form.getRawValue())
+                .pipe(takeUntilDestroyed(this.#destroyRef))
+                .subscribe({
+                    next: (response) => {
+
+                        // Navegar al dashboard
+                        this.#router.navigateByUrl('/auth/otp');
+
+                        // Mostrar mensaje de confirmación
+                        this.#notificationService.showSuccess(response.message);
+
+                    },
+                    error: (e: HttpErrorResponse) => {
+
+                        // Construir mensaje de error
+                        console.warn(e.error.message);
+
+                        // Mostrar mensaje de error
+                        this.#notificationService.showError(e.error.message.message);
+
+                    },
+                    complete: () => console.info('complete')
+                });
+
+
+
+        }
     }
-  }
 }

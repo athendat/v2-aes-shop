@@ -9,11 +9,10 @@ export type AuthResponse = {
 
 export type SignUpFormData = {
     name: string | null;
-    lastname1: string | null;
-    lastname2?: string | null;
+    phone: string | null;
     email: string | null;
-    username: string | null;
-    pwd: string | null;
+    country_code: string | null;
+    password: string | null;
     agreements: boolean | null;
 }
 
