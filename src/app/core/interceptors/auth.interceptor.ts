@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ import { GetCurrencies } from '../../shared/action/currency.action';
 import { AuthClear } from '../../shared/action/auth.action';
 import { GetStates } from '../../shared/action/state.action';
 import { GetCountries } from '../../shared/action/country.action';
+import { ThemeOptionService } from 'src/app/shared/services/theme-option.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -19,6 +20,8 @@ export class AuthInterceptor implements HttpInterceptor {
   @Select(SettingState.setting) setting$: Observable<Values>;
 
   public isMaintenanceModeOn: boolean = false;
+
+  #themeOptionService = inject(ThemeOptionService);
 
   constructor(private store: Store, private router: Router,
     private notificationService: NotificationService) {
@@ -30,6 +33,8 @@ export class AuthInterceptor implements HttpInterceptor {
     this.setting$.subscribe(setting => {
       this.isMaintenanceModeOn = setting?.maintenance?.maintenance_mode!
     });
+
+    // this.#themeOptionService.findThemeOptions();
   }
 
   intercept(

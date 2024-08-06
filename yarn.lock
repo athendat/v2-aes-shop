@@ -1793,6 +1793,13 @@
   dependencies:
     tslib "^2.3.0"
 
+"@ngrx/signals@^18.0.2":
+  version "18.0.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/signals/-/signals-18.0.2.tgz#9684da0f3ba6db656c281b0d71dc5e15e5d78098"
+  integrity sha512-FXmcY2cmkbhZtg9k8Ntq69SyelGmmb6fWtdButH4T8GGFH0o3f1FZTR829j4ynphy8SzuDhD/pzrnpWcV481oQ==
+  dependencies:
+    tslib "^2.3.0"
+
 "@ngtools/webpack@18.1.2":
   version "18.1.2"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-18.1.2.tgz#520dce08800cc2d594214611d8d22ecea4aded7f"

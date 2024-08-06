@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
@@ -104,7 +104,7 @@ export function HttpLoaderFactory(http: HttpClient) {
                 'notification'
             ]
         }),
-        HttpClientModule,
+        // HttpClientModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot({
             positionClass: 'toast-top-center',
@@ -121,7 +121,12 @@ export function HttpLoaderFactory(http: HttpClient) {
             },
         }),
     ],
-    providers: [],
+    providers: [
+        provideHttpClient(
+            withFetch(),
+            withInterceptorsFromDi()
+        )
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

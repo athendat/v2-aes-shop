@@ -1,5 +1,5 @@
 import { PaginateModel } from "./core.interface";
-import { Attachment } from "./attachment.interface";
+import { Attachment } from '../types';
 
 export interface CategoryModel extends PaginateModel {
     data: Category[];
@@ -18,7 +18,6 @@ export interface Category {
     category_icon_id?: number;
     commission_rate?: number;
     subcategories?: Category[];
-    products_count: number;
     status: boolean;
     created_by_id?: number;
     created_at?: string;

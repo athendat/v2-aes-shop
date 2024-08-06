@@ -7,7 +7,7 @@ import { Product } from '../../../../shared/interface/product.interface';
   styleUrls: ['./product-box.component.scss']
 })
 export class ProductBoxComponent {
-  
+
   @Input() product: Product;
   @Input() style: string  = 'horizontal';
   @Input() class: string;
