@@ -6,26 +6,27 @@ import { LayoutComponent } from './layout/layout.component';
 import { MaintenanceComponent } from './maintenance/maintenance.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
-  },
-  {
-    path: "maintenance",
-    component: MaintenanceComponent
-  },
-  {
-    path: "",
-    component: LayoutComponent,
-    children: content,
-  }
+    {
+        path: '',
+        redirectTo: '/home',
+        pathMatch: 'full',
+    },
+    {
+        path: "maintenance",
+        component: MaintenanceComponent
+    },
+    {
+        path: "",
+        component: LayoutComponent,
+        children: content,
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking'
-  })],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, {
+        initialNavigation: 'enabledBlocking',
+        bindToComponentInputs: true,
+    })],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

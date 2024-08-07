@@ -102,7 +102,7 @@ export class AuthService {
      * @param email
      */
     forgotPassword(email: string): Observable<AuthResponse> {
-        return this.#httpClient.post<AuthResponse>(`${API_URL}/auth/users/forgot-password/`, { email });
+        return this.#httpClient.post<AuthResponse>(`${API_URL}/auth/forgot-password/`, { email });
     }
 
     /**
@@ -112,7 +112,7 @@ export class AuthService {
      * @param code
      */
     resetPassword(pwd: string, code: string): Observable<AuthResponse> {
-        return this.#httpClient.post<AuthResponse>(`${API_URL}/auth/users/recover-password`, { pwd, code });
+        return this.#httpClient.post<AuthResponse>(`${API_URL}/auth/recover-password`, { pwd, code });
     }
 
     /**

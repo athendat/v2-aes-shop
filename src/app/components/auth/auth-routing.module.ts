@@ -8,30 +8,30 @@ import { UpdatePasswordComponent } from "./update-password/update-password.compo
 import { RegisterComponent } from "./register/register.component";
 
 const routes: Routes = [
-  {
-    path: "login",
-    component: LoginComponent,
-  },
-  {
-    path: "forgot-password",
-    component: ForgotPasswordComponent,
-  },
-  {
-    path: "otp",
-    component: OtpComponent,
-  },
-  {
-    path: "update-password",
-    component: UpdatePasswordComponent,
-  },
-  {
-    path: "register",
-    component: RegisterComponent,
-  }
+    {
+        path: "login",
+        component: LoginComponent,
+    },
+    {
+        path: "forgot-password",
+        component: ForgotPasswordComponent,
+    },
+    {
+        path: "otp",
+        component: OtpComponent,
+    },
+    {
+        path: "update-password/:code",
+        component: UpdatePasswordComponent,
+    },
+    {
+        path: "register",
+        component: RegisterComponent,
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class AuthRoutingModule {}
+export class AuthRoutingModule { }
