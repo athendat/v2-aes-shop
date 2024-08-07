@@ -10,6 +10,7 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 // Global Error
 import { GlobalErrorHandler } from './error/global-error-handler';
 import { AuthState } from '../shared/state/auth.state';
+import { CredentialsInterceptor } from './interceptors/credentials.interceptor';
 
 @NgModule({
   declarations: [],
@@ -23,14 +24,19 @@ import { AuthState } from '../shared/state/auth.state';
       useClass: AuthInterceptor,
       multi: true
     },
-    { 
-      provide: ErrorHandler, 
-      useClass: GlobalErrorHandler 
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: CredentialsInterceptor,
+        multi: true
     },
-    { 
-      provide: HTTP_INTERCEPTORS, 
-      useClass: LoaderInterceptor, 
-      multi: true 
+    {
+      provide: ErrorHandler,
+      useClass: GlobalErrorHandler
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true
     },
   ],
 })

@@ -4,6 +4,7 @@ import { Injectable, inject } from "@angular/core";
 
 // Third-party Imports
 import { CookieService } from "ngx-cookie-service";
+import { SsrCookieService } from "ngx-cookie-service-ssr";
 import { Observable, throwError, tap, of } from "rxjs";
 
 // Shared Imports
@@ -29,6 +30,7 @@ export class AuthService {
     #authStore = inject(AuthStore);
     #httpClient = inject(HttpClient);
     // #socketService = inject(SocketService);
+    // #cookieService = inject(CookieService);
     #cookieService = inject(CookieService);
 
 
@@ -41,6 +43,17 @@ export class AuthService {
      */
     getToken(): string | null {
         return this.#cookieService.get('access_token_033') || null;
+    }
+
+    /**
+     * Setter & getter for access token
+     */
+    get access_token_033(): string {
+        return localStorage.getItem('access_token_033') ?? '';
+    }
+
+    set access_token_033(token: string) {
+        localStorage.setItem('access_token_033', token);
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -69,12 +82,15 @@ export class AuthService {
         }
 
         // Confirma la cuenta
-        return this.#httpClient.post<AuthResponse>(`${API_URL}/auth/users/confirm`, { code })
+        return this.#httpClient.post<AuthResponse>(`${API_URL}/auth/confirm`, { code })
             .pipe(
-                tap(({ user }) => {
+                tap(({ user, token }) => {
 
                     // Actualiza el estado de autenticación
                     this.#authStore.setAuthenticated(true, user);
+
+                    // Store the access token in the local storage
+                    this.access_token_033 = token;
 
                 })
             );
@@ -113,10 +129,13 @@ export class AuthService {
 
         // Inicia sesión
         return this.#httpClient.post<AuthResponse>(`${API_URL}/auth/sign-in`, credentials, { withCredentials: true }).pipe(
-            tap(({ user }) => {
+            tap(({ user, token }) => {
 
                 // Actualiza el estado de autenticación
                 this.#authStore.setAuthenticated(true, user);
+
+                // Store the access token in the local storage
+                this.access_token_033 = token;
 
             })
         );
@@ -129,7 +148,7 @@ export class AuthService {
 
         // Renovar el token de acceso
         return this.#httpClient.get<AuthResponse>(`${API_URL}/auth/refresh-access-token`).pipe(
-            tap(({ user }) => {
+            tap(({ user, token }) => {
 
                 // Si no hay usuario, no hacer nada
                 if (!user) {
@@ -138,6 +157,9 @@ export class AuthService {
 
                 // Actualiza el estado de autenticación
                 this.#authStore.setAuthenticated(true, user);
+
+                // Store the access token in the local storage
+                this.access_token_033 = token;
 
                 // TODO: Abrir la conexión del socket
 
@@ -152,8 +174,11 @@ export class AuthService {
      */
     signOut(): Observable<any> {
 
+        // Remove the access token from the local storage
+        localStorage.removeItem('access_token_033');
+
         // Cierra la sesión
-        return this.#httpClient.get(`${API_URL}/auth/users/sign-out`).pipe(
+        return this.#httpClient.get(`${API_URL}/auth/sign-out`).pipe(
             tap(() => {
 
                 // Limpiar la autenticación
@@ -178,7 +203,11 @@ export class AuthService {
         }
 
         // Sino existe el token de acceso en las cookies
-        if (!this.getToken()) {
+        // if (!this.getToken()) {
+        if (!this.access_token_033) {
+
+            // Remove the access token from the local storage
+            localStorage.removeItem('access_token_033');
 
             // Limpiar la autenticación
             this.#authStore.clearAuthentication();
@@ -189,7 +218,8 @@ export class AuthService {
 
 
         // Si el token de acceso ha expirado
-        if (AuthUtils.isTokenExpired(this.getToken()!)) {
+        // if (AuthUtils.isTokenExpired(this.getToken()!)) {
+        if (AuthUtils.isTokenExpired(this.access_token_033)) {
             return of(false);
         }
 

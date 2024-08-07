@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgxsModule } from '@ngxs/store';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CookieService } from 'ngx-cookie-service';
 
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
@@ -47,7 +49,8 @@ import { NotificationState } from './shared/state/notification.state';
 import { QuestionAnswersState } from './shared/state/questions-answers.state';
 import { ReviewState } from './shared/state/review.state';
 import { CouponState } from './shared/state/coupon.state';
-import { CookieService } from 'ngx-cookie-service';
+
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {

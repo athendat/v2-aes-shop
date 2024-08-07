@@ -40,10 +40,10 @@
                             <div class="col-12">
                                 <div class="forgot-box">
                                     <div class="form-check ps-0 m-0 remember-box">
-                                        <input class="checkbox_animated check-box" type="checkbox" id="remeberme">
+                                        <input class="checkbox_animated check-box" type="checkbox" id="remeberme" [checked]="rememberMe()" [(ngModel)]="rememberMe" (change)="toggleRememberMe()">
                                         <label class="form-check-label" for="remeberme">{{ 'remember_me' | translate }}</label>
                                     </div>
-                                    <a [routerLink]="['/auth/forgot-password']" class="forgot-password">{{ 'forgot_password' | translate }}?</a>
+                                    <a [routerLink]="['/auth/forgot-password']" class="forgot-password">{{ 'forgot_password' | translate }}</a>
                                 </div>
                             </div>
                             <div class="col-12">

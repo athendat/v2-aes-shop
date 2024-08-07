@@ -43,6 +43,7 @@
     "feather-icons": "^4.29.2",
     "ng-select2-component": "^15.0.1",
     "ngx-cookie-service": "^18.0.0",
+    "ngx-cookie-service-ssr": "^18.0.0",
     "ngx-image-zoom": "^3.0.0",
     "ngx-owl-carousel-o": "^18.0.0",
     "ngx-toastr": "^19.0.0",

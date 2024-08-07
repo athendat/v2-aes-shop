@@ -26,18 +26,20 @@ export class RegisterComponent implements OnInit {
     // Public Properties
     form: FormGroup;
     breadcrumb: Breadcrumb = {
-        title: "Autenticación",
-        items: [{ label: 'Crear Cuenta', active: true }]
+        title: "Crear Cuenta",
+        items: [
+            { label: 'Autenticación', active: false },
+            { label: 'Crear Cuenta', active: true },
+        ]
     }
     codes = data.countryCodes;
     tnc = new FormControl(false, [Validators.requiredTrue]);
 
     // Private Properties
     #authService = inject(AuthService);
+    #destroyRef = inject(DestroyRef);
     #notificationService = inject(NotificationService);
     #router = inject(Router);
-    #store = inject(Store);
-    #destroyRef = inject(DestroyRef);
 
     // -----------------------------------------------------------------------------------------------------
     // @ Accessors
@@ -108,11 +110,8 @@ export class RegisterComponent implements OnInit {
                         // Mostrar mensaje de error
                         this.#notificationService.showError(e.error.message.message);
 
-                    },
-                    complete: () => console.info('complete')
+                    }
                 });
-
-
 
         }
     }

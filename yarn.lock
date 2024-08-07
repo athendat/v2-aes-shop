@@ -5272,6 +5272,13 @@ ng-select2-component@^15.0.1:
     ngx-infinite-scroll ">=18.0.0"
     tslib "^2.3.0"
 
+ngx-cookie-service-ssr@^18.0.0:
+  version "18.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-cookie-service-ssr/-/ngx-cookie-service-ssr-18.0.0.tgz#1aa1d32fd25dd90f724bcb22da980d93dcf713b7"
+  integrity sha512-PM//TOf2o/dN1MVac2wfgDA08Ha1eCrqfhtMg9PqT1dAjpAAc1OD/AABnrfzf15DdB2KbYDAix+oJ2wBiYsc1g==
+  dependencies:
+    tslib "^2.6.2"
+
 ngx-cookie-service@^18.0.0:
   version "18.0.0"
   resolved "https://registry.yarnpkg.com/ngx-cookie-service/-/ngx-cookie-service-18.0.0.tgz#f21e3fa261aeb56d73628e324edc7dfc4fdff746"

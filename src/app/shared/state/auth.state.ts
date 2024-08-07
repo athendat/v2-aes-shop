@@ -5,6 +5,7 @@ import { AccountClear, GetUserDetails } from "../action/account.action";
 import { Register, Login, ForgotPassWord, VerifyEmailOtp, UpdatePassword, Logout, AuthClear } from "../action/auth.action";
 import { NotificationService } from "../services/notification.service";
 import { AuthService } from "../services/auth.service";
+import { CookieService } from "ngx-cookie-service";
 
 export interface AuthStateModel {
     email: String;
@@ -26,10 +27,12 @@ export interface AuthStateModel {
 export class AuthState {
 
     router = inject(Router);
-    #authService = inject(AuthService);
-    #store = inject(Store);
-    #notificationService = inject(NotificationService);
 
+    // Private Properties
+    #authService = inject(AuthService);
+    #cookieService = inject(CookieService);
+    #notificationService = inject(NotificationService);
+    #store = inject(Store);
 
 
     // -----------------------------------------------------------------------------------------------------

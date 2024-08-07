@@ -1,4 +1,5 @@
 import { Country, Point, Role, States, Wallet } from ".";
+import { Attachment } from "../interface/attachment.interface";
 
 export type User = {
     id: string;
@@ -16,6 +17,8 @@ export type User = {
     role: Role;
     point?: Point;
     wallet?: Wallet;
+    profile_image: Attachment;
+    profile_image_id: string;
 }
 
 export type UserAddress = {

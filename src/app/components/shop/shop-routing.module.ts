@@ -25,59 +25,64 @@ import { CollectionComponent } from './collection/collection.component';
 // Checkout
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ScrollPositionGuard } from '../../shared/guard/scroll.guard';
+import { NoAuthGuard } from 'src/app/core/guard/noAuth.guard';
 
 const routes: Routes = [
-  {
-    path: 'cart',
-    component: CartComponent,
-    canActivate: [ScrollPositionGuard],
-  },
-  {
-    path: 'wishlist',
-    component: WishlistComponent,
-    canActivate: [ScrollPositionGuard],
-  },
-  {
-    path: 'compare',
-    component: CompareComponent,
-    canActivate: [ScrollPositionGuard],
-  },
-  {
-    path: 'product/:slug',
-    component: ProductComponent,
-    resolve: {
-      data: ProductResolver
+    {
+        path: 'cart',
+        component: CartComponent,
+        canActivate: [AuthGuard, ScrollPositionGuard],
     },
-    canActivate: [ScrollPositionGuard],
-  },
-  {
-    path: 'collections',
-    component: CollectionComponent,
-    canActivate: [ScrollPositionGuard],
-  },
-  {
-    path: 'seller/become-seller',
-    component: SellerComponent
-  },
-  {
-    path: 'seller/stores',
-    component: SellerStoreComponent
-  },
-  {
-    path: 'seller/store/:slug',
-    component: SellerDetailsComponent,
-    resolve: {
-      data: StoreResolver
+    {
+        path: 'wishlist',
+        component: WishlistComponent,
+        canActivate: [AuthGuard, ScrollPositionGuard],
+    },
+    {
+        path: 'compare',
+        component: CompareComponent,
+        canActivate: [AuthGuard, ScrollPositionGuard],
+    },
+    {
+        path: 'product/:slug',
+        component: ProductComponent,
+        resolve: {
+            data: ProductResolver
+        },
+        canActivate: [AuthGuard, ScrollPositionGuard],
+    },
+    {
+        path: 'collections',
+        component: CollectionComponent,
+        canActivate: [AuthGuard, ScrollPositionGuard],
+    },
+    {
+        path: 'seller/become-seller',
+        canActivate: [NoAuthGuard],
+        component: SellerComponent
+    },
+    {
+        path: 'seller/stores',
+        canActivate: [NoAuthGuard],
+        component: SellerStoreComponent
+    },
+    {
+        path: 'seller/store/:slug',
+        canActivate: [NoAuthGuard],
+        component: SellerDetailsComponent,
+        resolve: {
+            data: StoreResolver
+        }
+    },
+    {
+        path: 'checkout',
+        canActivate: [AuthGuard],
+        component: CheckoutComponent
     }
-  },
-  {
-    path: 'checkout',
-    component: CheckoutComponent
-  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 export class ShopRoutingModule { }
