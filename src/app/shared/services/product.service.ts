@@ -24,6 +24,17 @@ export class ProductService {
         return this.#http.get<ProductModel>(`${environment.URL}/product.json`, { params: payload });
     }
 
+    findProductBySlug(slug: string): Observable<ProductModel> {
+        return this.#http.get<RestResponse<Product>>(`${environment.API_URL}/products/slug/${slug}`).pipe(
+            map((response) => {
+                return {
+                    data: [response.data!],
+                    total: 1,
+                }
+            })
+        );
+    }
+
     findProductsByIds(ids: string[]): Observable<RestResponse<Product[]>> {
         return this.#http.get<RestResponse<Product[]>>(`${environment.API_URL}/products/ids`, {
             params: {
@@ -51,7 +62,7 @@ export class ProductService {
 
         return this.#http.get<RestResponse<Product[]>>(`${environment.API_URL}/products/filters`, { params }).
             pipe(
-                map((response) =>{
+                map((response) => {
                     return {
                         data: response.data!,
                         total: response.data!.length,

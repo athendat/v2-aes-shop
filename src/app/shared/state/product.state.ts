@@ -226,7 +226,7 @@ export class ProductState {
   @Action(GetProductBySlug)
   getProductBySlug(ctx: StateContext<ProductStateModel>, { slug }: GetProductBySlug) {
     this.themeOptionService.preloader = true;
-    return this.productService.getProducts().pipe(
+    return this.productService.findProductBySlug(slug).pipe(
       tap({
         next: results => {
           const result = results.data.find(product => product.slug == slug);
