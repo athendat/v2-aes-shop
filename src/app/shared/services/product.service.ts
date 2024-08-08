@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product, ProductModel } from '../interface/product.interface';
 import { Params } from '../interface/core.interface';
@@ -31,5 +31,32 @@ export class ProductService {
             }
         });
 
+    }
+
+    findProductsByFilters(payload?: Params): Observable<ProductModel> {
+
+        // Convertir parámetros de la plantilla a parámetros de la API
+        const params = {
+            page: payload!['page'].toString() || '',
+            size: payload!['paginate'].toString() || '',
+            sort: payload!['sortBy'] || '',
+            order: payload!['sort'] || '',
+            category: payload!['category'] || '',
+            price: payload!['price'].toString() || '',
+            field: payload!['field'] || '',
+            tag: payload!['tag'] || '',
+            rating: payload!['rating'].toString() || '',
+            attribute: payload!['attribute'] || '',
+        };
+
+        return this.#http.get<RestResponse<Product[]>>(`${environment.API_URL}/products/filters`, { params }).
+            pipe(
+                map((response) =>{
+                    return {
+                        data: response.data!,
+                        total: response.data!.length,
+                    }
+                })
+            );
     }
 }

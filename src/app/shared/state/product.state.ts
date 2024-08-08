@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store, Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
-import { GetProducts, GetStoreProducts, 
+import { GetProducts, GetStoreProducts,
          GetRelatedProducts, GetProductBySlug, GetDealProducts } from "../action/product.action";
 import { Product, ProductModel } from "../interface/product.interface";
 import { ProductService } from "../services/product.service";
@@ -38,7 +38,7 @@ export class ProductStateModel {
 export class ProductState {
 
   constructor(private store: Store, private router: Router,
-    private productService: ProductService, 
+    private productService: ProductService,
     private themeOptionService: ThemeOptionService) {}
 
   @Selector()
@@ -69,16 +69,16 @@ export class ProductState {
   @Action(GetProducts)
   getProducts(ctx: StateContext<ProductStateModel>, action: GetProducts) {
     this.productService.skeletonLoader = true;
-    // Note :- You must need to call api for filter and pagination as of now we are using json data so currently get all data from json 
+    // Note :- You must need to call api for filter and pagination as of now we are using json data so currently get all data from json
     //          you must need apply this logic on server side
-    return this.productService.getProducts(action.payload).pipe(
+    return this.productService.findProductsByFilters(action.payload).pipe(
       tap({
         next: (result: ProductModel) => {
           let products = result.data || [];
           if(action?.payload) {
             // Note:- For Internal filter purpose only, once you apply filter logic on server side then you can remove  it as per your requirement.
             // Note:- we have covered only few filters as demo purpose
-            products = result.data.filter(product => 
+            products = result.data.filter(product =>
               (action?.payload?.['store_slug'] && product?.store?.slug == action?.payload?.['store_slug']) ||
               (
                 action?.payload?.['category'] && product?.categories?.length &&
@@ -143,7 +143,7 @@ export class ProductState {
                   }
                   return 0;
                 })
-              } 
+              }
             } else if(!action?.payload?.['ids']) {
               products = products.sort((a, b) => {
                 if (a.id < b.id) {
@@ -158,7 +158,7 @@ export class ProductState {
             if(action?.payload?.['search']) {
               products = products.filter(product => product.name.toLowerCase().includes(action?.payload?.['search'].toLowerCase()))
             }
-          } 
+          }
 
           ctx.patchState({
             product: {
@@ -184,7 +184,7 @@ export class ProductState {
       tap({
         next: (result: ProductModel) => {
           const state = ctx.getState();
-          const products = result.data.filter(product => 
+          const products = result.data.filter(product =>
               action?.payload?.['ids']?.split(',')?.map((id: number) => Number(id)).includes(product.id) ||
               (product?.categories?.length && product?.categories?.map(category => category.id).includes(Number(action?.payload?.['category_ids'])))
           );
@@ -209,7 +209,7 @@ export class ProductState {
       tap({
         next: (result: ProductModel) => {
           const state = ctx.getState();
-          const products = result.data.filter(product => 
+          const products = result.data.filter(product =>
             action?.payload?.['store_ids']?.split(',')?.map((id: number) => Number(id)).includes(product.store_id));
           ctx.patchState({
             ...state,
@@ -265,7 +265,7 @@ export class ProductState {
       tap({
         next: (result: ProductModel) => {
           const state = ctx.getState();
-          const products = result.data.filter(product => 
+          const products = result.data.filter(product =>
             action?.payload?.['ids']?.split(',')?.map((id: number) => Number(id)).includes(product.id));
           ctx.patchState({
             ...state,

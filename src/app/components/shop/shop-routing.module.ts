@@ -41,7 +41,7 @@ const routes: Routes = [
     {
         path: 'compare',
         component: CompareComponent,
-        canActivate: [AuthGuard, ScrollPositionGuard],
+        canActivate: [NoAuthGuard, ScrollPositionGuard],
     },
     {
         path: 'product/:slug',
@@ -49,12 +49,12 @@ const routes: Routes = [
         resolve: {
             data: ProductResolver
         },
-        canActivate: [AuthGuard, ScrollPositionGuard],
+        canActivate: [NoAuthGuard, ScrollPositionGuard],
     },
     {
         path: 'collections',
         component: CollectionComponent,
-        canActivate: [AuthGuard, ScrollPositionGuard],
+        canActivate: [NoAuthGuard, ScrollPositionGuard],
     },
     {
         path: 'seller/become-seller',
