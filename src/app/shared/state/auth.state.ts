@@ -100,6 +100,14 @@ export class AuthState {
     @Action(Logout)
     logout(ctx: StateContext<AuthStateModel>) {
         // Logout LOgic Here
+        this.#authService.signOut().subscribe({
+            error: (e) => {
+                this.#notificationService.showError(e.error.message);
+            },
+            complete: () => {
+                this.#notificationService.showSuccess('Ha cerrado sesión correctamente');
+            },
+        })
     }
 
     @Action(AuthClear)

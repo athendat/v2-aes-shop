@@ -11,7 +11,7 @@ import { PointComponent } from './point/point.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderDetailsComponent } from './orders/details/details.component';
 import { RefundComponent } from './refund/refund.component';
-import { AdressesComponent } from './adresses/adresses.component';
+import { AddressesComponent } from './addresses/addresses.component';
 import { NotificationComponent } from './notification/notification.component';
 import { BankDetailsComponent } from './bank-details/bank-details.component';
 import { TranslateModule } from '@ngx-translate/core';
@@ -26,7 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
     OrdersComponent,
     OrderDetailsComponent,
     RefundComponent,
-    AdressesComponent,
+    AddressesComponent,
     NotificationComponent,
     BankDetailsComponent
   ],

@@ -1,3 +1,5 @@
+@let addresses = authStore.user()!.address!;
+
 <div class="dashboard-address">
     <div class="title-header">
         <div class="d-flex align-items-center w-100 justify-content-between">
@@ -12,8 +14,8 @@
             </app-button>
         </div>
     </div>
-    <div class="row g-sm-4 g-3" *ngIf="(user$ | async)?.address?.length">
-        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6" *ngFor="let address of (user$ | async)?.address; let i = index;">
+    <div class="row g-sm-4 g-3" *ngIf="addresses.length">
+        <div class="col-xxl-4 col-xl-6 col-lg-12 col-md-6" *ngFor="let address of addresses; let i = index;">
             <div class="address-box">
                 <div>
                     <div class="label">
@@ -70,9 +72,9 @@
 </div>
 <app-no-data [class]="'no-data-added'"
     [image]="'assets/svg/empty-items.svg'"
-    [text]="'No Address Found'"
-    [description]="'You have not add any address yet'"
-    *ngIf="!(user$ | async)?.address?.length">
+    [text]="'No se encontraron dirección '"
+    [description]="'Aún no guardado ninguna dirección'"
+    *ngIf="!addresses.length">
 </app-no-data>
 <address-modal #addressModal></address-modal>
 <app-delete-modal
