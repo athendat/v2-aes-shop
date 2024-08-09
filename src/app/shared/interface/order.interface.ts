@@ -49,8 +49,8 @@ export interface Order {
     status: boolean;
     created_by_id: string;
     deleted_at?: string;
-    created_at?: string;
-    updated_at?: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export interface OrderCheckout {

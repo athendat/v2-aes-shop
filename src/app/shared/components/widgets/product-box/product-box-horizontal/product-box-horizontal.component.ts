@@ -24,7 +24,8 @@ export class ProductBoxHorizontalComponent {
     @Input() class: string;
     @Input() close: boolean;
 
-    @Select(CartState.cartItems) cartItem$: Observable<Cart[]>;
+    #store = inject(Store);
+    cartItem$: Observable<Cart[]> = this.#store.select(CartState.cartItems);
 
     @ViewChild("productDetailModal") productDetailModal: ProductDetailModalComponent;
     @ViewChild("variationModal") VariationModal: VariationModalComponent;
@@ -37,7 +38,6 @@ export class ProductBoxHorizontalComponent {
     #notificationService = inject(NotificationService);
 
     constructor(
-        private store: Store,
         config: NgbRatingConfig,
     ) {
         config.max = 5;
@@ -75,9 +75,10 @@ export class ProductBoxHorizontalComponent {
             product_id: product?.id,
             variation_id: this.cartItem ? this.cartItem?.variation_id : null,
             variation: this.cartItem ? this.cartItem?.variation : null,
-            quantity: qty
+            quantity: qty,
+            price: product?.sale_price,
         }
-        this.store.dispatch(new AddToCart(params));
+        this.#store.dispatch(new AddToCart(params));
     }
 
     addToWishlist(id: string) {
@@ -88,15 +89,15 @@ export class ProductBoxHorizontalComponent {
             return;
         }
 
-        this.store.dispatch(new AddToWishlist({ product_id: id }));
+        this.#store.dispatch(new AddToWishlist({ product_id: id }));
     }
 
     removeWishlist(id: string) {
-        this.store.dispatch(new DeleteWishlist(id));
+        this.#store.dispatch(new DeleteWishlist(id));
     }
 
     addToCompar(id: string) {
-        this.store.dispatch(new AddToCompare({ product_id: id }));
+        this.#store.dispatch(new AddToCompare({ product_id: id }));
     }
 
 }

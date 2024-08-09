@@ -1,4 +1,5 @@
 @let addresses = authStore.user()!.address!;
+@let user = authStore.user()!;
 
 <div class="dashboard-address">
     <div class="title-header">
@@ -25,7 +26,7 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <td colspan="2">{{ (user$ | async)?.name | titleCase }}</td>
+                                    <td colspan="2">{{ user.name | titleCase }}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ 'address' | translate }} :</td>

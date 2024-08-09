@@ -41,6 +41,11 @@ export const AuthStore = signalStore(
         // Borrar autenticación
         clearAuthentication(): void {
             patchState(store, { isAuthenticated: false, user: null });
+        },
+
+        // Actualiza usuario
+        updateUser(user: User): void {
+            patchState(store, { user });
         }
 
     })),

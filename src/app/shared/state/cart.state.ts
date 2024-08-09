@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { of, tap } from "rxjs";
 import {
@@ -30,10 +30,9 @@ export interface CartStateModel {
 @Injectable()
 export class CartState {
 
-    constructor(private cartService: CartService,
-        private notificationService: NotificationService,
-        private store: Store) {
-    }
+    private cartService = inject(CartService);
+    private notificationService = inject(NotificationService);
+    private store = inject(Store);
 
     ngxsOnInit(ctx: StateContext<CartStateModel>) {
         ctx.dispatch(new ToggleSidebarCart(false));
@@ -82,9 +81,12 @@ export class CartState {
 
     @Action(AddToCart)
     add(ctx: StateContext<CartStateModel>, action: AddToCart) {
+
         if (action.payload.id) {
+
             return this.store.dispatch(new UpdateCart(action.payload));
         }
+
         return this.store.dispatch(new AddToCartLocalStorage(action.payload));
     }
 
@@ -140,11 +142,11 @@ export class CartState {
 
         const state = ctx.getState();
         const cart = [...state.items];
-        const index = cart.findIndex(item => Number(item.id) === Number(action.payload.id));
+        const index = cart.findIndex(item => item.id === action.payload.id);
 
         if (cart[index]?.variation && action.payload.variation_id &&
-            Number(cart[index].id) === Number(action.payload.id) &&
-            Number(cart[index]?.variation_id) != Number(action.payload.variation_id)) {
+            cart[index].id === action.payload.id &&
+            cart[index]?.variation_id != action.payload.variation_id) {
             return this.store.dispatch(new ReplaceCart(action.payload));
         }
 
@@ -183,12 +185,12 @@ export class CartState {
 
         const state = ctx.getState();
         const cart = [...state.items];
-        const index = cart.findIndex(item => Number(item.id) === Number(action.payload.id));
+        const index = cart.findIndex(item => item.id === action.payload.id);
 
         // Update Cart If cart id same but variant id is different
         if (cart[index]?.variation && action.payload.variation_id &&
-            Number(cart[index].id) === Number(action.payload.id) &&
-            Number(cart[index]?.variation_id) != Number(action.payload.variation_id)) {
+            cart[index].id === action.payload.id &&
+            cart[index]?.variation_id != action.payload.variation_id) {
             cart[index].variation = action.payload.variation!;
             cart[index].variation_id = action.payload.variation_id;
             cart[index].variation.selected_variation = cart[index]?.variation?.attribute_values?.map(values => values.value).join('/')

@@ -5,11 +5,11 @@ export interface OrderStatusModel extends PaginateModel {
 }
 
 export interface OrderStatus {
-   id: number;
+   id: string;
    name: string;
    sequence: number;
    slug: string;
-   created_by_id: number;
+   created_by_id: string;
    status: boolean;
    deleted_at: string;
    created_at: string;

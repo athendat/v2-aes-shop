@@ -4,7 +4,7 @@
 <div class="row g-3">
     <ng-container *ngFor="let address of addresses; let i = index;">
         <div class="col-xxl-6 col-lg-12 col-md-6">
-            <label for="adddress-{{type}}-{{i}}">
+            <label for="address-{{type}}-{{i}}">
                 <div class="delivery-address-box">
                     <div>
                         <div class="form-check">
@@ -12,8 +12,8 @@
                                 class="form-check-input"
                                 type="radio"
                                 value="{{address.id}}"
-                                name="adddress-{{type}}"
-                                id="adddress-{{type}}-{{i}}"
+                                name="address-{{type}}"
+                                id="address-{{type}}-{{i}}"
                                 [checked]="i === 0"
                                 (change)="set($event)">
                         </div>

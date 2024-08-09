@@ -17,24 +17,24 @@ import { BankDetailsComponent } from './bank-details/bank-details.component';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [
-    AccountComponent,
-    DashboardComponent,
-    SidebarComponent,
-    WalletComponent,
-    PointComponent,
-    OrdersComponent,
-    OrderDetailsComponent,
-    RefundComponent,
-    AddressesComponent,
-    NotificationComponent,
-    BankDetailsComponent
-  ],
-  imports: [
-    CommonModule,
-    AccountRoutingModule,
-    SharedModule,
-    TranslateModule
-  ]
+    declarations: [
+        AccountComponent,
+        DashboardComponent,
+        SidebarComponent,
+        WalletComponent,
+        PointComponent,
+        OrdersComponent,
+        OrderDetailsComponent,
+        RefundComponent,
+        AddressesComponent,
+        NotificationComponent,
+        BankDetailsComponent
+    ],
+    imports: [
+        CommonModule,
+        AccountRoutingModule,
+        SharedModule,
+        TranslateModule
+    ]
 })
 export class AccountModule { }

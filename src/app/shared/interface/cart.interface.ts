@@ -12,6 +12,7 @@ export interface Cart {
     variation_id: string | null;
     consumer_id?: string;
     quantity: number;
+    price?: number;
     sub_total: number;
     product: Product;
     created_by_id?: string;
@@ -27,4 +28,5 @@ export interface CartAddOrUpdate {
     variation: Variation | null;
     variation_id: string | null;
     quantity: number;
+    price?: number;
 }
