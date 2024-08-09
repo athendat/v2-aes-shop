@@ -22,7 +22,7 @@ export class DealComponent {
     @Select(ProductState.dealProducts) dealProducts$: Observable<ProductModel>;
 
     public dealProducts: Product[];
-    public ids: number[];
+    public ids: string[];
 
     constructor(private store: Store) { }
 

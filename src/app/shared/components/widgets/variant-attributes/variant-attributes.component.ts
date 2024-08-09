@@ -24,9 +24,9 @@ export class VariantAttributesComponent {
 
   public cartItem: Cart | null;
   public productQty: number = 1;
-  public attributeValues: number[] = [];
-  public variantIds: number[] = [];
-  public soldOutAttributesIds: number[] = [];
+  public attributeValues: string[] = [];
+  public variantIds: string[] = [];
+  public soldOutAttributesIds: string[] = [];
   public selectedOptions: SelectedVariant[] = [];
   public selectedVariation: Variation | null;
 
@@ -35,18 +35,18 @@ export class VariantAttributesComponent {
       if(changes['product'] && changes['product'].currentValue) {
         this.product = changes['product']?.currentValue;
       }
-  
+
       if(changes['attributes'] && changes['attributes'].currentValue) {
         this.attributes = changes['attributes']?.currentValue;
       }
-  
+
       this.cartItem$.subscribe(items => {
         this.cartItem = items.find(item => item.product.id == this.product.id)!;
       });
-  
+
       this.checkVariantAvailability(this.product);
     }, 0);
-    
+
   }
 
   checkVariantAvailability(product: Product) {
@@ -72,9 +72,9 @@ export class VariantAttributesComponent {
       // Set First Vatriant Default
       for (const attribute of product?.attributes) {
         if (this.attributeValues?.length && attribute?.attribute_values?.length) {
-          let values: number[] = [];
+          let values: string[] = [];
           for (const value of attribute.attribute_values) {
-        
+
             if(values.indexOf(value.id) === -1)
               values.push(value.id);
 
@@ -106,10 +106,10 @@ export class VariantAttributesComponent {
   }
 
   setVariant(variations: Variation[], value: AttributeValue) {
-    const index = this.selectedOptions.findIndex(item => Number(item.attribute_id) === Number(value?.attribute_id));
+    const index = this.selectedOptions.findIndex(item => item.attribute_id === value?.attribute_id);
     this.soldOutAttributesIds = [];
     if(index === -1) {
-      this.selectedOptions.push({id: Number(value?.id), attribute_id: Number(value?.attribute_id)});
+      this.selectedOptions.push({id: value?.id, attribute_id: value?.attribute_id});
     } else {
       this.selectedOptions[index].id = value?.id;
     }
@@ -135,7 +135,7 @@ export class VariantAttributesComponent {
               this.soldOutAttributesIds.push(attr_value.id);
             } else if(!this.variantIds.includes(attr_value.id)) {
               this.soldOutAttributesIds.push(attr_value.id);
-            } 
+            }
           } else if(attrValues.length == 1 && attrValues.includes(attr_value.id)) {
             this.soldOutAttributesIds.push(attr_value.id);
           }
@@ -162,5 +162,5 @@ export class VariantAttributesComponent {
       this.product['stock_status']  = this.product?.quantity < this.productQty ? 'out_of_stock' : 'in_stock';
     }
   }
-  
+
 }

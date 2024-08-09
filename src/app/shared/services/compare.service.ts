@@ -1,20 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { CompareModel } from '../interface/compare.interface';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CompareService {
 
-  public skeletonLoader: boolean = false;
-  
-  constructor(private http: HttpClient) { }
+    public skeletonLoader: boolean = false;
 
-  getCompareItems(): Observable<CompareModel> {
-    return this.http.get<CompareModel>(`${environment.URL}/compare.json`);
-  }
+    constructor(private http: HttpClient) { }
+
+    getCompareItems(): Observable<CompareModel> {
+        // return this.http.get<CompareModel>(`${environment.URL}/compare.json`);
+        return of({
+            data: [],
+            total: 0
+        })
+    }
 
 }

@@ -15,16 +15,16 @@ export class CategoriesComponent {
 
   @Select(CategoryState.category) category$: Observable<CategoryModel>;
 
-  @Input() categoryIds: number[] = [];
+  @Input() categoryIds: string[] = [];
   @Input() style: string = 'vertical';
   @Input() title?: string;
   @Input() image?: string;
   @Input() theme: string;
   @Input() sliderOption: OwlOptions;
-  @Input() selectedCategoryId: number;
+  @Input() selectedCategoryId: string;
   @Input() bgImage: string;
 
-  @Output() selectedCategory: EventEmitter<number> = new EventEmitter();
+  @Output() selectedCategory: EventEmitter<string> = new EventEmitter();
 
   public categories: Category[];
   public selectedCategorySlug: string[] = [];
@@ -43,7 +43,7 @@ export class CategoriesComponent {
     }
   }
 
-  selectCategory(id: number) {
+  selectCategory(id: string) {
     this.selectedCategory.emit(id);
   }
 

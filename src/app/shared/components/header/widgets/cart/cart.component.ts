@@ -75,7 +75,7 @@ export class CartComponent {
     this.store.dispatch(new UpdateCart(params));
   }
 
-  delete(id: number) {
+  delete(id: string) {
     this.store.dispatch(new DeleteCart(id));
   }
 

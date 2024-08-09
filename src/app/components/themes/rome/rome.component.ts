@@ -25,15 +25,15 @@ export class RomeComponent {
   public categorySlider = data.categorySlider9;
   public productSlider6ItemMargin = data.productSlider6ItemMargin;
   public customOptionsItem4 = data.customOptionsItem4;
-  public productFilterIds: number[] = [];
-  public selectedCategoryId: number;
+  public productFilterIds: string[] = [];
+  public selectedCategoryId: string;
 
   constructor(private store: Store,
     @Inject(PLATFORM_ID) private platformId: Object,
     private themeOptionService: ThemeOptionService) {}
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       if(this.data?.slug == this.slug) {
         // Get Products
         const getProducts$ = this.store.dispatch(new GetProducts({
@@ -69,14 +69,14 @@ export class RomeComponent {
   }
 
   ngOnDestroy() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       // Remove Color
       document.documentElement.style.removeProperty('--theme-color');
     }
   }
 
-  selectCategory(id: number) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+  selectCategory(id: string) {
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.selectedCategoryId = id;
       this.categoryProduct$.subscribe(product => {
         this.productFilterIds = product.data.filter(product => product?.categories?.map(category => category.id).includes(id))

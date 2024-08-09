@@ -8,19 +8,19 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class CategoriesComponent {
 
-  @Input() categoryIds: number[] = [];
+  @Input() categoryIds: string[] = [];
   @Input() style: string = 'vertical';
   @Input() title?: string;
   @Input() image?: string;
   @Input() theme: string;
   @Input() sliderOption: OwlOptions;
-  @Input() selectedCategoryId: number;
+  @Input() selectedCategoryId: string;
 
-  @Output() selectedCategory: EventEmitter<number> = new EventEmitter();
+  @Output() selectedCategory: EventEmitter<string> = new EventEmitter();
 
   constructor(){}
 
-  selectCategory(id: number) {
+  selectCategory(id: string) {
     this.selectedCategory.emit(id);
   }
 

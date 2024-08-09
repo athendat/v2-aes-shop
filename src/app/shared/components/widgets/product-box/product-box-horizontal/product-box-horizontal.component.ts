@@ -80,7 +80,7 @@ export class ProductBoxHorizontalComponent {
         this.store.dispatch(new AddToCart(params));
     }
 
-    addToWishlist(id: number) {
+    addToWishlist(id: string) {
 
         // Si el usuario no está autenticado, mostrar un mensaje de alerta
         if (!this.#authStore.isAuthenticated()) {
@@ -91,11 +91,11 @@ export class ProductBoxHorizontalComponent {
         this.store.dispatch(new AddToWishlist({ product_id: id }));
     }
 
-    removeWishlist(id: number) {
+    removeWishlist(id: string) {
         this.store.dispatch(new DeleteWishlist(id));
     }
 
-    addToCompar(id: number) {
+    addToCompar(id: string) {
         this.store.dispatch(new AddToCompare({ product_id: id }));
     }
 

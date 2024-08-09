@@ -6,21 +6,21 @@ export interface CategoryModel extends PaginateModel {
 }
 
 export interface Category {
-    id: number;
+    id: string;
     name: string;
     slug: string;
     description: string;
     type: string;
-    parent_id?: number;
+    parent_id?: string;
     category_image?: Attachment;
-    category_image_id?: number;
+    category_image_id?: string;
     category_icon?: Attachment;
-    category_icon_id?: number;
+    category_icon_id?: string;
     commission_rate?: number;
     subcategories?: Category[];
     products_count: number;
     status: boolean;
-    created_by_id?: number;
+    created_by_id?: string;
     created_at?: string;
     updated_at?: string;
     deleted_at?: string;

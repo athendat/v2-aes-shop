@@ -1,4 +1,6 @@
-import { User } from "./user.types";
+// import { User } from "./user.types";
+
+import { User } from "../interface/user.interface";
 
 export type AuthResponse = {
     ok: boolean;

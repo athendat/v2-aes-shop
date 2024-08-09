@@ -14,16 +14,16 @@ import { CartState } from '../../../../../../shared/state/cart.state';
 })
 export class ProductBundleComponent {
 
-  @Select(ProductState.relatedProducts) crossSellproduct$: Observable<Product[]>;
+  @Select(ProductState.relatedProducts) crossSellProduct$: Observable<Product[]>;
   @Select(CartState.cartItems) cartItem$: Observable<Cart[]>;
 
   @Input() product: Product | null;
 
   public cartItem: Cart | null;
 
-  public crossSellproducts: Product[] = [];
+  public crossSellProducts: Product[] = [];
   public selectedProduct: Product[] = [];
-  public selectedProductIds: number[] = [];
+  public selectedProductIds: string[] = [];
 
   public total: number = 0;
 
@@ -34,23 +34,23 @@ export class ProductBundleComponent {
 
   ngOnChanges() {
     if (this.product?.cross_sell_products && Array.isArray(this.product?.cross_sell_products)) {
-      this.crossSellproduct$.subscribe(products => {
-        this.crossSellproducts = products.filter(product => this.product?.cross_sell_products?.includes(product?.id!));
+      this.crossSellProduct$.subscribe(products => {
+        this.crossSellProducts = products.filter(product => this.product?.cross_sell_products?.includes(product?.id!));
       });
     }
   }
 
   select(event: Event) {
-    const index = this.selectedProductIds.indexOf(Number((<HTMLInputElement>event?.target)?.value));  // checked and unchecked value
-    if ((<HTMLInputElement>event?.target)?.checked)   
-      this.selectedProductIds.push(Number((<HTMLInputElement>event?.target)?.value)); // push in array cheked value
-    else 
-      this.selectedProductIds.splice(index, 1);  // removed in array unchecked value 
-      
-    this.crossSellproduct$.subscribe(products => {
+    const index = this.selectedProductIds.indexOf((<HTMLInputElement>event?.target)?.value);  // checked and unchecked value
+    if ((<HTMLInputElement>event?.target)?.checked)
+      this.selectedProductIds.push((<HTMLInputElement>event?.target)?.value); // push in array cheked value
+    else
+      this.selectedProductIds.splice(index, 1);  // removed in array unchecked value
+
+    this.crossSellProduct$.subscribe(products => {
       this.selectedProduct = products.filter(product => this.selectedProductIds?.includes(product?.id!));
     });
- 
+
     this.total = this.selectedProduct.reduce((sum, item) => sum + item.sale_price, 0);
   }
 

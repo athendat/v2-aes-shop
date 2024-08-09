@@ -26,7 +26,7 @@ export class ReplaceCart {
 
 export class DeleteCart {
   static readonly type = "[Cart] Delete";
-  constructor(public id: number) {}
+  constructor(public id: string) {}
 }
 
 export class CloseStickyCart {

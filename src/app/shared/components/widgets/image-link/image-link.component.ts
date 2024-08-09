@@ -5,24 +5,24 @@ import { Product, ProductModel } from '../../../../shared/interface/product.inte
 import { ProductState } from '../../../../shared/state/product.state';
 
 @Component({
-  selector: 'app-image-link',
-  templateUrl: './image-link.component.html',
-  styleUrls: ['./image-link.component.scss']
+    selector: 'app-image-link',
+    templateUrl: './image-link.component.html',
+    styleUrls: ['./image-link.component.scss']
 })
 export class ImageLinkComponent {
 
-  @Select(ProductState.product) product$: Observable<ProductModel>;
+    @Select(ProductState.product) product$: Observable<ProductModel>;
 
-  @Input() image: any;
-  @Input() link: string;
-  @Input() bgImage: boolean;
-  @Input() class: string;
+    @Input() image: any;
+    @Input() link: string;
+    @Input() bgImage: boolean;
+    @Input() class: string;
 
-  constructor(){}
+    constructor() { }
 
-  getProductSlug(id: number, products: Product[]){
-    let product = products.find(product => product.id === id);
-    return product ? product.slug : null;
-  }
+    getProductSlug(id: string, products: Product[]) {
+        let product = products.find(product => product.id === id);
+        return product ? product.slug : null;
+    }
 
 }

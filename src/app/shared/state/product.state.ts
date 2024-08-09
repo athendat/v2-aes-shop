@@ -185,8 +185,8 @@ export class ProductState {
         next: (result: ProductModel) => {
           const state = ctx.getState();
           const products = result.data.filter(product =>
-              action?.payload?.['ids']?.split(',')?.map((id: number) => Number(id)).includes(product.id) ||
-              (product?.categories?.length && product?.categories?.map(category => category.id).includes(Number(action?.payload?.['category_ids'])))
+              action?.payload?.['ids']?.split(',')?.map((id: string) => id).includes(product.id) ||
+              (product?.categories?.length && product?.categories?.map(category => category.id).includes(action?.payload?.['category_ids']))
           );
           ctx.patchState({
             ...state,

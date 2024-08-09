@@ -126,7 +126,7 @@ export class ProductContainComponent {
         }
     }
 
-    addToWishlist(id: number) {
+    addToWishlist(id: string) {
 
         // Si el usuario no está autenticado, mostrar un mensaje de alerta
         if (!this.#authStore.isAuthenticated()) {
@@ -137,7 +137,7 @@ export class ProductContainComponent {
         this.store.dispatch(new AddToWishlist({ product_id: id }));
     }
 
-    addToCompare(id: number) {
+    addToCompare(id: string) {
         this.store.dispatch(new AddToCompare({ product_id: id }));
     }
 

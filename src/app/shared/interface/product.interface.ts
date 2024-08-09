@@ -12,13 +12,13 @@ export interface ProductModel extends PaginateModel {
 }
 
 export interface Product {
-    id: number;
+    id: string;
     name: string;
     slug: string;
     short_description: string;
     description: string;
     type: string;
-    product_thumbnail_id?: number;
+    product_thumbnail_id?: string;
     product_thumbnail?: Attachment;
     product_galleries_id?: [];
     product_galleries?: Attachment[];
@@ -36,7 +36,7 @@ export interface Product {
     visible_time: string;
     quantity: number;
     store_id?: number;
-    size_chart_image_id: number;
+    size_chart_image_id: string;
     size_chart_image: Attachment;
     estimated_delivery_text: string;
     return_policy_text: string;
@@ -50,13 +50,13 @@ export interface Product {
     is_trending: boolean;
     is_return: boolean | number;
     shipping_days: number;
-    tax_id: number;
+    tax_id: string;
     tax: Tax;
     status: boolean;
     meta_title: string;
     meta_description: string;
     product_meta_image: Attachment;
-    product_meta_image_id: number;
+    product_meta_image_id: string;
     tags: Tag[];
     tag: Tag;
     categories: Category[];
@@ -69,12 +69,12 @@ export interface Product {
     variations: Variation[];
     variants: Variant[];
     attributes: Attribute[];
-    attributes_ids: number[];
+    attributes_ids: string[];
     is_random_related_products: boolean;
-    related_products: number[];
-    cross_sell_products: number[];
+    related_products: string[];
+    cross_sell_products: string[];
     pivot?: PivotProduct;
-    created_by_id: number;
+    created_by_id: string;
     is_approved: boolean;
     total_in_approved_products: number;
     published_at: string;
@@ -102,7 +102,7 @@ export interface PivotProduct {
 }
 
 export interface Variation {
-    id: number;
+    id: string;
     name: string;
     price: number;
     sale_price: number;
@@ -111,7 +111,7 @@ export interface Variation {
     discount: number;
     quantity: number;
     variation_image: Attachment;
-    variation_image_id: number;
+    variation_image_id: string;
     variation_options: VariationOption[];
     attribute_values: AttributeValue[];
     selected_variation: string;
@@ -124,13 +124,13 @@ export interface VariationOption {
 }
 
 export interface Variant {
-    id: number | null;
-    attribute_values: number[] | null;
+    id: string | null;
+    attribute_values: string[] | null;
     options: any;
     variant_option: any;
 }
 
 export interface SelectedVariant {
-    id: number;
-    attribute_id: number;
+    id: string;
+    attribute_id: string;
 }

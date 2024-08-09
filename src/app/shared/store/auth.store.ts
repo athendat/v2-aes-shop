@@ -1,7 +1,8 @@
 import { inject } from "@angular/core";
 import { signalStore, withState, withMethods, patchState } from "@ngrx/signals";
 import { AuthService } from "../services/auth.service";
-import { User } from "../types/user.types";
+import { User } from "../interface/user.interface";
+// import { User } from "../types/user.types";
 
 /**
  * Modelo de estado para la autenticación

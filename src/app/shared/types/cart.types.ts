@@ -14,3 +14,13 @@ export type CartItem = {
     quantity: number;
     price: number;
 }
+
+
+export type CartAddOrUpdate = {
+    id: string | null;
+    product: Product | null;
+    product_id: string;
+    variation: Variation | null;
+    variation_id: string | null;
+    quantity: number;
+}

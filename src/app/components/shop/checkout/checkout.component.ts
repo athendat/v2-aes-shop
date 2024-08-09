@@ -84,16 +84,16 @@ export class CheckoutComponent {
     });
   }
 
-  selectShippingAddress(id: number) {
+  selectShippingAddress(id: string) {
     if(id) {
-      this.form.controls['shipping_address_id'].setValue(Number(id));
+      this.form.controls['shipping_address_id'].setValue(id);
       this.checkout();
     }
   }
 
-  selectBillingAddress(id: number) {
+  selectBillingAddress(id: string) {
     if(id) {
-      this.form.controls['billing_address_id'].setValue(Number(id));
+      this.form.controls['billing_address_id'].setValue(id);
       this.checkout();
     }
   }

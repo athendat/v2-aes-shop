@@ -11,10 +11,10 @@ export class AddressBlockComponent {
   @Input() addresses?: UserAddress[] = [];
   @Input() type: string = 'shipping';
 
-  @Output() selectAddress: EventEmitter<number> = new EventEmitter();
+  @Output() selectAddress: EventEmitter<string> = new EventEmitter();
 
   constructor() { }
-  
+
   ngOnInit() {
     // Automatically emit the selectAddress event for the first item if it's available
     if (this.addresses && this.addresses.length > 0) {
@@ -24,7 +24,7 @@ export class AddressBlockComponent {
   }
 
   set(event: Event) {
-    this.selectAddress.emit(Number((<HTMLInputElement>event.target)?.value));
+    this.selectAddress.emit((<HTMLInputElement>event.target)?.value);
   }
 
 }

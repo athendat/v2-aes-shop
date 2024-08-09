@@ -18,7 +18,7 @@ import * as data from '../../../../shared/data/owl-carousel';
 export class ProductComponent implements OnChanges {
 
     @Input() style: string = 'vertical';
-    @Input() productIds: number[] = [];
+    @Input() productIds: string[] = [];
     @Input() boxClass: string;
     @Input() productStyle: string = "product-modern";
     @Input() layout: string;

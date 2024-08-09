@@ -1,28 +1,28 @@
-<div class="related-product bundle-sec" *ngIf="crossSellproducts?.length">
+<div class="related-product bundle-sec" *ngIf="crossSellProducts?.length">
     <div class="product-title-2">
         <h4>{{ 'frequently_bought_together' | translate }}</h4>
     </div>
     <div class="related-box">
         <div class="related-image">
             <ul>
-                <li *ngFor="let crossSellproduct of crossSellproducts">
+                <li *ngFor="let crossSellProduct of crossSellProducts">
                     <div class="product-box product-box-bg wow fadeInUp">
                         <div class="product-image">
-                            <a [routerLink]="['/product/', crossSellproduct.slug]">
-                                <img [src]="crossSellproduct.product_thumbnail ?
-                                        crossSellproduct.product_thumbnail.original_url :
-                                        'assets/images/product.png'" class="img-fluid" alt="{{ crossSellproduct.name }}">
+                            <a [routerLink]="['/product/', crossSellProduct.slug]">
+                                <img [src]="crossSellProduct.product_thumbnail ?
+                                        crossSellProduct.product_thumbnail.original_url :
+                                        'assets/images/product.png'" class="img-fluid" alt="{{ crossSellProduct.name }}">
                             </a>
                         </div>
                         <div class="product-detail">
-                            <a [routerLink]="['/product/', crossSellproduct.slug]">
+                            <a [routerLink]="['/product/', crossSellProduct.slug]">
                                 <h6 class="name">
-                                    {{ crossSellproduct.name }}
+                                    {{ crossSellProduct.name }}
                                 </h6>
                             </a>
                             <h5 class="sold text-content">
-                                <span class="theme-color price">{{ crossSellproduct.sale_price | currencySymbol }}</span>
-                                <del *ngIf="crossSellproduct.discount">{{ crossSellproduct.price | currencySymbol }}</del>
+                                <span class="theme-color price">{{ crossSellProduct.sale_price | currencySymbol }}</span>
+                                <del *ngIf="crossSellProduct.discount">{{ crossSellProduct.price | currencySymbol }}</del>
                             </h5>
                         </div>
                     </div>
@@ -32,16 +32,16 @@
 
         <div class="budle-list">
             <ul>
-                <li *ngFor="let crossSellproduct of crossSellproducts">
+                <li *ngFor="let crossSellProduct of crossSellProducts">
                     <div class="form-check">
                         <input class="checkbox_animated"
                             type="checkbox"
-                            value="{{crossSellproduct.id}}"
-                            id="crosssell-{{crossSellproduct.id}}"
+                            value="{{crossSellProduct.id}}"
+                            id="crosssell-{{crossSellProduct.id}}"
                             (change)="select($event)">
-                        <label class="form-check-label" for="crosssell-{{crossSellproduct.id}}">
-                            <span class="color color-1"> {{ crossSellproduct.name }}
-                                <span>{{ crossSellproduct.sale_price | currencySymbol }}</span>
+                        <label class="form-check-label" for="crosssell-{{crossSellProduct.id}}">
+                            <span class="color color-1"> {{ crossSellProduct.name }}
+                                <span>{{ crossSellProduct.sale_price | currencySymbol }}</span>
                             </span>
                         </label>
                     </div>

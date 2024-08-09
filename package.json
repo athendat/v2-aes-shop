@@ -49,6 +49,7 @@
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.1",
     "tslib": "^2.6.3",
+    "uuid": "^10.0.0",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
@@ -60,6 +61,7 @@
     "@types/feather-icons": "^4.29.4",
     "@types/jasmine": "~5.1.4",
     "@types/node": "^18.18.0",
+    "@types/uuid": "^10.0.0",
     "browser-sync": "^3.0.2",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.3",
