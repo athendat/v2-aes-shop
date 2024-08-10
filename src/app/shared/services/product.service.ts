@@ -48,8 +48,8 @@ export class ProductService {
 
         // Convertir parámetros de la plantilla a parámetros de la API
         const params = {
-            page: payload!['page'].toString() || '',
-            size: payload!['paginate'].toString() || '',
+            page: payload!['page'].toString() || 1,
+            size: payload!['paginate'].toString() || 10,
             sort: payload!['sortBy'] || '',
             order: payload!['sort'] || '',
             category: payload!['category'] || '',

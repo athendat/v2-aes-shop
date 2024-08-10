@@ -210,7 +210,7 @@ export class ProductState {
         next: (result: ProductModel) => {
           const state = ctx.getState();
           const products = result.data.filter(product =>
-            action?.payload?.['store_ids']?.split(',')?.map((id: number) => Number(id)).includes(product.store_id));
+            action?.payload?.['store_ids']?.split(',')?.map((id: string) => id).includes(product.store_id));
           ctx.patchState({
             ...state,
             storeProducts: products
@@ -266,7 +266,7 @@ export class ProductState {
         next: (result: ProductModel) => {
           const state = ctx.getState();
           const products = result.data.filter(product =>
-            action?.payload?.['ids']?.split(',')?.map((id: number) => Number(id)).includes(product.id));
+            action?.payload?.['ids']?.split(',')?.map((id: string) => id).includes(product.id));
           ctx.patchState({
             ...state,
             dealProducts: products.length ? products : result?.data?.reverse()?.slice(0, 2)

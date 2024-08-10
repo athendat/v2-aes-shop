@@ -1,7 +1,9 @@
-<app-paris  [data]="(homePage$ | async)" [slug]="slug" *ngIf="(homePage$ | async)?.slug === 'paris'"></app-paris>
-<app-tokyo  [data]="(homePage$ | async)" [slug]="slug" *ngIf="(homePage$ | async)?.slug === 'tokyo'"></app-tokyo>
-<app-osaka  [data]="(homePage$ | async)" [slug]="slug" *ngIf="(homePage$ | async)?.slug === 'osaka'"></app-osaka>
-<app-rome   [data]="(homePage$ | async)" [slug]="slug" *ngIf="(homePage$ | async)?.slug === 'rome'"></app-rome>
-<app-madrid [data]="(homePage$ | async)" [slug]="slug" *ngIf="(homePage$ | async)?.slug === 'madrid'"></app-madrid>
-<app-berlin [data]="(homePage$ | async)" [slug]="slug" *ngIf="(homePage$ | async)?.slug === 'berlin'"></app-berlin>
-<app-denver [data]="(homePage$ | async)" [slug]="slug" *ngIf="(homePage$ | async)?.slug === 'denver'"></app-denver>
+@let homePage = homePage$ | async;
+
+<app-paris  [data]="homePage" [slug]="slug()" *ngIf="homePage?.slug === 'paris'"></app-paris>
+<app-tokyo  [data]="homePage" [slug]="slug()" *ngIf="homePage?.slug === 'tokyo'"></app-tokyo>
+<app-osaka  [data]="homePage" [slug]="slug()" *ngIf="homePage?.slug === 'osaka'"></app-osaka>
+<app-rome   [data]="homePage" [slug]="slug()" *ngIf="homePage?.slug === 'rome'"></app-rome>
+<app-madrid [data]="homePage" [slug]="slug()" *ngIf="homePage?.slug === 'madrid'"></app-madrid>
+<app-berlin [data]="homePage" [slug]="slug()" *ngIf="homePage?.slug === 'berlin'"></app-berlin>
+<app-denver [data]="homePage" [slug]="slug()" *ngIf="homePage?.slug === 'denver'"></app-denver>

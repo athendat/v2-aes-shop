@@ -1,30 +1,37 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Store, Select  } from '@ngxs/store';
+import { ChangeDetectionStrategy, Component, effect, inject, input } from '@angular/core';
+
+import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ThemeState } from '../../shared/state/theme.state';
 import { GetHomePage } from '../../shared/action/theme.action';
 import { ThemeOptionService } from '../../shared/services/theme-option.service';
 
 @Component({
-  selector: 'app-themes',
-  templateUrl: './themes.component.html',
-  styleUrls: ['./themes.component.scss']
+    selector: 'app-themes',
+    templateUrl: './themes.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemesComponent {
 
-  @Select(ThemeState.homePage) homePage$: Observable<any>;
+    // Private properties
+    #store = inject(Store);
+    #themeOptionService = inject(ThemeOptionService);
 
-  public slug: string;
+    // Public properties
+    homePage$: Observable<any> = this.#store.select(ThemeState.homePage);
+    slug = input<string>('paris');
 
-  constructor(private store: Store,
-    private route: ActivatedRoute,
-    private themeOptionService: ThemeOptionService) {
-    this.route.params.subscribe(params => {
-      this.themeOptionService.preloader = true;
-      this.slug = params['slug'] ? params['slug'] : 'paris';
-      this.store.dispatch(new GetHomePage(params['slug'] ? params['slug'] : 'paris'));
-    });
-  }
+    constructor(
+    ) {
+        effect(() => {
+
+            // Preloader
+            this.#themeOptionService.preloader = true;
+
+            // Get Home Page
+            this.#store.dispatch(new GetHomePage(this.slug()));
+
+        })
+    }
 
 }
