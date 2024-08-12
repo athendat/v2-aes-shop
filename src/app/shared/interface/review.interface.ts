@@ -5,24 +5,24 @@ import { Stores } from "./store.interface"
 import { User } from "./user.interface"
 
 export interface ReviewModel extends PaginateModel {
-  data: Review[];
+    data: Review[];
 }
 export interface Review {
-    id: number;
+    id: string;
     consumer: User;
-    consumer_id: number;
+    consumer_id: string;
     consumer_name: string;
     description: string;
     product: Product;
-    product_id: number;
+    product_id: string;
     product_name: string;
     rating: number;
     review_image: Attachment;
-    review_image_id: number;
+    review_image_id: string;
     product_review_image: Attachment;
     store: Stores;
-    store_id: number;
-    created_at?: string;
+    store_id: string;
+    createdAt?: string;
     deleted_at?: string;
     updated_at?: string;
 }
