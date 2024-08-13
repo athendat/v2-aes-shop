@@ -12,7 +12,7 @@
 <app-no-data
     [class]="'no-data-added'"
     [image]="'assets/svg/empty-items.svg'"
-    [text]="'No Notifications Found'"
-    [description]="'You have not received any notification yet'"
+    [text]="'no_notifications' | translate"
+    [description]="'no_notifications_text' | translate"
     *ngIf="!(notification$ | async)?.length">
 </app-no-data>

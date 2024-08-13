@@ -2,10 +2,11 @@ import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Params } from '../interface/core.interface';
-import { NotificationModel } from '../interface/notification.interface';
+import { Notification, NotificationModel } from '../interface/notification.interface';
+import { RestResponse } from '../types/common.types';
 
 @Injectable({
     providedIn: 'root'
@@ -50,7 +51,18 @@ export class NotificationService {
     }
 
     getNotifications(payload?: Params): Observable<NotificationModel> {
-        return this.http.get<NotificationModel>(`${environment.URL}/notification.json`, { params: payload });
+        return this.http.get<RestResponse<Notification[]>>(`${environment.API_URL}/notifications`, { params: payload }).pipe(
+            map(response => {
+                return {
+                    data: response.data!,
+                    total: response.data!.length!
+                }
+            })
+        );
+    }
+
+    markAsRead(): Observable<RestResponse<Notification>> {
+        return this.http.patch<RestResponse<Notification>>(`${environment.API_URL}/notifications/mark-as-read`, {});
     }
 
 }
