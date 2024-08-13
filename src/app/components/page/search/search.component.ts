@@ -1,5 +1,5 @@
 import { ProductService } from './../../../shared/services/product.service';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { FormControl } from '@angular/forms';
 import { Observable, debounceTime, distinctUntilChanged } from 'rxjs';
@@ -14,13 +14,13 @@ import * as data from '../../../shared/data/owl-carousel'
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
-    styleUrls: ['./search.component.scss']
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
 
     public breadcrumb: Breadcrumb = {
-        title: "Search",
-        items: [{ label: "Search", active: true }]
+        title: "Buscar",
+        items: [{ label: "Buscar", active: true }]
     }
 
     @Select(ProductState.product) product$: Observable<ProductModel>;
@@ -37,8 +37,13 @@ export class SearchComponent {
         'status': 1,
         'search': ''
     }
+    private store = inject(Store);
+    public productService = inject(ProductService);
+    private route = inject(ActivatedRoute);
+    public router = inject(Router);
 
-    constructor(private store: Store, public productService: ProductService, private route: ActivatedRoute, public router: Router) {
+    constructor(
+    ) {
         //  this.getProduct(this.filter);
 
         this.route.queryParams.subscribe(params => {
@@ -55,9 +60,11 @@ export class SearchComponent {
     }
 
     ngOnInit() {
-        this.search.valueChanges.pipe(
-            debounceTime(300),
-            distinctUntilChanged()) // Adjust the debounce time as needed (in milliseconds)
+        this.search.valueChanges
+            .pipe(
+                debounceTime(300), // Adjust the debounce time as needed (in milliseconds)
+                distinctUntilChanged()
+            )
             .subscribe((inputValue) => {
                 if (inputValue.length == 0) {
                     this.router.navigate([], {

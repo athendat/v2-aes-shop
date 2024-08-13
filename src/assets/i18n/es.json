@@ -452,5 +452,7 @@
     "privacy_policy": "Política de privacidad",
     "ok": "Aceptar",
     "no_reviews": "Aún no hay reseñas",
-    "no_reviews_details": "Actualmente no hay calificaciones ni reseñas para este producto"
+    "no_reviews_details": "Actualmente no hay calificaciones ni reseñas para este producto",
+    "no_items_added": "No se han añadido artículos",
+    "no_wishlist_items": "Parece que no se ha añadido nada a tu lista de deseos. Explora las categorías si lo deseas."
 }

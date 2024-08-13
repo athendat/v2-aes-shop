@@ -452,5 +452,7 @@
     "privacy_policy": "Privacy Policy",
     "ok": "OK",
     "no_reviews": "No Review Yet",
-    "no_reviews_details": "There are currently no ratings or reviews for this product"
+    "no_reviews_details": "There are currently no ratings or reviews for this product",
+    "no_items_added": "No Items Added",
+    "no_wishlist_items": "It appears that nothing has been added to your wishlist. Explore categories if you want to."
 }

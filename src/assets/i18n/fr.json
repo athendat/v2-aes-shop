@@ -452,5 +452,7 @@
     "privacy_policy": "politique de confidentialité",
     "ok": "D'ACCORD",
     "no_reviews": "Pas encore d'avis",
-    "no_reviews_details": "Il n'y a actuellement aucune note ou avis pour ce produit"
+    "no_reviews_details": "Il n'y a actuellement aucune note ou avis pour ce produit",
+    "no_items_added": "Aucun article ajouté",
+    "no_wishlist_items": "Il semble que rien n'a été ajouté à votre liste de souhaits. Explorez les catégories si vous le souhaitez."
 }

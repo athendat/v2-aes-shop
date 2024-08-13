@@ -1,10 +1,11 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Router } from '@angular/router';
 import { tap } from "rxjs";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { Product } from "../interface/product.interface";
 import { AddToWishlist, DeleteWishlist, GetWishlist } from "../action/wishlist.action";
 import { WishlistService } from "../services/wishlist.service";
+import { NotificationService } from "../services/notification.service";
 
 export class WishlistStateModel {
     wishlist = {
@@ -26,8 +27,12 @@ export class WishlistStateModel {
 @Injectable()
 export class WishlistState {
 
-    constructor(public router: Router,
-        private wishlistService: WishlistService) { }
+
+    public router = inject(Router);
+    private wishlistService = inject(WishlistService);
+    private notify = inject(NotificationService);
+
+
 
     @Selector()
     static wishlistItems(state: WishlistStateModel) {
@@ -60,18 +65,48 @@ export class WishlistState {
     @Action(AddToWishlist)
     add(ctx: StateContext<WishlistStateModel>, action: AddToWishlist) {
         // Add Wishlist Logic Here
-        this.router.navigate(['/wishlist']);
+        const state = ctx.getState();
+
+        console.log(action);
+
+        this.wishlistService.addWishlistItem(action.payload["product_id"]).subscribe({
+            next: (result) => {
+
+                // Mostrar notificación
+                this.notify.showSuccess(result.message!);
+
+            },
+            error: (err: any) => {
+                this.notify.showError(err?.error?.message.message);
+            }
+        });
+
     }
 
     @Action(DeleteWishlist)
     delete(ctx: StateContext<WishlistStateModel>, { id }: DeleteWishlist) {
-        const state = ctx.getState();
-        let item = state.wishlist.data.filter(value => value.id !== id);
-        ctx.patchState({
-            wishlist: {
-                data: item,
-                total: state.wishlist.total - 1
+
+        // Delete Wishlist Logic Here
+        this.wishlistService.removeWishlistItem(id).subscribe({
+            next: (result) => {
+
+                const state = ctx.getState();
+                let item = state.wishlist.data.filter(value => value.id !== id);
+                ctx.patchState({
+                    wishlist: {
+                        data: item,
+                        total: state.wishlist.total - 1
+                    }
+                });
+
+                // Mostrar notificación
+                this.notify.showSuccess(result.message!);
+            },
+            error: (err: any) => {
+                this.notify.showError(err?.error?.message.message);
             }
         });
+
+
     }
 }
