@@ -24,7 +24,7 @@ export class NotificationStateModel {
 
 @Injectable()
 export class NotificationState {
-  
+
   constructor(private notificationService: NotificationService) {}
 
   @Selector()
@@ -36,7 +36,7 @@ export class NotificationState {
   getNotification(ctx: StateContext<NotificationStateModel>, action: GetNotification) {
     return this.notificationService.getNotifications(action?.payload).pipe(
         tap({
-            next: result => { 
+            next: result => {
                 ctx.patchState({
                     notification: {
                         data: result.data,
@@ -44,7 +44,7 @@ export class NotificationState {
                     }
                 });
             },
-            error: err => { 
+            error: err => {
                 throw new Error(err?.error?.message);
             }
         })
@@ -54,6 +54,7 @@ export class NotificationState {
   @Action(MarkAsReadNotification)
   markAsRead(ctx: StateContext<NotificationStateModel>) {
     // Notification Mark As Read Logic Here
+    this.notificationService.markAsRead().subscribe();
   }
 
   @Action(DeleteNotification)
@@ -61,5 +62,5 @@ export class NotificationState {
     // Delete Notification Logic Here
   }
 
-  
-} 
+
+}
