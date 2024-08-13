@@ -46,23 +46,28 @@ export class ProductService {
 
     findProductsByFilters(payload?: Params): Observable<ProductModel> {
 
+        this.skeletonLoader = true;
+
         // Convertir parámetros de la plantilla a parámetros de la API
         const params = {
-            page: payload!['page'].toString() || 1,
-            size: payload!['paginate'].toString() || 10,
-            sort: payload!['sortBy'] || '',
-            order: payload!['sort'] || '',
-            category: payload!['category'] || '',
-            price: payload!['price'].toString() || '',
-            field: payload!['field'] || '',
-            tag: payload!['tag'] || '',
-            rating: payload!['rating'].toString() || '',
-            attribute: payload!['attribute'] || '',
+            page: payload?.['page'] || 1,
+            size: payload?.['paginate'] || 10,
+            sort: payload?.['sortBy'] ?? '',
+            order: payload?.['sort'] ?? '',
+            category: payload?.['category'] ?? '',
+            price: payload?.['price'] ?? '',
+            field: payload?.['field'] ?? '',
+            tag: payload?.['tag'] ?? '',
+            rating: payload?.['rating'] ?? '',
+            attribute: payload?.['attribute'] ?? '',
         };
 
         return this.#http.get<RestResponse<Product[]>>(`${environment.API_URL}/products/filters`, { params }).
             pipe(
                 map((response) => {
+
+                    this.skeletonLoader = false;
+
                     return {
                         data: response.data!,
                         total: response.data!.length,

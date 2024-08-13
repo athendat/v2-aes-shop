@@ -86,6 +86,14 @@ export class SearchComponent implements OnInit {
             }
         });
         this.filter['search'] = this.search.value;
+
+
+
+        this.store.dispatch(new GetProducts(this.filter)).subscribe({
+            next: (val: any) => {
+                this.products = val.product.product.data
+            }
+        });
     }
 
 }

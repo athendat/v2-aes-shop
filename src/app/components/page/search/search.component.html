@@ -33,7 +33,7 @@
 <section class="section-b-space">
   <div class="container-fluid-lg">
       <div [class]="gridClass">
-        <ng-container *ngIf="productService.skeletonLoader else productContent">
+        <ng-container *ngIf="productService.skeletonLoader || !products.length else productContent">
             <app-skeleton-product-box *ngFor="let item of skeletonItems"></app-skeleton-product-box>
         </ng-container>
         <ng-template #productContent>

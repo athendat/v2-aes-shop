@@ -68,7 +68,7 @@ export class ProductState {
 
   @Action(GetProducts)
   getProducts(ctx: StateContext<ProductStateModel>, action: GetProducts) {
-    this.productService.skeletonLoader = true;
+
     // Note :- You must need to call api for filter and pagination as of now we are using json data so currently get all data from json
     //          you must need apply this logic on server side
     return this.productService.findProductsByFilters(action.payload).pipe(
