@@ -6,10 +6,10 @@ export const environment = {
   production: true,
   baseURL: 'https://angular.pixelstrap.net/fastkart',
   URL: 'https://angular.pixelstrap.net/fastkart/assets/data',
-  API_URL: 'http://api-nmmas.athendat.site/api_033',
-  SOCKET_IO: 'http://api-nmmas.athendat.site',
+  API_URL: 'https://api-nmmas.athendat.site/api_033',
+  SOCKET_IO: 'https://api-nmmas.athendat.site',
 };
-  
+
 /*
 * For easier debugging in development mode, you can import the following file
 * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
@@ -18,4 +18,3 @@ export const environment = {
 * on performance if an error is thrown.
 */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
-  
