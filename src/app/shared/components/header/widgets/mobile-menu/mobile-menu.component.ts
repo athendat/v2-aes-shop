@@ -34,7 +34,7 @@ export class MobileMenuComponent {
     {
       id: 4,
       active: false,
-      title: 'Mis Deseos',
+      title: 'Deseos',
       icon: 'ri-heart-3',
       path: '/wishlist'
     },
