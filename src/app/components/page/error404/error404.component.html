@@ -18,7 +18,7 @@
                       [spinner]="false"
                       *ngIf="(themeOption$ | async)?.error_page?.back_button_enable"
                       (click)="back()">
-                      {{ (themeOption$ | async)?.error_page?.back_button_text }}
+                      {{ (themeOption$ | async)?.error_page?.back_button_text! | translate}}
                     </app-button>
                 </div>
             </div>

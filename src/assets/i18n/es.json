@@ -456,5 +456,6 @@
     "no_items_added": "No se han añadido artículos",
     "no_wishlist_items": "Parece que no se ha añadido nada a tu lista de deseos. Explora las categorías si lo deseas.",
     "no_notifications": "No se encontraron notificaciones",
-    "no_notifications_text": "Aún no has recibido ninguna notificación"
+    "no_notifications_text": "Aún no has recibido ninguna notificación",
+    "back_to_home": "Volver al Inicio"
 }

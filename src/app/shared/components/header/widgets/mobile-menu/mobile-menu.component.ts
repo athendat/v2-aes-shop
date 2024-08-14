@@ -13,35 +13,35 @@ export class MobileMenuComponent {
     {
       id: 1,
       active: true,
-      title: 'Home',
+      title: 'Inicio',
       icon: 'ri-home-2',
       path: '/'
     },
     {
       id: 2,
       active: false,
-      title: 'Category',
+      title: 'Colecciones',
       icon: 'ri-apps-line js',
       path: '/collections'
     },
     {
       id: 3,
       active: false,
-      title: 'Search',
+      title: 'Buscar',
       icon: 'ri-search-2',
       path: '/search'
     },
     {
       id: 4,
       active: false,
-      title: 'My Wish',
+      title: 'Mis Deseos',
       icon: 'ri-heart-3',
       path: '/wishlist'
     },
     {
       id: 5,
       active: false,
-      title: 'Cart',
+      title: 'Carrito',
       icon: 'fly-cate ri-shopping-bag',
       path: '/cart'
     }

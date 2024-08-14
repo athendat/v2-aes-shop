@@ -24,11 +24,11 @@ import { CredentialsInterceptor } from './interceptors/credentials.interceptor';
       useClass: AuthInterceptor,
       multi: true
     },
-    {
-        provide: HTTP_INTERCEPTORS,
-        useClass: CredentialsInterceptor,
-        multi: true
-    },
+    // {
+    //     provide: HTTP_INTERCEPTORS,
+    //     useClass: CredentialsInterceptor,
+    //     multi: true
+    // },
     {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler
