@@ -62,12 +62,12 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
 
         this.form = new FormGroup({
-            name: new FormControl('Frank Rodríguez López', [Validators.required]),
-            email: new FormControl('fr20587@gmail.com', [Validators.required, Validators.email]),
-            phone: new FormControl('52541322', [Validators.required, Validators.pattern(/^[0-9]*$/)]),
+            name: new FormControl('', [Validators.required]),
+            email: new FormControl('', [Validators.required, Validators.email]),
+            phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]*$/)]),
             country_code: new FormControl('53', [Validators.required]),
-            password: new FormControl('P@ssw0rd', [Validators.required]),
-            password_confirmation: new FormControl('P@ssw0rd', [Validators.required]),
+            password: new FormControl('', [Validators.required]),
+            password_confirmation: new FormControl('', [Validators.required]),
         }, { validators: CustomValidators.MatchValidator('password', 'password_confirmation') });
     }
 

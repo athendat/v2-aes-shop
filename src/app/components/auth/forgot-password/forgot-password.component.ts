@@ -43,7 +43,7 @@ export class ForgotPasswordComponent implements OnInit {
 
         // Inicializar formulario
         this.form = new FormGroup({
-            email: new FormControl('fr20587@gmail.com', [Validators.required, Validators.email]),
+            email: new FormControl('', [Validators.required, Validators.email]),
         });
     }
 

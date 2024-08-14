@@ -45,8 +45,8 @@ export class UpdatePasswordComponent implements OnInit {
 
         // Inicializar formulario
         this.form = new FormGroup({
-            newPassword: new FormControl('P@ssw0rd', [Validators.required]),
-            confirmPassword: new FormControl('P@ssw0rd', [Validators.required]),
+            newPassword: new FormControl('', [Validators.required]),
+            confirmPassword: new FormControl('', [Validators.required]),
         });
     }
 

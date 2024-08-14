@@ -49,8 +49,8 @@ export class LoginComponent implements OnInit {
 
         // Inicializar formulario
         this.form = new FormGroup({
-            email: new FormControl('fr20587@gmail.com', [Validators.required, Validators.email]),
-            password: new FormControl('P@ssw0rd', [Validators.required]),
+            email: new FormControl('', [Validators.required, Validators.email]),
+            password: new FormControl('', [Validators.required]),
         });
 
 
