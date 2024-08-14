@@ -26,8 +26,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
     constructor(private store: Store, private router: Router,
         private notificationService: NotificationService) {
-        this.store.dispatch(new GetCountries());
-        this.store.dispatch(new GetStates());
+        // this.store.dispatch(new GetCountries());
+        // this.store.dispatch(new GetStates());
         this.store.dispatch(new GetSettingOption());
         this.store.dispatch(new GetThemeOption());
         this.store.dispatch(new GetCurrencies({ status: 1 }));

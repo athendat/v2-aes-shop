@@ -33,13 +33,13 @@ export class LayoutComponent {
 
     this.themeOptionService.preloader = true;
 
-    this.store.dispatch(new GetUserDetails());
+    // this.store.dispatch(new GetUserDetails());
 
     const getCategories$ = this.store.dispatch(new GetCategories({ status: 1 }));
-    const getBlog$ = this.store.dispatch(new GetBlogs({ status: 1, paginate: 10 }));
-    const getProduct$ = this.store.dispatch(new GetDealProducts({ status: 1, paginate: 2 }));
+    // const getBlog$ = this.store.dispatch(new GetBlogs({ status: 1, paginate: 10 }));
+    // const getProduct$ = this.store.dispatch(new GetDealProducts({ status: 1, paginate: 2 }));
 
-    forkJoin([getCategories$, getBlog$, getProduct$]).subscribe({
+    forkJoin([getCategories$, ]).subscribe({
       complete: () => {
         this.themeOptionService.preloader = false;
       }
@@ -50,7 +50,7 @@ export class LayoutComponent {
     var headerLogo;
     var footerLogo;
     var footerClass;
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       if(window.location.pathname == '/theme/paris' || window.location.pathname == '/theme/osaka') {
         headerLogo = 'assets/images/logo/1.png';
         footerLogo = 'assets/images/logo/1.png';
