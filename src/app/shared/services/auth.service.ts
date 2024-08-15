@@ -128,7 +128,7 @@ export class AuthService {
         }
 
         // Inicia sesión
-        return this.#httpClient.post<AuthResponse>(`${API_URL}/auth/sign-in`, credentials, { withCredentials: true }).pipe(
+        return this.#httpClient.post<AuthResponse>(`${API_URL}/auth/sign-in`, credentials).pipe(
             tap(({ user, token }) => {
 
                 // Actualiza el estado de autenticación

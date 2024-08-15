@@ -48,7 +48,8 @@ export class AuthInterceptor implements HttpInterceptor {
             this.router.navigate(['/maintenance']);
         }
 
-        const token = this.store.selectSnapshot(state => state.auth.access_token);
+        // const token = this.store.selectSnapshot(state => state.auth.access_token);
+        const token = this.#authService.access_token_033;
         if (token) {
             req = req.clone({
                 setHeaders: {
