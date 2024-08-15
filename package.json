@@ -12,6 +12,18 @@
     "build:ssr": "ng build --subresource-integrity && ng run nmmas-shop-ssr:server",
     "prerender": "ng run nmmas-shop-ssr:prerender"
   },
+  "contributors": [
+    {
+      "name": "Frank Rodríguez López",
+      "email": "fr20587@gmail.com",
+      "url": "hhttps://github.com/fr20587"
+    },
+    {
+      "name": "Lázaro Yasiel Pérez Róquet",
+      "email": "lazaroyasiel@gmail.com",
+      "url": "https://github.com/lazaroyasiel"
+    }
+  ],
   "private": true,
   "dependencies": {
     "@angular-slider/ngx-slider": "^18.0.0",
