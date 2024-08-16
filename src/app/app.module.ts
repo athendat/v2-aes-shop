@@ -108,7 +108,6 @@ export function HttpLoaderFactory(http: HttpClient) {
                 'notification'
             ]
         }),
-        // HttpClientModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot({
             positionClass: 'toast-top-center',

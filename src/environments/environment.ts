@@ -7,7 +7,7 @@ export const environment = {
     baseURL: 'http://localhost:4201/',
     URL: 'http://localhost:4201/assets/data',
     API_URL: 'http://localhost:9033/api_033',
-    // API_URL: 'https://api-nmmas.athendat.site/api_033',
+    // API_URL: 'https://api-mnmas.athendat.site/api_033',
     SOCKET_IO: 'http://localhost:9033',
 };
 

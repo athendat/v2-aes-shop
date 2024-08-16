@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-      "nmmas-shop-ssr": {
+      "mnmas-shop-ssr": {
         "projectType": "application",
         "schematics": {
           "@schematics/angular:component": {
@@ -20,7 +20,7 @@
               "allowedCommonJsDependencies": [
                 "feather-icons"
               ],
-              "outputPath": "dist/nmmas-shop-ssr/browser",
+              "outputPath": "dist/mnmas-shop-ssr/browser",
               "index": "src/index.html",
               "main": "src/main.ts",
               "polyfills": [
@@ -74,10 +74,10 @@
             "builder": "@angular-devkit/build-angular:dev-server",
             "configurations": {
               "production": {
-                "buildTarget": "nmmas-shop-ssr:build:production"
+                "buildTarget": "mnmas-shop-ssr:build:production"
               },
               "development": {
-                "buildTarget": "nmmas-shop-ssr:build:development"
+                "buildTarget": "mnmas-shop-ssr:build:development"
               }
             },
             "defaultConfiguration": "development"
@@ -85,7 +85,7 @@
           "extract-i18n": {
             "builder": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-              "buildTarget": "nmmas-shop-ssr:build"
+              "buildTarget": "mnmas-shop-ssr:build"
             }
           },
           "test": {
@@ -110,7 +110,7 @@
           "server": {
             "builder": "@angular-devkit/build-angular:server",
             "options": {
-              "outputPath": "dist/nmmas-shop-ssr/server",
+              "outputPath": "dist/mnmas-shop-ssr/server",
               "main": "server.ts",
               "tsConfig": "tsconfig.server.json",
               "inlineStyleLanguage": "scss"
@@ -133,12 +133,12 @@
             "builder": "@angular-devkit/build-angular:ssr-dev-server",
             "configurations": {
               "development": {
-                "browserTarget": "nmmas-shop-ssr:build:development",
-                "serverTarget": "nmmas-shop-ssr:server:development"
+                "browserTarget": "mnmas-shop-ssr:build:development",
+                "serverTarget": "mnmas-shop-ssr:server:development"
               },
               "production": {
-                "browserTarget": "nmmas-shop-ssr:build:production",
-                "serverTarget": "nmmas-shop-ssr:server:production"
+                "browserTarget": "mnmas-shop-ssr:build:production",
+                "serverTarget": "mnmas-shop-ssr:server:production"
               }
             },
             "defaultConfiguration": "development"
@@ -152,12 +152,12 @@
             },
             "configurations": {
               "production": {
-                "browserTarget": "nmmas-shop-ssr:build:production",
-                "serverTarget": "nmmas-shop-ssr:server:production"
+                "browserTarget": "mnmas-shop-ssr:build:production",
+                "serverTarget": "mnmas-shop-ssr:server:production"
               },
               "development": {
-                "browserTarget": "nmmas-shop-ssr:build:development",
-                "serverTarget": "nmmas-shop-ssr:server:development"
+                "browserTarget": "mnmas-shop-ssr:build:development",
+                "serverTarget": "mnmas-shop-ssr:server:development"
               }
             },
             "defaultConfiguration": "production"

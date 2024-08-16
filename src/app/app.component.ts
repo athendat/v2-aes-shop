@@ -69,7 +69,7 @@ export class AppComponent {
             clearTimeout(this.timeoutId);
             // Set site title
             return this.titleService.setTitle(theme?.general?.site_title && theme?.general?.site_tagline
-              ? `${theme?.general?.site_title} | ${theme?.general?.site_tagline}` : 'NM+ | Compra materiales de oficina, ferretería y alimentos online')
+              ? `${theme?.general?.site_title} | ${theme?.general?.site_tagline}` : 'MN+ | Compra materiales de oficina, ferretería y alimentos online')
           } else {
              this.updateMessage();
           }

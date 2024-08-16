@@ -1,5 +1,5 @@
 {
-  "name": "nmmas-shop-ssr",
+  "name": "mnmas-shop-ssr",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,16 +7,16 @@
     "build": "ng build --subresource-integrity",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:ssr": "ng run nmmas-shop-ssr:serve-ssr",
-    "serve:ssr": "node dist/nmmas-shop-ssr/server/main.js",
-    "build:ssr": "ng build --subresource-integrity && ng run nmmas-shop-ssr:server",
-    "prerender": "ng run nmmas-shop-ssr:prerender"
+    "dev:ssr": "ng run mnmas-shop-ssr:serve-ssr",
+    "serve:ssr": "node dist/mnmas-shop-ssr/server/main.js",
+    "build:ssr": "ng build --subresource-integrity && ng run mnmas-shop-ssr:server",
+    "prerender": "ng run mnmas-shop-ssr:prerender"
   },
   "contributors": [
     {
       "name": "Frank Rodríguez López",
       "email": "fr20587@gmail.com",
-      "url": "hhttps://github.com/fr20587"
+      "url": "https://github.com/fr20587"
     },
     {
       "name": "Lázaro Yasiel Pérez Róquet",
