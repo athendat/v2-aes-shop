@@ -33,6 +33,7 @@ RUN npm install --production --force
 ENV NODE_ENV=production
 
 # Exponer el puerto en el que correrá la aplicación
+ENV PORT_SSR 4000
 EXPOSE 4000
 
 # Comando para iniciar la aplicación SSR
