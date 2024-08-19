@@ -34,7 +34,7 @@ export class ContactUsComponent {
             message: new FormControl('', [Validators.required]),
         })
 
-        this.themeOption$.subscribe(data => this.contactData = data.contact_us)
+        this.themeOption$.subscribe(data => this.contactData = data.contact_us);
     }
 
     submit() {

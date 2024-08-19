@@ -5,19 +5,35 @@ export interface ThemeOption {
    options: Option;
 }
 
+// export interface Option {
+//    logo: Logo;
+//    general: General;
+//    seo: SEO;
+//    header: Header;
+//    footer: Footer;
+//    blog: Blog;
+//    product: ProductThemeOption;
+//    collection: Collection;
+//    seller: Seller;
+//    contact_us: Contact;
+//    error_page: ErrorPage;
+// }
+
 export interface Option {
-   logo: Logo;
-   general: General;
-   seo: SEO;
-   header: Header;
-   footer: Footer;
-   blog: Blog;
-   product: ProductThemeOption;
-   collection: Collection;
-   seller: Seller;
-   contact_us: Contact;
-   error_page: ErrorPage;
+    logo: Logo;
+    general: General;
+    seo: SEO;
+    header: Header;
+    footer: Footer;
+    blog: Blog;
+    product: ProductThemeOption;
+    collection: Collection;
+    seller: Seller;
+    about_us: AboutUs;
+    contact_us: Contact;
+    error_page: ErrorPage;
 }
+
 
 export interface Logo {
    header_logo_id: number;
@@ -194,3 +210,80 @@ export interface Images {
    image_url: string,
 }
 
+
+export interface AboutUs {
+    about: AboutSection;
+    clients: Clients;
+    team: Team;
+    testimonial: Testimonial;
+    blog: Blog;
+}
+
+export interface AboutSection {
+    status: boolean;
+    content_left_image_url: string;
+    content_right_image_url: string;
+    sub_title: string;
+    title: string;
+    description: string;
+    futures: AboutFutures[];
+}
+
+export interface AboutFutures {
+    icon: string;
+    title: string;
+}
+
+export interface About {
+    status: boolean;
+    title: string;
+    description: string;
+    image_url: string;
+}
+
+
+export interface Clients {
+    status: boolean;
+    sub_title: string;
+    title: string;
+    content: ClientsContent[];
+}
+
+export interface ClientsContent {
+    icon: string;
+    title: string;
+    description: string;
+}
+
+export interface Team {
+    status: boolean;
+    sub_title: string;
+    title: string;
+    members: Member[];
+}
+
+export interface Member {
+    profile_image_url: string;
+    name: string;
+    designation: string;
+    description: string;
+    instagram: string;
+    twitter: string;
+    pinterest: string;
+    facebook: string;
+}
+
+export interface Testimonial {
+    status: boolean;
+    sub_title: string;
+    title: string;
+    reviews: Review[];
+}
+
+export interface Review {
+    title: string;
+    profile_image_url: string;
+    name: string;
+    designation: string;
+    review: string;
+}
