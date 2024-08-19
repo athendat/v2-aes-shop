@@ -1575,7 +1575,7 @@
       transition: none;
       .spinning {
         &::before {
-          border-right: 3px solid #1aa488;
+          border-right: 3px solid #d70909;
         }
       }
     }
@@ -2212,7 +2212,7 @@
       }
 
       i {
-        color: #1aa488;
+        color: #d70909;
         font-size: 20px;
       }
     }

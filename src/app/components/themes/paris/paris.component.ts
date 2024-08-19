@@ -59,8 +59,8 @@ export class ParisComponent {
             }
 
             // Change color for this layout
-            document.documentElement.style.setProperty('--theme-color', '#0da487');
-            this.themeOptionService.theme_color = '#0da487';
+            document.documentElement.style.setProperty('--theme-color', '#d70909');
+            this.themeOptionService.theme_color = '#d70909';
         }
     }
 
