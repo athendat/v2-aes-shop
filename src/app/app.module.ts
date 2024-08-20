@@ -129,7 +129,7 @@ export function HttpLoaderFactory(http: HttpClient) {
             withFetch(),
             withInterceptorsFromDi()
         ),
-        provideClientHydration(),
+        // provideClientHydration(),
         CookieService,
     ],
     bootstrap: [AppComponent]
