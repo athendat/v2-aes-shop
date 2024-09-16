@@ -2,6 +2,7 @@ import { RePayment } from './../action/order.action';
 import { PaginateModel } from "./core.interface";
 import { Coupon } from "./coupon.interface";
 import { OrderStatus } from "./order-status.interface";
+import { PaymentMethod } from './payment-method.interface';
 import { Product } from "./product.interface";
 import { Stores } from "./store.interface";
 import { User, UserAddress } from "./user.interface";
@@ -34,7 +35,8 @@ export interface Order {
     order_status_id: string;
     order_status: OrderStatus;
     parent_id: string;
-    payment_method: string;
+    payment_method_id: string;
+    payment_method: PaymentMethod;
     payment_mode: string;
     payment_status: string;
     delivery_description: string;

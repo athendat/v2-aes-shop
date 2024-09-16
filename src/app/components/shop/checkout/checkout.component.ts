@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
-import { Store, Select } from '@ngxs/store';
+import { Store, Select, select } from '@ngxs/store';
 import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Breadcrumb } from '../../../shared/interface/breadcrumb';
@@ -16,6 +16,8 @@ import { GetSettingOption } from '../../../shared/action/setting.action';
 import { OrderCheckout } from '../../../shared/interface/order.interface';
 import { Values, DeliveryBlock } from '../../../shared/interface/setting.interface';
 import { AuthStore } from 'src/app/shared/store/auth.store';
+import { PaymentMethodState } from 'src/app/shared/state/payment-method.state';
+import { GetPaymentMethods } from 'src/app/shared/action/payment-method.action';
 
 @Component({
     selector: 'app-checkout',
@@ -28,6 +30,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         title: "Confirmar pedido",
         items: [{ label: 'Confirmar pedido', active: true }]
     }
+    payment_methods = select(PaymentMethodState.paymentMethods);
 
     private store = inject(Store);
 
@@ -54,6 +57,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     ) {
         this.store.dispatch(new GetCartItems());
         this.store.dispatch(new GetSettingOption());
+        this.store.dispatch(new GetPaymentMethods());
 
         this.form = this.formBuilder.group({
             products: this.formBuilder.array([], [Validators.required]),
@@ -64,7 +68,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
             coupon: new FormControl(),
             delivery_description: new FormControl('', [Validators.required]),
             delivery_interval: new FormControl(),
-            payment_method: new FormControl('', [Validators.required])
+            payment_method_id: new FormControl('', [Validators.required])
         });
     }
 
@@ -73,6 +77,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+
+
         this.checkout$.subscribe(data => this.checkoutTotal = data!);
 
         this.cartItem$.subscribe(items => {
@@ -112,9 +118,11 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         this.checkout();
     }
 
-    selectPaymentMethod(value: string) {
-        this.form.controls['payment_method'].setValue(value);
-        this.checkout();
+    selectPaymentMethodId(id: string) {
+        if (id) {
+            this.form.controls['payment_method_id'].setValue(id);
+            this.checkout();
+        }
     }
 
     togglePoint(event: Event) {

@@ -29,14 +29,14 @@ import { CredentialsInterceptor } from './interceptors/credentials.interceptor';
         useClass: CredentialsInterceptor,
         multi: true
     },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: LoaderInterceptor,
+    //   multi: true
+    // },
     {
       provide: ErrorHandler,
       useClass: GlobalErrorHandler
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
-      multi: true
     },
   ],
 })

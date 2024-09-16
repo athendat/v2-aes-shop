@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, output } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, output, OnInit } from '@angular/core';
 import { UserAddress } from '../../../../shared/interface/user.interface';
 
 @Component({
@@ -6,14 +6,15 @@ import { UserAddress } from '../../../../shared/interface/user.interface';
     templateUrl: './address-block.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddressBlockComponent {
+export class AddressBlockComponent implements OnInit {
 
     @Input() addresses?: UserAddress[] = [];
     @Input() type: string = 'shipping';
 
     selectAddress = output<string>();
 
-    constructor() { }
+    constructor() {
+    }
 
     ngOnInit() {
 
