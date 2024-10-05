@@ -1,0 +1,28 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main  # Ejecutar este flujo de trabajo cuando se haga un push a la rama main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Ejecutar el trabajo en un contenedor de Alpine
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Clonar el repositorio
+
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}  # Nombre de usuario de GitHub que hace el push
+        password: ${{ secrets.GHCR_PAT }}  # Token de acceso
+
+    - name: Build and Push
+      uses: docker/build-push-action@v2
+      with:
+        context: .  # Contexto de construcción
+        push: true  # Empujar la imagen al registro
+        tags: ghcr.io/athendat/mnmas-shop-ssr:latest  # Etiqueta de la imagen
