@@ -30,7 +30,7 @@ COPY package*.json ./
 RUN npm install --production --force
 
 # Establecer el entorno como producción
-ENV ENV NODE_ENV=${NODE_ENV}
+ENV NODE_ENV=${WEB_NODE_ENV}
 
 # Exponer el puerto en el que correrá la aplicación
 EXPOSE 4000
