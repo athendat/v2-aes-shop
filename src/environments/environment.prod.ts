@@ -6,8 +6,8 @@ export const environment = {
   production: true,
   baseURL: 'https://angular.pixelstrap.net/fastkart',
   URL: 'https://angular.pixelstrap.net/fastkart/assets/data',
-  API_URL: 'https://api-mnmas.athendat.site/api_033',
-  SOCKET_IO: 'https://api-mnmas.athendat.site',
+  API_URL: 'https://aes-api.resolviste.com/api_033',
+  SOCKET_IO: 'https://aes-api.resolviste.com',
 };
 
 /*
