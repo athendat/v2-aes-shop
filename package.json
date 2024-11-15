@@ -4,12 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --subresource-integrity",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run mnmas-shop-ssr:serve-ssr",
     "serve:ssr": "node dist/mnmas-shop-ssr/server/main.js",
-    "build:ssr": "ng build && ng run mnmas-shop-ssr:server",
+    "build:ssr": "ng build --subresource-integrity && ng run mnmas-shop-ssr:server",
     "prerender": "ng run mnmas-shop-ssr:prerender"
   },
   "contributors": [
