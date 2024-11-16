@@ -40,7 +40,7 @@
     "@angular/ssr": "^18.2.12",
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@ng-bootstrap/ng-bootstrap": "17",
-    "@ngrx/signals": "^18.0.2",
+    "@ngrx/signals": "^18.1.1",
     "@ngx-loading-bar/core": "^6.0.2",
     "@ngx-loading-bar/http-client": "^6.0.2",
     "@ngx-loading-bar/router": "^6.0.2",

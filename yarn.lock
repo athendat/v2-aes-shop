@@ -1780,10 +1780,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@ngrx/signals@^18.0.2":
-  version "18.0.2"
-  resolved "https://registry.yarnpkg.com/@ngrx/signals/-/signals-18.0.2.tgz#9684da0f3ba6db656c281b0d71dc5e15e5d78098"
-  integrity sha512-FXmcY2cmkbhZtg9k8Ntq69SyelGmmb6fWtdButH4T8GGFH0o3f1FZTR829j4ynphy8SzuDhD/pzrnpWcV481oQ==
+"@ngrx/signals@^18.1.1":
+  version "18.1.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/signals/-/signals-18.1.1.tgz#6747a603e66a8dbfc9482610cb460d93df66c4fa"
+  integrity sha512-7AaFp4VrzYhnDHlF15VZAMvp067zIC5arRRRMV+i+oi95sQVDXezpj74KTIguwRbZ3FU+GKGzFCNrwgYvginSg==
   dependencies:
     tslib "^2.3.0"
 
