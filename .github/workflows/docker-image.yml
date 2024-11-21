@@ -25,4 +25,4 @@ jobs:
       with:
         context: .  # Contexto de construcción
         push: true  # Empujar la imagen al registro
-        tags: ghcr.io/athendat/mnmas-shop-ssr:latest  # Etiqueta de la imagen
+        tags: ghcr.io/athendat/v2-aes-shop:latest  # Etiqueta de la imagen

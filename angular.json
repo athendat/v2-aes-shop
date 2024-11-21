@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-      "mnmas-shop-ssr": {
+      "v2-aes-shop": {
         "projectType": "application",
         "schematics": {
           "@schematics/angular:component": {
@@ -20,7 +20,7 @@
               "allowedCommonJsDependencies": [
                 "feather-icons"
               ],
-              "outputPath": "dist/mnmas-shop-ssr/browser",
+              "outputPath": "dist/v2-aes-shop/browser",
               "index": "src/index.html",
               "main": "src/main.ts",
               "polyfills": [
@@ -74,10 +74,10 @@
             "builder": "@angular-devkit/build-angular:dev-server",
             "configurations": {
               "production": {
-                "buildTarget": "mnmas-shop-ssr:build:production"
+                "buildTarget": "v2-aes-shop:build:production"
               },
               "development": {
-                "buildTarget": "mnmas-shop-ssr:build:development"
+                "buildTarget": "v2-aes-shop:build:development"
               }
             },
             "defaultConfiguration": "development"
@@ -85,7 +85,7 @@
           "extract-i18n": {
             "builder": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-              "buildTarget": "mnmas-shop-ssr:build"
+              "buildTarget": "v2-aes-shop:build"
             }
           },
           "test": {
@@ -110,7 +110,7 @@
           "server": {
             "builder": "@angular-devkit/build-angular:server",
             "options": {
-              "outputPath": "dist/mnmas-shop-ssr/server",
+              "outputPath": "dist/v2-aes-shop/server",
               "main": "server.ts",
               "tsConfig": "tsconfig.server.json",
               "inlineStyleLanguage": "scss"
@@ -133,12 +133,12 @@
             "builder": "@angular-devkit/build-angular:ssr-dev-server",
             "configurations": {
               "development": {
-                "browserTarget": "mnmas-shop-ssr:build:development",
-                "serverTarget": "mnmas-shop-ssr:server:development"
+                "browserTarget": "v2-aes-shop:build:development",
+                "serverTarget": "v2-aes-shop:server:development"
               },
               "production": {
-                "browserTarget": "mnmas-shop-ssr:build:production",
-                "serverTarget": "mnmas-shop-ssr:server:production"
+                "browserTarget": "v2-aes-shop:build:production",
+                "serverTarget": "v2-aes-shop:server:production"
               }
             },
             "defaultConfiguration": "development"
@@ -152,12 +152,12 @@
             },
             "configurations": {
               "production": {
-                "browserTarget": "mnmas-shop-ssr:build:production",
-                "serverTarget": "mnmas-shop-ssr:server:production"
+                "browserTarget": "v2-aes-shop:build:production",
+                "serverTarget": "v2-aes-shop:server:production"
               },
               "development": {
-                "browserTarget": "mnmas-shop-ssr:build:development",
-                "serverTarget": "mnmas-shop-ssr:server:development"
+                "browserTarget": "v2-aes-shop:build:development",
+                "serverTarget": "v2-aes-shop:server:development"
               }
             },
             "defaultConfiguration": "production"
