@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { MobileMenu } from '../../../../../shared/interface/menu.interface';
+
 
 @Component({
     selector: 'app-mobile-menu',
     templateUrl: './mobile-menu.component.html',
     styleUrls: ['./mobile-menu.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [RouterLink]
 })
 export class MobileMenuComponent {
 
@@ -14,35 +16,35 @@ export class MobileMenuComponent {
     {
       id: 1,
       active: true,
-      title: 'Inicio',
+      title: 'Home',
       icon: 'ri-home-2',
       path: '/'
     },
     {
       id: 2,
       active: false,
-      title: 'Colecciones',
+      title: 'Category',
       icon: 'ri-apps-line js',
       path: '/collections'
     },
     {
       id: 3,
       active: false,
-      title: 'Buscar',
+      title: 'Search',
       icon: 'ri-search-2',
       path: '/search'
     },
     {
       id: 4,
       active: false,
-      title: 'Deseos',
+      title: 'My Wish',
       icon: 'ri-heart-3',
       path: '/wishlist'
     },
     {
       id: 5,
       active: false,
-      title: 'Carrito',
+      title: 'Cart',
       icon: 'fly-cate ri-shopping-bag',
       path: '/cart'
     }

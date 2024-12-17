@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
 
+
 @Component({
     selector: 'app-collection-category-banner',
     templateUrl: './banner.component.html',
     styleUrls: ['./banner.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: []
 })
 export class BannerComponent {
 

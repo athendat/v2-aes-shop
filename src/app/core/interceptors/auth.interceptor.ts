@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -12,8 +12,6 @@ import { GetCurrencies } from '../../shared/action/currency.action';
 import { AuthClear } from '../../shared/action/auth.action';
 import { GetStates } from '../../shared/action/state.action';
 import { GetCountries } from '../../shared/action/country.action';
-import { ThemeOptionService } from 'src/app/shared/services/theme-option.service';
-import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -22,20 +20,16 @@ export class AuthInterceptor implements HttpInterceptor {
 
     public isMaintenanceModeOn: boolean = false;
 
-    #authService = inject(AuthService);
-
     constructor(private store: Store, private router: Router,
         private notificationService: NotificationService) {
-        // this.store.dispatch(new GetCountries());
-        // this.store.dispatch(new GetStates());
+        this.store.dispatch(new GetCountries());
+        this.store.dispatch(new GetStates());
         this.store.dispatch(new GetSettingOption());
         this.store.dispatch(new GetThemeOption());
         this.store.dispatch(new GetCurrencies({ status: 1 }));
         this.setting$.subscribe(setting => {
             this.isMaintenanceModeOn = setting?.maintenance?.maintenance_mode!
         });
-
-        // this.#themeOptionService.findThemeOptions();
     }
 
     intercept(
@@ -48,8 +42,7 @@ export class AuthInterceptor implements HttpInterceptor {
             this.router.navigate(['/maintenance']);
         }
 
-        // const token = this.store.selectSnapshot(state => state.auth.access_token);
-        const token = this.#authService.access_token_033;
+        const token = this.store.selectSnapshot(state => state.auth.access_token);
         if (token) {
             req = req.clone({
                 setHeaders: {

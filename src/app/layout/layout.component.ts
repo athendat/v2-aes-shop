@@ -1,5 +1,5 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, AsyncPipe } from '@angular/common';
 import { Store, Select } from '@ngxs/store';
 import { Observable, forkJoin } from 'rxjs';
 import { ThemeOptionState } from '../shared/state/theme-option.state';
@@ -9,13 +9,30 @@ import { ThemeOptionService } from '../shared/services/theme-option.service';
 import { GetBlogs } from '../shared/action/blog.action';
 import { GetDealProducts } from '../shared/action/product.action';
 import { GetUserDetails } from '../shared/action/account.action';
+import { ExitModalComponent } from '../shared/components/widgets/modal/exit-modal/exit-modal.component';
+import { CookieComponent } from '../shared/components/widgets/cookie/cookie.component';
+import { NewsletterModalComponent } from '../shared/components/widgets/modal/newsletter-modal/newsletter-modal.component';
+import { BackToTopComponent } from '../shared/components/widgets/back-to-top/back-to-top.component';
+import { StickyCompareComponent } from '../shared/components/widgets/sticky-compare/sticky-compare.component';
+import { StickyCartComponent } from '../shared/components/widgets/sticky-cart/sticky-cart.component';
+import { RecentPurchasePopupComponent } from '../shared/components/widgets/recent-purchase-popup/recent-purchase-popup.component';
+import { FooterComponent } from '../shared/components/footer/footer.component';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from '../shared/components/header/header.component';
+import { LoaderComponent } from '../shared/components/widgets/loader/loader.component';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 @Component({
     selector: 'app-layout',
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [LoadingBarModule, LoaderComponent, HeaderComponent, RouterOutlet, 
+      FooterComponent, RecentPurchasePopupComponent, StickyCartComponent, 
+      StickyCompareComponent, BackToTopComponent, NewsletterModalComponent, 
+      CookieComponent, ExitModalComponent, AsyncPipe]
 })
+
 export class LayoutComponent {
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
@@ -24,23 +41,21 @@ export class LayoutComponent {
 
   public cookies: boolean;
   public exit: boolean;
+  public isBrowser: boolean;
+  public isLoading: boolean = true;
 
   constructor(private store: Store,
     @Inject(PLATFORM_ID) private platformId: Object,
     public themeOptionService: ThemeOptionService) {
-
+    this.isBrowser = isPlatformBrowser(this.platformId);
     this.cookies$.subscribe(res => this.cookies = res);
     this.exit$.subscribe(res => this.exit = res);
-
     this.themeOptionService.preloader = true;
-
-    // this.store.dispatch(new GetUserDetails());
-
+    this.store.dispatch(new GetUserDetails());
     const getCategories$ = this.store.dispatch(new GetCategories({ status: 1 }));
-    // const getBlog$ = this.store.dispatch(new GetBlogs({ status: 1, paginate: 10 }));
-    // const getProduct$ = this.store.dispatch(new GetDealProducts({ status: 1, paginate: 2 }));
-
-    forkJoin([getCategories$, ]).subscribe({
+    const getBlog$ = this.store.dispatch(new GetBlogs({ status: 1, paginate: 10 }));
+    const getProduct$ = this.store.dispatch(new GetDealProducts({ status: 1, paginate: 2 }));
+    forkJoin([getCategories$, getBlog$, getProduct$]).subscribe({
       complete: () => {
         this.themeOptionService.preloader = false;
       }
@@ -51,7 +66,7 @@ export class LayoutComponent {
     var headerLogo;
     var footerLogo;
     var footerClass;
-    if (isPlatformBrowser(this.platformId)) { // For SSR
+    if (this.isBrowser) { // For SSR 
       if(window.location.pathname == '/theme/paris' || window.location.pathname == '/theme/osaka') {
         headerLogo = 'assets/images/logo/1.png';
         footerLogo = 'assets/images/logo/1.png';

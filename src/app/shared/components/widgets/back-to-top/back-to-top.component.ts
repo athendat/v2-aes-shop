@@ -6,7 +6,7 @@ import { ViewportScroller } from '@angular/common';
     selector: 'app-back-to-top',
     templateUrl: './back-to-top.component.html',
     styleUrls: ['./back-to-top.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class BackToTopComponent {
 

@@ -6,12 +6,22 @@ import { Cart, CartAddOrUpdate } from '../../../shared/interface/cart.interface'
 import { CartState } from '../../../shared/state/cart.state';
 import { UpdateCart, DeleteCart } from '../../../shared/action/cart.action';
 import { AddToWishlist } from '../../../shared/action/wishlist.action';
+import { TranslateModule } from '@ngx-translate/core';
+import { CurrencySymbolPipe } from '../../../shared/pipe/currency-symbol.pipe';
+import { NoDataComponent } from '../../../shared/components/widgets/no-data/no-data.component';
+import { ButtonComponent } from '../../../shared/components/widgets/button/button.component';
+import { RouterLink } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcrumb/breadcrumb.component';
 
 @Component({
     selector: 'app-cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.scss'],
-    standalone: false
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [BreadcrumbComponent, RouterLink, ButtonComponent, 
+      NoDataComponent, AsyncPipe, CurrencySymbolPipe, TranslateModule]
 })
 export class CartComponent {
 
@@ -37,11 +47,11 @@ export class CartComponent {
     this.store.dispatch(new UpdateCart(params));
   }
 
-  delete(id: string) {
+  delete(id: number) {
     this.store.dispatch(new DeleteCart(id));
   }
 
-  addToWishlist(id: string){
+  addToWishlist(id: number){
     this.store.dispatch(new AddToWishlist({ product_id: id }));
   }
 

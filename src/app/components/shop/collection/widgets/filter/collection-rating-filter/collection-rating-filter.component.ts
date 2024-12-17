@@ -2,12 +2,15 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { Params } from '../../../../../../shared/interface/core.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-collection-rating-filter',
     templateUrl: './collection-rating-filter.component.html',
     styleUrls: ['./collection-rating-filter.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NgbRating, TranslateModule]
 })
 export class CollectionRatingFilterComponent {
 

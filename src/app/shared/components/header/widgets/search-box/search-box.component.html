@@ -1,12 +1,16 @@
 <!-- Search Basic Style -->
-<div class="delivery-login-box" *ngIf="style == 'basic'">
+@if (style == 'basic') {
+  <div class="delivery-login-box">
     <div class="delivery-icon">
-        <a class="search-box" [routerLink]="['/search']">
-          <i class="ri-search-line"></i>
-        </a>
+      <a class="search-box" [routerLink]="['/search']">
+        <i class="ri-search-line"></i>
+      </a>
     </div>
-</div>
+  </div>
+}
 <!-- Search Classic Style -->
-<a href="javascript:void(0)" class="header-icon search-box search-icon" [routerLink]="['/search']" *ngIf="style == 'classic'">
+@if (style == 'classic') {
+  <a href="javascript:void(0)" class="header-icon search-box search-icon" [routerLink]="['/search']">
     <i class="ri-search-line"></i>
-</a>
+  </a>
+}

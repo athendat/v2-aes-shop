@@ -57,7 +57,7 @@ export class BlogState {
           ctx.patchState({
             blog: {
               data: result.data,
-              total: result?.total ? result?.total : result.data?.length
+              total: result?.total ? result?.total : result.data ? result.data.length : 0
             }
           });
         },

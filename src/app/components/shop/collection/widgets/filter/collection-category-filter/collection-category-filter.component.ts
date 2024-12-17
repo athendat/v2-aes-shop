@@ -6,11 +6,13 @@ import { Params } from '../../../../../../shared/interface/core.interface';
 import { Category, CategoryModel } from '../../../../../../shared/interface/category.interface';
 import { CategoryState } from '../../../../../../shared/state/category.state';
 
+
 @Component({
     selector: 'app-collection-category-filter',
     templateUrl: './collection-category-filter.component.html',
     styleUrls: ['./collection-category-filter.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: []
 })
 export class CollectionCategoryFilterComponent {
 
@@ -23,7 +25,7 @@ export class CollectionCategoryFilterComponent {
 
   constructor(private route: ActivatedRoute,
     private router: Router){
-    this.category$.subscribe(res => this.categories = res.data.filter(category => category.type == 'product'));
+    this.category$.subscribe(res => this.categories = res?.data?.filter(category => category.type == 'product'));
   }
 
   ngOnChanges() {

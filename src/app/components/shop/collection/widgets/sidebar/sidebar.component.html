@@ -1,19 +1,20 @@
 <!-- <div class="leftbox-overlay" (click)="closeCanvasMenu()"></div> -->
 <div class="shop-left-sidebar">
   <div class="back-button" (click)="closeCanvasMenu()">
-      <h3>
-        <a href="javascript:vois(0)" class="text-title">
-          <i class="ri-close-fill"></i>
-          <span>{{ 'back' | translate }}</span>
-        </a>
-      </h3>
+    <h3>
+      <a href="javascript:vois(0)" class="text-title">
+        <i class="ri-close-fill"></i>
+        <span>{{ 'back' | translate }}</span>
+      </a>
+    </h3>
   </div>
   <ng-content></ng-content>
   <div class="filter-category">
-      <app-collection-filter [filter]="filter"></app-collection-filter>
+    <app-collection-filter [filter]="filter"></app-collection-filter>
   </div>
-  <app-skeleton-collection-sidebar *ngIf="attributeService.skeletonLoader else content"></app-skeleton-collection-sidebar>
-  <ng-template #content>
+  @if (attributeService.skeletonLoader) {
+    <app-skeleton-collection-sidebar></app-skeleton-collection-sidebar>
+  } @else {
     <div class="accordion custome-accordion" ngbAccordion>
       <div class="accordion-item" ngbAccordionItem [collapsed]="false">
         <h2 class="accordion-header" ngbAccordionHeader>
@@ -23,28 +24,30 @@
         </h2>
         <div class="accordion-collapse collapse" ngbAccordionCollapse>
           <div class="accordion-body" ngbAccordionBody>
-              <app-collection-category-filter [filter]="filter"></app-collection-category-filter>
+            <app-collection-category-filter [filter]="filter"></app-collection-category-filter>
           </div>
         </div>
       </div>
-      <ng-container *ngIf="!filter['store_slug']">
-        <ng-container *ngFor="let attribute of (attribute$ | async)?.data">
-          <div class="accordion-item" ngbAccordionItem [collapsed]="false"
-            *ngIf="attribute.style !== 'image'">
-            <h2 class="accordion-header" ngbAccordionHeader>
-              <button class="accordion-button" ngbAccordionButton>
-                <span>{{ attribute.name }}</span>
-              </button>
-            </h2>
-            <div ngbAccordionCollapse>
-              <div class="accordion-body" ngbAccordionBody>
-                <app-collection-attributes-filter [filter]="filter"
+      @if (!filter['store_slug']) {
+        @for (attribute of (attribute$ | async)?.data; track attribute) {
+          @if (attribute.style !== 'image') {
+            <div class="accordion-item" ngbAccordionItem [collapsed]="false"
+              >
+              <h2 class="accordion-header" ngbAccordionHeader>
+                <button class="accordion-button" ngbAccordionButton>
+                  <span>{{ attribute.name }}</span>
+                </button>
+              </h2>
+              <div ngbAccordionCollapse>
+                <div class="accordion-body" ngbAccordionBody>
+                  <app-collection-attributes-filter [filter]="filter"
                   [attribute]="attribute"></app-collection-attributes-filter>
+                </div>
               </div>
             </div>
-          </div>
-        </ng-container>
-      </ng-container>
+          }
+        }
+      }
       <div class="accordion-item" ngbAccordionItem [collapsed]="false">
         <h2 class="accordion-header" ngbAccordionHeader>
           <button class="accordion-button" ngbAccordionButton>
@@ -67,10 +70,10 @@
           <div ngbAccordionBody>
             <div class="accordion-body" ngbAccordionBody>
               <app-collection-rating-filter [filter]="filter"></app-collection-rating-filter>
-          </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </ng-template>
+  }
 </div>

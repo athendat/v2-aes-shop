@@ -1,16 +1,19 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { RouterLink } from '@angular/router';
+import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { CategoryState } from '../../../../../shared/state/category.state';
+import { Category, CategoryModel } from '../../../../../shared/interface/category.interface';
 import { Option } from '../../../../../shared/interface/theme-option.interface';
-import { CategoryModel, Category } from '../../../../../shared/interface/category.interface';
+import { CategoryState } from '../../../../../shared/state/category.state';
 
 @Component({
     selector: 'app-footer-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [RouterLink]
 })
+
 export class FooterCategoriesComponent {
 
   @Input() data: Option | null;

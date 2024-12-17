@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { User } from '../../../shared/interface/user.interface';
@@ -7,37 +7,42 @@ import { Notification } from '../../../shared/interface/notification.interface';
 import { NotificationState } from '../../../shared/state/notification.state';
 import { Logout } from '../../../shared/action/auth.action';
 import { ConfirmationModalComponent } from '../../../shared/components/widgets/modal/confirmation-modal/confirmation-modal.component';
-import { AuthStore } from 'src/app/shared/store/auth.store';
+import { TranslateModule } from '@ngx-translate/core';
+import { TitleCasePipe } from '../../../shared/pipe/title-case.pipe';
+import { RouterLinkActive, RouterLink } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+import { ButtonComponent } from '../../../shared/components/widgets/button/button.component';
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    styleUrls: ['./sidebar.component.scss'],
+    standalone: true,
+    imports: [ButtonComponent, RouterLinkActive, RouterLink, ConfirmationModalComponent, AsyncPipe, TitleCasePipe, TranslateModule]
 })
 export class SidebarComponent {
 
-    @Input() show: boolean;
-    @Output() menu: EventEmitter<boolean> = new EventEmitter();
+  @Input() show: boolean;
+  @Output() menu: EventEmitter<boolean> = new EventEmitter();
 
-    @Select(NotificationState.notification) notification$: Observable<Notification[]>;
-    @Select(AccountState.user) user$: Observable<User>;
+  @Select(NotificationState.notification) notification$: Observable<Notification[]>;
+  @Select(AccountState.user) user$: Observable<User>;
 
-    @ViewChild("confirmationModal") ConfirmationModal: ConfirmationModalComponent;
-    authStore = inject(AuthStore);
-    public unreadNotificationCount: number;
+  @ViewChild("confirmationModal") ConfirmationModal: ConfirmationModalComponent;
 
-    constructor(private store: Store) {
-        this.notification$.subscribe((notification) => {
-            this.unreadNotificationCount = notification?.filter(item => !item.read_at)?.length;
-        });
-    }
+  public unreadNotificationCount: number;
 
-    logout() {
-        this.store.dispatch(new Logout());
-    }
+  constructor(private store: Store) {
+    this.notification$.subscribe((notification) => {
+      this.unreadNotificationCount = notification?.filter(item => !item.read_at).length;
+    });
+  }
 
-    openMenu(value: boolean) {
-        this.menu.emit(value)
-    }
+  logout() {
+    this.store.dispatch(new Logout());
+  }
+
+  openMenu(value: boolean){
+    this.menu.emit(value)
+  }
 }

@@ -1,38 +1,43 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Category, CategoryModel } from '../../../interface/category.interface';
 import { CategoryState } from '../../../state/category.state';
+import { TranslateModule } from '@ngx-translate/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
     selector: 'app-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent, CarouselModule, ReactiveFormsModule, TranslateModule]
 })
+
 export class CategoriesComponent {
 
   @Select(CategoryState.category) category$: Observable<CategoryModel>;
 
-  @Input() categoryIds: string[] = [];
+  @Input() categoryIds: number[] = [];
   @Input() style: string = 'vertical';
   @Input() title?: string;
   @Input() image?: string;
   @Input() theme: string;
   @Input() sliderOption: OwlOptions;
-  @Input() selectedCategoryId: string;
+  @Input() selectedCategoryId: number;
   @Input() bgImage: string;
 
-  @Output() selectedCategory: EventEmitter<string> = new EventEmitter();
+  @Output() selectedCategory: EventEmitter<number> = new EventEmitter();
 
   public categories: Category[];
   public selectedCategorySlug: string[] = [];
 
   constructor(private route: ActivatedRoute,
     private router: Router) {
-    this.category$.subscribe(res => this.categories = res.data.filter(category => category.type == 'product'));
+    this.category$.subscribe(res => this.categories = res?.data?.filter(category => category.type == 'product'));
     this.route.queryParams.subscribe(params => {
       this.selectedCategorySlug = params['category'] ? params['category'].split(',') : [];
     });
@@ -44,7 +49,7 @@ export class CategoriesComponent {
     }
   }
 
-  selectCategory(id: string) {
+  selectCategory(id: number) {
     this.selectedCategory.emit(id);
   }
 

@@ -11,12 +11,16 @@
       <div class="price-rating">
         <h3 class="theme-color price">
           {{ (selectedVariation ? selectedVariation.sale_price : product.sale_price) | currencySymbol }}
-          <del class="text-content" *ngIf="selectedVariation ? selectedVariation.discount : product.discount">
-            {{ (selectedVariation ? selectedVariation.price : product.price) | currencySymbol }}
-          </del>
-            <span class="offer-top" *ngIf="selectedVariation ? selectedVariation.discount : product.discount">
+          @if (selectedVariation ? selectedVariation.discount : product.discount) {
+            <del class="text-content">
+              {{ (selectedVariation ? selectedVariation.price : product.price) | currencySymbol }}
+            </del>
+          }
+          @if (selectedVariation ? selectedVariation.discount : product.discount) {
+            <span class="offer-top">
               {{ (selectedVariation ? selectedVariation.discount : product.discount) }}% {{ 'off' | translate }}
             </span>
+          }
         </h3>
       </div>
       <div class="product-package">
@@ -30,41 +34,44 @@
         <div class="cart_qty qty-box product-qty">
           <div class="input-group">
             <app-button
-                [class]="'btn qty-left-minus'"
-                [id]="'add-to-cart'+item.product.id"
-                [spinner]="false"
-                (click)="updateQuantity(-1)">
-                <i class="ri-subtract-fill"></i>
+              [class]="'btn qty-left-minus'"
+              [id]="'add-to-cart'+item.product.id"
+              [spinner]="false"
+              (click)="updateQuantity(-1)">
+              <i class="ri-subtract-fill"></i>
             </app-button>
             <input class="form-control input-number qty-input" type="text" name="quantity" value="{{productQty}}" readonly>
             <app-button
-                [class]="'btn qty-left-minus'"
-                [id]="'qty-left-minus'+item.product.id"
-                [spinner]="false"
-                (click)="updateQuantity(1)">
-                <i class="ri-add-line"></i>
+              [class]="'btn qty-left-minus'"
+              [id]="'qty-left-minus'+item.product.id"
+              [spinner]="false"
+              (click)="updateQuantity(1)">
+              <i class="ri-add-line"></i>
             </app-button>
           </div>
         </div>
-        <app-button
+        @if ((selectedVariation && selectedVariation.stock_status == 'in_stock'
+          || item.product.stock_status == 'in_stock' && item.product.type === 'simple')) {
+          <app-button
             [id]="'replacecartbtnVariation'+item.product.id"
             [class]="'btn btn-md cart-button scroll-button text-white'"
             (click)="replaceCart(item.product)"
-            *ngIf="(selectedVariation && selectedVariation?.stock_status == 'in_stock'
-                || item.product?.stock_status == 'in_stock' && item?.product?.type === 'simple') else outStock">
-                <i class="ri-shopping-cart-line me-1"></i>  {{ 'update_item' | translate }}
-        </app-button>
-        <ng-template #outStock>
-          <app-button
-              [class]="'btn btn-md cart-button scroll-button text-white'"
-              [id]="'soldoutbtnreplaceproduct'"
-              [spinner]="false"
-              [disabled]="true">
-              <i class="ri-shopping-cart-line me-1" *ngIf="selectedVariation?.stock_status == 'in_stock'"></i>  {{ ((selectedVariation?.stock_status == 'out_of_stock' ||
-              product.stock_status == 'out_of_stock' ) ? 'sold_out' : 'add_to_cart') | translate }}
+            >
+            <i class="ri-shopping-cart-line me-1"></i>  {{ 'update_item' | translate }}
           </app-button>
-      </ng-template>
+        } @else {
+          <app-button
+            [class]="'btn btn-md cart-button scroll-button text-white'"
+            [id]="'soldoutbtnreplaceproduct'"
+            [spinner]="false"
+            [disabled]="true">
+            @if (selectedVariation && selectedVariation.stock_status == 'in_stock') {
+              <i class="ri-shopping-cart-line me-1"></i>
+              }  {{ ((selectedVariation && selectedVariation.stock_status == 'out_of_stock' ||
+              product.stock_status == 'out_of_stock' ) ? 'sold_out' : 'add_to_cart') | translate }}
+            </app-button>
+          }
+        </div>
       </div>
     </div>
-  </div>
-</ng-template>
+  </ng-template>

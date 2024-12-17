@@ -1,16 +1,22 @@
-import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Store } from '@ngxs/store';
+import { Component, Inject, PLATFORM_ID, TemplateRef, ViewChild } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
+import { Store } from '@ngxs/store';
+import { ReplaceCart } from '../../../../action/cart.action';
 import { Cart, CartAddOrUpdate } from '../../../../interface/cart.interface';
 import { Product, Variation } from '../../../../interface/product.interface';
-import { ReplaceCart } from '../../../../action/cart.action';
+import { CurrencySymbolPipe } from '../../../../pipe/currency-symbol.pipe';
+import { ButtonComponent } from '../../button/button.component';
+import { VariantAttributesComponent } from '../../variant-attributes/variant-attributes.component';
 
 @Component({
     selector: 'app-variation-modal',
     templateUrl: './variation-modal.component.html',
     styleUrls: ['./variation-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [ButtonComponent, VariantAttributesComponent, TranslateModule, CurrencySymbolPipe]
 })
 export class VariationModalComponent {
 

@@ -1,17 +1,23 @@
 import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngxs/store';
 import { SendQuestion, UpdateQuestionAnswers } from '../../../../../shared/action/questions-answers.action';
 import { Product } from '../../../../../shared/interface/product.interface';
 import { QuestionAnswers } from '../../../../../shared/interface/questions-answers.interface';
+import { CurrencySymbolPipe } from '../../../../pipe/currency-symbol.pipe';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-question-modal',
     templateUrl: './question-modal.component.html',
     styleUrls: ['./question-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [ButtonComponent, ReactiveFormsModule, 
+      FormsModule, TranslateModule, CurrencySymbolPipe]
 })
 export class QuestionModalComponent {
 

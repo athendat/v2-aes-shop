@@ -7,13 +7,13 @@ import { Point } from "./point.interface";
 import { PaymentDetails } from "./payment-details.interface";
 
 export interface User {
-    id: string;
+    id: number;
     name: string;
     email: string;
     phone: string;
     country_code: string;
     profile_image?: Attachment;
-    profile_image_id?: string;
+    profile_image_id?: number;
     status: boolean;
     email_verified_at: string;
     payment_account: PaymentDetails;
@@ -31,18 +31,18 @@ export interface User {
 }
 
 export interface UserAddress {
-    id: string;
-    user_id: string;
+    id: number;
+    user_id: number;
     title: string;
     street: string;
     type: string;
     city: string;
     pincode: string | number;
-    state_id: string;
+    state_id: number;
     state: States;
     country: Country;
     country_code: number;
     phone: number;
-    country_id: string;
+    country_id: number;
     is_default: boolean;
 }

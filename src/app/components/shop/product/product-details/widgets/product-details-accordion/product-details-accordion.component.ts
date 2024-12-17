@@ -8,12 +8,18 @@ import { GetQuestionAnswers } from '../../../../../../shared/action/questions-an
 import { GetReview } from '../../../../../../shared/action/review.action';
 import { ReviewState } from '../../../../../../shared/state/review.state';
 import { ReviewModel } from '../../../../../../shared/interface/review.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { AsyncPipe } from '@angular/common';
+import { QuestionsAnswersComponent } from '../questions-answers/questions-answers.component';
+import { ProductReviewComponent } from '../product-review/product-review.component';
+import { NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-product-details-accordion',
     templateUrl: './product-details-accordion.component.html',
     styleUrls: ['./product-details-accordion.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, ProductReviewComponent, QuestionsAnswersComponent, AsyncPipe, TranslateModule]
 })
 export class ProductDetailsAccordionComponent {
 

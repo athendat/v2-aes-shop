@@ -10,7 +10,8 @@ export interface Alert {
     selector: 'app-alert',
     templateUrl: './alert.component.html',
     styleUrls: ['./alert.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: []
 })
 export class AlertComponent {
 

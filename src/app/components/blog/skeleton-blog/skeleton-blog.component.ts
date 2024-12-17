@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
 
+
 @Component({
     selector: 'app-skeleton-blog',
     templateUrl: './skeleton-blog.component.html',
     styleUrls: ['./skeleton-blog.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: []
 })
 export class SkeletonBlogComponent {
 

@@ -11,12 +11,17 @@ import { GetProducts } from '../../../../shared/action/product.action';
 import { ProductState } from '../../../../shared/state/product.state';
 import { ThemeOptionState } from '../../../../shared/state/theme-option.state';
 import { Option } from '../../../../shared/interface/theme-option.interface';
+import { SellerDetailsClassicComponent } from './seller-details-classic/seller-details-classic.component';
+import { SellerDetailsBasicComponent } from './seller-details-basic/seller-details-basic.component';
+import { AsyncPipe } from '@angular/common';
+import { BreadcrumbComponent } from '../../../../shared/components/widgets/breadcrumb/breadcrumb.component';
 
 @Component({
     selector: 'app-seller-details',
     templateUrl: './seller-details.component.html',
     styleUrls: ['./seller-details.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [BreadcrumbComponent, SellerDetailsBasicComponent, SellerDetailsClassicComponent, AsyncPipe]
 })
 export class SellerDetailsComponent {
 

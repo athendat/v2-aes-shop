@@ -1,12 +1,16 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Params } from '../../../../../../shared/interface/core.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { TitleCasePipe } from '../../../../../../shared/pipe/title-case.pipe';
+
 
 @Component({
     selector: 'app-collection-filter',
     templateUrl: './collection-filter.component.html',
     styleUrls: ['./collection-filter.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [TitleCasePipe, TranslateModule]
 })
 export class CollectionFilterComponent implements OnChanges {
 

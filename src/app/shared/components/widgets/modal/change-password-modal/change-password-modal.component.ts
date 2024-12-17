@@ -1,16 +1,19 @@
 import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngxs/store';
 import { UpdateUserPassword } from '../../../../action/account.action';
 import { CustomValidators } from '../../../../validator/password-match';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-change-password-modal',
     templateUrl: './change-password-modal.component.html',
     styleUrls: ['./change-password-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent, ReactiveFormsModule, TranslateModule]
 })
 export class ChangePasswordModalComponent {
 

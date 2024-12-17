@@ -7,12 +7,21 @@ import { GetUserTransaction } from '../../../shared/action/point.action';
 import { Point } from '../../../shared/interface/point.interface';
 import { Params } from '../../../shared/interface/core.interface';
 import { Values } from '../../../shared/interface/setting.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { CurrencySymbolPipe } from '../../../shared/pipe/currency-symbol.pipe';
+import { TitleCasePipe } from '../../../shared/pipe/title-case.pipe';
+import { NoDataComponent } from '../../../shared/components/widgets/no-data/no-data.component';
+import { PaginationComponent } from '../../../shared/components/widgets/pagination/pagination.component';
+import { AsyncPipe, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-point',
     templateUrl: './point.component.html',
     styleUrls: ['./point.component.scss'],
-    standalone: false
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [PaginationComponent, NoDataComponent, AsyncPipe, 
+      DatePipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]
 })
 export class PointComponent {
 

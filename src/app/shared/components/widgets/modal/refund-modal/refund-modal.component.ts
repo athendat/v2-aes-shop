@@ -1,17 +1,23 @@
 import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngxs/store';
-import { Select2Data } from 'ng-select2-component';
+import { Select2Data, Select2Module } from 'ng-select2-component';
 import { SendRefundRequest } from '../../../../../shared/action/refund.action';
 import { Product } from '../../../../../shared/interface/product.interface';
+import { CurrencySymbolPipe } from '../../../../pipe/currency-symbol.pipe';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-refund-modal',
     templateUrl: './refund-modal.component.html',
     styleUrls: ['./refund-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [ButtonComponent, ReactiveFormsModule, FormsModule, 
+      Select2Module, TranslateModule, CurrencySymbolPipe]
 })
 export class RefundModalComponent {
 
@@ -21,6 +27,7 @@ export class RefundModalComponent {
   public modalOpen: boolean = false;
   public product: Product;
   public form: FormGroup;
+  public isBrowser: boolean;
 
   public option: Select2Data = [
     {
@@ -35,6 +42,7 @@ export class RefundModalComponent {
 
   constructor( private modalService: NgbModal, private store: Store,
     @Inject(PLATFORM_ID) private platformId: Object ){
+    this.isBrowser = isPlatformBrowser(this.platformId);
     this.form = new FormGroup({
       reason: new FormControl('', [Validators.required]),
       payment_type: new FormControl('', [Validators.required]),

@@ -6,27 +6,25 @@ export interface CartModel {
 }
 
 export interface Cart {
-    id: string;
-    product_id: string;
+    id: number;
+    product_id: number;
     variation: Variation;
-    variation_id: string | null;
-    consumer_id?: string;
+    variation_id: number | null;
+    consumer_id?: number;
     quantity: number;
-    price?: number;
     sub_total: number;
     product: Product;
-    created_by_id?: string;
+    created_by_id?: number;
     created_at?: string;
     updated_at?: string;
     deleted_at?: string;
 }
 
 export interface CartAddOrUpdate {
-    id: string | null;
+    id: number | null;
     product: Product | null;
-    product_id: string;
+    product_id: number;
     variation: Variation | null;
-    variation_id: string | null;
+    variation_id: number | null;
     quantity: number;
-    price?: number;
 }

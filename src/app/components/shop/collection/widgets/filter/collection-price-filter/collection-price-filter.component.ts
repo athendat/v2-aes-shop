@@ -1,12 +1,16 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Params } from '../../../../../../shared/interface/core.interface';
+import { CurrencySymbolPipe } from '../../../../../../shared/pipe/currency-symbol.pipe';
+
 
 @Component({
     selector: 'app-collection-price-filter',
     templateUrl: './collection-price-filter.component.html',
     styleUrls: ['./collection-price-filter.component.scss'],
-    standalone: false
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [CurrencySymbolPipe]
 })
 export class CollectionPriceFilterComponent {
 

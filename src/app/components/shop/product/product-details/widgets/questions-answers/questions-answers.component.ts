@@ -10,12 +10,16 @@ import { QuestionAnswers } from '../../../../../../shared/interface/questions-an
 import { QuestionsAnswersService } from '../../../../../../shared/services/questions-answers.service';
 import { AccountState } from '../../../../../../shared/state/account.state';
 import { Feedback } from '../../../../../../shared/action/questions-answers.action';
+import { TranslateModule } from '@ngx-translate/core';
+import { NoDataComponent } from '../../../../../../shared/components/widgets/no-data/no-data.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-questions-answers',
     templateUrl: './questions-answers.component.html',
     styleUrls: ['./questions-answers.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NoDataComponent, QuestionModalComponent, AsyncPipe, TranslateModule]
 })
 export class QuestionsAnswersComponent {
 

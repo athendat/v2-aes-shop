@@ -2,7 +2,6 @@ import { RePayment } from './../action/order.action';
 import { PaginateModel } from "./core.interface";
 import { Coupon } from "./coupon.interface";
 import { OrderStatus } from "./order-status.interface";
-import { PaymentMethod } from './payment-method.interface';
 import { Product } from "./product.interface";
 import { Stores } from "./store.interface";
 import { User, UserAddress } from "./user.interface";
@@ -13,30 +12,29 @@ export interface OrderModel extends PaginateModel {
 }
 
 export interface Order {
-    id: string;
+    id: number;
     order_id: string;
     order_number: number;
     amount: number;
-    store_id: string;
+    store_id: number;
     store: Stores;
-    consumer_id: string;
+    consumer_id: number;
     consumer: User;
     consumer_name: string;
     products: Product[];
     coupon_id: number;
     coupon: Coupon;
     coupon_total_discount: number;
-    billing_address_id: string;
+    billing_address_id: number;
     billing_address: UserAddress;
-    shipping_address_id: string;
+    shipping_address_id: number;
     shipping_address: UserAddress;
     shipping_total: number;
     delivery_interval: string;
-    order_status_id: string;
+    order_status_id: number;
     order_status: OrderStatus;
-    parent_id: string;
-    payment_method_id: string;
-    payment_method: PaymentMethod;
+    parent_id: number;
+    payment_method: string;
     payment_mode: string;
     payment_status: string;
     delivery_description: string;
@@ -49,10 +47,10 @@ export interface Order {
     transactions: TransactionsData[];
     invoice_url: string;
     status: boolean;
-    created_by_id: string;
+    created_by_id: number;
     deleted_at?: string;
-    createdAt?: string;
-    updatedAt?: string;
+    created_at?: string;
+    updated_at?: string;
 }
 
 export interface OrderCheckout {
@@ -75,8 +73,8 @@ export interface CheckoutTotal {
 export interface CheckoutPayload {
     consumer_id: number;
     products: OrderProduct[];
-    shipping_address_id: string;
-    billing_address_id: string;
+    shipping_address_id: number;
+    billing_address_id: number;
     coupon?: string;
     points_amount?: boolean;
     wallet_balance?: boolean;
@@ -87,8 +85,8 @@ export interface CheckoutPayload {
 
 
 export interface OrderProduct {
-    product_id: string;
-    variation_id: string | null;
+    product_id: number;
+    variation_id: number | null | String;
     quantity: number;
 }
 

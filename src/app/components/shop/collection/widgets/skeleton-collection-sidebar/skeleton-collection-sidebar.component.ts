@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     selector: 'app-skeleton-collection-sidebar',
     templateUrl: './skeleton-collection-sidebar.component.html',
     styleUrls: ['./skeleton-collection-sidebar.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class SkeletonCollectionSidebarComponent {
 

@@ -2,12 +2,15 @@ import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular
 import { isPlatformBrowser } from '@angular/common';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Attachment } from '../../../../../shared/interface/attachment.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-size-chart-modal',
     templateUrl: './size-chart-modal.component.html',
     styleUrls: ['./size-chart-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent, TranslateModule]
 })
 export class SizeChartModalComponent {
 

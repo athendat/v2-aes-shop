@@ -1,12 +1,15 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../../widgets/button/button.component';
 
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ReactiveFormsModule, ButtonComponent, TranslateModule]
 })
 export class SearchComponent {
 

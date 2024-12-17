@@ -11,5 +11,5 @@ export class AddToCompare {
 
 export class DeleteCompare {
   static readonly type = "[Compare] delete";
-  constructor(public id: string) {}
+  constructor(public id: number) {}
 }

@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { ButtonComponent } from '../../../widgets/button/button.component';
 
 @Component({
     selector: 'app-navbar-menu-button',
     templateUrl: './navbar-menu-button.component.html',
     styleUrls: ['./navbar-menu-button.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent]
 })
 export class NavbarMenuButtonComponent {
 

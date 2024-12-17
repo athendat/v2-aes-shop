@@ -11,7 +11,7 @@ import { Params } from "../interface/core.interface";
 export class BlogService {
 
   public skeletonLoader: boolean = false;
-  
+
   constructor(private http: HttpClient) {}
 
   getBlogs(payload?: Params): Observable<BlogModel> {

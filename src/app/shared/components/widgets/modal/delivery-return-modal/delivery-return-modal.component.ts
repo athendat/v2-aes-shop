@@ -5,12 +5,15 @@ import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Option } from '../../../../../shared/interface/theme-option.interface';
 import { ThemeOptionState } from '../../../../../shared/state/theme-option.state';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-delivery-return-modal',
     templateUrl: './delivery-return-modal.component.html',
     styleUrls: ['./delivery-return-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent, TranslateModule]
 })
 export class DeliveryReturnModalComponent {
 

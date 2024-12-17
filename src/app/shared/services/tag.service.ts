@@ -15,5 +15,5 @@ export class TagService {
   getTags(payload?: Params): Observable<TagModel> {
     return this.http.get<TagModel>(`${environment.URL}/tag.json`, { params: payload });
   }
-  
+
 }

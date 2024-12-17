@@ -4,12 +4,15 @@ import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Product, ProductModel } from '../../../interface/product.interface';
 import { ProductState } from '../../../state/product.state';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-recent-purchase-popup',
     templateUrl: './recent-purchase-popup.component.html',
     styleUrls: ['./recent-purchase-popup.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [RouterLink, TranslateModule]
 })
 export class RecentPurchasePopupComponent {
 

@@ -5,12 +5,19 @@ import { ProductService } from '../../../../../shared/services/product.service';
 import { ProductModel } from '../../../../../shared/interface/product.interface';
 import { ProductState } from '../../../../../shared/state/product.state';
 import { Params } from '../../../../../shared/interface/core.interface';
+import { CollectionPaginateComponent } from '../collection-paginate/collection-paginate.component';
+import { NoDataComponent } from '../../../../../shared/components/widgets/no-data/no-data.component';
+import { ProductBoxComponent } from '../../../../../shared/components/widgets/product-box/product-box.component';
+import { SkeletonProductBoxComponent } from '../../../../../shared/components/widgets/product-box/skeleton-product-box/skeleton-product-box.component';
+import { AsyncPipe } from '@angular/common';
+import { CollectionSortComponent } from '../collection-sort/collection-sort.component';
 
 @Component({
     selector: 'app-collection-products',
     templateUrl: './collection-products.component.html',
     styleUrls: ['./collection-products.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [CollectionSortComponent, SkeletonProductBoxComponent, ProductBoxComponent, NoDataComponent, CollectionPaginateComponent, AsyncPipe]
 })
 export class CollectionProductsComponent {
 

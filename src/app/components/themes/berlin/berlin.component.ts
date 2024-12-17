@@ -6,12 +6,20 @@ import { GetProducts } from '../../../shared/action/product.action';
 import { Berlin } from '../../../shared/interface/theme.interface';
 import { ThemeOptionService } from '../../../shared/services/theme-option.service';
 import * as data from  '../../../shared/data/owl-carousel';
+import { NewsletterComponent } from '../widgets/newsletter/newsletter.component';
+import { ImageLinkComponent } from '../../../shared/components/widgets/image-link/image-link.component';
+import { CategoriesComponent } from '../widgets/categories/categories.component';
+import { ProductComponent } from '../widgets/product/product.component';
+import { TitleComponent } from '../../../shared/components/widgets/title/title.component';
+import { ServiceComponent } from '../widgets/service/service.component';
+import { HomeBannerComponent } from '../widgets/home-banner/home-banner.component';
 
 @Component({
     selector: 'app-berlin',
     templateUrl: './berlin.component.html',
     styleUrls: ['./berlin.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [HomeBannerComponent, ServiceComponent, TitleComponent, ProductComponent, CategoriesComponent, ImageLinkComponent, NewsletterComponent]
 })
 export class BerlinComponent {
 

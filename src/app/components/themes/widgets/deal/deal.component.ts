@@ -1,21 +1,26 @@
 import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbRatingConfig, NgbRating } from '@ng-bootstrap/ng-bootstrap';
 import { ProductState } from '../../../../shared/state/product.state';
 import { ProductModel } from '../../../../shared/interface/product.interface';
 import * as data from '../../../../shared/data/owl-carousel'
 import { Deal, DealOfDays } from '../../../../shared/interface/theme.interface';
 import { AddToWishlist } from '../../../../shared/action/wishlist.action';
 import { AddToCompare } from '../../../../shared/action/compare.action';
-import { ProductDetailModalComponent } from 'src/app/shared/components/widgets/modal/product-detail-modal/product-detail-modal.component';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { CurrencySymbolPipe } from '../../../../shared/pipe/currency-symbol.pipe';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgStyle } from '@angular/common';
+import { ProductDetailModalComponent } from '../../../../shared/components/widgets/modal/product-detail-modal/product-detail-modal.component';
 
 @Component({
     selector: 'app-deal',
     templateUrl: './deal.component.html',
     styleUrls: ['./deal.component.scss'],
-    standalone: false
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [NgStyle, CarouselModule, NgbRating, CurrencySymbolPipe, TranslateModule]
 })
 export class DealComponent {
 
@@ -67,11 +72,11 @@ export class DealComponent {
   }
 
 
-  addToWishlist(id: string) {
+  addToWishlist(id: number) {
     this.store.dispatch(new AddToWishlist({ product_id: id }));
   }
 
-  addToCompare(id: string) {
+  addToCompare(id: number) {
     this.store.dispatch(new AddToCompare({ product_id: id }));
   }
 }

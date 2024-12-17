@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnInit, ViewChild, effect, inject, input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subject, of } from 'rxjs';
 import { switchMap, mergeMap, takeUntil } from 'rxjs/operators';
@@ -11,61 +11,54 @@ import { Order } from '../../../../shared/interface/order.interface';
 import { OrderStatusModel } from '../../../../shared/interface/order-status.interface';
 import { RefundModalComponent } from '../../../../shared/components/widgets/modal/refund-modal/refund-modal.component';
 import { PayModalComponent } from '../../../../shared/components/widgets/modal/pay-modal/pay-modal.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslateModule } from '@ngx-translate/core';
+import { CurrencySymbolPipe } from '../../../../shared/pipe/currency-symbol.pipe';
+import { NgClass, AsyncPipe, UpperCasePipe, TitleCasePipe, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-order-details',
     templateUrl: './details.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    styleUrls: ['./details.component.scss'],
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [NgClass, RouterLink, RefundModalComponent, PayModalComponent, 
+      AsyncPipe, UpperCasePipe, TitleCasePipe, DatePipe, CurrencySymbolPipe, TranslateModule]
 })
-export class OrderDetailsComponent implements OnInit {
+export class OrderDetailsComponent {
 
-    @ViewChild("refundModal") RefundModal: RefundModalComponent;
-    @ViewChild("payModal") PayModal: PayModalComponent;
+  @Select(OrderStatusState.orderStatus) orderStatus$: Observable<OrderStatusModel>;
+  @ViewChild("refundModal") RefundModal: RefundModalComponent;
+  @ViewChild("payModal") PayModal: PayModalComponent;
 
-    // Public properties
-    id = input.required<string>();
-    order: Order;
+  private destroy$ = new Subject<void>();
 
-    // Private properties
-    #store = inject(Store);
-    #destroyRef = inject(DestroyRef);
-    #changeDetectorRef = inject(ChangeDetectorRef);
+  public order: Order;
 
-    orderStatus$: Observable<OrderStatusModel> = this.#store.select(OrderStatusState.orderStatus);
+  constructor(private store: Store,
+    private route: ActivatedRoute) {
+    this.store.dispatch(new GetOrderStatus());
+  }
 
+  ngOnInit() {
+    this.route.params
+      .pipe(
+        switchMap(params => {
+            if(!params['id']) return of();
+            return this.store
+                      .dispatch(new ViewOrder(params['id']))
+                      .pipe(mergeMap(() => this.store.select(OrderState.selectedOrder)))
+          }
+        ),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(order => {
+        this.order = order!
+      });
+  }
 
-    constructor() {
-        this.#store.dispatch(new GetOrderStatus());
-
-        effect(() => {
-            console.log(this.id());
-            this.#store.dispatch(new ViewOrder(+this.id()));
-        })
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // ------------------------------------------------------------------------------------------------
-
-    /**
-     * On Init
-     */
-    ngOnInit(): void {
-
-        // Obtener el pedido
-        this.#store.select(OrderState.selectedOrder)
-            .pipe(takeUntilDestroyed(this.#destroyRef)
-            ).subscribe(order => {
-
-                console.log({ order });
-                this.order = order!;
-
-                // Marcar para comprobar
-                this.#changeDetectorRef.markForCheck();
-            })
-
-    }
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
 }

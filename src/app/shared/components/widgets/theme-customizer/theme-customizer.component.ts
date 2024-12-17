@@ -1,16 +1,21 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgClass } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
 import { Option } from '../../../interface/theme-option.interface';
 import { ThemeOptionState } from '../../../../shared/state/theme-option.state';
-import { ThemeOptionService } from 'src/app/shared/services/theme-option.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ButtonComponent } from '../button/button.component';
+import { ClickOutsideDirective } from '../../../directive/out-side-directive';
+import { ThemeOptionService } from '../../../services/theme-option.service';
 
 @Component({
     selector: 'app-theme-customizer',
     templateUrl: './theme-customizer.component.html',
     styleUrls: ['./theme-customizer.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ClickOutsideDirective, ButtonComponent, NgClass, ReactiveFormsModule, FormsModule, TranslateModule]
 })
 export class ThemeCustomizerComponent {
 

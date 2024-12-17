@@ -39,7 +39,7 @@ export class CategoryState {
           ctx.patchState({
             category: {
               data: result.data,
-              total: result?.total ? result?.total : result.data.length
+              total: result?.total ? result?.total : result?.data?.length
             }
           });
         },

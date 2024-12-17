@@ -8,12 +8,16 @@ import { BlogState } from '../../../shared/state/blog.state';
 import { Breadcrumb } from '../../../shared/interface/breadcrumb';
 import { ThemeOptionState } from '../../../shared/state/theme-option.state';
 import { Option } from '../../../shared/interface/theme-option.interface';
+import { BlogSidebarComponent } from '../sidebar/sidebar.component';
+import { NgClass, NgStyle, AsyncPipe, DatePipe } from '@angular/common';
+import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcrumb/breadcrumb.component';
 
 @Component({
     selector: 'app-blog-details',
     templateUrl: './blog-details.component.html',
     styleUrls: ['./blog-details.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [BreadcrumbComponent, NgClass, BlogSidebarComponent, NgStyle, AsyncPipe, DatePipe]
 })
 export class BlogDetailsComponent {
 

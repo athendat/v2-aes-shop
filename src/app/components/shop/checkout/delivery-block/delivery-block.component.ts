@@ -1,11 +1,14 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Values, DeliveryBlock } from '../../../../shared/interface/setting.interface';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @Component({
     selector: 'app-delivery-block',
     templateUrl: './delivery-block.component.html',
     styleUrls: ['./delivery-block.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [TranslateModule]
 })
 export class DeliveryBlockComponent {
 

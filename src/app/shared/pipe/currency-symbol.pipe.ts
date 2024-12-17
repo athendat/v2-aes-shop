@@ -8,8 +8,9 @@ import { Currency } from '../interface/currency.interface';
 
 @Pipe({
     name: 'currencySymbol',
-    standalone: false
+    standalone: true
 })
+
 export class CurrencySymbolPipe implements PipeTransform {
 
   @Select(SettingState.selectedCurrency) selectedCurrency$: Observable<Currency>;

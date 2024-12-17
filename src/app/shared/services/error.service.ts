@@ -8,6 +8,12 @@ export class ErrorService {
 
   constructor() {}
 
+  getClientErrorMessage(error: Error): string {
+    return ''
+    // return navigator.onLine ?
+    //        error.message ? error.message : 'Something Went Wrong' : 'No Internet Connection';
+  }
+
   getServerErrorMessage(error: HttpErrorResponse): string {
     return error.message;
   }

@@ -7,12 +7,15 @@ import { DeliveryReturnModalComponent } from '../../../../../../shared/component
 import { QuestionModalComponent } from '../../../../../../shared/components/widgets/modal/question-modal/question-modal.component';
 import { Option } from '../../../../../../shared/interface/theme-option.interface';
 import { ThemeOptionState } from '../../../../../../shared/state/theme-option.state';
+import { TranslateModule } from '@ngx-translate/core';
+import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
     selector: 'app-product-action',
     templateUrl: './product-action.component.html',
     styleUrls: ['./product-action.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NgClass, NgStyle, SizeChartModalComponent, DeliveryReturnModalComponent, QuestionModalComponent, TranslateModule]
 })
 export class ProductActionComponent {
 

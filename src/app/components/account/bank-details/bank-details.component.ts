@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { GetPaymentDetails, UpdatePaymentDetails } from '../../../shared/action/payment-details.action';
 import { PaymentDetailsState } from '../../../shared/state/payment-details.state';
 import { PaymentDetails } from '../../../shared/interface/payment-details.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../../shared/components/widgets/button/button.component';
 
 @Component({
     selector: 'app-bank-details',
     templateUrl: './bank-details.component.html',
     styleUrls: ['./bank-details.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ReactiveFormsModule, ButtonComponent, TranslateModule]
 })
 export class BankDetailsComponent {
 

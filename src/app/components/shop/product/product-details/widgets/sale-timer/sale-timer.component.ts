@@ -1,10 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @Component({
     selector: 'app-sale-timer',
     templateUrl: './sale-timer.component.html',
     styleUrls: ['./sale-timer.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [TranslateModule]
 })
 export class SaleTimerComponent {
 

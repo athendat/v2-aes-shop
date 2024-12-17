@@ -1,25 +1,31 @@
 <!-- Call Style Basic -->
-<a href="javascript:void(0)" class="delivery-login-box" *ngIf="style == 'basic'">
+@if (style == 'basic') {
+  <a href="javascript:void(0)" class="delivery-login-box">
     <div class="delivery-icon">
-        <i class="ri-customer-service-line"></i>
+      <i class="ri-customer-service-line"></i>
     </div>
     <div class="delivery-detail">
-        <h6>{{ '24_7_support_center' | translate }}</h6>
-        <h5>{{ data?.header?.support_number }}</h5>
+      <h6>{{ '24_7_support_center' | translate }}</h6>
+      <h5>{{ data?.header?.support_number }}</h5>
     </div>
-</a>
+  </a>
+}
 <!-- Call Style Classic -->
-<div class="support-box" *ngIf="style == 'classic'">
+@if (style == 'classic') {
+  <div class="support-box">
     <div class="support-image">
-        <img src="assets/images/icon/support.png" class="img-fluid" alt="support">
+      <img src="assets/images/icon/support.png" class="img-fluid" alt="support">
     </div>
     <div class="support-number">
-        <h2>{{ data?.header?.support_number }}</h2>
-        <h4>{{ '24_7_support_center' | translate }}</h4>
+      <h2>{{ data?.header?.support_number }}</h2>
+      <h4>{{ '24_7_support_center' | translate }}</h4>
     </div>
-</div>
+  </div>
+}
 <!-- Call Style Standard -->
-<div class="nav-number" *ngIf="style == 'standard'">
+@if (style == 'standard') {
+  <div class="nav-number">
     <img src="assets/images/icon/music.png" class="img-fluid" alt="support number">
     <span>{{ data?.header?.support_number }}</span>
-</div>
+  </div>
+}

@@ -33,5 +33,5 @@ export class RePayment {
 
 export class VerifyPayment {
   static readonly type = "[Order] Verify";
-  constructor(public id: string) {}
+  constructor(public id: number) {}
 }

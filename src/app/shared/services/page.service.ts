@@ -11,11 +11,11 @@ import { ContactUsModel } from "../interface/page.interface";
 export class PageService {
 
   public skeletonLoader: boolean = false;
-  
+
   constructor(private http: HttpClient) {}
 
   getFaqs(): Observable<any> {
     return this.http.get(`${environment.URL}/faq.json`);
   }
-  
+
 }

@@ -6,39 +6,41 @@ import { Option } from '../../../../../shared/interface/theme-option.interface';
 import { ProductState } from '../../../../../shared/state/product.state';
 import { DealsModalComponent } from '../../../widgets/modal/deals-modal/deals-modal.component';
 import { GetDealProducts } from '../../../../../shared/action/product.action';
+import { ButtonComponent } from "../../../widgets/button/button.component";
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-deal',
-    templateUrl: './deal.component.html',
-    styleUrls: ['./deal.component.scss'],
-    standalone: false
+  selector: 'app-deal',
+  standalone:true,
+  imports: [ButtonComponent, DealsModalComponent,TranslateModule],
+  templateUrl: './deal.component.html',
+  styleUrls: ['./deal.component.scss']
 })
 export class DealComponent {
 
-    @Input() style: string = 'basic';
-    @Input() data: Option | null;
+  @Input() style: string = 'basic';
+  @Input() data: Option | null;
 
-    @ViewChild("dealsModal") DealsModal: DealsModalComponent;
+  @ViewChild("dealsModal") DealsModal: DealsModalComponent;
 
-    @Select(ProductState.dealProducts) dealProducts$: Observable<ProductModel>;
+  @Select(ProductState.dealProducts) dealProducts$: Observable<ProductModel>;
 
-    public dealProducts: Product[];
-    public ids: string[];
+  public dealProducts: Product[];
+  public ids: number[];
 
-    constructor(private store: Store) { }
+  constructor(private store: Store) {}
 
-    ngOnChanges(changes: SimpleChanges) {
-        this.ids = changes['data']?.currentValue?.header?.today_deals;
+  ngOnChanges(changes: SimpleChanges) {
+    this.ids = changes['data']?.currentValue?.header?.today_deals;
+  }
 
+  ngOnInit(){
+    if(Array.isArray(this.ids)){
+      this.store.dispatch(new GetDealProducts({ids: this.ids.join()})).subscribe({
+        next: (val:any) => {
+           this.dealProducts = val?.product?.dealProducts;
+          }
+      });
     }
-
-    ngOnInit() {
-        if (Array.isArray(this.ids)) {
-            this.store.dispatch(new GetDealProducts({ ids: this.ids.join() })).subscribe({
-                next: (val: any) => {
-                    this.dealProducts = val?.product?.dealProducts;
-                }
-            });
-        }
-    }
+  }
 }

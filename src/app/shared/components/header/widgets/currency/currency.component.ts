@@ -1,5 +1,5 @@
 import { Component, Input, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, AsyncPipe } from '@angular/common';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Currency, CurrencyModel } from '../../../../../shared/interface/currency.interface';
@@ -7,12 +7,15 @@ import { CurrencyState } from '../../../../../shared/state/currency.state';
 import { SettingState } from '../../../../../shared/state/setting.state';
 import { Values } from '../../../../../shared/interface/setting.interface';
 import { SelectedCurrency } from '../../../../../shared/action/setting.action';
+import { ButtonComponent } from '../../../widgets/button/button.component';
+import { ClickOutsideDirective } from '../../../../directive/out-side-directive';
 
 @Component({
     selector: 'app-currency',
     templateUrl: './currency.component.html',
     styleUrls: ['./currency.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ClickOutsideDirective, ButtonComponent, AsyncPipe]
 })
 export class CurrencyComponent {
 

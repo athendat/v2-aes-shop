@@ -43,7 +43,7 @@ export class CompareState {
         next: result => {
           ctx.patchState({
             items: result.data,
-            total: result?.total ? result?.total : result.data?.length
+            total: result?.total ? result?.total : result.data ? result.data.length : 0
           });
         },
         complete: () => {

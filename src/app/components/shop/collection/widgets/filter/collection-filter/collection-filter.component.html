@@ -1,10 +1,16 @@
-<div class="filter-title" *ngIf="filters.length">
+@if (filters.length) {
+  <div class="filter-title">
     <h2>{{ 'filters' | translate }}</h2>
     <a href="javascript:void(0)" (click)="clear()">{{ 'clear_all' | translate }}</a>
-</div>
-<ul *ngIf="filters.length">
-    <li *ngFor="let filter of filters">
+  </div>
+}
+@if (filters.length) {
+  <ul>
+    @for (filter of filters; track filter) {
+      <li>
         <a href="javascript:void(0)">{{filter | titleCase}}</a>
         <i class="ri-close-line close-icon" (click)="remove(filter)"></i>
-    </li>
-</ul>
+      </li>
+    }
+  </ul>
+}

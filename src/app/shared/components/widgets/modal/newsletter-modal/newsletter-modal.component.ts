@@ -5,12 +5,16 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ThemeOptionState } from '../../../../../shared/state/theme-option.state';
 import { UpdateSession } from '../../../../../shared/action/theme-option.action';
+import { TranslateModule } from '@ngx-translate/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-newsletter-modal',
     templateUrl: './newsletter-modal.component.html',
     styleUrls: ['./newsletter-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent, ReactiveFormsModule, FormsModule, TranslateModule]
 })
 export class NewsletterModalComponent {
 

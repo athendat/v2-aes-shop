@@ -7,12 +7,17 @@ import { Product, ProductModel } from '../../../../shared/interface/product.inte
 import { BlogState } from '../../../../shared/state/blog.state';
 import { Blog, BlogModel } from '../../../../shared/interface/blog.interface';
 import * as data from '../../../../shared/data/menu'
+import { TranslateModule } from '@ngx-translate/core';
+import { ProductBoxComponent } from '../product-box/product-box.component';
+import { RouterLink } from '@angular/router';
+import { NgTemplateOutlet, NgClass, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-menu',
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NgTemplateOutlet, NgClass, RouterLink, ProductBoxComponent, DatePipe, TranslateModule]
 })
 export class MenuComponent {
 
@@ -25,11 +30,15 @@ export class MenuComponent {
 
   constructor(){
     this.product$.subscribe(product => {
-      this.products = product.slice(0, 2);
+      if(product) {
+        this.products = product.slice(0, 2);
+      }
     })
 
     this.blog$.subscribe(blog =>{
-      this.blogs = blog.data.slice(0,2)
+      if(blog && blog.data) {
+        this.blogs = blog.data.slice(0,2)
+      }
     })
   }
 

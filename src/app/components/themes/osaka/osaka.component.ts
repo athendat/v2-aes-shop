@@ -7,12 +7,22 @@ import { GetBlogs } from '../../../shared/action/blog.action';
 import { Osaka } from '../../../shared/interface/theme.interface';
 import { ThemeOptionService } from '../../../shared/services/theme-option.service';
 import * as data from  '../../../shared/data/owl-carousel';
+import { NewsletterComponent } from '../widgets/newsletter/newsletter.component';
+import { BlogComponent } from '../widgets/blog/blog.component';
+import { FourColumnProductComponent } from '../widgets/four-column-product/four-column-product.component';
+import { CollectionComponent } from '../widgets/collection/collection .component';
+import { ProductComponent } from '../widgets/product/product.component';
+import { BannerComponent } from '../widgets/banner/banner.component';
+import { CategoriesComponent } from '../widgets/categories/categories.component';
+import { TitleComponent } from '../../../shared/components/widgets/title/title.component';
+import { HomeBannerComponent } from '../widgets/home-banner/home-banner.component';
 
 @Component({
     selector: 'app-osaka',
     templateUrl: './osaka.component.html',
     styleUrls: ['./osaka.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [HomeBannerComponent, TitleComponent, CategoriesComponent, BannerComponent, ProductComponent, CollectionComponent, FourColumnProductComponent, BlogComponent, NewsletterComponent]
 })
 export class OsakaComponent {
 

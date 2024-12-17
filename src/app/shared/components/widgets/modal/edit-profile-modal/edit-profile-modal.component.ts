@@ -1,6 +1,6 @@
 import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -8,12 +8,16 @@ import { AccountUser } from "../../../../interface/account.interface";
 import { AccountState } from '../../../../state/account.state';
 import { UpdateUserProfile } from '../../../../action/account.action';
 import * as data from '../../../../data/country-code';
+import { TranslateModule } from '@ngx-translate/core';
+import { Select2Module } from 'ng-select2-component';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-edit-profile-modal',
     templateUrl: './edit-profile-modal.component.html',
     styleUrls: ['./edit-profile-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent, ReactiveFormsModule, Select2Module, TranslateModule]
 })
 export class EditProfileModalComponent {
 
@@ -25,12 +29,14 @@ export class EditProfileModalComponent {
   public modalOpen: boolean = false;
   public flicker: boolean = false;
   public codes = data.countryCodes;
-
+  public isBrowser: boolean;
+  
   @ViewChild("profileModal", { static: false }) ProfileModal: TemplateRef<string>;
   
   constructor(private modalService: NgbModal,
     private store: Store, @Inject(PLATFORM_ID) private platformId: Object,
     private formBuilder: FormBuilder) {
+      this.isBrowser = isPlatformBrowser(this.platformId);
       this.user$.subscribe(user => {
         this.flicker = true;
         this.form = this.formBuilder.group({

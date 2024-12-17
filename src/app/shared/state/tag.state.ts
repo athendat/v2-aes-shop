@@ -39,7 +39,7 @@ export class TagState {
           ctx.patchState({
             tag: {
               data: result.data,
-              total: result?.total ? result?.total : result.data?.length
+              total: result?.total ? result?.total : result.data ? result.data.length : 0
             }
           });
         },

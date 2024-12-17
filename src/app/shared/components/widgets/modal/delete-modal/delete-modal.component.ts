@@ -1,12 +1,15 @@
 import { Component, ViewChild, TemplateRef, Output, EventEmitter, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-delete-modal',
     templateUrl: './delete-modal.component.html',
     styleUrls: ['./delete-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent, TranslateModule]
 })
 export class DeleteModalComponent {
 

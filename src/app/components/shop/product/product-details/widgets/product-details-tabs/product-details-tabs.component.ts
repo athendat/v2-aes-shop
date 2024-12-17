@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, effect, inject, input } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { Component, Input, SimpleChanges } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { QuestionAnswersState } from '../../../../../../shared/state/questions-answers.state';
 import { ReviewState } from '../../../../../../shared/state/review.state';
@@ -8,27 +8,33 @@ import { GetReview } from '../../../../../../shared/action/review.action';
 import { QnAModel } from '../../../../../../shared/interface/questions-answers.interface';
 import { Product } from '../../../../../../shared/interface/product.interface';
 import { ReviewModel } from '../../../../../../shared/interface/review.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { AsyncPipe } from '@angular/common';
+import { QuestionsAnswersComponent } from '../questions-answers/questions-answers.component';
+import { ProductReviewComponent } from '../product-review/product-review.component';
+import { NgbNav, NgbNavItem, NgbNavItemRole, NgbNavLink, NgbNavLinkBase, NgbNavContent, NgbNavOutlet } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-product-details-tabs',
     templateUrl: './product-details-tabs.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    styleUrls: ['./product-details-tabs.component.scss'],
+    standalone: true,
+    imports: [NgbNav, NgbNavItem, NgbNavItemRole, NgbNavLink, NgbNavLinkBase, NgbNavContent, ProductReviewComponent, QuestionsAnswersComponent, NgbNavOutlet, AsyncPipe, TranslateModule]
 })
 export class ProductDetailsTabsComponent {
 
-    #store = inject(Store);
-    active = 'description';
-    product = input<Product | null>();
-    // question$: Observable<QnAModel> = this.#store.select(QuestionAnswersState.questionsAnswers);
-    review$: Observable<ReviewModel> = this.#store.select(ReviewState.review);
+  @Input() product: Product | null;
 
+  @Select(QuestionAnswersState.questionsAnswers) question$: Observable<QnAModel>;
+  @Select(ReviewState.review) review$: Observable<ReviewModel>;
 
-    constructor() {
-        effect(() => {
-            this.#store.dispatch(new GetQuestionAnswers({ product_id: this.product()!.id }));
-            this.#store.dispatch(new GetReview({ product_id: this.product()!.id }));
-        })
-    }
+  public active = 'description';
 
+  constructor(private store: Store){}
+
+  ngOnChanges(changes: SimpleChanges) {
+    let product = changes['product']?.currentValue;
+    this.store.dispatch(new GetQuestionAnswers({product_id: product.id}));
+    this.store.dispatch(new GetReview({product_id: product.id}));
+  }
 }

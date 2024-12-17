@@ -1,14 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Option } from '../../../../interface/theme-option.interface';
+import { RouterLink } from '@angular/router';
 import { Select } from '@ngxs/store';
-import { ThemeOptionState } from '../../../../../shared/state/theme-option.state';
 import { Observable } from 'rxjs';
+import { ThemeOptionState } from '../../../../../shared/state/theme-option.state';
+import { Option } from '../../../../interface/theme-option.interface';
 
 @Component({
     selector: 'app-logo',
     templateUrl: './logo.component.html',
     styleUrls: ['./logo.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [RouterLink,CommonModule]
 })
 export class LogoComponent {
 

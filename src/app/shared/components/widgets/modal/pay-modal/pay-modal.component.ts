@@ -1,20 +1,22 @@
-import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { AsyncPipe, isPlatformBrowser, UpperCasePipe } from '@angular/common';
+import { Component, Inject, PLATFORM_ID, TemplateRef, ViewChild } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Order } from '../../../../../shared/interface/order.interface';
-import { FormControl, Validators } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { SettingState } from '../../../../../shared/state/setting.state';
-import { Values } from '../../../../../shared/interface/setting.interface';
-import { environment } from 'src/environments/environment';
 import { RePayment } from '../../../../../shared/action/order.action';
+import { Order } from '../../../../../shared/interface/order.interface';
+import { Values } from '../../../../../shared/interface/setting.interface';
+import { SettingState } from '../../../../../shared/state/setting.state';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-pay-modal',
     templateUrl: './pay-modal.component.html',
     styleUrls: ['./pay-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent, ReactiveFormsModule, AsyncPipe, UpperCasePipe, TranslateModule]
 })
 export class PayModalComponent {
 

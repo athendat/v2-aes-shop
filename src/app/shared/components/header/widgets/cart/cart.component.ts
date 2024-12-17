@@ -10,12 +10,28 @@ import { SettingState } from '../../../../state/setting.state';
 import { Values } from '../../../../interface/setting.interface';
 import { VariationModalComponent } from '../../../widgets/modal/variation-modal/variation-modal.component';
 import { CartService } from '../../../../services/cart.service';
+import { CurrencySymbolPipe } from '../../../../pipe/currency-symbol.pipe';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
+import { ButtonComponent } from '../../../widgets/button/button.component';
+import { NgClass, NgStyle, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-header-cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.scss'],
-    standalone: false
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [
+    ButtonComponent,
+    NgClass,
+    NgStyle,
+    RouterLink,
+    VariationModalComponent,
+    AsyncPipe,
+    TranslateModule,
+    CurrencySymbolPipe
+],
 })
 export class CartComponent {
 
@@ -76,7 +92,7 @@ export class CartComponent {
     this.store.dispatch(new UpdateCart(params));
   }
 
-  delete(id: string) {
+  delete(id: number) {
     this.store.dispatch(new DeleteCart(id));
   }
 

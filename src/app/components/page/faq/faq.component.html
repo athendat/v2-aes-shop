@@ -1,8 +1,9 @@
 <app-breadcrumb [breadcrumb]="breadcrumb"></app-breadcrumb>
 <section class="faq-box-contain section-b-space">
   <div class="container">
-    <app-skeleton-page *ngIf="pageService.skeletonLoader else content"></app-skeleton-page>
-    <ng-template #content>
+    @if (pageService.skeletonLoader) {
+      <app-skeleton-page></app-skeleton-page>
+    } @else {
       <div class="row">
         <div class="col-xl-5">
           <div class="faq-contain">
@@ -13,28 +14,30 @@
         <div class="col-xl-7">
           <div class="faq-accordion">
             <div class="accordion" ngbAccordion [closeOthers]="true">
-              <div ngbAccordionItem class="accordion-item" *ngFor="let faq of (faq$ | async )?.data; let i = index"
-                [collapsed]="i !== 0">
-                <h2 class="accordion-header" ngbAccordionHeader>
-                  <button class="accordion-button" type="button" ngbAccordionButton>
-                    {{ faq.title }}
-                    <i class="ri-arrow-down-s-line"></i>
-                  </button>
-                </h2>
-                <div ngbAccordionCollapse class="accordion-collapse collapse">
-                  <div ngbAccordionBody>
-                    <ng-template>
-                      <div class="accordion-body">
-                        <p>{{ faq.description }}</p>
-                      </div>
-                    </ng-template>
+              @for (faq of (faq$ | async )?.data; track faq; let i = $index) {
+                <div ngbAccordionItem class="accordion-item"
+                  [collapsed]="i !== 0">
+                  <h2 class="accordion-header" ngbAccordionHeader>
+                    <button class="accordion-button" type="button" ngbAccordionButton>
+                      {{ faq.title }}
+                      <i class="ri-arrow-down-s-line"></i>
+                    </button>
+                  </h2>
+                  <div ngbAccordionCollapse class="accordion-collapse collapse">
+                    <div ngbAccordionBody>
+                      <ng-template>
+                        <div class="accordion-body">
+                          <p>{{ faq.description }}</p>
+                        </div>
+                      </ng-template>
+                    </div>
                   </div>
                 </div>
-              </div>
+              }
             </div>
           </div>
         </div>
       </div>
-    </ng-template>
+    }
   </div>
 </section>

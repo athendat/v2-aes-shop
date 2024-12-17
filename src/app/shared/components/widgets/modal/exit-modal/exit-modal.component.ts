@@ -5,12 +5,15 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { UpdateSession } from '../../../../../shared/action/theme-option.action';
 import { ThemeOptionState } from '../../../../../shared/state/theme-option.state';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-exit-modal',
     templateUrl: './exit-modal.component.html',
     styleUrls: ['./exit-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [ButtonComponent, TranslateModule]
 })
 export class ExitModalComponent {
 

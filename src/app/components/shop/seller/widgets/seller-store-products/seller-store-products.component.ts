@@ -5,11 +5,13 @@ import { ProductState } from '../../../../../shared/state/product.state';
 import { Product } from '../../../../../shared/interface/product.interface';
 import { Stores } from '../../../../../shared/interface/store.interface';
 
+
 @Component({
     selector: 'app-seller-store-products',
     templateUrl: './seller-store-products.component.html',
     styleUrls: ['./seller-store-products.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: []
 })
 export class SellerStoreProductsComponent {
 

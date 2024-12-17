@@ -1,5 +1,5 @@
 import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, NgStyle } from '@angular/common';
 import { Store, Select } from '@ngxs/store';
 import { Observable, forkJoin } from 'rxjs';
 import { Rome } from '../../../shared/interface/theme.interface';
@@ -9,12 +9,22 @@ import { GetBlogs } from '../../../shared/action/blog.action';
 import { ProductModel } from '../../../shared/interface/product.interface';
 import { ThemeOptionService } from '../../../shared/services/theme-option.service';
 import * as data from  '../../../shared/data/owl-carousel';
+import { NewsletterComponent } from '../widgets/newsletter/newsletter.component';
+import { BlogComponent } from '../widgets/blog/blog.component';
+import { FourColumnProductComponent } from '../widgets/four-column-product/four-column-product.component';
+import { ImageLinkComponent } from '../../../shared/components/widgets/image-link/image-link.component';
+import { ProductComponent } from '../widgets/product/product.component';
+import { BannerComponent } from '../widgets/banner/banner.component';
+import { CategoriesComponent } from '../widgets/categories/categories.component';
+import { TitleComponent } from '../../../shared/components/widgets/title/title.component';
+import { HomeBannerComponent } from '../widgets/home-banner/home-banner.component';
 
 @Component({
     selector: 'app-rome',
     templateUrl: './rome.component.html',
     styleUrls: ['./rome.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NgStyle, HomeBannerComponent, TitleComponent, CategoriesComponent, BannerComponent, ProductComponent, ImageLinkComponent, FourColumnProductComponent, BlogComponent, NewsletterComponent]
 })
 export class RomeComponent {
 
@@ -26,15 +36,15 @@ export class RomeComponent {
   public categorySlider = data.categorySlider9;
   public productSlider6ItemMargin = data.productSlider6ItemMargin;
   public customOptionsItem4 = data.customOptionsItem4;
-  public productFilterIds: string[] = [];
-  public selectedCategoryId: string;
+  public productFilterIds: number[] = [];
+  public selectedCategoryId: number;
 
   constructor(private store: Store,
     @Inject(PLATFORM_ID) private platformId: Object,
     private themeOptionService: ThemeOptionService) {}
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR
+    if (isPlatformBrowser(this.platformId)) { // For SSR 
       if(this.data?.slug == this.slug) {
         // Get Products
         const getProducts$ = this.store.dispatch(new GetProducts({
@@ -58,7 +68,7 @@ export class RomeComponent {
           }
         });
 
-        if(this.data?.content?.categories_products && this.data?.content?.categories_products?.category_ids?.length) {
+        if(this.data?.content?.categories_products && this.data?.content?.categories_products?.category_ids.length) {
           this.selectCategory(this.data?.content?.categories_products?.category_ids[0])
         }
       }
@@ -70,14 +80,14 @@ export class RomeComponent {
   }
 
   ngOnDestroy() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR
+    if (isPlatformBrowser(this.platformId)) { // For SSR 
       // Remove Color
       document.documentElement.style.removeProperty('--theme-color');
     }
   }
 
-  selectCategory(id: string) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR
+  selectCategory(id: number) {
+    if (isPlatformBrowser(this.platformId)) { // For SSR 
       this.selectedCategoryId = id;
       this.categoryProduct$.subscribe(product => {
         this.productFilterIds = product.data.filter(product => product?.categories?.map(category => category.id).includes(id))

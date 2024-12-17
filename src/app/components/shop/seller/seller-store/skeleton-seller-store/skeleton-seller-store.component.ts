@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     selector: 'app-skeleton-seller-store',
     templateUrl: './skeleton-seller-store.component.html',
     styleUrls: ['./skeleton-seller-store.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class SkeletonSellerStoreComponent {
 

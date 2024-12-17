@@ -9,11 +9,11 @@ export interface StoresModel extends PaginateModel {
 }
 
 export interface Stores {
-  id: string;
+  id: number;
   address: string;
   city: string;
   country: Country;
-  country_id: string;
+  country_id: number;
   description: string;
   hide_vendor_email: boolean;
   hide_vendor_phone: boolean;
@@ -21,15 +21,15 @@ export interface Stores {
   product_images: string[];
   slug:string;
   state: States;
-  state_id: string;
+  state_id: number;
   status: boolean;
   total_in_approved_stores: number;
   is_approved: boolean;
   store_logo: Attachment;
-  store_logo_id: string;
+  store_logo_id: number;
   store_name:string;
   vendor: User;
-  vendor_id: string;
+  vendor_id: number;
   facebook: string,
   instagram: string,
   pinterest: string,

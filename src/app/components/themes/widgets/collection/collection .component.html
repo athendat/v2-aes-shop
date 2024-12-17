@@ -1,10 +1,11 @@
 <div class="slider-4-1 ratio_65 no-arrow product-wrapper">
   <owl-carousel-o [options]="bannerSlider">
-    <ng-container carouselSlide *ngFor="let bundles of data">
-      <ng-container *ngIf="bundles?.status">
-        <ng-template carouselSlide>
-          <div>
-            <div class="product-slider wow fadeInUp">
+    @for (bundles of data; track bundles) {
+      <ng-container carouselSlide>
+        @if (bundles?.status) {
+          <ng-template carouselSlide>
+            <div>
+              <div class="product-slider wow fadeInUp">
                 <app-image-link class="b-cl" [image]="bundles" [bgImage]="false"></app-image-link>
                 <div class="product-slider-detail">
                   <div>
@@ -14,10 +15,11 @@
                     <h5>{{ bundles?.sub_title }}</h5>
                   </div>
                 </div>
+              </div>
             </div>
-          </div>
-        </ng-template>
+          </ng-template>
+        }
       </ng-container>
-    </ng-container>
+    }
   </owl-carousel-o>
 </div>

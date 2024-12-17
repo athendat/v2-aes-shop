@@ -2,12 +2,14 @@ import { Component, Input } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { LoaderState } from '../../../state/loader.state';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-button',
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NgClass, AsyncPipe]
 })
 export class ButtonComponent {
 

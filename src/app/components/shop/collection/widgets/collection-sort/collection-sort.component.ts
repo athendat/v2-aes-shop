@@ -1,14 +1,18 @@
-import { Component, Output, EventEmitter, Input, SimpleChanges } from '@angular/core';
+import { Component, Output, EventEmitter, Input, SimpleChanges, Inject, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Select2Data, Select2UpdateEvent } from 'ng-select2-component';
+import { Select2Data, Select2UpdateEvent, Select2Module } from 'ng-select2-component';
 import { Params } from '../../../../../shared/interface/core.interface';
 import { AttributeService } from '../../../../../shared/services/attribute.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { isPlatformBrowser } from '@angular/common';
+
 
 @Component({
     selector: 'app-collection-sort',
     templateUrl: './collection-sort.component.html',
     styleUrls: ['./collection-sort.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [Select2Module, TranslateModule]
 })
 export class CollectionSortComponent {
 
@@ -17,6 +21,8 @@ export class CollectionSortComponent {
 
   @Output() setGridClass: EventEmitter<string> = new EventEmitter();
   @Output() showFilter: EventEmitter<boolean> = new EventEmitter();
+
+  public isBrowser: boolean;
 
   public sorting: Select2Data = [{
       value: 'asc',
@@ -45,7 +51,8 @@ export class CollectionSortComponent {
   public class: string = "row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section";
   public gridArray = ['collection_3_grid', 'collection_4_grid', 'collection_5_grid', 'collection_list_view']
   constructor(private route: ActivatedRoute, private attributeService: AttributeService,
-    private router: Router) {
+    private router: Router, @Inject(PLATFORM_ID) private platformId: Object,) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
     this.setGridClass.emit(this.class);
   }
 

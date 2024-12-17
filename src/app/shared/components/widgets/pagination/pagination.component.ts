@@ -1,11 +1,13 @@
 import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Paginate } from '../../../../shared/interface/pagination.interface';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NgClass]
 })
 export class PaginationComponent {
 

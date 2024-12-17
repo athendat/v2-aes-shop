@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
     selector: 'app-footer-payment-options',
     templateUrl: './payment-options.component.html',
     styleUrls: ['./payment-options.component.scss'],
-    standalone: false
+    standalone: true
 })
 export class PaymentOptionsComponent {
 

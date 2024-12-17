@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ThemeOptionState } from '../../../state/theme-option.state';
-import { UpdateSession } from 'src/app/shared/action/theme-option.action';
+import { TranslateModule } from '@ngx-translate/core';
+import { UpdateSession } from '../../../action/theme-option.action';
 
 @Component({
     selector: 'app-cookie',
     templateUrl: './cookie.component.html',
     styleUrls: ['./cookie.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [TranslateModule]
 })
 export class CookieComponent {
 

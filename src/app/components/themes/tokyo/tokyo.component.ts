@@ -6,12 +6,21 @@ import { GetProducts } from '../../../shared/action/product.action';
 import { Tokyo } from '../../../shared/interface/theme.interface';
 import { ThemeOptionService } from '../../../shared/services/theme-option.service';
 import * as data from  '../../../shared/data/owl-carousel';
+import { NewsletterComponent } from '../widgets/newsletter/newsletter.component';
+import { FourColumnProductComponent } from '../widgets/four-column-product/four-column-product.component';
+import { ImageLinkComponent } from '../../../shared/components/widgets/image-link/image-link.component';
+import { ProductComponent } from '../widgets/product/product.component';
+import { TitleComponent } from '../../../shared/components/widgets/title/title.component';
+import { BannerComponent } from '../widgets/banner/banner.component';
+import { CategoriesComponent } from '../widgets/categories/categories.component';
+import { HomeBannerComponent } from '../widgets/home-banner/home-banner.component';
 
 @Component({
     selector: 'app-tokyo',
     templateUrl: './tokyo.component.html',
     styleUrls: ['./tokyo.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [HomeBannerComponent, CategoriesComponent, BannerComponent, TitleComponent, ProductComponent, ImageLinkComponent, FourColumnProductComponent, NewsletterComponent]
 })
 export class TokyoComponent {
 

@@ -2,12 +2,14 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Params } from '../../../../../../shared/interface/core.interface';
 import { Attribute } from '../../../../../../shared/interface/attribute.interface';
+import { NgStyle } from '@angular/common';
 
 @Component({
     selector: 'app-collection-attributes-filter',
     templateUrl: './collection-attributes-filter.component.html',
     styleUrls: ['./collection-attributes-filter.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [NgStyle]
 })
 export class CollectionAttributesComponent {
 

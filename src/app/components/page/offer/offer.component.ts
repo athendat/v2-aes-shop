@@ -6,12 +6,17 @@ import { CouponState } from '../../../shared/state/coupon.state';
 import { CouponService } from './../../../shared/services/coupon.service';
 import { GetCoupons } from '../../../shared/action/coupon.action';
 import { CouponModel } from '../../../shared/interface/coupon.interface';
+import { TranslateModule } from '@ngx-translate/core';
+import { NoDataComponent } from '../../../shared/components/widgets/no-data/no-data.component';
+import { AsyncPipe } from '@angular/common';
+import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcrumb/breadcrumb.component';
 
 @Component({
     selector: 'app-offer',
     templateUrl: './offer.component.html',
     styleUrls: ['./offer.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [BreadcrumbComponent, NoDataComponent, AsyncPipe, TranslateModule]
 })
 export class OfferComponent {
 

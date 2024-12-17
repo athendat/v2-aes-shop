@@ -3,12 +3,16 @@ import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Product } from '../../../../../../shared/interface/product.interface';
 import { ProductState } from '../../../../../../shared/state/product.state';
+import { ProductBoxComponent } from '../../../../../../shared/components/widgets/product-box/product-box.component';
+import { TitleComponent } from '../../../../../../shared/components/widgets/title/title.component';
+
 
 @Component({
     selector: 'app-related-products',
     templateUrl: './related-products.component.html',
     styleUrls: ['./related-products.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [TitleComponent, ProductBoxComponent]
 })
 export class RelatedProductsComponent {
 

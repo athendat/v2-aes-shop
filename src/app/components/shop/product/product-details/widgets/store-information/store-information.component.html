@@ -1,12 +1,13 @@
 <div class="vendor-box">
   <div class="vendor-contain">
     <a href="javascript:void(o)" [routerLink]="['/seller/store/', store?.slug]">
-      <div class="vendor-image" *ngIf="store?.store_logo else storeTextLogo">
-        <img [src]="store?.store_logo?.original_url" alt="{{ store?.store_name }}">
-      </div>
-      <ng-template #storeTextLogo>
+      @if (store?.store_logo) {
+        <div class="vendor-image">
+          <img [src]="store?.store_logo?.original_url" alt="{{ store?.store_name }}">
+        </div>
+      } @else {
         <h2 class="vendor-text">{{ store?.store_name?.charAt(0)!.toString().toUpperCase() }}</h2>
-      </ng-template>
+      }
     </a>
     <div class="vendor-name">
       <a href="javascript:void(o)" [routerLink]="['/seller/store/', store?.slug]">
@@ -19,21 +20,27 @@
     </div>
   </div>
   <p class="vendor-detail" [innerHTML]="store?.description! | summary:200"></p>
-  <div class="vendor-list" *ngIf="!store?.hide_vendor_email && !store?.hide_vendor_email">
-    <ul>
-      <li *ngIf="!store?.hide_vendor_phone">
-        <div class="address-contact">
-          <i class="ri-smartphone-line"></i>
-          <h5>{{ 'contact' | translate }}: <span class="text-content">+{{ store?.vendor?.country_code }} {{ store?.vendor?.phone }}</span>
-          </h5>
-        </div>
-      </li>
-      <li *ngIf="!store?.hide_vendor_email">
-        <div class="address-contact">
-          <i class="ri-mail-line"></i>
-          <h5>{{ 'email' | translate }}: <span class="text-content">{{ store?.vendor?.email }}</span></h5>
-        </div>
-      </li>
+  @if (!store?.hide_vendor_email && !store?.hide_vendor_email) {
+    <div class="vendor-list">
+      <ul>
+        @if (!store?.hide_vendor_phone) {
+          <li>
+            <div class="address-contact">
+              <i class="ri-smartphone-line"></i>
+              <h5>{{ 'contact' | translate }}: <span class="text-content">+{{ store?.vendor?.country_code }} {{ store?.vendor?.phone }}</span>
+            </h5>
+          </div>
+        </li>
+      }
+      @if (!store?.hide_vendor_email) {
+        <li>
+          <div class="address-contact">
+            <i class="ri-mail-line"></i>
+            <h5>{{ 'email' | translate }}: <span class="text-content">{{ store?.vendor?.email }}</span></h5>
+          </div>
+        </li>
+      }
     </ul>
   </div>
+}
 </div>

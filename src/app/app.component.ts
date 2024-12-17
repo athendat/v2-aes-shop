@@ -1,20 +1,22 @@
 import { Component, Inject, NgZone } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { ThemeOptionState } from './shared/state/theme-option.state';
+import { Observable } from 'rxjs';
+import { Option } from './shared/interface/theme-option.interface';
+import { Actions, ofActionDispatched, Select } from '@ngxs/store';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Meta, Title } from '@angular/platform-browser';
-import { Actions, Select, ofActionDispatched } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { ThemeOptionState } from './shared/state/theme-option.state';
-import { Option } from './shared/interface/theme-option.interface';
+import { DOCUMENT } from '@angular/common';
 import { Logout } from './shared/action/auth.action';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
+
 export class AppComponent {
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
@@ -23,7 +25,7 @@ export class AppComponent {
   public isTabInFocus = true;
   public timeoutId: any;
   private currentMessageIndex = 0;
-  private messages = ["⚡Vuelve!!", "🎉Ofertas para ti..."];
+  private messages = ["⚡ Come Back !!", "🎉 Offers for you..."];
   private currentMessage: string;
   private delay = 1000; // Delay between messages in milliseconds
 
@@ -70,7 +72,7 @@ export class AppComponent {
             clearTimeout(this.timeoutId);
             // Set site title
             return this.titleService.setTitle(theme?.general?.site_title && theme?.general?.site_tagline
-              ? `${theme?.general?.site_title} | ${theme?.general?.site_tagline}` : 'MN+ Mínimo precio, máxima calidad en: Bebidas, Alimentos, Materiales de Oficina y Ferretería.')
+              ? `${theme?.general?.site_title} | ${theme?.general?.site_tagline}` : 'FastKart Marketplace: Where Vendors Shine Together')
           } else {
              this.updateMessage();
           }
@@ -104,5 +106,5 @@ export class AppComponent {
     // Clear the timeout when the component is destroyed
     clearTimeout(this.timeoutId);
   }
-
+  
 }

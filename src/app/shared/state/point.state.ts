@@ -47,7 +47,7 @@ export class PointState {
               balance: result?.balance,
               transactions: {
                 data: result?.transactions?.data,
-                total: result?.transactions?.total ? result?.transactions?.total : result?.transactions?.data?.length
+                total: result?.transactions?.total ? result?.transactions?.total : result?.transactions?.data.length
               }
             }
           });

@@ -14,5 +14,5 @@ export class PaymentDetailsService {
   getPaymentAccount(): Observable<PaymentDetails> {
     return this.http.get<PaymentDetails>(`${environment.URL}/payment-account.json`);
   }
-  
+
 }

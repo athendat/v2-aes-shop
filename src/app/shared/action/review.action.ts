@@ -12,5 +12,5 @@ export class SendReview {
 
 export class UpdateReview {
   static readonly type = "[Review] Put";
-  constructor(public id: string, public payload: Params) {}
+  constructor(public id: number, public payload: Params) {}
 }

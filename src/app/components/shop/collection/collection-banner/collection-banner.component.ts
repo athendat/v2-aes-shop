@@ -5,12 +5,16 @@ import { Params } from '../../../../shared/interface/core.interface';
 import { ThemeOptionState } from '../../../../shared/state/theme-option.state';
 import { Option } from '../../../../shared/interface/theme-option.interface';
 import { AttributeService } from '../../../../shared/services/attribute.service';
+import { CollectionProductsComponent } from '../widgets/collection-products/collection-products.component';
+import { BannerComponent } from '../widgets/banner/banner.component';
+import { CollectionSidebarComponent } from '../widgets/sidebar/sidebar.component';
 
 @Component({
     selector: 'app-collection-banner',
     templateUrl: './collection-banner.component.html',
     styleUrls: ['./collection-banner.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [CollectionSidebarComponent, BannerComponent, CollectionProductsComponent]
 })
 export class CollectionBannerComponent {
 

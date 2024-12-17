@@ -1,17 +1,19 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
+import { ViewportScroller, AsyncPipe } from '@angular/common';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ProductModel } from '../../../../../shared/interface/product.interface';
 import { Params } from '../../../../../shared/interface/core.interface';
 import { ProductState } from '../../../../../shared/state/product.state';
+import { PaginationComponent } from '../../../../../shared/components/widgets/pagination/pagination.component';
 
 @Component({
     selector: 'app-collection-paginate',
     templateUrl: './collection-paginate.component.html',
     styleUrls: ['./collection-paginate.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [PaginationComponent, AsyncPipe]
 })
 export class CollectionPaginateComponent {
 

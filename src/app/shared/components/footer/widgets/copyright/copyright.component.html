@@ -1,1 +1,1 @@
-<h6 class="text-content" *ngIf="data?.footer?.footer_copyright">{{ data?.footer?.copyright_content }}</h6>
+@if (data?.footer?.footer_copyright) {<h6 class="text-content">{{ data?.footer?.copyright_content }}</h6>}

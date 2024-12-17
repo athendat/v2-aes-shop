@@ -1,38 +1,41 @@
-import { ChangeDetectionStrategy, Component, effect, inject, input } from '@angular/core';
-
-import { Store } from '@ngxs/store';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Store, Select  } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ThemeState } from '../../shared/state/theme.state';
 import { GetHomePage } from '../../shared/action/theme.action';
 import { ThemeOptionService } from '../../shared/services/theme-option.service';
-
+import { DenverComponent } from './denver/denver.component';
+import { BerlinComponent } from './berlin/berlin.component';
+import { MadridComponent } from './madrid/madrid.component';
+import { RomeComponent } from './rome/rome.component';
+import { OsakaComponent } from './osaka/osaka.component';
+import { TokyoComponent } from './tokyo/tokyo.component';
+import { ParisComponent } from './paris/paris.component';
+import { AsyncPipe } from '@angular/common';
+  
 @Component({
     selector: 'app-themes',
     templateUrl: './themes.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    styleUrls: ['./themes.component.scss'],
+    standalone: true,
+    imports: [ParisComponent, TokyoComponent, OsakaComponent, 
+      RomeComponent, MadridComponent, BerlinComponent, DenverComponent, AsyncPipe]
 })
 export class ThemesComponent {
 
-    // Private properties
-    #store = inject(Store);
-    #themeOptionService = inject(ThemeOptionService);
+  @Select(ThemeState.homePage) homePage$: Observable<any>;
 
-    // Public properties
-    homePage$: Observable<any> = this.#store.select(ThemeState.homePage);
-    slug = input<string>('paris');
+  public slug: string;
 
-    constructor(
-    ) {
-        effect(() => {
-
-            // Preloader
-            this.#themeOptionService.preloader = true;
-
-            // Get Home Page
-            this.#store.dispatch(new GetHomePage(this.slug()));
-
-        })
-    }
+  constructor(private store: Store,
+    private route: ActivatedRoute,
+    private themeOptionService: ThemeOptionService) {
+    this.route.params.subscribe(params => {
+      this.themeOptionService.preloader = true;
+      this.slug = params['slug'] ? params['slug'] : 'paris';
+      this.store.dispatch(new GetHomePage(params['slug'] ? params['slug'] : 'paris'));
+    });
+  }
 
 }

@@ -1,119 +1,71 @@
-// Angular Modules
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngxs/store';
-
-// Services
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { NotificationService } from 'src/app/shared/services/notification.service';
-
 import { CustomValidators } from '../../../shared/validator/password-match';
-
+import { Register } from '../../../shared/action/auth.action';
 import { Breadcrumb } from '../../../shared/interface/breadcrumb';
 import * as data from '../../../shared/data/country-code';
+import { TranslateModule } from '@ngx-translate/core';
+import { ButtonComponent } from '../../../shared/components/widgets/button/button.component';
+import { Select2Module } from 'ng-select2-component';
 
+import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcrumb/breadcrumb.component';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    styleUrls: ['./register.component.scss'],
+    standalone: true,
+    imports: [BreadcrumbComponent, ReactiveFormsModule, Select2Module, ButtonComponent, RouterLink, TranslateModule]
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-    // Public Properties
-    form: FormGroup;
-    breadcrumb: Breadcrumb = {
-        title: "Crear Cuenta",
-        items: [
-            { label: 'Autenticación', active: false },
-            { label: 'Crear Cuenta', active: true },
-        ]
+  public form: FormGroup;
+  public breadcrumb: Breadcrumb = {
+    title: "Sign In",
+    items: [{ label: 'Sign In', active: true }]
+  }
+  public codes = data.countryCodes;
+  public tnc = new FormControl(false, [Validators.requiredTrue]);
+  public isBrowser: boolean;
+  
+  constructor(
+    private store: Store,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    @Inject(PLATFORM_ID) private platformId: Object,
+  ) {
+    this.isBrowser = isPlatformBrowser(this.platformId);
+    this.form = this.formBuilder.group({
+      name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]*$/)]),
+      country_code: new FormControl('91', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      password_confirmation: new FormControl('', [Validators.required]),
+    },{validator : CustomValidators.MatchValidator('password', 'password_confirmation')});
+  }
+
+  get passwordMatchError() {
+    return (
+      this.form.getError('mismatch') &&
+      this.form.get('password_confirmation')?.touched
+    );
+  }
+
+  submit() {
+    this.form.markAllAsTouched();
+    if(this.tnc.invalid){
+      return
     }
-    codes = data.countryCodes;
-    tnc = new FormControl(false, [Validators.requiredTrue]);
-
-    // Private Properties
-    #authService = inject(AuthService);
-    #destroyRef = inject(DestroyRef);
-    #notificationService = inject(NotificationService);
-    #router = inject(Router);
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Accessors
-    // -----------------------------------------------------------------------------------------------------
-
-    get passwordMatchError() {
-        return (
-            this.form.getError('mismatch') &&
-            this.form.get('password_confirmation')?.touched
-        );
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Lifecycle hooks
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * On Init
-     */
-    ngOnInit() {
-
-        this.form = new FormGroup({
-            name: new FormControl('', [Validators.required]),
-            email: new FormControl('', [Validators.required, Validators.email]),
-            phone: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]*$/)]),
-            country_code: new FormControl('53', [Validators.required]),
-            password: new FormControl('', [Validators.required]),
-            password_confirmation: new FormControl('', [Validators.required]),
-        }, { validators: CustomValidators.MatchValidator('password', 'password_confirmation') });
-    }
-
-    // -----------------------------------------------------------------------------------------------------
-    // @ Public Methods
-    // -----------------------------------------------------------------------------------------------------
-
-    /**
-     * Submit     *
-     *
-     * @returns
-     */
-    submit() {
-
-
-        this.form.markAllAsTouched();
-        if (this.tnc.invalid) {
-            return
+    if(this.form.valid) {
+      this.store.dispatch(new Register(this.form.value)).subscribe({
+          complete: () => {
+            this.router.navigateByUrl('/account/dashboard');
+          }
         }
-        if (this.form.valid) {
-
-            // Crear usuario
-            this.#authService.signUp(this.form.getRawValue())
-                .pipe(takeUntilDestroyed(this.#destroyRef))
-                .subscribe({
-                    next: (response) => {
-
-                        // Navegar al dashboard
-                        this.#router.navigateByUrl('/auth/otp');
-
-                        // Mostrar mensaje de confirmación
-                        this.#notificationService.showSuccess(response.message);
-
-                    },
-                    error: (e: HttpErrorResponse) => {
-
-                        // Construir mensaje de error
-                        console.warn(e.error.message);
-
-                        // Mostrar mensaje de error
-                        this.#notificationService.showError(e.error.message.message);
-
-                    }
-                });
-
-        }
+      );
     }
+  }
 }

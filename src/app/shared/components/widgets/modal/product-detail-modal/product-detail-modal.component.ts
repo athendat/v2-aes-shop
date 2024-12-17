@@ -1,6 +1,6 @@
 import { Component, ViewChild, TemplateRef, Input, PLATFORM_ID, Inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbModal, NgbRating } from '@ng-bootstrap/ng-bootstrap';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Product, Variation } from '../../../../interface/product.interface';
@@ -8,12 +8,21 @@ import { Cart, CartAddOrUpdate } from '../../../../interface/cart.interface';
 import { AddToCart } from '../../../../action/cart.action';
 import { CartState } from '../../../../state/cart.state';
 import * as data from  '../../../../../shared/data/owl-carousel';
+import { CurrencySymbolPipe } from '../../../../pipe/currency-symbol.pipe';
+import { TitleCasePipe } from '../../../../pipe/title-case.pipe';
+import { TranslateModule } from '@ngx-translate/core';
+import { VariantAttributesComponent } from '../../variant-attributes/variant-attributes.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ButtonComponent } from '../../button/button.component';
 
 @Component({
     selector: 'app-product-detail-modal',
     templateUrl: './product-detail-modal.component.html',
     styleUrls: ['./product-detail-modal.component.scss'],
-    standalone: false
+    standalone: true,
+    providers:[CurrencySymbolPipe],
+    imports: [ButtonComponent, CarouselModule, NgbRating, 
+      VariantAttributesComponent, TranslateModule, TitleCasePipe, CurrencySymbolPipe]
 })
 export class ProductDetailModalComponent {
 
