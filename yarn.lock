@@ -1932,10 +1932,10 @@
   dependencies:
     tslib "^2.3.0"
 
-"@ngrx/signals@^18.1.1":
-  version "18.1.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/signals/-/signals-18.1.1.tgz#6747a603e66a8dbfc9482610cb460d93df66c4fa"
-  integrity sha512-7AaFp4VrzYhnDHlF15VZAMvp067zIC5arRRRMV+i+oi95sQVDXezpj74KTIguwRbZ3FU+GKGzFCNrwgYvginSg==
+"@ngrx/signals@^19.0.0":
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/signals/-/signals-19.0.0.tgz#10bc494eae6d96ff6e2d4514fb0bc0e5824102f2"
+  integrity sha512-Ktgq+wwIVH9HdobLOhrYF6VArIJYZa5lkgajUpSB9QuudpOLja9f7W2RAHQsMUBpQuREgFkTgIEr1vKIzDrGMA==
   dependencies:
     tslib "^2.3.0"
 
@@ -1944,48 +1944,52 @@
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-19.0.5.tgz#4a18f718b269dfc443a07fcc86d780c5494e1e9f"
   integrity sha512-T8BJQHbGySRkR4JYLcH3YIscbRJI/GNWidNHL5GzRG+3i8Z6XmR0KLTIEoZGaCLpTGR8hcCG5Lfj/uF5pa4Yww==
 
-"@ngx-loading-bar/core@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@ngx-loading-bar/core/-/core-6.0.2.tgz#8e0bfc106140804ca7195d8bbbc75858434b5fd4"
-  integrity sha512-8r+OQEYXwvU+2ZXK6CY3Guh2yJuG8pQ2XNryHVbPZB2Ub3VmzhGWqjxXAQgxmsi+GxrD4m+nGmGZPeOrNH1ztA==
+"@ngx-loading-bar/core@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-loading-bar/core/-/core-7.0.0.tgz#8f298fbf4d99f364c07f067f81fda4498a7a813d"
+  integrity sha512-+YXS+oAXcNf4DGCnZbcgn5EkqTl1qceY/zP7GlVVadVVJab73dzVAss0EnKrh0KENX9R3O83CRciOshTYyG6DQ==
   dependencies:
     tslib "^2.0.0"
 
-"@ngx-loading-bar/http-client@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@ngx-loading-bar/http-client/-/http-client-6.0.2.tgz#8210ef31a97e97e53780cab0653d459b56b3e893"
-  integrity sha512-wMzyg9YBvHlOqYMQK82j7fnF6GlXb1RNg/rjvl34uq3+xsqic9vUhEziEDlVEKvpbnXh5yMd05Aj7J4GwRaFcw==
+"@ngx-loading-bar/http-client@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-loading-bar/http-client/-/http-client-7.0.0.tgz#8a6963f34f25af4feb1ae367d2b432298f9f6cc9"
+  integrity sha512-m1GEHoTlMLOfXpkHYYhEvpsf7JJxatzjHLqIszqeGUCPM8pskmFJNqEKOwzv/21CfbJdEOWstLiN/1Tz9fkvgA==
   dependencies:
     tslib "^2.0.0"
 
-"@ngx-loading-bar/router@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@ngx-loading-bar/router/-/router-6.0.2.tgz#d10ac7d0f6e7b1af71bb2fbab581533fed31cbf0"
-  integrity sha512-el+32ysDhqr46Zcg+H8UiKpOEz43qY0++CUxj8DADLRm3mAzKqNn/X+5qhFQS4o5Nb/SdvZn5apfFlXoNNUViQ==
+"@ngx-loading-bar/router@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-loading-bar/router/-/router-7.0.0.tgz#94d985fb5b78a0e72d3d9d9f3e5230075a3eeda3"
+  integrity sha512-11xZ6oYpjg7Zsve7imUc0PC1iGyo3XQMqS3B5jZEEdukz2hn9X+Q7atotyEVF3uEjtfJofOZ438tV0MofG44Iw==
   dependencies:
     tslib "^2.0.0"
 
-"@ngx-translate/core@^15.0.0":
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-15.0.0.tgz#0fe55b9bd47e75b03d1123658f15fb7b5a534f3c"
-  integrity sha512-Am5uiuR0bOOxyoercDnAA3rJVizo4RRqJHo8N3RqJ+XfzVP/I845yEnMADykOHvM6HkVm4SZSnJBOiz0Anx5BA==
-
-"@ngx-translate/http-loader@^8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-8.0.0.tgz#e02c25dbe33c6b1edee73e3654ab8a161572cdfb"
-  integrity sha512-SFMsdUcmHF5OdZkL1CHEoSAwbP5EbAOPTLLboOCRRoOg21P4GJx+51jxGdJeGve6LSKLf4Pay7BkTwmE6vxYlg==
-
-"@ngxs/storage-plugin@^18.0.0":
-  version "18.1.1"
-  resolved "https://registry.yarnpkg.com/@ngxs/storage-plugin/-/storage-plugin-18.1.1.tgz#04e9a24f5500fb4803bd2009d1d1528f5c90fc1c"
-  integrity sha512-8/NBZcpjlAnWP4w8HwAm25z/yrYCmQWQYrLMDD8N1KUVYIlgG+CVgfNziH3JCh/cJcMo+sIQ5ragdJXiWguZug==
+"@ngx-translate/core@^16.0.3":
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-16.0.3.tgz#e98a96ff05963ea65d548516820c96a2a743b390"
+  integrity sha512-UPse66z9tRUmIpeorYodXBQY6O4foUmj9jy9cCuuja7lqdOwRBWPzCWqc+qYIXv5L2QoqZdxgHtqoUz+Q9weSA==
   dependencies:
     tslib "^2.3.0"
 
-"@ngxs/store@18.0.0":
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/@ngxs/store/-/store-18.0.0.tgz#4266659ff66bd7c845b3b04fb4e62dfd1e4d80f1"
-  integrity sha512-uYs7/KG0yBLS8Mxe87QVgknM950pRzDZ2iRqGaYDCB22NOQYf3sr+wJ3WdYTZnenTresc1njvUhJXzY7/UDdxA==
+"@ngx-translate/http-loader@^16.0.0":
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-16.0.0.tgz#d1f91a1824f6440be468a496832fe50f58151356"
+  integrity sha512-l3okOHGVxZ1Bm55OpakSfXvI2yYmVmhYqgwGU4aIQIRUqpkBCrSDZnmrHTcZfsGJzXKB5E2D2rko9i28gBijmA==
+  dependencies:
+    tslib "^2.3.0"
+
+"@ngxs/storage-plugin@^19.0.0":
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/@ngxs/storage-plugin/-/storage-plugin-19.0.0.tgz#bb99af239d4505b9dde88f39d568efa3d353c433"
+  integrity sha512-LwOrkVDsr4amcT5FlB9tl4IZnO+OSw7GMmAndCgeNo740BZQG9w9Pp+Rsjr34IhZx8YR5qFbgCLogzBQdSS4Mg==
+  dependencies:
+    tslib "^2.3.0"
+
+"@ngxs/store@19.0.0":
+  version "19.0.0"
+  resolved "https://registry.yarnpkg.com/@ngxs/store/-/store-19.0.0.tgz#703c9c31a8a2550975c813ccd3c623fae2dad722"
+  integrity sha512-h8xMl3OisrYabdfbUQjy98X/BSaId8t0iX3VlQgOmG0sYuC5OuZvggZywn0urLkA3H97LEI7ihvuS8spEBo6YA==
   dependencies:
     tslib "^2.3.0"
 
@@ -2556,13 +2560,33 @@
     "@types/range-parser" "*"
     "@types/send" "*"
 
-"@types/express@*", "@types/express@^4.17.17", "@types/express@^4.17.21":
+"@types/express-serve-static-core@^5.0.0":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-5.0.2.tgz#812d2871e5eea17fb0bd5214dda7a7b748c0e12a"
+  integrity sha512-vluaspfvWEtE4vcSDlKRNer52DvOGrB2xv6diXy6UKyKW0lqZiWHGNApSyxOv+8DE5Z27IzVvE7hNkxg7EXIcg==
+  dependencies:
+    "@types/node" "*"
+    "@types/qs" "*"
+    "@types/range-parser" "*"
+    "@types/send" "*"
+
+"@types/express@*", "@types/express@^4.17.21":
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.21.tgz#c26d4a151e60efe0084b23dc3369ebc631ed192d"
   integrity sha512-ejlPM315qwLpaQlQDTjPdsUFSc6ZsP4AN6AlWnogPjQ7CVi7PYF3YVz+CY3jE2pwYf7E/7HlDAN0rV2GxTG0HQ==
   dependencies:
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "^4.17.33"
+    "@types/qs" "*"
+    "@types/serve-static" "*"
+
+"@types/express@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/express/-/express-5.0.0.tgz#13a7d1f75295e90d19ed6e74cab3678488eaa96c"
+  integrity sha512-DvZriSMehGHL1ZNLzi6MidnsDhUZM/x2pRdDIKdwbUNqqwHxMlRdkxtn6/EPKyqKpHqTl/4nRZsRNLpZxZRpPQ==
+  dependencies:
+    "@types/body-parser" "*"
+    "@types/express-serve-static-core" "^5.0.0"
     "@types/qs" "*"
     "@types/serve-static" "*"
 
@@ -4198,7 +4222,7 @@ exponential-backoff@^3.1.1:
   resolved "https://registry.yarnpkg.com/exponential-backoff/-/exponential-backoff-3.1.1.tgz#64ac7526fe341ab18a39016cd22c787d01e00bf6"
   integrity sha512-dX7e/LHVJ6W3DE1MHWi9S1EYzDESENfLrYohG2G++ovZrYOkm4Knwa0mc1cn84xJOR4KEU0WSchhLbd0UklbHw==
 
-express@^4.18.2, express@^4.19.2:
+express@^4.19.2, express@^4.21.2:
   version "4.21.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.21.2.tgz#cf250e48362174ead6cea4a566abef0162c1ec32"
   integrity sha512-28HqgMZAmih1Czt9ny7qr6ek2qddF4FclbMzwhCREB6OFfH+rXAnuNCwo1/wFvrtbgsQDb4kSbX9de9lFbrXnA==
