@@ -5,9 +5,10 @@ import { ThemeOptionState } from '../../../../../shared/state/theme-option.state
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-logo',
-  templateUrl: './logo.component.html',
-  styleUrls: ['./logo.component.scss']
+    selector: 'app-logo',
+    templateUrl: './logo.component.html',
+    styleUrls: ['./logo.component.scss'],
+    standalone: false
 })
 export class LogoComponent {
 

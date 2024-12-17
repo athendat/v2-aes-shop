@@ -14,6 +14,7 @@ import { ExitModalComponent } from '../../../shared/components/widgets/modal/exi
     selector: 'app-paris',
     templateUrl: './paris.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ParisComponent {
 

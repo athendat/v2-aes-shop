@@ -19,7 +19,8 @@ import * as data from '../../../shared/data/country-code';
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
 

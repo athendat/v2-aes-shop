@@ -10,9 +10,10 @@ import { CartState } from '../../../../state/cart.state';
 import * as data from  '../../../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-product-detail-modal',
-  templateUrl: './product-detail-modal.component.html',
-  styleUrls: ['./product-detail-modal.component.scss']
+    selector: 'app-product-detail-modal',
+    templateUrl: './product-detail-modal.component.html',
+    styleUrls: ['./product-detail-modal.component.scss'],
+    standalone: false
 })
 export class ProductDetailModalComponent {
 

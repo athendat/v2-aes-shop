@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sale-timer',
-  templateUrl: './sale-timer.component.html',
-  styleUrls: ['./sale-timer.component.scss']
+    selector: 'app-sale-timer',
+    templateUrl: './sale-timer.component.html',
+    styleUrls: ['./sale-timer.component.scss'],
+    standalone: false
 })
 export class SaleTimerComponent {
 

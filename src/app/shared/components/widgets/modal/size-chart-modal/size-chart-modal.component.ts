@@ -4,9 +4,10 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Attachment } from '../../../../../shared/interface/attachment.interface';
 
 @Component({
-  selector: 'app-size-chart-modal',
-  templateUrl: './size-chart-modal.component.html',
-  styleUrls: ['./size-chart-modal.component.scss']
+    selector: 'app-size-chart-modal',
+    templateUrl: './size-chart-modal.component.html',
+    styleUrls: ['./size-chart-modal.component.scss'],
+    standalone: false
 })
 export class SizeChartModalComponent {
 

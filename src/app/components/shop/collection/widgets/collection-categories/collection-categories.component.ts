@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
-  selector: 'app-collection-categories',
-  templateUrl: './collection-categories.component.html',
-  styleUrls: ['./collection-categories.component.scss']
+    selector: 'app-collection-categories',
+    templateUrl: './collection-categories.component.html',
+    styleUrls: ['./collection-categories.component.scss'],
+    standalone: false
 })
 export class CollectionCategoriesComponent {
 

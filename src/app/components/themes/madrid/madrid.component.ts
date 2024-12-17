@@ -9,9 +9,10 @@ import { ThemeOptionService } from '../../../shared/services/theme-option.servic
 import * as data from  '../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-madrid',
-  templateUrl: './madrid.component.html',
-  styleUrls: ['./madrid.component.scss']
+    selector: 'app-madrid',
+    templateUrl: './madrid.component.html',
+    styleUrls: ['./madrid.component.scss'],
+    standalone: false
 })
 export class MadridComponent {
 

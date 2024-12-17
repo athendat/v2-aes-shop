@@ -5,6 +5,7 @@ import { UserAddress } from '../../../../shared/interface/user.interface';
     selector: 'app-address-block',
     templateUrl: './address-block.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddressBlockComponent implements OnInit {
 

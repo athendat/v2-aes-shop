@@ -7,9 +7,10 @@ import { Option } from '../../../../shared/interface/theme-option.interface';
 import { AttributeService } from '../../../../shared/services/attribute.service';
 
 @Component({
-  selector: 'app-collection-left-sidebar',
-  templateUrl: './collection-left-sidebar.component.html',
-  styleUrls: ['./collection-left-sidebar.component.scss']
+    selector: 'app-collection-left-sidebar',
+    templateUrl: './collection-left-sidebar.component.html',
+    styleUrls: ['./collection-left-sidebar.component.scss'],
+    standalone: false
 })
 export class CollectionLeftSidebarComponent {
 

@@ -5,9 +5,10 @@ import { Cart } from '../../../interface/cart.interface';
 import { CartState } from '../../../state/cart.state';
 
 @Component({
-  selector: 'app-sticky-cart',
-  templateUrl: './sticky-cart.component.html',
-  styleUrls: ['./sticky-cart.component.scss']
+    selector: 'app-sticky-cart',
+    templateUrl: './sticky-cart.component.html',
+    styleUrls: ['./sticky-cart.component.scss'],
+    standalone: false
 })
 export class StickyCartComponent {
 

@@ -7,7 +7,8 @@ import { ProductState } from '../../../../shared/state/product.state';
 @Component({
     selector: 'app-image-link',
     templateUrl: './image-link.component.html',
-    styleUrls: ['./image-link.component.scss']
+    styleUrls: ['./image-link.component.scss'],
+    standalone: false
 })
 export class ImageLinkComponent {
 

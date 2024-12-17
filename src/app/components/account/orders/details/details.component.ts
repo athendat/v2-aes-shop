@@ -17,6 +17,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
     selector: 'app-order-details',
     templateUrl: './details.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OrderDetailsComponent implements OnInit {
 

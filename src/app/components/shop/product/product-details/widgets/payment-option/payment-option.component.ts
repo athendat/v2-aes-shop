@@ -3,9 +3,10 @@ import { Product } from '../../../../../../shared/interface/product.interface';
 import { Option } from '../../../../../../shared/interface/theme-option.interface';
 
 @Component({
-  selector: 'app-payment-option',
-  templateUrl: './payment-option.component.html',
-  styleUrls: ['./payment-option.component.scss']
+    selector: 'app-payment-option',
+    templateUrl: './payment-option.component.html',
+    styleUrls: ['./payment-option.component.scss'],
+    standalone: false
 })
 export class PaymentOptionComponent {
 

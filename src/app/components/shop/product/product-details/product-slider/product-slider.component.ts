@@ -4,9 +4,10 @@ import { Option } from '../../../../../shared/interface/theme-option.interface';
 import * as data from  '../../../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-product-slider',
-  templateUrl: './product-slider.component.html',
-  styleUrls: ['./product-slider.component.scss']
+    selector: 'app-product-slider',
+    templateUrl: './product-slider.component.html',
+    styleUrls: ['./product-slider.component.scss'],
+    standalone: false
 })
 export class ProductSliderComponent {
 

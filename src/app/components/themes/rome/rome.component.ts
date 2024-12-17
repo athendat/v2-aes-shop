@@ -11,9 +11,10 @@ import { ThemeOptionService } from '../../../shared/services/theme-option.servic
 import * as data from  '../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-rome',
-  templateUrl: './rome.component.html',
-  styleUrls: ['./rome.component.scss']
+    selector: 'app-rome',
+    templateUrl: './rome.component.html',
+    styleUrls: ['./rome.component.scss'],
+    standalone: false
 })
 export class RomeComponent {
 

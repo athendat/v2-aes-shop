@@ -7,9 +7,10 @@ import { ThemeOptionState } from '../../../../shared/state/theme-option.state';
 import { AttributeService } from '../../../../shared/services/attribute.service';
 
 @Component({
-  selector: 'app-collection-no-sidebar',
-  templateUrl: './collection-no-sidebar.component.html',
-  styleUrls: ['./collection-no-sidebar.component.scss']
+    selector: 'app-collection-no-sidebar',
+    templateUrl: './collection-no-sidebar.component.html',
+    styleUrls: ['./collection-no-sidebar.component.scss'],
+    standalone: false
 })
 export class CollectionNoSidebarComponent {
 

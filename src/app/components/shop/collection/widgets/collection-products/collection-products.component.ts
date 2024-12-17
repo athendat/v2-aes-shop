@@ -7,9 +7,10 @@ import { ProductState } from '../../../../../shared/state/product.state';
 import { Params } from '../../../../../shared/interface/core.interface';
 
 @Component({
-  selector: 'app-collection-products',
-  templateUrl: './collection-products.component.html',
-  styleUrls: ['./collection-products.component.scss']
+    selector: 'app-collection-products',
+    templateUrl: './collection-products.component.html',
+    styleUrls: ['./collection-products.component.scss'],
+    standalone: false
 })
 export class CollectionProductsComponent {
 

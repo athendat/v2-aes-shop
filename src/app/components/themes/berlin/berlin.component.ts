@@ -8,9 +8,10 @@ import { ThemeOptionService } from '../../../shared/services/theme-option.servic
 import * as data from  '../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-berlin',
-  templateUrl: './berlin.component.html',
-  styleUrls: ['./berlin.component.scss']
+    selector: 'app-berlin',
+    templateUrl: './berlin.component.html',
+    styleUrls: ['./berlin.component.scss'],
+    standalone: false
 })
 export class BerlinComponent {
 

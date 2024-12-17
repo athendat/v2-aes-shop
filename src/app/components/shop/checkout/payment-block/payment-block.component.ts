@@ -4,6 +4,7 @@ import { PaymentMethod } from 'src/app/shared/interface/payment-method.interface
 @Component({
     selector: 'app-payment-block',
     templateUrl: './payment-block.component.html',
+    standalone: false
 })
 export class PaymentBlockComponent {
 

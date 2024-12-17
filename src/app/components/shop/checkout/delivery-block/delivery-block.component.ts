@@ -2,9 +2,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Values, DeliveryBlock } from '../../../../shared/interface/setting.interface';
 
 @Component({
-  selector: 'app-delivery-block',
-  templateUrl: './delivery-block.component.html',
-  styleUrls: ['./delivery-block.component.scss']
+    selector: 'app-delivery-block',
+    templateUrl: './delivery-block.component.html',
+    styleUrls: ['./delivery-block.component.scss'],
+    standalone: false
 })
 export class DeliveryBlockComponent {
 

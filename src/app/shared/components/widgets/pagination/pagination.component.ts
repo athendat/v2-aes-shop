@@ -2,9 +2,10 @@ import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/
 import { Paginate } from '../../../../shared/interface/pagination.interface';
 
 @Component({
-  selector: 'app-pagination',
-  templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
+    selector: 'app-pagination',
+    templateUrl: './pagination.component.html',
+    styleUrls: ['./pagination.component.scss'],
+    standalone: false
 })
 export class PaginationComponent {
 

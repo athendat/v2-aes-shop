@@ -12,9 +12,10 @@ import { AccountState } from '../../../../../../shared/state/account.state';
 import { Feedback } from '../../../../../../shared/action/questions-answers.action';
 
 @Component({
-  selector: 'app-questions-answers',
-  templateUrl: './questions-answers.component.html',
-  styleUrls: ['./questions-answers.component.scss']
+    selector: 'app-questions-answers',
+    templateUrl: './questions-answers.component.html',
+    styleUrls: ['./questions-answers.component.scss'],
+    standalone: false
 })
 export class QuestionsAnswersComponent {
 

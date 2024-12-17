@@ -4,9 +4,10 @@ import { Option } from '../../../../../shared/interface/theme-option.interface';
 import * as data from  '../../../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-product-accordion',
-  templateUrl: './product-accordion.component.html',
-  styleUrls: ['./product-accordion.component.scss']
+    selector: 'app-product-accordion',
+    templateUrl: './product-accordion.component.html',
+    styleUrls: ['./product-accordion.component.scss'],
+    standalone: false
 })
 export class ProductAccordionComponent {
 

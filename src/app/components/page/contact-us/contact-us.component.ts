@@ -10,7 +10,8 @@ import { Breadcrumb } from '../../../shared/interface/breadcrumb';
 @Component({
     selector: 'app-contact-us',
     templateUrl: './contact-us.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ContactUsComponent {
 

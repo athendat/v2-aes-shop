@@ -8,9 +8,10 @@ import { FaqModel } from '../../../shared/interface/page.interface';
 import { PageService } from '../../../shared/services/page.service';
 
 @Component({
-  selector: 'app-faq',
-  templateUrl: './faq.component.html',
-  styleUrls: ['./faq.component.scss']
+    selector: 'app-faq',
+    templateUrl: './faq.component.html',
+    styleUrls: ['./faq.component.scss'],
+    standalone: false
 })
 export class FaqComponent {
 

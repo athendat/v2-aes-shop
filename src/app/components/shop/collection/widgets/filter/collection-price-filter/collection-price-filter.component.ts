@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Params } from '../../../../../../shared/interface/core.interface';
 
 @Component({
-  selector: 'app-collection-price-filter',
-  templateUrl: './collection-price-filter.component.html',
-  styleUrls: ['./collection-price-filter.component.scss']
+    selector: 'app-collection-price-filter',
+    templateUrl: './collection-price-filter.component.html',
+    styleUrls: ['./collection-price-filter.component.scss'],
+    standalone: false
 })
 export class CollectionPriceFilterComponent {
 

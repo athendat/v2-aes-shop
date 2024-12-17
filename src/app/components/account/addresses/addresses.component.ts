@@ -13,6 +13,7 @@ import { AuthStore } from 'src/app/shared/store/auth.store';
     selector: 'app-addresses',
     templateUrl: './addresses.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddressesComponent {
 

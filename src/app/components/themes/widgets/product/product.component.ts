@@ -13,7 +13,8 @@ import * as data from '../../../../shared/data/owl-carousel';
 @Component({
     selector: 'app-theme-product',
     templateUrl: './product.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProductComponent implements OnChanges {
 

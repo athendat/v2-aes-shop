@@ -7,9 +7,10 @@ import { UpdateSession } from '../../../../../shared/action/theme-option.action'
 import { ThemeOptionState } from '../../../../../shared/state/theme-option.state';
 
 @Component({
-  selector: 'app-exit-modal',
-  templateUrl: './exit-modal.component.html',
-  styleUrls: ['./exit-modal.component.scss']
+    selector: 'app-exit-modal',
+    templateUrl: './exit-modal.component.html',
+    styleUrls: ['./exit-modal.component.scss'],
+    standalone: false
 })
 export class ExitModalComponent {
 

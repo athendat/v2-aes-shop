@@ -4,9 +4,10 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from '../../../../../shared/interface/product.interface';
 
 @Component({
-  selector: 'app-deals-modal',
-  templateUrl: './deals-modal.component.html',
-  styleUrls: ['./deals-modal.component.scss']
+    selector: 'app-deals-modal',
+    templateUrl: './deals-modal.component.html',
+    styleUrls: ['./deals-modal.component.scss'],
+    standalone: false
 })
 export class DealsModalComponent {
 

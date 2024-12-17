@@ -10,9 +10,10 @@ import { Option } from './shared/interface/theme-option.interface';
 import { Logout } from './shared/action/auth.action';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    standalone: false
 })
 export class AppComponent {
 

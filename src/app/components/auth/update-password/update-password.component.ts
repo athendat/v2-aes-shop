@@ -12,7 +12,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 @Component({
     selector: 'app-update-password',
     templateUrl: './update-password.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class UpdatePasswordComponent implements OnInit {
 

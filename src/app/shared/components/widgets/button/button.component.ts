@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 import { LoaderState } from '../../../state/loader.state';
 
 @Component({
-  selector: 'app-button',
-  templateUrl: './button.component.html',
-  styleUrls: ['./button.component.scss']
+    selector: 'app-button',
+    templateUrl: './button.component.html',
+    styleUrls: ['./button.component.scss'],
+    standalone: false
 })
 export class ButtonComponent {
 

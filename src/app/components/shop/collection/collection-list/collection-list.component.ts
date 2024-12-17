@@ -7,9 +7,10 @@ import { ThemeOptionState } from '../../../../shared/state/theme-option.state';
 import { AttributeService } from '../../../../shared/services/attribute.service';
 
 @Component({
-  selector: 'app-collection-list',
-  templateUrl: './collection-list.component.html',
-  styleUrls: ['./collection-list.component.scss']
+    selector: 'app-collection-list',
+    templateUrl: './collection-list.component.html',
+    styleUrls: ['./collection-list.component.scss'],
+    standalone: false
 })
 export class CollectionListComponent {
 

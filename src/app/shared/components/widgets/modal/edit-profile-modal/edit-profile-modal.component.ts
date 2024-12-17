@@ -10,9 +10,10 @@ import { UpdateUserProfile } from '../../../../action/account.action';
 import * as data from '../../../../data/country-code';
 
 @Component({
-  selector: 'app-edit-profile-modal',
-  templateUrl: './edit-profile-modal.component.html',
-  styleUrls: ['./edit-profile-modal.component.scss']
+    selector: 'app-edit-profile-modal',
+    templateUrl: './edit-profile-modal.component.html',
+    styleUrls: ['./edit-profile-modal.component.scss'],
+    standalone: false
 })
 export class EditProfileModalComponent {
 

@@ -3,9 +3,10 @@ import { Option } from '../../../../shared/interface/theme-option.interface';
 import { Footer } from '../../../../shared/interface/theme.interface';
 
 @Component({
-  selector: 'app-basic-footer',
-  templateUrl: './basic-footer.component.html',
-  styleUrls: ['./basic-footer.component.scss']
+    selector: 'app-basic-footer',
+    templateUrl: './basic-footer.component.html',
+    styleUrls: ['./basic-footer.component.scss'],
+    standalone: false
 })
 export class BasicFooterComponent {
 

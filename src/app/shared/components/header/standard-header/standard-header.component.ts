@@ -3,9 +3,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { Option } from '../../../interface/theme-option.interface';
 
 @Component({
-  selector: 'app-standard-header',
-  templateUrl: './standard-header.component.html',
-  styleUrls: ['./standard-header.component.scss']
+    selector: 'app-standard-header',
+    templateUrl: './standard-header.component.html',
+    styleUrls: ['./standard-header.component.scss'],
+    standalone: false
 })
 export class StandardHeaderComponent {
 

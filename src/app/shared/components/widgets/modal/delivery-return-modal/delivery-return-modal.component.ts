@@ -7,9 +7,10 @@ import { Option } from '../../../../../shared/interface/theme-option.interface';
 import { ThemeOptionState } from '../../../../../shared/state/theme-option.state';
 
 @Component({
-  selector: 'app-delivery-return-modal',
-  templateUrl: './delivery-return-modal.component.html',
-  styleUrls: ['./delivery-return-modal.component.scss']
+    selector: 'app-delivery-return-modal',
+    templateUrl: './delivery-return-modal.component.html',
+    styleUrls: ['./delivery-return-modal.component.scss'],
+    standalone: false
 })
 export class DeliveryReturnModalComponent {
 

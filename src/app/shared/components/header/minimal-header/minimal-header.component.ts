@@ -3,9 +3,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { Option } from '../../../interface/theme-option.interface';
 
 @Component({
-  selector: 'app-minimal-header',
-  templateUrl: './minimal-header.component.html',
-  styleUrls: ['./minimal-header.component.scss']
+    selector: 'app-minimal-header',
+    templateUrl: './minimal-header.component.html',
+    styleUrls: ['./minimal-header.component.scss'],
+    standalone: false
 })
 export class MinimalHeaderComponent {
 

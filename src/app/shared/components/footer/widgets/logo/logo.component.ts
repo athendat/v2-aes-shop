@@ -3,9 +3,10 @@ import { Option } from '../../../../../shared/interface/theme-option.interface';
 import { Footer } from '../../../../../shared/interface/theme.interface';
 
 @Component({
-  selector: 'app-footer-logo',
-  templateUrl: './logo.component.html',
-  styleUrls: ['./logo.component.scss']
+    selector: 'app-footer-logo',
+    templateUrl: './logo.component.html',
+    styleUrls: ['./logo.component.scss'],
+    standalone: false
 })
 export class FooterLogoComponent {
 

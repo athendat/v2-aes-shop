@@ -7,9 +7,10 @@ import { Option } from '../../../../shared/interface/theme-option.interface';
 import { AttributeService } from '../../../../shared/services/attribute.service';
 
 @Component({
-  selector: 'app-collection-banner',
-  templateUrl: './collection-banner.component.html',
-  styleUrls: ['./collection-banner.component.scss']
+    selector: 'app-collection-banner',
+    templateUrl: './collection-banner.component.html',
+    styleUrls: ['./collection-banner.component.scss'],
+    standalone: false
 })
 export class CollectionBannerComponent {
 

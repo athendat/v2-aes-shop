@@ -7,9 +7,10 @@ import { Category, CategoryModel } from '../../../interface/category.interface';
 import { CategoryState } from '../../../state/category.state';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+    selector: 'app-categories',
+    templateUrl: './categories.component.html',
+    styleUrls: ['./categories.component.scss'],
+    standalone: false
 })
 export class CategoriesComponent {
 

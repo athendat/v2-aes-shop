@@ -11,9 +11,10 @@ import { environment } from 'src/environments/environment';
 import { RePayment } from '../../../../../shared/action/order.action';
 
 @Component({
-  selector: 'app-pay-modal',
-  templateUrl: './pay-modal.component.html',
-  styleUrls: ['./pay-modal.component.scss']
+    selector: 'app-pay-modal',
+    templateUrl: './pay-modal.component.html',
+    styleUrls: ['./pay-modal.component.scss'],
+    standalone: false
 })
 export class PayModalComponent {
 

@@ -7,9 +7,10 @@ import { Cart } from '../../../interface/cart.interface';
 import { CartState } from '../../../state/cart.state';
 
 @Component({
-  selector: 'app-variant-attributes',
-  templateUrl: './variant-attributes.component.html',
-  styleUrls: ['./variant-attributes.component.scss']
+    selector: 'app-variant-attributes',
+    templateUrl: './variant-attributes.component.html',
+    styleUrls: ['./variant-attributes.component.scss'],
+    standalone: false
 })
 export class VariantAttributesComponent {
 

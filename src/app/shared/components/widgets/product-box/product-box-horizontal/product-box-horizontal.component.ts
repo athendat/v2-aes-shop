@@ -16,7 +16,8 @@ import { NotificationService } from 'src/app/shared/services/notification.servic
 @Component({
     selector: 'app-product-box-horizontal',
     templateUrl: './product-box-horizontal.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProductBoxHorizontalComponent {
 

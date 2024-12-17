@@ -7,9 +7,10 @@ import { ThemeOptionState } from '../../../shared/state/theme-option.state';
 import { Option } from '../../../shared/interface/theme-option.interface';
 
 @Component({
-  selector: 'app-error404',
-  templateUrl: './error404.component.html',
-  styleUrls: ['./error404.component.scss']
+    selector: 'app-error404',
+    templateUrl: './error404.component.html',
+    styleUrls: ['./error404.component.scss'],
+    standalone: false
 })
 export class Error404Component {
 

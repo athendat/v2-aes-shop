@@ -6,9 +6,10 @@ import { Option } from '../../../../../shared/interface/theme-option.interface';
 import { Product } from '../../../../../shared/interface/product.interface';
 
 @Component({
-  selector: 'app-product-details-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+    selector: 'app-product-details-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss'],
+    standalone: false
 })
 export class ProductSidebarComponent {
 

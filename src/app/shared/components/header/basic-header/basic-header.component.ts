@@ -5,7 +5,8 @@ import { Option } from '../../../interface/theme-option.interface';
 @Component({
     selector: 'app-basic-header',
     templateUrl: './basic-header.component.html',
-    styleUrls: ['./basic-header.component.scss']
+    styleUrls: ['./basic-header.component.scss'],
+    standalone: false
 })
 export class BasicHeaderComponent {
 

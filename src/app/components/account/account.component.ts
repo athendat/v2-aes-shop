@@ -9,7 +9,8 @@ import { AuthStore } from 'src/app/shared/store/auth.store';
 @Component({
     selector: 'app-account',
     templateUrl: './account.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AccountComponent {
 

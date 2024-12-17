@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import * as data from '../../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-theme-banner',
-  templateUrl: './banner.component.html',
-  styleUrls: ['./banner.component.scss']
+    selector: 'app-theme-banner',
+    templateUrl: './banner.component.html',
+    styleUrls: ['./banner.component.scss'],
+    standalone: false
 })
 export class BannerComponent {
 

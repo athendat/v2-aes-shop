@@ -15,6 +15,7 @@ import * as data from '../../../shared/data/owl-carousel'
     selector: 'app-search',
     templateUrl: './search.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SearchComponent implements OnInit {
 

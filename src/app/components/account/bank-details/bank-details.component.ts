@@ -7,9 +7,10 @@ import { PaymentDetailsState } from '../../../shared/state/payment-details.state
 import { PaymentDetails } from '../../../shared/interface/payment-details.interface';
 
 @Component({
-  selector: 'app-bank-details',
-  templateUrl: './bank-details.component.html',
-  styleUrls: ['./bank-details.component.scss']
+    selector: 'app-bank-details',
+    templateUrl: './bank-details.component.html',
+    styleUrls: ['./bank-details.component.scss'],
+    standalone: false
 })
 export class BankDetailsComponent {
 

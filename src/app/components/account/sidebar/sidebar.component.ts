@@ -13,6 +13,7 @@ import { AuthStore } from 'src/app/shared/store/auth.store';
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SidebarComponent {
 

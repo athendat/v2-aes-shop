@@ -4,9 +4,10 @@ import { Observable } from 'rxjs';
 import { CompareState } from '../../../../state/compare.state';
 
 @Component({
-  selector: 'app-header-compare',
-  templateUrl: './compare.component.html',
-  styleUrls: ['./compare.component.scss']
+    selector: 'app-header-compare',
+    templateUrl: './compare.component.html',
+    styleUrls: ['./compare.component.scss'],
+    standalone: false
 })
 export class CompareComponent {
 

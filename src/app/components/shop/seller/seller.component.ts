@@ -6,9 +6,10 @@ import { Option, Seller } from '../../../shared/interface/theme-option.interface
 import { ThemeOptionState } from '../../../shared/state/theme-option.state';
 
 @Component({
-  selector: 'app-seller',
-  templateUrl: './seller.component.html',
-  styleUrls: ['./seller.component.scss']
+    selector: 'app-seller',
+    templateUrl: './seller.component.html',
+    styleUrls: ['./seller.component.scss'],
+    standalone: false
 })
 export class SellerComponent {
 

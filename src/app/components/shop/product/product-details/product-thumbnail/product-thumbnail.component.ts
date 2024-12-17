@@ -4,9 +4,10 @@ import { Option } from '../../../../../shared/interface/theme-option.interface';
 import * as data from  '../../../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-product-thumbnail',
-  templateUrl: './product-thumbnail.component.html',
-  styleUrls: ['./product-thumbnail.component.scss']
+    selector: 'app-product-thumbnail',
+    templateUrl: './product-thumbnail.component.html',
+    styleUrls: ['./product-thumbnail.component.scss'],
+    standalone: false
 })
 export class ProductThumbnailComponent {
 

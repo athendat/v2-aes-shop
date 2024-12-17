@@ -10,6 +10,7 @@ import { Params } from '../../../shared/interface/core.interface';
     selector: 'app-orders',
     templateUrl: './orders.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OrdersComponent {
 

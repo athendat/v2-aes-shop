@@ -11,9 +11,10 @@ import { GetDealProducts } from '../shared/action/product.action';
 import { GetUserDetails } from '../shared/action/account.action';
 
 @Component({
-  selector: 'app-layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.scss']
+    selector: 'app-layout',
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.scss'],
+    standalone: false
 })
 export class LayoutComponent {
 

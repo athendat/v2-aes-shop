@@ -3,9 +3,10 @@ import { Params } from '../../../../shared/interface/core.interface';
 import { AttributeService } from '../../../../shared/services/attribute.service';
 
 @Component({
-  selector: 'app-collection-offcanvas-filter',
-  templateUrl: './collection-offcanvas-filter.component.html',
-  styleUrls: ['./collection-offcanvas-filter.component.scss']
+    selector: 'app-collection-offcanvas-filter',
+    templateUrl: './collection-offcanvas-filter.component.html',
+    styleUrls: ['./collection-offcanvas-filter.component.scss'],
+    standalone: false
 })
 export class CollectionOffCanvasFilterComponent {
 

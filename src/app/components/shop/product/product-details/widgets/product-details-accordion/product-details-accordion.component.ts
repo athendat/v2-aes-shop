@@ -10,9 +10,10 @@ import { ReviewState } from '../../../../../../shared/state/review.state';
 import { ReviewModel } from '../../../../../../shared/interface/review.interface';
 
 @Component({
-  selector: 'app-product-details-accordion',
-  templateUrl: './product-details-accordion.component.html',
-  styleUrls: ['./product-details-accordion.component.scss']
+    selector: 'app-product-details-accordion',
+    templateUrl: './product-details-accordion.component.html',
+    styleUrls: ['./product-details-accordion.component.scss'],
+    standalone: false
 })
 export class ProductDetailsAccordionComponent {
 

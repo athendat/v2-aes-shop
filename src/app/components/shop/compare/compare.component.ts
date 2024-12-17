@@ -10,7 +10,8 @@ import { CompareService } from '../../../shared/services/compare.service';
 @Component({
     selector: 'app-compeer',
     templateUrl: './compare.component.html',
-    styleUrls: ['./compare.component.scss']
+    styleUrls: ['./compare.component.scss'],
+    standalone: false
 })
 export class CompareComponent {
 

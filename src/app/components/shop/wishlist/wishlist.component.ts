@@ -13,6 +13,7 @@ import { NotificationService } from 'src/app/shared/services/notification.servic
     selector: 'app-wishlist',
     templateUrl: './wishlist.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WishlistComponent implements OnInit {
 

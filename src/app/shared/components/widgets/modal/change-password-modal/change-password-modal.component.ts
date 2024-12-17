@@ -7,9 +7,10 @@ import { UpdateUserPassword } from '../../../../action/account.action';
 import { CustomValidators } from '../../../../validator/password-match';
 
 @Component({
-  selector: 'app-change-password-modal',
-  templateUrl: './change-password-modal.component.html',
-  styleUrls: ['./change-password-modal.component.scss']
+    selector: 'app-change-password-modal',
+    templateUrl: './change-password-modal.component.html',
+    styleUrls: ['./change-password-modal.component.scss'],
+    standalone: false
 })
 export class ChangePasswordModalComponent {
 

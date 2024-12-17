@@ -6,7 +6,8 @@ import { Review } from '../../../../../../shared/interface/review.interface';
 @Component({
     selector: 'app-product-review',
     templateUrl: './product-review.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProductReviewComponent {
 

@@ -12,9 +12,10 @@ import { Blog } from '../../../shared/interface/blog.interface';
 import { GetRecentBlog } from '../../../shared/action/blog.action';
 
 @Component({
-  selector: 'app-blog-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+    selector: 'app-blog-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.scss'],
+    standalone: false
 })
 export class BlogSidebarComponent {
 

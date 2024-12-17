@@ -5,9 +5,10 @@ import { CompareState } from '../../../state/compare.state';
 import { GetCompare } from '../../../action/compare.action';
 
 @Component({
-  selector: 'app-sticky-compare',
-  templateUrl: './sticky-compare.component.html',
-  styleUrls: ['./sticky-compare.component.scss']
+    selector: 'app-sticky-compare',
+    templateUrl: './sticky-compare.component.html',
+    styleUrls: ['./sticky-compare.component.scss'],
+    standalone: false
 })
 export class StickyCompareComponent {
 

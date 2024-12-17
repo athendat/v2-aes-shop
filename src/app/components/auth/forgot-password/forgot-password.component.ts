@@ -12,7 +12,8 @@ import { HttpErrorResponse } from "@angular/common/http";
 @Component({
     selector: "app-forgot-password",
     templateUrl: "./forgot-password.component.html",
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ForgotPasswordComponent implements OnInit {
 

@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Stores } from '../../../../../shared/interface/store.interface';
 
 @Component({
-  selector: 'app-seller-store-product-counts',
-  templateUrl: './seller-store-product-counts.component.html',
-  styleUrls: ['./seller-store-product-counts.component.scss']
+    selector: 'app-seller-store-product-counts',
+    templateUrl: './seller-store-product-counts.component.html',
+    styleUrls: ['./seller-store-product-counts.component.scss'],
+    standalone: false
 })
 export class SellerStoreProductCountsComponent {
 

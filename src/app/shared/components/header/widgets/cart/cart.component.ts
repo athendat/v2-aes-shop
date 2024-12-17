@@ -12,9 +12,10 @@ import { VariationModalComponent } from '../../../widgets/modal/variation-modal/
 import { CartService } from '../../../../services/cart.service';
 
 @Component({
-  selector: 'app-header-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss'],
+    selector: 'app-header-cart',
+    templateUrl: './cart.component.html',
+    styleUrls: ['./cart.component.scss'],
+    standalone: false
 })
 export class CartComponent {
 

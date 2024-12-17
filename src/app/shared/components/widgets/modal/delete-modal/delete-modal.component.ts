@@ -3,9 +3,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-delete-modal',
-  templateUrl: './delete-modal.component.html',
-  styleUrls: ['./delete-modal.component.scss']
+    selector: 'app-delete-modal',
+    templateUrl: './delete-modal.component.html',
+    styleUrls: ['./delete-modal.component.scss'],
+    standalone: false
 })
 export class DeleteModalComponent {
 

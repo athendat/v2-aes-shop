@@ -8,9 +8,10 @@ import { AddToCart } from '../../../../../../shared/action/cart.action';
 import { CartState } from '../../../../../../shared/state/cart.state';
 
 @Component({
-  selector: 'app-product-bundle',
-  templateUrl: './product-bundle.component.html',
-  styleUrls: ['./product-bundle.component.scss']
+    selector: 'app-product-bundle',
+    templateUrl: './product-bundle.component.html',
+    styleUrls: ['./product-bundle.component.scss'],
+    standalone: false
 })
 export class ProductBundleComponent {
 

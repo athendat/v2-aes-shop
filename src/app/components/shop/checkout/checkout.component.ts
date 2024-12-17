@@ -22,7 +22,8 @@ import { GetPaymentMethods } from 'src/app/shared/action/payment-method.action';
 @Component({
     selector: 'app-checkout',
     templateUrl: './checkout.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckoutComponent implements OnInit, OnDestroy {
 

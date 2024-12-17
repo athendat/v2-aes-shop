@@ -5,9 +5,10 @@ import { Params } from '../../../../../shared/interface/core.interface';
 import { AttributeService } from '../../../../../shared/services/attribute.service';
 
 @Component({
-  selector: 'app-collection-sort',
-  templateUrl: './collection-sort.component.html',
-  styleUrls: ['./collection-sort.component.scss']
+    selector: 'app-collection-sort',
+    templateUrl: './collection-sort.component.html',
+    styleUrls: ['./collection-sort.component.scss'],
+    standalone: false
 })
 export class CollectionSortComponent {
 

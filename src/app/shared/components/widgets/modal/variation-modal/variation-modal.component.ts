@@ -7,9 +7,10 @@ import { Product, Variation } from '../../../../interface/product.interface';
 import { ReplaceCart } from '../../../../action/cart.action';
 
 @Component({
-  selector: 'app-variation-modal',
-  templateUrl: './variation-modal.component.html',
-  styleUrls: ['./variation-modal.component.scss']
+    selector: 'app-variation-modal',
+    templateUrl: './variation-modal.component.html',
+    styleUrls: ['./variation-modal.component.scss'],
+    standalone: false
 })
 export class VariationModalComponent {
 

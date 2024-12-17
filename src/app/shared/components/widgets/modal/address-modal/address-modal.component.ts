@@ -15,6 +15,7 @@ import * as data from '../../../../data/country-code';
     selector: 'address-modal',
     templateUrl: './address-modal.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddressModalComponent {
 

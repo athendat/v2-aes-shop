@@ -8,9 +8,10 @@ import { Product } from '../../../../../shared/interface/product.interface';
 import { QuestionAnswers } from '../../../../../shared/interface/questions-answers.interface';
 
 @Component({
-  selector: 'app-question-modal',
-  templateUrl: './question-modal.component.html',
-  styleUrls: ['./question-modal.component.scss']
+    selector: 'app-question-modal',
+    templateUrl: './question-modal.component.html',
+    styleUrls: ['./question-modal.component.scss'],
+    standalone: false
 })
 export class QuestionModalComponent {
 

@@ -3,9 +3,10 @@ import * as data from '../../../../shared/data/owl-carousel'
 import { Bundles } from '../../../../shared/interface/theme.interface';
 
 @Component({
-  selector: 'app-theme-collection ',
-  templateUrl: './collection .component.html',
-  styleUrls: ['./collection .component.scss']
+    selector: 'app-theme-collection ',
+    templateUrl: './collection .component.html',
+    styleUrls: ['./collection .component.scss'],
+    standalone: false
 })
 export class CollectionComponent {
 

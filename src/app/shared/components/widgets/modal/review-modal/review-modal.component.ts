@@ -11,7 +11,8 @@ import { AuthStore } from 'src/app/shared/store/auth.store';
 @Component({
     selector: 'app-review-modal',
     templateUrl: './review-modal.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ReviewModalComponent {
 

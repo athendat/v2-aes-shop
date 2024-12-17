@@ -5,9 +5,10 @@ import { Product } from '../../../../../../shared/interface/product.interface';
 import { ProductState } from '../../../../../../shared/state/product.state';
 
 @Component({
-  selector: 'app-related-products',
-  templateUrl: './related-products.component.html',
-  styleUrls: ['./related-products.component.scss']
+    selector: 'app-related-products',
+    templateUrl: './related-products.component.html',
+    styleUrls: ['./related-products.component.scss'],
+    standalone: false
 })
 export class RelatedProductsComponent {
 

@@ -13,9 +13,10 @@ import { ThemeOptionState } from '../../../../shared/state/theme-option.state';
 import { Option } from '../../../../shared/interface/theme-option.interface';
 
 @Component({
-  selector: 'app-seller-details',
-  templateUrl: './seller-details.component.html',
-  styleUrls: ['./seller-details.component.scss']
+    selector: 'app-seller-details',
+    templateUrl: './seller-details.component.html',
+    styleUrls: ['./seller-details.component.scss'],
+    standalone: false
 })
 export class SellerDetailsComponent {
 

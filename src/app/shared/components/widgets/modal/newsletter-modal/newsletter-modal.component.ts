@@ -7,9 +7,10 @@ import { ThemeOptionState } from '../../../../../shared/state/theme-option.state
 import { UpdateSession } from '../../../../../shared/action/theme-option.action';
 
 @Component({
-  selector: 'app-newsletter-modal',
-  templateUrl: './newsletter-modal.component.html',
-  styleUrls: ['./newsletter-modal.component.scss']
+    selector: 'app-newsletter-modal',
+    templateUrl: './newsletter-modal.component.html',
+    styleUrls: ['./newsletter-modal.component.scss'],
+    standalone: false
 })
 export class NewsletterModalComponent {
 

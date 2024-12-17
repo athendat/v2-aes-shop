@@ -7,9 +7,10 @@ import { ThemeOptionState } from '../../../../shared/state/theme-option.state';
 import { ThemeOptionService } from 'src/app/shared/services/theme-option.service';
 
 @Component({
-  selector: 'app-theme-customizer',
-  templateUrl: './theme-customizer.component.html',
-  styleUrls: ['./theme-customizer.component.scss']
+    selector: 'app-theme-customizer',
+    templateUrl: './theme-customizer.component.html',
+    styleUrls: ['./theme-customizer.component.scss'],
+    standalone: false
 })
 export class ThemeCustomizerComponent {
 

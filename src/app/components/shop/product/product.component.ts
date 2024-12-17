@@ -13,7 +13,8 @@ import { Option } from '../../../shared/interface/theme-option.interface';
 @Component({
     selector: 'app-product',
     templateUrl: './product.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProductComponent {
 

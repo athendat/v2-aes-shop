@@ -3,9 +3,10 @@ import * as data from '../../../../shared/data/owl-carousel';
 import { Offer } from '../../../../shared/interface/theme.interface';
 
 @Component({
-  selector: 'app-wallet-offer',
-  templateUrl: './wallet-offer.component.html',
-  styleUrls: ['./wallet-offer.component.scss']
+    selector: 'app-wallet-offer',
+    templateUrl: './wallet-offer.component.html',
+    styleUrls: ['./wallet-offer.component.scss'],
+    standalone: false
 })
 export class WalletOfferComponent {
 

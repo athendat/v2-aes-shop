@@ -3,9 +3,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Params } from '../../../../../../shared/interface/core.interface';
 
 @Component({
-  selector: 'app-collection-filter',
-  templateUrl: './collection-filter.component.html',
-  styleUrls: ['./collection-filter.component.scss']
+    selector: 'app-collection-filter',
+    templateUrl: './collection-filter.component.html',
+    styleUrls: ['./collection-filter.component.scss'],
+    standalone: false
 })
 export class CollectionFilterComponent implements OnChanges {
 

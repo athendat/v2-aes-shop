@@ -16,6 +16,7 @@ import { Breadcrumb } from '../../../shared/interface/breadcrumb';
 @Component({
     selector: 'app-about-us',
     templateUrl: './about-us.component.html',
+    standalone: false
 })
 export class AboutUsComponent {
 

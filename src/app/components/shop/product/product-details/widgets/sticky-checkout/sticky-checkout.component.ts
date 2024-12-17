@@ -11,7 +11,8 @@ import { AuthStore } from 'src/app/shared/store/auth.store';
 @Component({
     selector: 'app-sticky-checkout',
     templateUrl: './sticky-checkout.component.html',
-    styleUrls: ['./sticky-checkout.component.scss']
+    styleUrls: ['./sticky-checkout.component.scss'],
+    standalone: false
 })
 export class StickyCheckoutComponent {
 

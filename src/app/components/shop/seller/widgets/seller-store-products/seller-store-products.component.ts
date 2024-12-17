@@ -6,9 +6,10 @@ import { Product } from '../../../../../shared/interface/product.interface';
 import { Stores } from '../../../../../shared/interface/store.interface';
 
 @Component({
-  selector: 'app-seller-store-products',
-  templateUrl: './seller-store-products.component.html',
-  styleUrls: ['./seller-store-products.component.scss']
+    selector: 'app-seller-store-products',
+    templateUrl: './seller-store-products.component.html',
+    styleUrls: ['./seller-store-products.component.scss'],
+    standalone: false
 })
 export class SellerStoreProductsComponent {
 

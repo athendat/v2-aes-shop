@@ -5,9 +5,10 @@ import { Product } from '../../../../../../shared/interface/product.interface';
 import { ProductState } from '../../../../../../shared/state/product.state';
 
 @Component({
-  selector: 'app-trending-products',
-  templateUrl: './trending-products.component.html',
-  styleUrls: ['./trending-products.component.scss']
+    selector: 'app-trending-products',
+    templateUrl: './trending-products.component.html',
+    styleUrls: ['./trending-products.component.scss'],
+    standalone: false
 })
 export class TrendingProductsComponent {
 

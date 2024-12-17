@@ -9,9 +9,10 @@ import { Params } from '../../../shared/interface/core.interface';
 import { Values } from '../../../shared/interface/setting.interface';
 
 @Component({
-  selector: 'app-point',
-  templateUrl: './point.component.html',
-  styleUrls: ['./point.component.scss']
+    selector: 'app-point',
+    templateUrl: './point.component.html',
+    styleUrls: ['./point.component.scss'],
+    standalone: false
 })
 export class PointComponent {
 

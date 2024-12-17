@@ -6,9 +6,10 @@ import { Product, ProductModel } from '../../../interface/product.interface';
 import { ProductState } from '../../../state/product.state';
 
 @Component({
-  selector: 'app-recent-purchase-popup',
-  templateUrl: './recent-purchase-popup.component.html',
-  styleUrls: ['./recent-purchase-popup.component.scss']
+    selector: 'app-recent-purchase-popup',
+    templateUrl: './recent-purchase-popup.component.html',
+    styleUrls: ['./recent-purchase-popup.component.scss'],
+    standalone: false
 })
 export class RecentPurchasePopupComponent {
 

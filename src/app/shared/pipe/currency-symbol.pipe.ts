@@ -7,7 +7,8 @@ import { Values } from '../interface/setting.interface';
 import { Currency } from '../interface/currency.interface';
 
 @Pipe({
-  name: 'currencySymbol'
+    name: 'currencySymbol',
+    standalone: false
 })
 export class CurrencySymbolPipe implements PipeTransform {
 

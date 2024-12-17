@@ -4,9 +4,10 @@ import { Params } from '../../../../../../shared/interface/core.interface';
 import { Attribute } from '../../../../../../shared/interface/attribute.interface';
 
 @Component({
-  selector: 'app-collection-attributes-filter',
-  templateUrl: './collection-attributes-filter.component.html',
-  styleUrls: ['./collection-attributes-filter.component.scss']
+    selector: 'app-collection-attributes-filter',
+    templateUrl: './collection-attributes-filter.component.html',
+    styleUrls: ['./collection-attributes-filter.component.scss'],
+    standalone: false
 })
 export class CollectionAttributesComponent {
 

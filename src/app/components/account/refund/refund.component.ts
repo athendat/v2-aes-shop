@@ -7,9 +7,10 @@ import { RefundModel } from '../../../shared/interface/refund.interface';
 import { Params } from '../../../shared/interface/core.interface';
 
 @Component({
-  selector: 'app-refund',
-  templateUrl: './refund.component.html',
-  styleUrls: ['./refund.component.scss']
+    selector: 'app-refund',
+    templateUrl: './refund.component.html',
+    styleUrls: ['./refund.component.scss'],
+    standalone: false
 })
 export class RefundComponent {
 

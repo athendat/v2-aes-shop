@@ -6,9 +6,10 @@ import { Option } from '../../../../../shared/interface/theme-option.interface';
 import { CategoryModel, Category } from '../../../../../shared/interface/category.interface';
 
 @Component({
-  selector: 'app-footer-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss']
+    selector: 'app-footer-categories',
+    templateUrl: './categories.component.html',
+    styleUrls: ['./categories.component.scss'],
+    standalone: false
 })
 export class FooterCategoriesComponent {
 

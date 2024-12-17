@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Option } from '../../../../../shared/interface/theme-option.interface';
 
 @Component({
-  selector: 'app-call',
-  templateUrl: './call.component.html',
-  styleUrls: ['./call.component.scss']
+    selector: 'app-call',
+    templateUrl: './call.component.html',
+    styleUrls: ['./call.component.scss'],
+    standalone: false
 })
 export class CallComponent {
 

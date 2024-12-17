@@ -10,7 +10,8 @@ import { GetDealProducts } from '../../../../../shared/action/product.action';
 @Component({
     selector: 'app-deal',
     templateUrl: './deal.component.html',
-    styleUrls: ['./deal.component.scss']
+    styleUrls: ['./deal.component.scss'],
+    standalone: false
 })
 export class DealComponent {
 

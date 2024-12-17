@@ -9,9 +9,10 @@ import { Option } from '../../../../../../shared/interface/theme-option.interfac
 import { ThemeOptionState } from '../../../../../../shared/state/theme-option.state';
 
 @Component({
-  selector: 'app-product-action',
-  templateUrl: './product-action.component.html',
-  styleUrls: ['./product-action.component.scss']
+    selector: 'app-product-action',
+    templateUrl: './product-action.component.html',
+    styleUrls: ['./product-action.component.scss'],
+    standalone: false
 })
 export class ProductActionComponent {
 

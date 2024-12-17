@@ -12,9 +12,10 @@ import { GetStores } from '../../../../shared/action/store.action';
 import { GetStoreProducts } from '../../../../shared/action/product.action';
 
 @Component({
-  selector: 'app-seller-store',
-  templateUrl: './seller-store.component.html',
-  styleUrls: ['./seller-store.component.scss']
+    selector: 'app-seller-store',
+    templateUrl: './seller-store.component.html',
+    styleUrls: ['./seller-store.component.scss'],
+    standalone: false
 })
 export class SellerStoreComponent {
 

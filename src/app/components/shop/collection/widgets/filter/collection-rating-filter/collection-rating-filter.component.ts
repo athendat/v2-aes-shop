@@ -4,9 +4,10 @@ import { ViewportScroller } from '@angular/common';
 import { Params } from '../../../../../../shared/interface/core.interface';
 
 @Component({
-  selector: 'app-collection-rating-filter',
-  templateUrl: './collection-rating-filter.component.html',
-  styleUrls: ['./collection-rating-filter.component.scss']
+    selector: 'app-collection-rating-filter',
+    templateUrl: './collection-rating-filter.component.html',
+    styleUrls: ['./collection-rating-filter.component.scss'],
+    standalone: false
 })
 export class CollectionRatingFilterComponent {
 

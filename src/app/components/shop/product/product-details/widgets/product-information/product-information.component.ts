@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../../../../../../shared/interface/product.interface';
 
 @Component({
-  selector: 'app-product-information',
-  templateUrl: './product-information.component.html',
-  styleUrls: ['./product-information.component.scss']
+    selector: 'app-product-information',
+    templateUrl: './product-information.component.html',
+    styleUrls: ['./product-information.component.scss'],
+    standalone: false
 })
 export class ProductInformationComponent {
 

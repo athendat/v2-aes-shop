@@ -5,9 +5,10 @@ import { Product } from '../../../../../../shared/interface/product.interface';
 import { Option } from '../../../../../../shared/interface/theme-option.interface';
 
 @Component({
-  selector: 'app-product-social-share',
-  templateUrl: './product-social-share.component.html',
-  styleUrls: ['./product-social-share.component.scss']
+    selector: 'app-product-social-share',
+    templateUrl: './product-social-share.component.html',
+    styleUrls: ['./product-social-share.component.scss'],
+    standalone: false
 })
 export class ProductSocialShareComponent {
 

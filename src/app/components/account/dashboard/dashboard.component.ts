@@ -11,6 +11,7 @@ import { AuthStore } from 'src/app/shared/store/auth.store';
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DashboardComponent {
 

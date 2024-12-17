@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Pipe({
-  name: 'summary'
+    name: 'summary',
+    standalone: false
 })
 export class SummaryPipe implements PipeTransform {
 

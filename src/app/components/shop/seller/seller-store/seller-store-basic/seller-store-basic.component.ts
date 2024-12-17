@@ -3,9 +3,10 @@ import { Stores } from '../../../../../shared/interface/store.interface';
 import { StoreService } from '../../../../../shared/services/store.service';
 
 @Component({
-  selector: 'app-seller-store-basic',
-  templateUrl: './seller-store-basic.component.html',
-  styleUrls: ['./seller-store-basic.component.scss']
+    selector: 'app-seller-store-basic',
+    templateUrl: './seller-store-basic.component.html',
+    styleUrls: ['./seller-store-basic.component.scss'],
+    standalone: false
 })
 export class SellerStoreBasicComponent {
 

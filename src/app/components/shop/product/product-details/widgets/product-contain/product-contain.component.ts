@@ -16,6 +16,7 @@ import { AuthStore } from 'src/app/shared/store/auth.store';
     selector: 'app-product-contain',
     templateUrl: './product-contain.component.html',
     styleUrls: ['./product-contain.component.scss'],
+    standalone: false
 })
 export class ProductContainComponent {
 

@@ -9,9 +9,10 @@ import { ThemeOptionService } from '../../../shared/services/theme-option.servic
 import * as data from  '../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-osaka',
-  templateUrl: './osaka.component.html',
-  styleUrls: ['./osaka.component.scss']
+    selector: 'app-osaka',
+    templateUrl: './osaka.component.html',
+    styleUrls: ['./osaka.component.scss'],
+    standalone: false
 })
 export class OsakaComponent {
 

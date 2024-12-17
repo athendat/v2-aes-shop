@@ -4,9 +4,10 @@ import * as data from  '../../../../shared/data/owl-carousel';
 import { AttributeService } from '../../../../shared/services/attribute.service';
 
 @Component({
-  selector: 'app-collection-category-sidebar',
-  templateUrl: './collection-category-sidebar.component.html',
-  styleUrls: ['./collection-category-sidebar.component.scss']
+    selector: 'app-collection-category-sidebar',
+    templateUrl: './collection-category-sidebar.component.html',
+    styleUrls: ['./collection-category-sidebar.component.scss'],
+    standalone: false
 })
 export class CollectionCategorySidebarComponent {
 

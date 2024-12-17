@@ -9,9 +9,10 @@ import { Values } from '../../../../../shared/interface/setting.interface';
 import { SelectedCurrency } from '../../../../../shared/action/setting.action';
 
 @Component({
-  selector: 'app-currency',
-  templateUrl: './currency.component.html',
-  styleUrls: ['./currency.component.scss']
+    selector: 'app-currency',
+    templateUrl: './currency.component.html',
+    styleUrls: ['./currency.component.scss'],
+    standalone: false
 })
 export class CurrencyComponent {
 

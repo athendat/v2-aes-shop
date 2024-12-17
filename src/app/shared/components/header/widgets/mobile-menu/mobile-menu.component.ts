@@ -3,9 +3,10 @@ import { NavigationEnd, Router } from '@angular/router';
 import { MobileMenu } from '../../../../../shared/interface/menu.interface';
 
 @Component({
-  selector: 'app-mobile-menu',
-  templateUrl: './mobile-menu.component.html',
-  styleUrls: ['./mobile-menu.component.scss']
+    selector: 'app-mobile-menu',
+    templateUrl: './mobile-menu.component.html',
+    styleUrls: ['./mobile-menu.component.scss'],
+    standalone: false
 })
 export class MobileMenuComponent {
 

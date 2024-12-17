@@ -8,9 +8,10 @@ import { UpdateCart, DeleteCart } from '../../../shared/action/cart.action';
 import { AddToWishlist } from '../../../shared/action/wishlist.action';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+    selector: 'app-cart',
+    templateUrl: './cart.component.html',
+    styleUrls: ['./cart.component.scss'],
+    standalone: false
 })
 export class CartComponent {
 

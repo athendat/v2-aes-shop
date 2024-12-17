@@ -8,9 +8,10 @@ import { SendRefundRequest } from '../../../../../shared/action/refund.action';
 import { Product } from '../../../../../shared/interface/product.interface';
 
 @Component({
-  selector: 'app-refund-modal',
-  templateUrl: './refund-modal.component.html',
-  styleUrls: ['./refund-modal.component.scss']
+    selector: 'app-refund-modal',
+    templateUrl: './refund-modal.component.html',
+    styleUrls: ['./refund-modal.component.scss'],
+    standalone: false
 })
 export class RefundModalComponent {
 

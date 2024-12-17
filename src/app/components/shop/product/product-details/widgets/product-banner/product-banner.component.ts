@@ -2,9 +2,10 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { Link } from '../../../../../../shared/interface/theme.interface';
 
 @Component({
-  selector: 'app-product-banner',
-  templateUrl: './product-banner.component.html',
-  styleUrls: ['./product-banner.component.scss']
+    selector: 'app-product-banner',
+    templateUrl: './product-banner.component.html',
+    styleUrls: ['./product-banner.component.scss'],
+    standalone: false
 })
 export class ProductBannerComponent {
 

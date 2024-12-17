@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-theme-home-banner',
-  templateUrl: './home-banner.component.html',
-  styleUrls: ['./home-banner.component.scss']
+    selector: 'app-theme-home-banner',
+    templateUrl: './home-banner.component.html',
+    styleUrls: ['./home-banner.component.scss'],
+    standalone: false
 })
 export class HomeBannerComponent {
 

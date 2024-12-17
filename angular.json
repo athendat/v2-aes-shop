@@ -15,14 +15,15 @@
         "prefix": "app",
         "architect": {
           "build": {
-            "builder": "@angular-devkit/build-angular:browser",
+            "builder": "@angular-devkit/build-angular:application",
             "options": {
               "allowedCommonJsDependencies": [
                 "feather-icons"
               ],
-              "outputPath": "dist/v2-aes-shop/browser",
+              "outputPath": {
+                "base": "dist/v2-aes-shop"
+              },
               "index": "src/index.html",
-              "main": "src/main.ts",
               "polyfills": [
                 "zone.js"
               ],
@@ -35,7 +36,18 @@
               "styles": [
                 "src/styles.scss"
               ],
-              "scripts": []
+              "scripts": [],
+              "browser": "src/main.ts",
+              "server": "src/main.server.ts",
+              "stylePreprocessorOptions": {
+                "includePaths": [
+                  "."
+                ]
+              },
+              "prerender": true,
+              "ssr": {
+                "entry": "src/server.ts"
+              }
             },
             "configurations": {
               "production": {
@@ -60,9 +72,7 @@
                 "outputHashing": "all"
               },
               "development": {
-                "buildOptimizer": false,
                 "optimization": false,
-                "vendorChunk": true,
                 "extractLicenses": false,
                 "sourceMap": true,
                 "namedChunks": true
@@ -106,61 +116,6 @@
               ],
               "scripts": []
             }
-          },
-          "server": {
-            "builder": "@angular-devkit/build-angular:server",
-            "options": {
-              "outputPath": "dist/v2-aes-shop/server",
-              "main": "server.ts",
-              "tsConfig": "tsconfig.server.json",
-              "inlineStyleLanguage": "scss"
-            },
-            "configurations": {
-              "production": {
-                "outputHashing": "media"
-              },
-              "development": {
-                "buildOptimizer": false,
-                "optimization": false,
-                "sourceMap": true,
-                "extractLicenses": false,
-                "vendorChunk": true
-              }
-            },
-            "defaultConfiguration": "production"
-          },
-          "serve-ssr": {
-            "builder": "@angular-devkit/build-angular:ssr-dev-server",
-            "configurations": {
-              "development": {
-                "browserTarget": "v2-aes-shop:build:development",
-                "serverTarget": "v2-aes-shop:server:development"
-              },
-              "production": {
-                "browserTarget": "v2-aes-shop:build:production",
-                "serverTarget": "v2-aes-shop:server:production"
-              }
-            },
-            "defaultConfiguration": "development"
-          },
-          "prerender": {
-            "builder": "@angular-devkit/build-angular:prerender",
-            "options": {
-              "routes": [
-                "/"
-              ]
-            },
-            "configurations": {
-              "production": {
-                "browserTarget": "v2-aes-shop:build:production",
-                "serverTarget": "v2-aes-shop:server:production"
-              },
-              "development": {
-                "browserTarget": "v2-aes-shop:build:development",
-                "serverTarget": "v2-aes-shop:server:development"
-              }
-            },
-            "defaultConfiguration": "production"
           }
         }
       }

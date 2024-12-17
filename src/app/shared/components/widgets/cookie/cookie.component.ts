@@ -5,9 +5,10 @@ import { ThemeOptionState } from '../../../state/theme-option.state';
 import { UpdateSession } from 'src/app/shared/action/theme-option.action';
 
 @Component({
-  selector: 'app-cookie',
-  templateUrl: './cookie.component.html',
-  styleUrls: ['./cookie.component.scss']
+    selector: 'app-cookie',
+    templateUrl: './cookie.component.html',
+    styleUrls: ['./cookie.component.scss'],
+    standalone: false
 })
 export class CookieComponent {
 

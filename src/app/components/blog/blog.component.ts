@@ -11,9 +11,10 @@ import { BlogModel } from '../../shared/interface/blog.interface';
 import { Option } from '../../shared/interface/theme-option.interface';
 
 @Component({
-  selector: 'app-blogs',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss']
+    selector: 'app-blogs',
+    templateUrl: './blog.component.html',
+    styleUrls: ['./blog.component.scss'],
+    standalone: false
 })
 export class BlogComponent {
 

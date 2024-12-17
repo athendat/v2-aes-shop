@@ -6,9 +6,10 @@ import { Values } from '../shared/interface/setting.interface';
 import { GetSettingOption } from '../shared/action/setting.action';
 
 @Component({
-  selector: 'app-maintenance',
-  templateUrl: './maintenance.component.html',
-  styleUrls: ['./maintenance.component.scss']
+    selector: 'app-maintenance',
+    templateUrl: './maintenance.component.html',
+    styleUrls: ['./maintenance.component.scss'],
+    standalone: false
 })
 export class MaintenanceComponent {
 

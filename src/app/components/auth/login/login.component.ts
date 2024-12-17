@@ -16,7 +16,8 @@ import { Breadcrumb } from '../../../shared/interface/breadcrumb';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LoginComponent implements OnInit {
 

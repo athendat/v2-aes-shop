@@ -12,7 +12,8 @@ import { ReviewModel } from '../../../../../../shared/interface/review.interface
 @Component({
     selector: 'app-product-details-tabs',
     templateUrl: './product-details-tabs.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProductDetailsTabsComponent {
 

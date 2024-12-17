@@ -6,9 +6,10 @@ import { MarkAsReadNotification } from '../../../shared/action/notification.acti
 import { Notification } from "../../../shared/interface/notification.interface";
 
 @Component({
-  selector: 'app-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss']
+    selector: 'app-notification',
+    templateUrl: './notification.component.html',
+    styleUrls: ['./notification.component.scss'],
+    standalone: false
 })
 export class NotificationComponent {
 

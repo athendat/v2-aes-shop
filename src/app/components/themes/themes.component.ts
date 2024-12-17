@@ -10,6 +10,7 @@ import { ThemeOptionService } from '../../shared/services/theme-option.service';
     selector: 'app-themes',
     templateUrl: './themes.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ThemesComponent {
 

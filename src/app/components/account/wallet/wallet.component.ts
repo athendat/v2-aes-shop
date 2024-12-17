@@ -9,7 +9,8 @@ import { Params } from '../../../shared/interface/core.interface';
 @Component({
     selector: 'app-wallet',
     templateUrl: './wallet.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WalletComponent {
 

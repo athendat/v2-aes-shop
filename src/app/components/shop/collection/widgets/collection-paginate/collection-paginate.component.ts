@@ -8,9 +8,10 @@ import { Params } from '../../../../../shared/interface/core.interface';
 import { ProductState } from '../../../../../shared/state/product.state';
 
 @Component({
-  selector: 'app-collection-paginate',
-  templateUrl: './collection-paginate.component.html',
-  styleUrls: ['./collection-paginate.component.scss']
+    selector: 'app-collection-paginate',
+    templateUrl: './collection-paginate.component.html',
+    styleUrls: ['./collection-paginate.component.scss'],
+    standalone: false
 })
 export class CollectionPaginateComponent {
 

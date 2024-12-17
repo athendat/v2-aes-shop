@@ -5,9 +5,10 @@ import { WishlistModel } from '../../../../interface/wishlist.interface';
 import { WishlistState } from '../../../../state/wishlist.state';
 
 @Component({
-  selector: 'app-header-wishlist',
-  templateUrl: './wishlist.component.html',
-  styleUrls: ['./wishlist.component.scss']
+    selector: 'app-header-wishlist',
+    templateUrl: './wishlist.component.html',
+    styleUrls: ['./wishlist.component.scss'],
+    standalone: false
 })
 export class WishlistComponent {
 

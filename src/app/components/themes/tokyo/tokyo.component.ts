@@ -8,9 +8,10 @@ import { ThemeOptionService } from '../../../shared/services/theme-option.servic
 import * as data from  '../../../shared/data/owl-carousel';
 
 @Component({
-  selector: 'app-tokyo',
-  templateUrl: './tokyo.component.html',
-  styleUrls: ['./tokyo.component.scss']
+    selector: 'app-tokyo',
+    templateUrl: './tokyo.component.html',
+    styleUrls: ['./tokyo.component.scss'],
+    standalone: false
 })
 export class TokyoComponent {
 

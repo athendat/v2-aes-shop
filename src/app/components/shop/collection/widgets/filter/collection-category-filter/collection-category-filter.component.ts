@@ -7,9 +7,10 @@ import { Category, CategoryModel } from '../../../../../../shared/interface/cate
 import { CategoryState } from '../../../../../../shared/state/category.state';
 
 @Component({
-  selector: 'app-collection-category-filter',
-  templateUrl: './collection-category-filter.component.html',
-  styleUrls: ['./collection-category-filter.component.scss']
+    selector: 'app-collection-category-filter',
+    templateUrl: './collection-category-filter.component.html',
+    styleUrls: ['./collection-category-filter.component.scss'],
+    standalone: false
 })
 export class CollectionCategoryFilterComponent {
 

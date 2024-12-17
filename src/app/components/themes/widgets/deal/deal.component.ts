@@ -12,9 +12,10 @@ import { ProductDetailModalComponent } from 'src/app/shared/components/widgets/m
 
 
 @Component({
-  selector: 'app-deal',
-  templateUrl: './deal.component.html',
-  styleUrls: ['./deal.component.scss']
+    selector: 'app-deal',
+    templateUrl: './deal.component.html',
+    styleUrls: ['./deal.component.scss'],
+    standalone: false
 })
 export class DealComponent {
 

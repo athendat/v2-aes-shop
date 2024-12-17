@@ -6,9 +6,10 @@ import { SliderProductsTokyo } from '../../../../shared/interface/theme.interfac
 import { ProductState } from '../../../../shared/state/product.state';
 
 @Component({
-  selector: 'app-four-column-product',
-  templateUrl: './four-column-product.component.html',
-  styleUrls: ['./four-column-product.component.scss']
+    selector: 'app-four-column-product',
+    templateUrl: './four-column-product.component.html',
+    styleUrls: ['./four-column-product.component.scss'],
+    standalone: false
 })
 export class FourColumnProductComponent {
 

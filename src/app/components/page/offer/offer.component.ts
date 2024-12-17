@@ -8,9 +8,10 @@ import { GetCoupons } from '../../../shared/action/coupon.action';
 import { CouponModel } from '../../../shared/interface/coupon.interface';
 
 @Component({
-  selector: 'app-offer',
-  templateUrl: './offer.component.html',
-  styleUrls: ['./offer.component.scss']
+    selector: 'app-offer',
+    templateUrl: './offer.component.html',
+    styleUrls: ['./offer.component.scss'],
+    standalone: false
 })
 export class OfferComponent {
 
