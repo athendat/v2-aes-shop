@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Params } from '../../../../../../shared/interface/core.interface';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,6 +13,9 @@ import { TitleCasePipe } from '../../../../../../shared/pipe/title-case.pipe';
     imports: [TitleCasePipe, TranslateModule]
 })
 export class CollectionFilterComponent implements OnChanges {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
 
   @Input() filter: Params;
   public filters: string[];
@@ -24,9 +27,6 @@ export class CollectionFilterComponent implements OnChanges {
     price: [],
     attribute: []
   };
-
-  constructor(private route: ActivatedRoute,
-    private router: Router) {}
 
   ngOnChanges() {
     this.filtersObj = {

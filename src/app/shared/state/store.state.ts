@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
@@ -26,9 +26,9 @@ export class StoreStateModel {
 })
 @Injectable()
 export class StoreState {
-  
-  constructor(private storeService: StoreService,
-    private router: Router) {}
+  private storeService = inject(StoreService);
+  private router = inject(Router);
+
 
   @Selector()
   static store(state: StoreStateModel) {

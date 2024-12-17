@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { OrderState } from '../../../shared/state/order.state';
@@ -23,6 +23,8 @@ import { AsyncPipe, DatePipe } from '@angular/common';
       AsyncPipe, DatePipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]
 })
 export class OrdersComponent {
+  private store = inject(Store);
+
 
 
   @Select(OrderState.order) order$: Observable<OrderModel>;
@@ -32,7 +34,7 @@ export class OrdersComponent {
     'paginate': 10, // Display per page,
   };
 
-  constructor(private store: Store) {
+  constructor() {
     this.store.dispatch(new GetOrders(this.filter));
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -24,6 +24,9 @@ import { BreadcrumbComponent } from '../../../../shared/components/widgets/bread
     imports: [BreadcrumbComponent, SellerDetailsBasicComponent, SellerDetailsClassicComponent, AsyncPipe]
 })
 export class SellerDetailsComponent {
+  private route = inject(ActivatedRoute);
+  private store = inject(Store);
+
 
   @Select(ProductState.product) product$: Observable<ProductModel>;
   @Select(ThemeOptionState.themeOptions) themeOptions$: Observable<Option>;
@@ -52,8 +55,7 @@ export class SellerDetailsComponent {
 
   public totalItems: number = 0;
 
-  constructor(private route: ActivatedRoute,
-    private store: Store) {
+  constructor() {
 
     // Get Query params..
     this.route.queryParams.subscribe(params => {

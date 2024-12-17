@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 import { Store } from "@ngxs/store";
 import { Router } from "@angular/router";
@@ -24,6 +24,10 @@ import { BreadcrumbComponent } from "../../../shared/components/widgets/breadcru
 ],
 })
 export class ForgotPasswordComponent {
+  private store = inject(Store);
+  router = inject(Router);
+  formBuilder = inject(FormBuilder);
+
 
   public form: FormGroup;
   public breadcrumb: Breadcrumb = {
@@ -31,9 +35,7 @@ export class ForgotPasswordComponent {
     items: [{ label: 'Forgot Password', active: true }]
   }
 
-  constructor(private store: Store, 
-    public router: Router, 
-    public formBuilder: FormBuilder ) {
+  constructor() {
     this.form = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]]
     });

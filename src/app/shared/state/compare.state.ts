@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Router } from '@angular/router';
 import { Store, Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
@@ -21,9 +21,10 @@ export class CompareStateModel {
 
 @Injectable()
 export class CompareState {
+  private store = inject(Store);
+  router = inject(Router);
+  private compareService = inject(CompareService);
 
-  constructor(private store: Store, public router: Router,
-    private compareService: CompareService){}
 
   @Selector()
   static compareItems(state: CompareStateModel) {

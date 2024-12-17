@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Params } from '../interface/core.interface';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -9,10 +9,10 @@ import { QnAModel } from '../interface/questions-answers.interface';
   providedIn: 'root'
 })
 export class QuestionsAnswersService {
+  private http = inject(HttpClient);
+
 
   public skeletonLoader: boolean = false;
-
-  constructor(private http: HttpClient) {}
 
   getQuestionAnswers(slug: Params): Observable<QnAModel> {
     return this.http.get<QnAModel>(`${environment.URL}/questions.json`,  { params: slug });

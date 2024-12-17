@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Product } from '../../../../../../shared/interface/product.interface';
@@ -21,6 +21,8 @@ import { RouterLink } from '@angular/router';
     imports: [RouterLink, ButtonComponent, CurrencySymbolPipe, TranslateModule]
 })
 export class ProductBundleComponent {
+  private store = inject(Store);
+
 
   @Select(ProductState.relatedProducts) crossSellproduct$: Observable<Product[]>;
   @Select(CartState.cartItems) cartItem$: Observable<Cart[]>;
@@ -34,8 +36,6 @@ export class ProductBundleComponent {
   public selectedProductIds: number[] = [];
 
   public total: number = 0;
-
-  constructor(private store: Store) {}
 
   ngOnInit() {
   }

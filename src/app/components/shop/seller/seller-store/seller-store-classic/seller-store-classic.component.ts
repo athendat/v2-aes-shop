@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Stores } from '../../../../../shared/interface/store.interface';
 import { StoreService } from '../../../../../shared/services/store.service';
 import { TranslateModule } from '@ngx-translate/core';
@@ -18,10 +18,10 @@ import { SkeletonSellerStoreComponent } from '../skeleton-seller-store/skeleton-
     imports: [SkeletonSellerStoreComponent, SellerContactDetailsComponent, SellerStoreNameComponent, SellerStoreRatingComponent, RouterLink, SellerStoreLogoComponent, TranslateModule]
 })
 export class SellerStoreClassicComponent {
+  storeService = inject(StoreService);
+
 
   @Input() stores: Stores[];
   @Input() skeletonItems: number[];
-
-  constructor(public storeService: StoreService) { }
   
 }

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { tap } from "rxjs";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { NotificationService } from "../services/notification.service";
@@ -24,8 +24,8 @@ export class ReviewStateModel {
 })
 @Injectable()
 export class ReviewState {
+  private reviewsService = inject(ReviewService);
 
-  constructor(private reviewsService: ReviewService ) {}
 
   @Selector()
   static review(state: ReviewStateModel) {

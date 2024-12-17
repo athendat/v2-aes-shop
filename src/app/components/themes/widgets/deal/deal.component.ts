@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, SimpleChanges, ViewChild, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { NgbRatingConfig, NgbRating } from '@ng-bootstrap/ng-bootstrap';
@@ -23,6 +23,9 @@ import { ProductDetailModalComponent } from '../../../../shared/components/widge
     imports: [NgStyle, CarouselModule, NgbRating, CurrencySymbolPipe, TranslateModule]
 })
 export class DealComponent {
+  config = inject(NgbRatingConfig);
+  private store = inject(Store);
+
 
   @Input() data?: DealOfDays;
 
@@ -32,7 +35,9 @@ export class DealComponent {
   public dealSlider = data.singleSlider
   public deals: Deal[] = [];
 
-  constructor(public config: NgbRatingConfig, private store: Store) {
+  constructor() {
+		const config = this.config;
+
 		config.max = 5;
 		config.readonly = true;
   }

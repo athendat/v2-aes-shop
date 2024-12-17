@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ThemeOptionState } from '../../../state/theme-option.state';
@@ -13,12 +13,14 @@ import { UpdateSession } from '../../../action/theme-option.action';
     imports: [TranslateModule]
 })
 export class CookieComponent {
+  private store = inject(Store);
+
 
   @Select(ThemeOptionState.cookies) cookies$: Observable<boolean>;
 
   public cookies: boolean = true;
 
-  constructor(private store: Store){
+  constructor(){
     this.cookies$.subscribe(res => this.cookies = res);
   }
 

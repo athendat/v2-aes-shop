@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetUserTransaction } from "../action/point.action";
@@ -29,8 +29,8 @@ export class PointStateModel {
 })
 @Injectable()
 export class PointState {
-  
-  constructor(private pointService: PointService) {}
+  private pointService = inject(PointService);
+
 
   @Selector()
   static point(state: PointStateModel) {

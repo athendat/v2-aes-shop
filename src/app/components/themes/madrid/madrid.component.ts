@@ -1,4 +1,4 @@
-import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { Component, Input, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Store  } from '@ngxs/store';
 import { forkJoin } from 'rxjs';
@@ -25,6 +25,10 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     imports: [HomeBannerComponent, BannerComponent, TitleComponent, CategoriesComponent, ProductComponent, WalletOfferComponent, DealComponent, ImageLinkComponent, BlogComponent]
 })
 export class MadridComponent {
+  private store = inject(Store);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private themeOptionService = inject(ThemeOptionService);
+
 
   @Input() data?: Madrid;
   @Input() slug?: string;
@@ -33,10 +37,6 @@ export class MadridComponent {
   public productSlider6Item = data.productSlider6Item;
   public productSlider6ItemMargin = data.productSlider6ItemMargin;
   public customOptionsItem4 = data.customOptionsItem4;
-
-  constructor(private store: Store,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private themeOptionService: ThemeOptionService) {}
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) { // For SSR 

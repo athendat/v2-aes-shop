@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NotificationService } from '../../../services/notification.service';
 
 export interface Alert {
@@ -14,13 +14,15 @@ export interface Alert {
     imports: []
 })
 export class AlertComponent {
+  private notificationService = inject(NotificationService);
+
 
   public alert: Alert = {
     type: null,
     message: null
   };
 
-  constructor(private notificationService: NotificationService) { 
+  constructor() { 
     this.notificationService.alertSubject.subscribe(alert => {
       this.alert = <Alert>alert;
     })

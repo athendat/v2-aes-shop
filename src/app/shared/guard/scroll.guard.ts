@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Event, Scroll, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs';
@@ -7,8 +7,9 @@ import { filter } from 'rxjs';
   providedIn: 'root',
 })
 export class ScrollPositionGuard   {
+  private viewportScroller = inject(ViewportScroller);
+  private router = inject(Router);
 
-  constructor(private viewportScroller: ViewportScroller, private router: Router) {}
 
   canActivate(): boolean {
     this.router.events.pipe(filter((e: Event): e is Scroll => e instanceof Scroll))

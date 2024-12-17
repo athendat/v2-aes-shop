@@ -1,4 +1,4 @@
-import { Component, Input, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Input, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { environment } from '../../../../../../../environments/environment';
 import { Product } from '../../../../../../shared/interface/product.interface';
@@ -13,13 +13,13 @@ import { TranslateModule } from '@ngx-translate/core';
     imports: [TranslateModule]
 })
 export class ProductSocialShareComponent {
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @Input() product: Product;
   @Input() option: Option | null;
 
   url: string = environment.baseURL;
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object){}
 
   shareOnFacebook(slug: string) {
     if (isPlatformBrowser(this.platformId)) { // For SSR

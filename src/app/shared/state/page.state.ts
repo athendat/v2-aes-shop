@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { tap } from "rxjs";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { PageService } from "../services/page.service";
@@ -33,8 +33,8 @@ export class PageStateModel {
 })
 @Injectable()
 export class PageState {
+  private pageService = inject(PageService);
 
-  constructor(private pageService: PageService ) {}
 
   @Selector()
   static faq(state: PageStateModel) {

@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, TemplateRef, ViewChild, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser, AsyncPipe } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -21,6 +21,11 @@ import { ButtonComponent } from '../../button/button.component';
     imports: [ButtonComponent, ReactiveFormsModule, Select2Module, AsyncPipe, TranslateModule]
 })
 export class AddressModalComponent {
+  private modalService = inject(NgbModal);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private store = inject(Store);
+  private formBuilder = inject(FormBuilder);
+
 
   public form: FormGroup;
   public closeResult: string;
@@ -34,10 +39,7 @@ export class AddressModalComponent {
   @ViewChild("addressModal", { static: false }) AddressModal: TemplateRef<string>;
   @Select(CountryState.countries) countries$: Observable<Select2Data>;
 
-  constructor(private modalService: NgbModal,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private store: Store,
-    private formBuilder: FormBuilder) {
+  constructor() {
       this.isBrowser = isPlatformBrowser(this.platformId);
     this.form = this.formBuilder.group({
       title: new FormControl('', [Validators.required]),

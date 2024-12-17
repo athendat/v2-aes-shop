@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store, Select  } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -23,14 +23,16 @@ import { AsyncPipe } from '@angular/common';
       RomeComponent, MadridComponent, BerlinComponent, DenverComponent, AsyncPipe]
 })
 export class ThemesComponent {
+  private store = inject(Store);
+  private route = inject(ActivatedRoute);
+  private themeOptionService = inject(ThemeOptionService);
+
 
   @Select(ThemeState.homePage) homePage$: Observable<any>;
 
   public slug: string;
 
-  constructor(private store: Store,
-    private route: ActivatedRoute,
-    private themeOptionService: ThemeOptionService) {
+  constructor() {
     this.route.params.subscribe(params => {
       this.themeOptionService.preloader = true;
       this.slug = params['slug'] ? params['slug'] : 'paris';

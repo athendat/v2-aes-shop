@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Params } from '../../../../../../shared/interface/core.interface';
 import { Attribute } from '../../../../../../shared/interface/attribute.interface';
@@ -12,15 +12,14 @@ import { NgStyle } from '@angular/common';
     imports: [NgStyle]
 })
 export class CollectionAttributesComponent {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
 
   @Input() attribute: Attribute;
   @Input() filter: Params;
 
   public selectedAttributes: string[] = [];
-
-  constructor(private route: ActivatedRoute,
-    private router: Router){
-  }
 
   ngOnChanges() {
     this.selectedAttributes = this.filter['attribute'] ? this.filter['attribute'].split(',') : [];

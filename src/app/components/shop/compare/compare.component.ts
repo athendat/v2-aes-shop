@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Breadcrumb } from '../../../shared/interface/breadcrumb';
@@ -24,6 +24,9 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
       AsyncPipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]
 })
 export class CompareComponent {
+  private store = inject(Store);
+  compareService = inject(CompareService);
+
 
   public breadcrumb: Breadcrumb = {
     title: "Compare",
@@ -34,7 +37,7 @@ export class CompareComponent {
 
   @Select(CompareState.compareItems) compareItems$: Observable<Product[]>;
 
-  constructor(private store: Store, public compareService: CompareService) {
+  constructor() {
     this.store.dispatch(new GetCompare());
   }
 

@@ -1,4 +1,4 @@
-import { Component, ViewChild, TemplateRef, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, ViewChild, TemplateRef, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Select, Store } from '@ngxs/store';
@@ -17,6 +17,10 @@ import { ButtonComponent } from '../../button/button.component';
     imports: [ButtonComponent, ReactiveFormsModule, FormsModule, TranslateModule]
 })
 export class NewsletterModalComponent {
+  private modalService = inject(NgbModal);
+  private store = inject(Store);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @ViewChild("newsletterModal", { static: true }) NewsletterModal: TemplateRef<string>;
 
@@ -26,8 +30,7 @@ export class NewsletterModalComponent {
   public modalOpen: boolean = true;
   public newsletter: boolean;
 
-  constructor(private modalService: NgbModal, private store: Store,
-    @Inject(PLATFORM_ID) private platformId: Object){
+  constructor(){
     this.newsletter$.subscribe(res => this.newsletter = res);
   }
 

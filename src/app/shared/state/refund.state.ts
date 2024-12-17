@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetRefund, SendRefundRequest } from "../action/refund.action";
@@ -24,8 +24,8 @@ export class RefundStateModel {
 
 @Injectable()
 export class RefundState {
+  private refundService = inject(RefundService);
 
-  constructor(private refundService: RefundService) {}
 
   @Selector()
   static refund(state: RefundStateModel) {

@@ -1,4 +1,4 @@
-import { Component, Inject, NgZone } from '@angular/core';
+import { Component, NgZone, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ThemeOptionState } from './shared/state/theme-option.state';
 import { Observable } from 'rxjs';
@@ -18,6 +18,12 @@ import { Logout } from './shared/action/auth.action';
 })
 
 export class AppComponent {
+  private actions = inject(Actions);
+  private router = inject(Router);
+  private titleService = inject(Title);
+  private ngZone = inject(NgZone);
+  private meta = inject(Meta);
+
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
 
@@ -29,11 +35,10 @@ export class AppComponent {
   private currentMessage: string;
   private delay = 1000; // Delay between messages in milliseconds
 
-  constructor(
-    @Inject(DOCUMENT) document: Document,
-    config: NgbRatingConfig, private actions: Actions,
-    private router: Router, private titleService: Title,
-    private ngZone: NgZone, private meta: Meta) {
+  constructor() {
+    const document = inject<Document>(DOCUMENT);
+    const config = inject(NgbRatingConfig);
+
 
     config.max = 5;
     config.readonly = true;

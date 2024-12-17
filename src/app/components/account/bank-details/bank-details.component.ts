@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -16,13 +16,15 @@ import { ButtonComponent } from '../../../shared/components/widgets/button/butto
     imports: [ReactiveFormsModule, ButtonComponent, TranslateModule]
 })
 export class BankDetailsComponent {
+  private store = inject(Store);
+
 
   @Select(PaymentDetailsState.paymentDetails) paymentDetails$: Observable<PaymentDetails>;
   
   public form: FormGroup;
   public active = 'bank';
 
-  constructor(private store: Store) {
+  constructor() {
     this.form = new FormGroup({
       bank_account_no: new FormControl(),
       bank_name: new FormControl(),

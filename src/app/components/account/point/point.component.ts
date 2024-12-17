@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { SettingState } from '../../../shared/state/setting.state';
@@ -24,6 +24,8 @@ import { AsyncPipe, DatePipe } from '@angular/common';
       DatePipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]
 })
 export class PointComponent {
+  private store = inject(Store);
+
 
   @Select(SettingState.setting) setting$: Observable<Values>;
   @Select(PointState.point) point$: Observable<Point>;
@@ -33,7 +35,7 @@ export class PointComponent {
     'paginate': 10, // Display per page,
   };
 
-  constructor(private store: Store) {
+  constructor() {
     this.store.dispatch(new GetUserTransaction(this.filter));
   }
 

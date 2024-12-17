@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, TemplateRef, ViewChild, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ModalDismissReasons, NgbModal, NgbRating } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from '../../../../../shared/interface/product.interface';
@@ -21,6 +21,10 @@ import { ButtonComponent } from '../../button/button.component';
 ],
 })
 export class ReviewModalComponent {
+  private modalService = inject(NgbModal);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private store = inject(Store);
+
 
   @ViewChild("reviewModal", { static: false }) ReviewModal: TemplateRef<string>;
 
@@ -32,9 +36,7 @@ export class ReviewModalComponent {
   public form: FormGroup;
   public type: string;
 
-  constructor( private modalService: NgbModal, 
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private store: Store ){
+  constructor(){
     this.form = new FormGroup({
       rating: new FormControl('', [Validators.required]),
       description: new FormControl('')

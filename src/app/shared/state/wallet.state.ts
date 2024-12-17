@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetUserTransaction } from "../action/wallet.action";
@@ -29,8 +29,8 @@ export class WalletStateModel {
 })
 @Injectable()
 export class WalletState {
-  
-  constructor(private walletService: WalletService) {}
+  private walletService = inject(WalletService);
+
 
   @Selector()
   static wallet(state: WalletStateModel) {

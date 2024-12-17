@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { GetWishlist } from './../../../shared/action/wishlist.action';
@@ -20,6 +20,9 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     imports: [BreadcrumbComponent, SkeletonProductBoxComponent, ProductBoxComponent, NoDataComponent, AsyncPipe]
 })
 export class WishlistComponent {
+  private store = inject(Store);
+  wishlistService = inject(WishlistService);
+
 
   @Select(WishlistState.wishlistItems) wishlistItems$: Observable<WishlistModel>;
 
@@ -30,8 +33,7 @@ export class WishlistComponent {
 
   public skeletonItems = Array.from({ length: 12 }, (_, index) => index);
 
-  constructor(private store: Store, 
-    public wishlistService: WishlistService){
+  constructor(){
     this.store.dispatch(new GetWishlist())
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Cart, CartAddOrUpdate } from '../../../../interface/cart.interface';
@@ -34,6 +34,9 @@ import { NgClass, NgStyle, AsyncPipe } from '@angular/common';
 ],
 })
 export class CartComponent {
+  private store = inject(Store);
+  cartService = inject(CartService);
+
 
   @Select(CartState.cartItems) cartItem$: Observable<Cart[]>;
   @Select(CartState.cartTotal) cartTotal$: Observable<number>;
@@ -53,7 +56,7 @@ export class CartComponent {
   public confetti: number = 0;
   public loader: boolean = false;
 
-  constructor(private store: Store, public cartService: CartService) {
+  constructor() {
     this.store.dispatch(new GetCartItems());
     this.themeOption$.subscribe(option => this.cartStyle = option?.general?.cart_style);
 

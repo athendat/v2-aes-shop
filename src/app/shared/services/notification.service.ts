@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -11,15 +11,15 @@ import { NotificationModel } from '../interface/notification.interface';
   providedIn: 'root'
 })
 export class NotificationService {
+  private zone = inject(NgZone);
+  private http = inject(HttpClient);
+  private modalService = inject(NgbModal);
+  private toastr = inject(ToastrService);
+
 
   public alertSubject = new Subject();
 
   public notification: boolean = true;
-
-  constructor(private zone: NgZone,
-    private http: HttpClient,
-    private modalService: NgbModal,
-    private toastr: ToastrService) { }
 
   showSuccess(message: string): void {
     this.alertSubject.next({type: 'success', message: message});

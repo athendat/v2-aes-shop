@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AttributeService } from '../../../../../shared/services/attribute.service';
@@ -24,13 +24,15 @@ import { CollectionFilterComponent } from '../filter/collection-filter/collectio
     imports: [CollectionFilterComponent, SkeletonCollectionSidebarComponent, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, CollectionCategoryFilterComponent, CollectionAttributesComponent, CollectionPriceFilterComponent, CollectionRatingFilterComponent, AsyncPipe, TranslateModule]
 })
 export class CollectionSidebarComponent {
+  private store = inject(Store);
+  attributeService = inject(AttributeService);
+
 
   @Input() filter: Params;
 
   @Select(AttributeState.attribute) attribute$: Observable<AttributeModel>;
 
-  constructor(private store: Store,
-    public attributeService: AttributeService) {
+  constructor() {
     this.store.dispatch(new GetAttributes({ status: 1}));
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Breadcrumb } from '../../../shared/interface/breadcrumb';
@@ -19,6 +19,9 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     imports: [BreadcrumbComponent, NoDataComponent, AsyncPipe, TranslateModule]
 })
 export class OfferComponent {
+  private store = inject(Store);
+  couponService = inject(CouponService);
+
 
   public skeletonItems = Array.from({ length: 8 }, (_, index) => index);
   public breadcrumb: Breadcrumb = {
@@ -28,7 +31,7 @@ export class OfferComponent {
 
   @Select(CouponState.coupon) coupon$: Observable<CouponModel>;
 
-  constructor(private store: Store, public couponService: CouponService){
+  constructor(){
     this.store.dispatch(new GetCoupons({ status: 1 }))
   }
 

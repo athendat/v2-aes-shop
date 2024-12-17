@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetOrderStatus } from "../action/order-status.action";
@@ -25,8 +25,8 @@ export class OrderStatusStateModel {
 })
 @Injectable()
 export class OrderStatusState {
-  
-  constructor(private orderStatusService: OrderStatusService) {}
+  private orderStatusService = inject(OrderStatusService);
+
 
    @Selector()
    static orderStatus(state: OrderStatusStateModel) {

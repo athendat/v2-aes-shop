@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { SettingState } from '../shared/state/setting.state';
 import { Observable } from 'rxjs';
@@ -13,10 +13,12 @@ import { NgStyle, AsyncPipe } from '@angular/common';
     imports: [NgStyle, AsyncPipe]
 })
 export class MaintenanceComponent {
+  private store = inject(Store);
+
 
   @Select(SettingState.setting) setting$: Observable<Values>;
 
-  constructor(private store: Store){
+  constructor(){
     this.store.dispatch(new GetSettingOption());
   }
 

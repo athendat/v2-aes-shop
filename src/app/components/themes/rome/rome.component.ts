@@ -1,4 +1,4 @@
-import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { Component, Input, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser, NgStyle } from '@angular/common';
 import { Store, Select } from '@ngxs/store';
 import { Observable, forkJoin } from 'rxjs';
@@ -27,6 +27,10 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     imports: [NgStyle, HomeBannerComponent, TitleComponent, CategoriesComponent, BannerComponent, ProductComponent, ImageLinkComponent, FourColumnProductComponent, BlogComponent, NewsletterComponent]
 })
 export class RomeComponent {
+  private store = inject(Store);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private themeOptionService = inject(ThemeOptionService);
+
 
   @Input() data?: Rome;
   @Input() slug?: string;
@@ -38,10 +42,6 @@ export class RomeComponent {
   public customOptionsItem4 = data.customOptionsItem4;
   public productFilterIds: number[] = [];
   public selectedCategoryId: number;
-
-  constructor(private store: Store,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private themeOptionService: ThemeOptionService) {}
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) { // For SSR 

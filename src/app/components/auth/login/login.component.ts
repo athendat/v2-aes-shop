@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngxs/store';
@@ -26,6 +26,11 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
 ],
 })
 export class LoginComponent {
+  private store = inject(Store);
+  private router = inject(Router);
+  private formBuilder = inject(FormBuilder);
+  private authService = inject(AuthService);
+
 
   public form: FormGroup;
   public breadcrumb: Breadcrumb = {
@@ -33,12 +38,7 @@ export class LoginComponent {
     items: [{ label: 'Log in', active: true }]
   }
 
-  constructor(
-    private store: Store,
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) {
+  constructor() {
     this.form = this.formBuilder.group({
       email: new FormControl('john.customer@example.com', [Validators.required, Validators.email]),
       password: new FormControl('123456789', [Validators.required]),

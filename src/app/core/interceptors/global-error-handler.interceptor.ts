@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { ErrorService } from "../../shared/services/error.service";
 import { LoggingService } from "../../shared/services/logging.service";
 import { NotificationService } from "../../shared/services/notification.service";
@@ -7,11 +7,10 @@ import { Observable, catchError, throwError } from "rxjs";
 
 @Injectable()
 export class GlobalErrorHandlerInterceptor implements HttpInterceptor {
-  constructor(
-    private errorService: ErrorService,
-    private logger: LoggingService,
-    private notifier: NotificationService
-  ) {}
+  private errorService = inject(ErrorService);
+  private logger = inject(LoggingService);
+  private notifier = inject(NotificationService);
+
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     return next.handle(request).pipe(

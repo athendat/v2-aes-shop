@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Breadcrumb } from '../../../shared/interface/breadcrumb';
@@ -19,6 +19,9 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     imports: [BreadcrumbComponent, SkeletonPageComponent, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, AsyncPipe]
 })
 export class FaqComponent {
+  private store = inject(Store);
+  pageService = inject(PageService);
+
 
   public breadcrumb: Breadcrumb = {
     title: "FAQ's",
@@ -27,7 +30,7 @@ export class FaqComponent {
 
   @Select(PageState.faq) faq$: Observable<FaqModel>;
 
-  constructor(private store: Store, public pageService: PageService) {
+  constructor() {
     this.store.dispatch(new GetFaqs());
   }
 

@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, TemplateRef, ViewChild, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +20,10 @@ import { ButtonComponent } from '../../button/button.component';
       Select2Module, TranslateModule, CurrencySymbolPipe]
 })
 export class RefundModalComponent {
+  private modalService = inject(NgbModal);
+  private store = inject(Store);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @ViewChild("refundModal", { static: false }) RefundModal: TemplateRef<string>;
 
@@ -40,8 +44,7 @@ export class RefundModalComponent {
     }
   ]
 
-  constructor( private modalService: NgbModal, private store: Store,
-    @Inject(PLATFORM_ID) private platformId: Object ){
+  constructor(){
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.form = new FormGroup({
       reason: new FormControl('', [Validators.required]),

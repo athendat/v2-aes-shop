@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -12,15 +12,14 @@ import { ButtonComponent } from '../../../widgets/button/button.component';
     imports: [ReactiveFormsModule, ButtonComponent, TranslateModule]
 })
 export class SearchComponent {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
 
   @Input() style: string = 'basic';
 
   public term = new FormControl();
   public show: boolean = false;
-
-  constructor(private route: ActivatedRoute,
-    private router: Router) {
-  }
 
   redirectToSearch() {
     this.router.navigate(['/search'], {

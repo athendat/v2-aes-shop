@@ -1,4 +1,4 @@
-import { Component, Input, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Input, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser, AsyncPipe } from '@angular/common';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -18,6 +18,9 @@ import { ClickOutsideDirective } from '../../../../directive/out-side-directive'
     imports: [ClickOutsideDirective, ButtonComponent, AsyncPipe]
 })
 export class CurrencyComponent {
+  private store = inject(Store);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @Select(SettingState.setting) setting$: Observable<Values>;
   @Select(SettingState.selectedCurrency) selectedCurrency$: Observable<Currency>;
@@ -30,7 +33,7 @@ export class CurrencyComponent {
 
   @Select(CurrencyState.currency) currency$: Observable<CurrencyModel>;
 
-  constructor(private store: Store, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor() {
     this.selectedCurrency$.subscribe(setting => this.selectedCurrency = setting);
   }
 

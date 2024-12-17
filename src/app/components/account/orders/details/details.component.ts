@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subject, of } from 'rxjs';
@@ -25,6 +25,9 @@ import { NgClass, AsyncPipe, UpperCasePipe, TitleCasePipe, DatePipe } from '@ang
       AsyncPipe, UpperCasePipe, TitleCasePipe, DatePipe, CurrencySymbolPipe, TranslateModule]
 })
 export class OrderDetailsComponent {
+  private store = inject(Store);
+  private route = inject(ActivatedRoute);
+
 
   @Select(OrderStatusState.orderStatus) orderStatus$: Observable<OrderStatusModel>;
   @ViewChild("refundModal") RefundModal: RefundModalComponent;
@@ -34,8 +37,7 @@ export class OrderDetailsComponent {
 
   public order: Order;
 
-  constructor(private store: Store,
-    private route: ActivatedRoute) {
+  constructor() {
     this.store.dispatch(new GetOrderStatus());
   }
 

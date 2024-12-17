@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID, TemplateRef, ViewChild } from '@angular/core';
+import { Component, PLATFORM_ID, TemplateRef, ViewChild, inject } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { Store } from '@ngxs/store';
@@ -19,6 +19,10 @@ import { VariantAttributesComponent } from '../../variant-attributes/variant-att
     imports: [ButtonComponent, VariantAttributesComponent, TranslateModule, CurrencySymbolPipe]
 })
 export class VariationModalComponent {
+  private modalService = inject(NgbModal);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private store = inject(Store);
+
 
   @ViewChild("variationModal", { static: false }) VariationModal: TemplateRef<string>;
 
@@ -29,10 +33,6 @@ export class VariationModalComponent {
   public product: Product;
   public productQty: number = 1;
   public selectedVariation: Variation | null;
-
-  constructor(private modalService: NgbModal,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private store: Store){}
 
   async openModal(item: Cart) {
     if (isPlatformBrowser(this.platformId)) { // For SSR 

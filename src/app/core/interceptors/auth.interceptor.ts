@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -15,13 +15,16 @@ import { GetCountries } from '../../shared/action/country.action';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+    private store = inject(Store);
+    private router = inject(Router);
+    private notificationService = inject(NotificationService);
+
 
     @Select(SettingState.setting) setting$: Observable<Values>;
 
     public isMaintenanceModeOn: boolean = false;
 
-    constructor(private store: Store, private router: Router,
-        private notificationService: NotificationService) {
+    constructor() {
         this.store.dispatch(new GetCountries());
         this.store.dispatch(new GetStates());
         this.store.dispatch(new GetSettingOption());

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetNotification, MarkAsReadNotification, DeleteNotification } from "../action/notification.action";
@@ -24,8 +24,8 @@ export class NotificationStateModel {
 
 @Injectable()
 export class NotificationState {
-  
-  constructor(private notificationService: NotificationService) {}
+  private notificationService = inject(NotificationService);
+
 
   @Selector()
   static notification(state: NotificationStateModel) {

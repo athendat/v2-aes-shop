@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Store } from '@ngxs/store';
@@ -20,6 +20,11 @@ import { isPlatformBrowser } from '@angular/common';
     imports: [BreadcrumbComponent, ReactiveFormsModule, Select2Module, ButtonComponent, RouterLink, TranslateModule]
 })
 export class RegisterComponent {
+  private store = inject(Store);
+  private router = inject(Router);
+  private formBuilder = inject(FormBuilder);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   public form: FormGroup;
   public breadcrumb: Breadcrumb = {
@@ -30,12 +35,7 @@ export class RegisterComponent {
   public tnc = new FormControl(false, [Validators.requiredTrue]);
   public isBrowser: boolean;
   
-  constructor(
-    private store: Store,
-    private router: Router,
-    private formBuilder: FormBuilder,
-    @Inject(PLATFORM_ID) private platformId: Object,
-  ) {
+  constructor() {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.form = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),

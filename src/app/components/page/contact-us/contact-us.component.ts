@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { Select, Store } from '@ngxs/store';
@@ -18,6 +18,9 @@ import { ThemeOptionState } from '../../../shared/state/theme-option.state';
     imports: [BreadcrumbComponent, ReactiveFormsModule, ButtonComponent, TranslateModule]
 })
 export class ContactUsComponent {
+  private formBuilder = inject(FormBuilder);
+  private store = inject(Store);
+
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
 
@@ -29,8 +32,7 @@ export class ContactUsComponent {
   public form: FormGroup;
   public contactData: Contact;
 
-  constructor(private formBuilder: FormBuilder,
-    private store: Store){
+  constructor(){
     this.form = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),

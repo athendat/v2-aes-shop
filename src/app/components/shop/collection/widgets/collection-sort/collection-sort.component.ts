@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, SimpleChanges, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Output, EventEmitter, Input, SimpleChanges, PLATFORM_ID, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select2Data, Select2UpdateEvent, Select2Module } from 'ng-select2-component';
 import { Params } from '../../../../../shared/interface/core.interface';
@@ -15,6 +15,11 @@ import { isPlatformBrowser } from '@angular/common';
     imports: [Select2Module, TranslateModule]
 })
 export class CollectionSortComponent {
+  private route = inject(ActivatedRoute);
+  private attributeService = inject(AttributeService);
+  private router = inject(Router);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @Input() filter: Params;
   @Input() gridCol: string;
@@ -50,8 +55,7 @@ export class CollectionSortComponent {
   public selectedGrid: string = "collection_4_grid";
   public class: string = "row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section";
   public gridArray = ['collection_3_grid', 'collection_4_grid', 'collection_5_grid', 'collection_list_view']
-  constructor(private route: ActivatedRoute, private attributeService: AttributeService,
-    private router: Router, @Inject(PLATFORM_ID) private platformId: Object,) {
+  constructor() {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.setGridClass.emit(this.class);
   }

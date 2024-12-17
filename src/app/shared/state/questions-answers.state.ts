@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { tap } from "rxjs";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { QuestionsAnswersService } from "../services/questions-answers.service";
@@ -23,8 +23,8 @@ export class QuestionStateModel {
 })
 @Injectable()
 export class QuestionAnswersState {
+  private questionsAnswersService = inject(QuestionsAnswersService);
 
-  constructor(private questionsAnswersService: QuestionsAnswersService ) {}
 
   @Selector()
   static questionsAnswers(state: QuestionStateModel) {

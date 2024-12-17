@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
@@ -18,6 +18,8 @@ import { NgStyle, DatePipe } from '@angular/common';
     imports: [CarouselModule, SkeletonBlogComponent, RouterLink, NgStyle, DatePipe]
 })
 export class BlogComponent {
+  blogService = inject(BlogService);
+
 
   @Select(BlogState.blog) blog$: Observable<BlogModel>;
 
@@ -27,8 +29,6 @@ export class BlogComponent {
   public blogs: Blog[] = [];
   public skeletonItems = Array.from({ length: 5 }, (_, index) => index);
   public bannerSlider = data.customOptionsItem3;
-
-  constructor(public blogService: BlogService) {}
 
   ngOnChanges() {
     if (Array.isArray(this.blogIds)) {

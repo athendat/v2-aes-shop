@@ -1,4 +1,4 @@
-import { Component, HostListener, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, HostListener, TemplateRef, ViewChild, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Select, Store } from '@ngxs/store';
@@ -16,6 +16,10 @@ import { ButtonComponent } from '../../button/button.component';
     imports: [ButtonComponent, TranslateModule]
 })
 export class ExitModalComponent {
+  private modalService = inject(NgbModal);
+  private store = inject(Store);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @ViewChild("exitModal", { static: true }) ExitModal: TemplateRef<string>;
 
@@ -27,8 +31,7 @@ export class ExitModalComponent {
   public isTabInFocus = true;
   public exit: boolean;
 
-  constructor(private modalService: NgbModal, private store: Store,
-    @Inject(PLATFORM_ID) private platformId: Object){
+  constructor(){
     this.exit$.subscribe(res => this.exit = res);
   }
 

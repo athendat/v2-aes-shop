@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetCategories } from "../action/category.action";
@@ -23,8 +23,8 @@ export class CategoryStateModel {
 })
 @Injectable()
 export class CategoryState {
-  
-  constructor(private categoryService: CategoryService) {}
+  private categoryService = inject(CategoryService);
+
 
   @Selector()
   static category(state: CategoryStateModel) {

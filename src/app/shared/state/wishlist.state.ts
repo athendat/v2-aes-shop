@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Router } from '@angular/router';
 import { tap } from "rxjs";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
@@ -25,9 +25,9 @@ export class WishlistStateModel {
 
 @Injectable()
 export class WishlistState {
+  router = inject(Router);
+  private wishlistService = inject(WishlistService);
 
-  constructor(public router: Router,
-    private wishlistService: WishlistService){}
 
   @Selector()
   static wishlistItems(state: WishlistStateModel) {

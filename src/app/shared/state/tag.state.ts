@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetTags } from "../action/tag.action";
@@ -23,8 +23,8 @@ export class TagStateModel {
 })
 @Injectable()
 export class TagState {
-  
-  constructor(private tagService: TagService) {}
+  private tagService = inject(TagService);
+
 
   @Selector()
   static tag(state: TagStateModel) {

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Store, Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetUserDetails, UpdateUserProfile, UpdateUserPassword, 
@@ -22,8 +22,8 @@ export class AccountStateModel {
 })
 @Injectable()
 export class AccountState {
+  private accountService = inject(AccountService);
 
-  constructor(private accountService: AccountService) {}
 
   @Selector()
   static user(state: AccountStateModel) {

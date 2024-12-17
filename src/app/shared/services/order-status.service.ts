@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { OrderStatusModel } from '../interface/order-status.interface';
@@ -9,8 +9,8 @@ import { Params } from '../interface/core.interface';
   providedIn: 'root'
 })
 export class OrderStatusService {
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
 
   getOrderStatus(payload?: Params): Observable<OrderStatusModel> {
     return this.http.get<OrderStatusModel>(`${environment.URL}/order-status.json`, { params: payload });

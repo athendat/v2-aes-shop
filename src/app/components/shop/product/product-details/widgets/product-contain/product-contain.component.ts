@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -33,6 +33,9 @@ import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
 ],
 })
 export class ProductContainComponent {
+  private store = inject(Store);
+  private router = inject(Router);
+
 
   @Input() product: Product;
   @Input() option: Option | null;
@@ -48,8 +51,6 @@ export class ProductContainComponent {
   public viewsCount: number = 30;
 
   public countsInterval: any;
-
-  constructor(private store: Store, private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges) {
 

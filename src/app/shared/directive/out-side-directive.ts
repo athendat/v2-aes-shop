@@ -1,12 +1,13 @@
-import { Directive, Output, EventEmitter, ElementRef, HostListener } from '@angular/core';
+import { Directive, Output, EventEmitter, ElementRef, HostListener, inject } from '@angular/core';
 
 @Directive({
     selector: '[clickOutside]',
     standalone: true
 })
 export class ClickOutsideDirective {
+  private elementRef = inject(ElementRef);
+
   @Output() clickOutside = new EventEmitter<Event>();
-  constructor(private elementRef: ElementRef) {}
   
   @HostListener('document:click', ['$event', '$event.target'])
   onClick(event: MouseEvent, targetElement: HTMLElement): void {

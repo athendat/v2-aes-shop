@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { CartModel } from "../interface/cart.interface";
@@ -8,8 +8,8 @@ import { CartModel } from "../interface/cart.interface";
   providedIn: "root",
 })
 export class CartService {
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
 
   getCartItems(): Observable<CartModel> {
     return this.http.get<CartModel>(`${environment.URL}/cart.json`);

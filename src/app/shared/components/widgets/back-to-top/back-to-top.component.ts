@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ViewportScroller } from '@angular/common';
 
@@ -9,12 +9,11 @@ import { ViewportScroller } from '@angular/common';
     standalone: true
 })
 export class BackToTopComponent {
+  private platformId = inject<Object>(PLATFORM_ID);
+  private viewScroller = inject(ViewportScroller);
+
 
   public show: boolean;
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object,
-   private viewScroller: ViewportScroller) {
-  }
 
   // @HostListener Decorator
   @HostListener("window:scroll", [])

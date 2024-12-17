@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Product, Variation } from '../../../../../../shared/interface/product.interface';
@@ -20,6 +20,8 @@ import { VariantAttributesComponent } from '../../../../../../shared/components/
     imports: [VariantAttributesComponent, ButtonComponent, CurrencySymbolPipe, TranslateModule]
 })
 export class StickyCheckoutComponent {
+  private store = inject(Store);
+
 
   @Input() product: Product;
 
@@ -28,9 +30,6 @@ export class StickyCheckoutComponent {
   public cartItem: Cart | null;
   public productQty: number = 1;
   public selectedVariation: Variation | null;
-
-  constructor(private store: Store) {
-  }
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes['product'] && changes['product'].currentValue) {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
 import { Observable } from 'rxjs';
@@ -18,6 +18,8 @@ import { CommonModule, NgClass } from '@angular/common';
     imports: [SkeletonProductBoxComponent, ProductBoxComponent, CarouselModule, NgClass,CommonModule]
 })
 export class ProductComponent {
+  productService = inject(ProductService);
+
 
   @Input() style: string = 'vertical';
   @Input() productIds: number[] = [];
@@ -33,8 +35,6 @@ export class ProductComponent {
   public skeletonItems = Array.from({ length: 6 }, (_, index) => index);
 
   @Select(ProductState.product) product$: Observable<ProductModel>;
-
-  constructor(public productService: ProductService) {}
 
   ngOnChanges() {
     if (Array.isArray(this.productIds)) {

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Store, State, Selector, Action, StateContext } from "@ngxs/store";
 import { Router } from '@angular/router';
 import { AccountClear, GetUserDetails } from "../action/account.action";
@@ -21,9 +21,10 @@ export interface AuthStateModel {
 })
 @Injectable()
 export class AuthState {
+  private store = inject(Store);
+  router = inject(Router);
+  private notificationService = inject(NotificationService);
 
-  constructor(private store: Store, public router: Router,
-    private notificationService: NotificationService) {}
 
 
   ngxsOnInit(ctx: StateContext<AuthStateModel>) {

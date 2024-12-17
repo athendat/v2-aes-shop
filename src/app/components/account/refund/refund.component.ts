@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { RefundState } from '../../../shared/state/refund.state';
@@ -19,6 +19,8 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     imports: [PaginationComponent, NoDataComponent, AsyncPipe, DatePipe, TitleCasePipe, TranslateModule]
 })
 export class RefundComponent {
+  private store = inject(Store);
+
 
   @Select(RefundState.refund) refund$: Observable<RefundModel>;
 
@@ -27,7 +29,7 @@ export class RefundComponent {
     'paginate': 10, // Display per page,
   };
 
-  constructor(private store: Store) {
+  constructor() {
     this.store.dispatch(new GetRefund(this.filter));
   }
 

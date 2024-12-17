@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Select, Store } from '@ngxs/store';
 import { Product } from '../../../../../../shared/interface/product.interface';
@@ -18,6 +18,8 @@ import { NgClass, NgStyle } from '@angular/common';
     imports: [NgClass, NgStyle, SizeChartModalComponent, DeliveryReturnModalComponent, QuestionModalComponent, TranslateModule]
 })
 export class ProductActionComponent {
+  private store = inject(Store);
+
 
   @Input() product: Product;
 
@@ -30,7 +32,7 @@ export class ProductActionComponent {
   public policy: string;
   public isLogin: boolean;
 
-  constructor(private store: Store) {
+  constructor() {
     this.themeOptions$.subscribe(option => {
       this.policy = option?.product?.shipping_and_return;
     })

@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { QuestionAnswersState } from '../../../../../../shared/state/questions-answers.state';
@@ -22,6 +22,8 @@ import { NgbNav, NgbNavItem, NgbNavItemRole, NgbNavLink, NgbNavLinkBase, NgbNavC
     imports: [NgbNav, NgbNavItem, NgbNavItemRole, NgbNavLink, NgbNavLinkBase, NgbNavContent, ProductReviewComponent, QuestionsAnswersComponent, NgbNavOutlet, AsyncPipe, TranslateModule]
 })
 export class ProductDetailsTabsComponent {
+  private store = inject(Store);
+
 
   @Input() product: Product | null;
 
@@ -29,8 +31,6 @@ export class ProductDetailsTabsComponent {
   @Select(ReviewState.review) review$: Observable<ReviewModel>;
 
   public active = 'description';
-
-  constructor(private store: Store){}
 
   ngOnChanges(changes: SimpleChanges) {
     let product = changes['product']?.currentValue;

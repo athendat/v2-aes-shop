@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
@@ -28,9 +28,9 @@ export class BlogStateModel {
 })
 @Injectable()
 export class BlogState {
+  private router = inject(Router);
+  private blogService = inject(BlogService);
 
-  constructor(private router: Router,
-    private blogService: BlogService) {}
 
   @Selector()
   static blog(state: BlogStateModel) {

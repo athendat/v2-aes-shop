@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { FormBuilder, FormControl, FormGroup, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -37,6 +37,9 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
       ButtonComponent, AddressModalComponent, AsyncPipe, CurrencySymbolPipe, TranslateModule]
 })
 export class CheckoutComponent {
+  private store = inject(Store);
+  private formBuilder = inject(FormBuilder);
+
 
   public breadcrumb: Breadcrumb = {
     title: "Checkout",
@@ -59,8 +62,7 @@ export class CheckoutComponent {
   public checkoutTotal: OrderCheckout;
   public loading: boolean = false;
 
-  constructor(private store: Store,
-    private formBuilder: FormBuilder) {
+  constructor() {
     this.store.dispatch(new GetCartItems());
     this.store.dispatch(new GetSettingOption());
 

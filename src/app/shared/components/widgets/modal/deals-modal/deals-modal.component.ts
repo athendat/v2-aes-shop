@@ -1,4 +1,4 @@
-import { Component, ViewChild, TemplateRef, Input, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, ViewChild, TemplateRef, Input, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Product } from '../../../../../shared/interface/product.interface';
@@ -18,6 +18,9 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 
 export class DealsModalComponent {
+  private modalService = inject(NgbModal);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @ViewChild("dealsModal", { static: false }) dealsModal: TemplateRef<any>;
 
@@ -25,9 +28,6 @@ export class DealsModalComponent {
 
   public closeResult: string; 
   public modalOpen: boolean = false;
-
-  constructor(private modalService: NgbModal,
-    @Inject(PLATFORM_ID) private platformId: Object) {}
 
   async openModal() {
     if (isPlatformBrowser(this.platformId)) { // For SSR 

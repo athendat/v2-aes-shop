@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser, NgClass } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
@@ -18,6 +18,9 @@ import { ThemeOptionService } from '../../../services/theme-option.service';
     imports: [ClickOutsideDirective, ButtonComponent, NgClass, ReactiveFormsModule, FormsModule, TranslateModule]
 })
 export class ThemeCustomizerComponent {
+  themeOptionService = inject(ThemeOptionService);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
 
@@ -26,9 +29,6 @@ export class ThemeCustomizerComponent {
   public mode: string;
   public value: string;
   public primary_color: string;
-
-  constructor(public themeOptionService: ThemeOptionService,
-    @Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
     this.themeOption$.subscribe(option => {

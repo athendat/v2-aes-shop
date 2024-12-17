@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { Params } from "../interface/core.interface";
@@ -9,8 +9,8 @@ import { TagModel } from "../interface/tag.interface";
   providedIn: "root",
 })
 export class TagService {
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
 
   getTags(payload?: Params): Observable<TagModel> {
     return this.http.get<TagModel>(`${environment.URL}/tag.json`, { params: payload });

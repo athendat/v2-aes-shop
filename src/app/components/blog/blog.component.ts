@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -26,6 +26,10 @@ import { BreadcrumbComponent } from '../../shared/components/widgets/breadcrumb/
     imports: [BreadcrumbComponent, SkeletonBlogComponent, NgClass, RouterLink, PaginationComponent, NoDataComponent, BlogSidebarComponent, AsyncPipe, DatePipe, SummaryPipe, TranslateModule]
 })
 export class BlogComponent {
+  private store = inject(Store);
+  private route = inject(ActivatedRoute);
+  blogService = inject(BlogService);
+
 
   @Select(BlogState.blog) blog$: Observable<BlogModel>;
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
@@ -49,8 +53,7 @@ export class BlogComponent {
   public style: string;
   public sidebar: string = 'left_sidebar';
 
-  constructor(private store: Store, private route: ActivatedRoute,
-    public blogService: BlogService) {
+  constructor() {
     this.route.queryParams.subscribe(params => {
       this.filter.category = params['category'] ? params['category'] : '';
       this.filter.tag = params['tag'] ? params['tag'] : ''

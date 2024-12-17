@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, Input, ViewChild, SimpleChanges, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Product, ProductModel } from '../../../../../shared/interface/product.interface';
@@ -17,6 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./deal.component.scss']
 })
 export class DealComponent {
+  private store = inject(Store);
+
 
   @Input() style: string = 'basic';
   @Input() data: Option | null;
@@ -27,8 +29,6 @@ export class DealComponent {
 
   public dealProducts: Product[];
   public ids: number[];
-
-  constructor(private store: Store) {}
 
   ngOnChanges(changes: SimpleChanges) {
     this.ids = changes['data']?.currentValue?.header?.today_deals;

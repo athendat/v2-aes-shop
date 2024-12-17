@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, Input, ViewChild, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Store } from '@ngxs/store';
 import { forkJoin } from 'rxjs';
@@ -27,6 +27,10 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
       ProductComponent, TitleComponent, ImageLinkComponent, BlogComponent, NewsletterComponent]
 })
 export class ParisComponent {
+  private store = inject(Store);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private themeOptionService = inject(ThemeOptionService);
+
 
   @Input() data?: Paris;
   @Input() slug?: string;
@@ -37,9 +41,7 @@ export class ParisComponent {
   public categorySlider = data.categorySlider;
   public isBrowser: boolean;
 
-  constructor(private store: Store,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private themeOptionService: ThemeOptionService) {
+  constructor() {
       this.isBrowser = isPlatformBrowser(this.platformId);
   }
 

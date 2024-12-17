@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -12,6 +12,8 @@ import { Currency } from '../interface/currency.interface';
 })
 
 export class CurrencySymbolPipe implements PipeTransform {
+  private currencyPipe = inject(CurrencyPipe);
+
 
   @Select(SettingState.selectedCurrency) selectedCurrency$: Observable<Currency>;
 
@@ -19,7 +21,7 @@ export class CurrencySymbolPipe implements PipeTransform {
   public setting: Values;
   public selectedCurrency: Currency;
 
-  constructor(private currencyPipe: CurrencyPipe) {
+  constructor() {
     this.selectedCurrency$.subscribe(currency => this.selectedCurrency = currency);
   }
 

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { BlogService } from '../../../shared/services/blog.service';
@@ -26,12 +26,15 @@ import { AsyncPipe } from '@angular/common';
     imports: [SkeletonBlogComponent, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, RecentPostComponent, BlogCategoryComponent, BlogTagComponent, AsyncPipe, TranslateModule]
 })
 export class BlogSidebarComponent {
+  blogService = inject(BlogService);
+  private store = inject(Store);
+
 
   @Select(BlogState.resentBlog) resentBlog$: Observable<Blog[]>;
   @Select(TagState.tag) tag$: Observable<TagModel>;
   @Select(CategoryState.category) category$: Observable<CategoryModel>;
 
-  constructor(public blogService: BlogService, private store: Store){
+  constructor(){
     this.store.dispatch(new GetTags({status: 1, type: 'post'}))
     this.store.dispatch(new GetRecentBlog({status: 1, type: 'post', paginate: 5}))
   }

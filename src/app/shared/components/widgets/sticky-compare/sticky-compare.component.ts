@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { CompareState } from '../../../state/compare.state';
@@ -15,10 +15,12 @@ import { AsyncPipe } from '@angular/common';
     imports: [RouterLink, AsyncPipe, TranslateModule]
 })
 export class StickyCompareComponent {
+  private store = inject(Store);
+
 
   @Select(CompareState.compareTotal) compareTotal$: Observable<number>;
 
-  constructor(private store: Store) {
+  constructor() {
     this.store.dispatch(new GetCompare());
   }
 

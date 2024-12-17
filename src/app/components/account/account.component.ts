@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { LoaderState } from '../../shared/state/loader.state';
@@ -20,6 +20,8 @@ import { BreadcrumbComponent } from '../../shared/components/widgets/breadcrumb/
     imports: [BreadcrumbComponent, SidebarComponent, LoaderComponent, ButtonComponent, RouterOutlet, AsyncPipe, TranslateModule]
 })
 export class AccountComponent {
+  private store = inject(Store);
+
 
   @Select(LoaderState.status) loadingStatus$: Observable<boolean>;
 
@@ -29,7 +31,7 @@ export class AccountComponent {
     items: [{ label: 'Dashboard', active: false }]
   };
 
-  constructor(private store: Store) {
+  constructor() {
     this.store.dispatch(new GetNotification());
   }
 

@@ -1,4 +1,4 @@
-import { Component, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -15,6 +15,8 @@ import { RouterLink } from '@angular/router';
     imports: [RouterLink, TranslateModule]
 })
 export class RecentPurchasePopupComponent {
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @Select(ProductState.relatedProducts) relatesProduct$: Observable<Product[]>;
   @Select(ProductState.product) product$: Observable<ProductModel>;
@@ -24,7 +26,7 @@ export class RecentPurchasePopupComponent {
   public min: number = 10;
   public popup_enable: boolean = true;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor() {
     if (isPlatformBrowser(this.platformId)) { // For SSR 
       if(this.popup_enable) {
         setInterval(() => {

@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChange, ViewChild } from '@angular/core';
+import { Component, Input, SimpleChange, ViewChild, inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { Observable, Subject } from 'rxjs';
@@ -22,6 +22,9 @@ import { AsyncPipe } from '@angular/common';
     imports: [NoDataComponent, QuestionModalComponent, AsyncPipe, TranslateModule]
 })
 export class QuestionsAnswersComponent {
+  private store = inject(Store);
+  questionAnswersService = inject(QuestionsAnswersService);
+
 
   public user: AccountUser;
   public question = new FormControl();
@@ -36,7 +39,7 @@ export class QuestionsAnswersComponent {
 
   @Select(AccountState.user) user$: Observable<AccountUser>;
 
-  constructor(private store: Store, public questionAnswersService: QuestionsAnswersService){
+  constructor(){
     this.isLogin = !!this.store.selectSnapshot(state => state.auth && state.auth.access_token)
     if(this.isLogin){
       this.store.dispatch(new GetUserDetails());

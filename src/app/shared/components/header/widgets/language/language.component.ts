@@ -1,4 +1,4 @@
-import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { Component, Input, PLATFORM_ID, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ButtonComponent } from '../../../widgets/button/button.component';
 import { ClickOutsideDirective } from '../../../../directive/out-side-directive';
@@ -13,6 +13,9 @@ import { isPlatformBrowser } from '@angular/common';
 })
 
 export class LanguageComponent {
+  private translate = inject(TranslateService);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @Input() style: string = 'basic';
 
@@ -35,8 +38,6 @@ export class LanguageComponent {
     code: 'en',
     icon: 'us'
   }
-
-  constructor(private translate: TranslateService, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
     if(isPlatformBrowser(this.platformId)){

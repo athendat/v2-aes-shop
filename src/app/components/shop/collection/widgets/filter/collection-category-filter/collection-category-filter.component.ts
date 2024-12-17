@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -15,6 +15,9 @@ import { CategoryState } from '../../../../../../shared/state/category.state';
     imports: []
 })
 export class CollectionCategoryFilterComponent {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
 
   @Select(CategoryState.category) category$: Observable<CategoryModel>;
 
@@ -23,8 +26,7 @@ export class CollectionCategoryFilterComponent {
   public categories: Category[];
   public selectedCategories: string[] = [];
 
-  constructor(private route: ActivatedRoute,
-    private router: Router){
+  constructor(){
     this.category$.subscribe(res => this.categories = res?.data?.filter(category => category.type == 'product'));
   }
 

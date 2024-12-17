@@ -1,5 +1,5 @@
 import { AsyncPipe, isPlatformBrowser, UpperCasePipe } from '@angular/common';
-import { Component, Inject, PLATFORM_ID, TemplateRef, ViewChild } from '@angular/core';
+import { Component, PLATFORM_ID, TemplateRef, ViewChild, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
@@ -19,6 +19,10 @@ import { ButtonComponent } from '../../button/button.component';
     imports: [ButtonComponent, ReactiveFormsModule, AsyncPipe, UpperCasePipe, TranslateModule]
 })
 export class PayModalComponent {
+  private modalService = inject(NgbModal);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private store = inject(Store);
+
 
   @ViewChild("payModal", { static: false }) PayModal: TemplateRef<string>;
   @Select(SettingState.setting) setting$: Observable<Values>;
@@ -27,10 +31,6 @@ export class PayModalComponent {
   public modalOpen: boolean = false;
   public order: Order;
   public paymentType = new FormControl('', [Validators.required]);
-
-  constructor(private modalService: NgbModal,
-    @Inject(PLATFORM_ID) private platformId: Object,
-     private store: Store){}
 
   async openModal(order: Order) {
     if (isPlatformBrowser(this.platformId)) { // For SSR 

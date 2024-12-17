@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
@@ -17,9 +17,9 @@ export class ThemesStateModel {
 })
 @Injectable()
 export class ThemeState {
+  private router = inject(Router);
+  private themeService = inject(ThemeService);
 
-  constructor(private router: Router, 
-    private themeService: ThemeService) {}
 
   @Selector()
   static homePage(state: ThemesStateModel) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Breadcrumb } from '../../../shared/interface/breadcrumb';
@@ -24,6 +24,8 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
       NoDataComponent, AsyncPipe, CurrencySymbolPipe, TranslateModule]
 })
 export class CartComponent {
+  private store = inject(Store);
+
 
   @Select(CartState.cartItems) cartItem$: Observable<Cart[]>;
   @Select(CartState.cartTotal) cartTotal$: Observable<number>;
@@ -32,8 +34,6 @@ export class CartComponent {
     title: "Cart",
     items: [{ label: 'Cart', active: true }]
   }
-
-  constructor(private store: Store) {}
 
   updateQuantity(item: Cart, qty: number) {
     const params: CartAddOrUpdate = {

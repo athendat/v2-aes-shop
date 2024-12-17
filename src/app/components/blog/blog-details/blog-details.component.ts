@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 import { Select } from '@ngxs/store';
@@ -20,6 +20,9 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     imports: [BreadcrumbComponent, NgClass, BlogSidebarComponent, NgStyle, AsyncPipe, DatePipe]
 })
 export class BlogDetailsComponent {
+  private meta = inject(Meta);
+  private route = inject(ActivatedRoute);
+
 
   @Select(BlogState.selectedBlog) blog$: Observable<Blog>;
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
@@ -31,8 +34,7 @@ export class BlogDetailsComponent {
 
   public sidebar: string;
 
-  constructor(private meta: Meta,
-    private route: ActivatedRoute){
+  constructor(){
     this.blog$.subscribe(blog => {
       this.breadcrumb.items = [];
       this.breadcrumb.title = blog.title;

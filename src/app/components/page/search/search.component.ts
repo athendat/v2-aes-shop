@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -26,6 +26,11 @@ import { ButtonComponent } from '../../../shared/components/widgets/button/butto
     imports: [BreadcrumbComponent, ReactiveFormsModule, ButtonComponent, SkeletonProductBoxComponent, ProductBoxComponent, NoDataComponent, TranslateModule]
 })
 export class SearchComponent {
+  private store = inject(Store);
+  productService = inject(ProductService);
+  private route = inject(ActivatedRoute);
+  router = inject(Router);
+
 
   public breadcrumb: Breadcrumb = {
     title: "Search",
@@ -47,7 +52,7 @@ export class SearchComponent {
     'search': ''
   }
 
-  constructor(private store: Store, public productService: ProductService, private route: ActivatedRoute, public router: Router){
+  constructor(){
   //  this.getProduct(this.filter);
 
    this.route.queryParams.subscribe(params => {

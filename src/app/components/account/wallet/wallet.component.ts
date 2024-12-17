@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { WalletState } from '../../../shared/state/wallet.state';
@@ -21,6 +21,8 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     imports: [PaginationComponent, NoDataComponent, AsyncPipe, DatePipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]
 })
 export class WalletComponent {
+  private store = inject(Store);
+
 
   @Select(WalletState.wallet) wallet$: Observable<Wallet>;
 
@@ -29,7 +31,7 @@ export class WalletComponent {
     'paginate': 10, // Display per page,
   };
 
-  constructor(private store: Store) {
+  constructor() {
     this.store.dispatch(new GetUserTransaction(this.filter));
   }
 

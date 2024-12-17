@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { Params } from "../interface/core.interface";
 import { environment } from "../../../environments/environment";
@@ -9,10 +9,10 @@ import { StoresModel } from "../interface/store.interface";
   providedIn: "root",
 })
 export class StoreService {
+  private http = inject(HttpClient);
+
 
   public skeletonLoader: boolean = false;
-
-  constructor(private http: HttpClient) {}
 
   getStores(payload?: Params): Observable<StoresModel> {
     return this.http.get<StoresModel>(`${environment.URL}/store.json`, { params: payload });

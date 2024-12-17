@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { NgbRatingConfig, NgbRating } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
@@ -28,6 +28,8 @@ import { RouterLink } from '@angular/router';
       ProductDetailModalComponent_1, VariationModalComponent, TranslateModule, TitleCasePipe, CurrencySymbolPipe]
 })
 export class ProductBoxHorizontalComponent {
+  private store = inject(Store);
+
 
   @Input() product: Product;
   @Input() class: string;
@@ -42,8 +44,9 @@ export class ProductBoxHorizontalComponent {
   public currentDate: number | null;
   public saleStartDate: number | null;
 
-  constructor(private store: Store,
-    config: NgbRatingConfig) {
+  constructor() {
+		const config = inject(NgbRatingConfig);
+
 		config.max = 5;
 		config.readonly = true;
 	}

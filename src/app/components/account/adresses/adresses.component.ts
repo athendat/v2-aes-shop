@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AccountUser } from "../../../shared/interface/account.interface";
@@ -21,14 +21,13 @@ import { ButtonComponent } from '../../../shared/components/widgets/button/butto
     imports: [ButtonComponent, NoDataComponent, AddressModalComponent, DeleteModalComponent, AsyncPipe, TitleCasePipe, TranslateModule]
 })
 export class AdressesComponent {
+  private store = inject(Store);
+
 
   @Select(AccountState.user) user$: Observable<AccountUser>;
 
   @ViewChild("addressModal") AddressModal: AddressModalComponent;
   @ViewChild("deleteModal") DeleteModal: DeleteModalComponent;
-
-  constructor(private store: Store) {
-  }
 
   delete(action: string, data: UserAddress) {
     if(action == 'delete')

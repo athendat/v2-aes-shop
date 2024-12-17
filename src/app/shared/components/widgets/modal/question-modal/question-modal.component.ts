@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, TemplateRef, ViewChild, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { FormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +20,10 @@ import { ButtonComponent } from '../../button/button.component';
       FormsModule, TranslateModule, CurrencySymbolPipe]
 })
 export class QuestionModalComponent {
+  private modalService = inject(NgbModal);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private store = inject(Store);
+
 
   @ViewChild("questionModal", { static: false }) QuestionModal: TemplateRef<string>;
 
@@ -30,10 +34,6 @@ export class QuestionModalComponent {
   public question = new FormControl();
   public type = 'crate'
   public id: number;
-
-  constructor( private modalService: NgbModal, 
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private store: Store){}
 
   async openModal(product: Product, qna?: QuestionAnswers) {
     if (isPlatformBrowser(this.platformId)) { // For SSR 

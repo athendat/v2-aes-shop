@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { ThemeOptionService } from "../services/theme-option.service";
@@ -23,8 +23,8 @@ export class ThemeOptionStateModel {
 })
 @Injectable()
 export class ThemeOptionState {
+  private themeOptionService = inject(ThemeOptionService);
 
-  constructor(private themeOptionService: ThemeOptionService) {}
 
   @Selector()
   static themeOptions(state: ThemeOptionStateModel) {

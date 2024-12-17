@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { PaymentDetails } from "../interface/payment-details.interface";
@@ -19,8 +19,8 @@ export class paymentDetailsStateModel {
 
 @Injectable()
 export class PaymentDetailsState {
-  
-  constructor(private PaymentDetailsService: PaymentDetailsService) {}
+  private PaymentDetailsService = inject(PaymentDetailsService);
+
 
   @Selector()
   static paymentDetails(state: paymentDetailsStateModel) {

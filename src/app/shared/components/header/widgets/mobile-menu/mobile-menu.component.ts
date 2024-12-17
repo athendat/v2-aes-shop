@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { MobileMenu } from '../../../../../shared/interface/menu.interface';
 
@@ -11,6 +11,8 @@ import { MobileMenu } from '../../../../../shared/interface/menu.interface';
     imports: [RouterLink]
 })
 export class MobileMenuComponent {
+  private router = inject(Router);
+
 
   public menuItem: MobileMenu[] = [
     {
@@ -50,7 +52,7 @@ export class MobileMenuComponent {
     }
   ]
 
-  constructor(private router: Router){
+  constructor(){
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.menuItem?.forEach((menu: MobileMenu) => {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { User } from '../../../shared/interface/user.interface';
@@ -21,6 +21,8 @@ import { ButtonComponent } from '../../../shared/components/widgets/button/butto
     imports: [ButtonComponent, RouterLinkActive, RouterLink, ConfirmationModalComponent, AsyncPipe, TitleCasePipe, TranslateModule]
 })
 export class SidebarComponent {
+  private store = inject(Store);
+
 
   @Input() show: boolean;
   @Output() menu: EventEmitter<boolean> = new EventEmitter();
@@ -32,7 +34,7 @@ export class SidebarComponent {
 
   public unreadNotificationCount: number;
 
-  constructor(private store: Store) {
+  constructor() {
     this.notification$.subscribe((notification) => {
       this.unreadNotificationCount = notification?.filter(item => !item.read_at).length;
     });

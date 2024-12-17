@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { of, tap } from "rxjs";
 import { GetCartItems, AddToCartLocalStorage, AddToCart, UpdateCart, DeleteCart, 
@@ -25,11 +25,10 @@ export interface CartStateModel {
 })
 @Injectable()
 export class CartState {
+  private cartService = inject(CartService);
+  private notificationService = inject(NotificationService);
+  private store = inject(Store);
 
-  constructor(private cartService: CartService,
-    private notificationService: NotificationService,
-    private store: Store) {
-  }
 
   ngxsOnInit(ctx: StateContext<CartStateModel>) {
     ctx.dispatch(new ToggleSidebarCart(false));

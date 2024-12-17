@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { NotificationState } from '../../../shared/state/notification.state';
@@ -16,11 +16,10 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     imports: [NoDataComponent, AsyncPipe, DatePipe, TranslateModule]
 })
 export class NotificationComponent {
+  private store = inject(Store);
+
 
   @Select(NotificationState.notification) notification$: Observable<Notification[]>;
-
-  constructor(private store: Store) {
-  }
 
   ngOnDestroy() {
     this.store.dispatch(new MarkAsReadNotification());

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Params } from '../../../../../../shared/interface/core.interface';
 import { CurrencySymbolPipe } from '../../../../../../shared/pipe/currency-symbol.pipe';
@@ -13,6 +13,9 @@ import { CurrencySymbolPipe } from '../../../../../../shared/pipe/currency-symbo
     imports: [CurrencySymbolPipe]
 })
 export class CollectionPriceFilterComponent {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
 
   @Input() filter: Params;
 
@@ -62,10 +65,6 @@ export class CollectionPriceFilterComponent {
   ]
 
   public selectedPrices: string[] = [];
-
-  constructor(private route: ActivatedRoute,
-    private router: Router) {
-  }
 
   ngOnChanges() {
     this.selectedPrices = this.filter['price'] ? this.filter['price'].split(',') : [];

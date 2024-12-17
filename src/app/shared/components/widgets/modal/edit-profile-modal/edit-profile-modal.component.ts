@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, TemplateRef, ViewChild, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +20,11 @@ import { ButtonComponent } from '../../button/button.component';
     imports: [ButtonComponent, ReactiveFormsModule, Select2Module, TranslateModule]
 })
 export class EditProfileModalComponent {
+  private modalService = inject(NgbModal);
+  private store = inject(Store);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private formBuilder = inject(FormBuilder);
+
 
   @Select(AccountState.user) user$: Observable<AccountUser>;
 
@@ -33,9 +38,7 @@ export class EditProfileModalComponent {
   
   @ViewChild("profileModal", { static: false }) ProfileModal: TemplateRef<string>;
   
-  constructor(private modalService: NgbModal,
-    private store: Store, @Inject(PLATFORM_ID) private platformId: Object,
-    private formBuilder: FormBuilder) {
+  constructor() {
       this.isBrowser = isPlatformBrowser(this.platformId);
       this.user$.subscribe(user => {
         this.flicker = true;

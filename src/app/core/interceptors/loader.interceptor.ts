@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
@@ -8,8 +8,8 @@ import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
-  
-  constructor(private store: Store) {}
+  private store = inject(Store);
+
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     

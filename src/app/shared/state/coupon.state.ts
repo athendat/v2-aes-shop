@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetCoupons} from "../action/coupon.action";
@@ -23,8 +23,8 @@ export class CouponStateModel {
 })
 @Injectable()
 export class CouponState {
+  private couponService = inject(CouponService);
 
-  constructor(private couponService: CouponService) {}
 
   @Selector()
   static coupon(state: CouponStateModel) {

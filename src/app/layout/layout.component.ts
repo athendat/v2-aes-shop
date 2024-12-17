@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser, AsyncPipe } from '@angular/common';
 import { Store, Select } from '@ngxs/store';
 import { Observable, forkJoin } from 'rxjs';
@@ -34,6 +34,10 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
 })
 
 export class LayoutComponent {
+  private store = inject(Store);
+  private platformId = inject<Object>(PLATFORM_ID);
+  themeOptionService = inject(ThemeOptionService);
+
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
   @Select(ThemeOptionState.cookies) cookies$: Observable<boolean>;
@@ -44,9 +48,7 @@ export class LayoutComponent {
   public isBrowser: boolean;
   public isLoading: boolean = true;
 
-  constructor(private store: Store,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    public themeOptionService: ThemeOptionService) {
+  constructor() {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.cookies$.subscribe(res => this.cookies = res);
     this.exit$.subscribe(res => this.exit = res);

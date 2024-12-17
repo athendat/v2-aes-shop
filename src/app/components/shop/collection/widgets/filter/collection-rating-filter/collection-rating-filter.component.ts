@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { Params } from '../../../../../../shared/interface/core.interface';
@@ -13,16 +13,15 @@ import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
     imports: [NgbRating, TranslateModule]
 })
 export class CollectionRatingFilterComponent {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
 
   @Input() filter: Params;
 
   public numbers: number[] = Array.from({length: 5}, (_, i) => i + 1).reverse();
 
   public selectedRatings: string[] = [];
-
-  constructor(private route: ActivatedRoute,
-    private router: Router){
-  }
 
   ngOnChanges() {
     this.selectedRatings = this.filter['rating'] ? this.filter['rating'].split(',') : [];

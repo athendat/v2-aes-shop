@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Params } from '@angular/router';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -17,6 +17,8 @@ import { BannerComponent } from '../widgets/banner/banner.component';
     imports: [BannerComponent, CollectionSidebarComponent, CollectionProductsComponent]
 })
 export class CollectionListComponent {
+  attributeService = inject(AttributeService);
+
 
   @Select(ThemeOptionState.themeOptions) themeOptions$: Observable<Option>;
 
@@ -24,7 +26,7 @@ export class CollectionListComponent {
 
   public bannerImageUrl: string;
 
-  constructor(public attributeService: AttributeService) {
+  constructor() {
     this.themeOptions$.subscribe(res => this.bannerImageUrl = res?.collection?.collection_banner_image_url)
   }
 }

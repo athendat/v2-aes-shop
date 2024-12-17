@@ -1,4 +1,4 @@
-import { Component, ViewChild, TemplateRef, Input, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, ViewChild, TemplateRef, Input, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ModalDismissReasons, NgbModal, NgbRating } from '@ng-bootstrap/ng-bootstrap';
 import { Store, Select } from '@ngxs/store';
@@ -25,6 +25,10 @@ import { ButtonComponent } from '../../button/button.component';
       VariantAttributesComponent, TranslateModule, TitleCasePipe, CurrencySymbolPipe]
 })
 export class ProductDetailModalComponent {
+  private modalService = inject(NgbModal);
+  private platformId = inject<Object>(PLATFORM_ID);
+  private store = inject(Store);
+
 
   @ViewChild("productDetailModal", { static: false }) productDetailModal: TemplateRef<any>;
 
@@ -43,11 +47,6 @@ export class ProductDetailModalComponent {
   
   public productMainThumbSlider = data.productMainThumbSlider;
   public productThumbSlider = data.productThumbSlider;
-
-  constructor(private modalService: NgbModal,
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private store: Store) {
-  }
 
   ngOnInit() {
     this.cartItem$.subscribe(items => {

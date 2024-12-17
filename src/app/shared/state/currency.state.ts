@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetCurrencies } from "../action/currency.action";
@@ -23,8 +23,8 @@ export class CurrencyStateModel {
 })
 @Injectable()
 export class CurrencyState {
+  private currencyService = inject(CurrencyService);
 
-  constructor(private currencyService: CurrencyService) {}
 
   @Selector()
   static currency(state: CurrencyStateModel) {

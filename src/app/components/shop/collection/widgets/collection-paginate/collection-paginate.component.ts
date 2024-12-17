@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ViewportScroller, AsyncPipe } from '@angular/common';
 import { Select } from '@ngxs/store';
@@ -16,6 +16,10 @@ import { PaginationComponent } from '../../../../../shared/components/widgets/pa
     imports: [PaginationComponent, AsyncPipe]
 })
 export class CollectionPaginateComponent {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private viewScroller = inject(ViewportScroller);
+
 
   @Select(ProductState.product) product$: Observable<ProductModel>;
 
@@ -23,8 +27,7 @@ export class CollectionPaginateComponent {
 
   public totalItems: number = 0;
 
-  constructor(private route: ActivatedRoute,
-    private router: Router, private viewScroller: ViewportScroller) {
+  constructor() {
     this.product$.subscribe(product => this.totalItems = product?.total);
   }
 

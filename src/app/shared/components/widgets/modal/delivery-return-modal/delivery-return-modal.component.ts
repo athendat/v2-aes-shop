@@ -1,4 +1,4 @@
-import { Component, TemplateRef, ViewChild, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, TemplateRef, ViewChild, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Select } from '@ngxs/store';
@@ -16,6 +16,9 @@ import { ButtonComponent } from '../../button/button.component';
     imports: [ButtonComponent, TranslateModule]
 })
 export class DeliveryReturnModalComponent {
+  private modalService = inject(NgbModal);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @ViewChild("deliveryReturnModal", { static: false }) DeliveryReturnModal: TemplateRef<string>;
 
@@ -24,8 +27,6 @@ export class DeliveryReturnModalComponent {
   public closeResult: string;
   public modalOpen: boolean = false;
   public policy: string;
-
-  constructor( private modalService: NgbModal, @Inject(PLATFORM_ID) private platformId: Object){}
 
   async openModal(value: string) {
     if (isPlatformBrowser(this.platformId)) { // For SSR 

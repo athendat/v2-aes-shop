@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
 import { Select } from '@ngxs/store';
@@ -18,6 +18,9 @@ import { ButtonComponent } from '../button/button.component';
 })
 
 export class CategoriesComponent {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+
 
   @Select(CategoryState.category) category$: Observable<CategoryModel>;
 
@@ -35,8 +38,7 @@ export class CategoriesComponent {
   public categories: Category[];
   public selectedCategorySlug: string[] = [];
 
-  constructor(private route: ActivatedRoute,
-    private router: Router) {
+  constructor() {
     this.category$.subscribe(res => this.categories = res?.data?.filter(category => category.type == 'product'));
     this.route.queryParams.subscribe(params => {
       this.selectedCategorySlug = params['category'] ? params['category'].split(',') : [];

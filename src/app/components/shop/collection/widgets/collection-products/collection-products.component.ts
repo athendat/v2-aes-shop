@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { ProductService } from '../../../../../shared/services/product.service';
@@ -20,6 +20,8 @@ import { CollectionSortComponent } from '../collection-sort/collection-sort.comp
     imports: [CollectionSortComponent, SkeletonProductBoxComponent, ProductBoxComponent, NoDataComponent, CollectionPaginateComponent, AsyncPipe]
 })
 export class CollectionProductsComponent {
+  productService = inject(ProductService);
+
 
   @Select(ProductState.product) product$: Observable<ProductModel>;
 
@@ -29,9 +31,6 @@ export class CollectionProductsComponent {
   public gridClass: string = "row g-sm-4 g-3 row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 product-list-section";
 
   public skeletonItems = Array.from({ length: 40 }, (_, index) => index);
-
-  constructor(public productService: ProductService) {
-  }
 
   setGridClass(gridClass: string) {
     this.gridClass = gridClass;

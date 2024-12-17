@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
@@ -23,6 +23,10 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     ],
 })
 export class OtpComponent {
+  router = inject(Router);
+  store = inject(Store);
+  formBuilder = inject(FormBuilder);
+
 
   public form: FormGroup;
   public email: string;
@@ -31,11 +35,7 @@ export class OtpComponent {
     items: [{ label: 'OTP', active: true }]
   }
 
-  constructor(
-    public router: Router, 
-    public store: Store, 
-    public formBuilder: FormBuilder
-  ) {
+  constructor() {
     this.email = this.store.selectSnapshot(state => state.auth.email);
     this.form = this.formBuilder.group({
       otp: new FormControl('', [Validators.required, Validators.minLength(5)]),

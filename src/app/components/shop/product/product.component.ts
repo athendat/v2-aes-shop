@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, PLATFORM_ID, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Meta } from '@angular/platform-browser';
 import { Select } from '@ngxs/store';
@@ -26,6 +26,10 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     imports: [BreadcrumbComponent, ProductThumbnailComponent, ProductImagesComponent, ProductSliderComponent, ProductStickyComponent, ProductAccordionComponent, RelatedProductsComponent, StickyCheckoutComponent, AsyncPipe]
 })
 export class ProductComponent {
+  private route = inject(ActivatedRoute);
+  private meta = inject(Meta);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @Select(ProductState.selectedProduct) product$: Observable<Product>;
   @Select(ThemeOptionState.themeOptions) themeOptions$: Observable<Option>;
@@ -39,8 +43,7 @@ export class ProductComponent {
   public isScrollActive = false;
   public isBrowser: boolean;
 
-  constructor(private route: ActivatedRoute, private meta: Meta,
-    @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor() {
     this.isBrowser = isPlatformBrowser(this.platformId);
     this.product$.subscribe(product => {
       if(product) {

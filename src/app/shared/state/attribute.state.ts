@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext } from "@ngxs/store";
 import { tap } from "rxjs";
 import { GetAttributes } from "../action/attribute.action";
@@ -25,8 +25,8 @@ export class AttributeStateModel {
 })
 @Injectable()
 export class AttributeState {
-  
-  constructor(private attributeService: AttributeService) {}
+  private attributeService = inject(AttributeService);
+
 
   @Selector()
   static attribute(state: AttributeStateModel) {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { OwlOptions, CarouselModule } from 'ngx-owl-carousel-o';
 import { Breadcrumb } from '../../../shared/interface/breadcrumb';
 import { Observable } from 'rxjs';
@@ -27,6 +27,8 @@ export interface Clients {
     imports: [BreadcrumbComponent, CarouselModule, RouterLink, AsyncPipe, TranslateModule]
 })
 export class AboutUsComponent {
+  private store = inject(Store);
+
 
   @Select(BlogState.blog) blog$: Observable<BlogModel>;
 
@@ -233,7 +235,7 @@ export class AboutUsComponent {
     },
   }
 
-  constructor( private store: Store){
+  constructor(){
     this.store.dispatch(new GetBlogs({status: 1, paginate: 10}))
   }
 }

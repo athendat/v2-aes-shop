@@ -1,5 +1,5 @@
 import { AsyncPipe, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
+import { Component, Input, PLATFORM_ID, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -19,6 +19,8 @@ import { MobileMenuComponent } from './widgets/mobile-menu/mobile-menu.component
     imports: [BasicHeaderComponent, ClassicHeaderComponent, StandardHeaderComponent, MinimalHeaderComponent, MobileMenuComponent, AsyncPipe]
 })
 export class HeaderComponent {
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
   
@@ -27,7 +29,9 @@ export class HeaderComponent {
   public style: string = 'basic_header';
   public sticky: boolean = true;
 
-  constructor(router: Router, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor() {
+    const router = inject(Router);
+
     this.setHeader();
     router.events.forEach((event) => {
       if(event instanceof NavigationEnd) {

@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, inject } from '@angular/core';
 import { Product } from '../../../../../../shared/interface/product.interface';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
@@ -22,13 +22,13 @@ import { NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordi
     imports: [NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, ProductReviewComponent, QuestionsAnswersComponent, AsyncPipe, TranslateModule]
 })
 export class ProductDetailsAccordionComponent {
+  private store = inject(Store);
+
 
   @Input() product: Product | null;
 
   @Select(QuestionAnswersState.questionsAnswers) question$: Observable<QnAModel>;
   @Select(ReviewState.review) review$: Observable<ReviewModel>;
-
-  constructor(private store: Store){}
 
   ngOnChanges(changes: SimpleChanges) {
     let product = changes['product']?.currentValue;

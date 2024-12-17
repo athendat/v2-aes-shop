@@ -1,4 +1,4 @@
-import { Component, ViewChild, TemplateRef, Output, EventEmitter, PLATFORM_ID, Inject } from '@angular/core';
+import { Component, ViewChild, TemplateRef, Output, EventEmitter, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
@@ -12,6 +12,9 @@ import { ButtonComponent } from '../../button/button.component';
     imports: [ButtonComponent, TranslateModule]
 })
 export class ConfirmationModalComponent {
+  private modalService = inject(NgbModal);
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   public closeResult: string;
   public modalOpen: boolean = false;
@@ -19,9 +22,6 @@ export class ConfirmationModalComponent {
   @ViewChild("confirmationModal", { static: false }) ConfirmationModal: TemplateRef<any>;
 
   @Output() confirmed: EventEmitter<boolean> = new EventEmitter();
-
-  constructor(private modalService: NgbModal,
-    @Inject(PLATFORM_ID) private platformId: Object) { }
 
   async openModal() {
     if (isPlatformBrowser(this.platformId)) { // For SSR 

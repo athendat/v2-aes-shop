@@ -1,4 +1,4 @@
-import { Component, Input, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Input, HostListener, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Option } from '../../../interface/theme-option.interface';
 import { TranslateModule } from '@ngx-translate/core';
@@ -22,6 +22,8 @@ import { TopbarComponent } from '../widgets/topbar/topbar.component';
       CartComponent, MyAccountComponent, TranslateModule]
 })
 export class MinimalHeaderComponent {
+  private platformId = inject<Object>(PLATFORM_ID);
+
 
   @Input() data: Option | null;
   @Input() logo: string | null | undefined;
@@ -29,9 +31,6 @@ export class MinimalHeaderComponent {
 
   public stick: boolean = false;
   public active: boolean = false;
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-  }
 
   // @HostListener Decorator
   @HostListener("window:scroll", [])

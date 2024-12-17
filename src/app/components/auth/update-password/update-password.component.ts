@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
@@ -24,6 +24,10 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
 ],
 })
 export class UpdatePasswordComponent {
+  private store = inject(Store);
+  private formBuilder = inject(FormBuilder);
+  router = inject(Router);
+
 
   public form: FormGroup;
   public email: string;
@@ -33,11 +37,7 @@ export class UpdatePasswordComponent {
     items: [{ label: 'Reset Password', active: true }]
   }
 
-  constructor(
-    private store: Store,
-    private formBuilder: FormBuilder,
-    public  router: Router
-  ) {
+  constructor() {
     this.email = this.store.selectSnapshot(state => state.auth.email);
     this.token = this.store.selectSnapshot(state => state.auth.token);
     this.form = this.formBuilder.group({

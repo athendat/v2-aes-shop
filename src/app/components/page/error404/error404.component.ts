@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Location, AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Select } from '@ngxs/store';
@@ -16,6 +16,8 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     imports: [BreadcrumbComponent, ButtonComponent, AsyncPipe]
 })
 export class Error404Component {
+  private location = inject(Location);
+
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
 
@@ -23,8 +25,6 @@ export class Error404Component {
     title: "404",
     items: [{ label: "404", active: true }]
   }
-
-  constructor(private location: Location) {}
 
   back(){
     this.location.back();

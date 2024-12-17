@@ -1,12 +1,12 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformServer } from '@angular/common';
 import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class ServerInterceptor implements HttpInterceptor {
+  private platformId = inject<Object>(PLATFORM_ID);
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (isPlatformServer(this.platformId)) {
