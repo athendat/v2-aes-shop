@@ -113,7 +113,7 @@ export class AddressModalComponent {
         } else {
             this.address = null;
             this.form.reset();
-            this.form?.controls?.['country_code'].setValue('91');
+            this.form?.controls?.['country_code'].setValue('53');
         }
     }
 
@@ -132,7 +132,7 @@ export class AddressModalComponent {
                 complete: () => {
                     this.form.reset();
                     if (!this.address) {
-                        this.form?.controls?.['country_code'].setValue('91');
+                        this.form?.controls?.['country_code'].setValue('53');
                     }
                 }
             });

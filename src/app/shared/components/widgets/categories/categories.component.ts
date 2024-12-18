@@ -39,16 +39,18 @@ export class CategoriesComponent {
     public selectedCategorySlug: string[] = [];
 
     constructor() {
-        this.category$.subscribe(res => this.categories = res?.data?.filter(category => category.type==='product'));
+        this.category$.subscribe(res => this.categories = res?.data?.filter(category => category.type === 'product'));
         this.route.queryParams.subscribe(params => {
             this.selectedCategorySlug = params['category'] ? params['category'].split(',') : [];
         });
     }
 
     ngOnChanges() {
-        if (this.categoryIds && this.categoryIds.length) {
-            this.category$.subscribe(res => this.categories = res.data.filter(category => this.categoryIds?.includes(category.id)));
-        }
+        // if (this.categoryIds && this.categoryIds.length) {
+        //     this.category$.subscribe(res => {
+        //         this.categories = res.data.filter(category => this.categoryIds?.includes(category.id))
+        //     });
+        // }
     }
 
     selectCategory(id: string) {

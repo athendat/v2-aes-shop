@@ -1,21 +1,19 @@
 import { Routes } from '@angular/router';
-import { MaintenanceComponent } from './maintenance/maintenance.component';
-import { LayoutComponent } from './layout/layout.component';
 import { content } from './shared/routes/routes';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/theme/paris',
+        redirectTo: '/home',
         pathMatch: 'full',
       },
       {
         path: "maintenance",
-        component: MaintenanceComponent
+        loadComponent: () => import("./maintenance/maintenance.component").then(c => c.MaintenanceComponent),
       },
       {
         path: "",
-        component: LayoutComponent,
+        loadComponent: () => import("./layout/layout.component").then(c => c.LayoutComponent),
         children: content,
       }
 ];

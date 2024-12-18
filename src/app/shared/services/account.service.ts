@@ -12,7 +12,7 @@ export class AccountService {
 
 
   getUserDetails(): Observable<AccountUser> {
-    return this.http.get<AccountUser>(`/account.json`);
+    return this.http.get<AccountUser>(`/users/account`);
   }
 
 }

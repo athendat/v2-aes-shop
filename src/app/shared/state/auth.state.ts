@@ -29,14 +29,14 @@ export class AuthState {
     #authService = inject(AuthService);
 
 
-    ngxsOnInit(ctx: StateContext<AuthStateModel>) {
-        // Pre Fake Login (if you are using ap
-        ctx.patchState({
-            email: 'john.customer@example.com',
-            token: '',
-            access_token: '115|laravel_sanctum_mp1jyyMyKeE4qVsD1bKrnSycnmInkFXXIrxKv49w49d2a2c5'
-        })
-    }
+    // ngxsOnInit(ctx: StateContext<AuthStateModel>) {
+    //     // Pre Fake Login (if you are using ap
+    //     ctx.patchState({
+    //         email: 'john.customer@example.com',
+    //         token: '',
+    //         access_token: '115|laravel_sanctum_mp1jyyMyKeE4qVsD1bKrnSycnmInkFXXIrxKv49w49d2a2c5'
+    //     })
+    // }
 
     @Selector()
     static accessToken(state: AuthStateModel): String | null {

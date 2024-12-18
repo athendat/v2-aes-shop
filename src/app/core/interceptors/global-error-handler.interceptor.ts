@@ -7,26 +7,27 @@ import { Observable, catchError, throwError } from "rxjs";
 
 @Injectable()
 export class GlobalErrorHandlerInterceptor implements HttpInterceptor {
-  private errorService = inject(ErrorService);
-  private logger = inject(LoggingService);
-  private notifier = inject(NotificationService);
+    private errorService = inject(ErrorService);
+    private logger = inject(LoggingService);
+    private notifier = inject(NotificationService);
 
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    return next.handle(request).pipe(
-      catchError((error: HttpErrorResponse) => {
-        // Handle HTTP errors here
-        console.error('HTTP Error:', error.error);
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
+        return next.handle(request).pipe(
+            catchError((error: HttpErrorResponse) => {
+                // Handle HTTP errors here
+                console.error({ error });
+                console.error('HTTP Error:', error.error);
 
-        // You can perform additional error handling tasks here,
-        // such as logging the error, displaying a notification, etc.
-        const errorMessage = this.errorService.getClientErrorMessage(error.error);
-        this.logger.logError(errorMessage);
-        this.notifier.showError(errorMessage);
+                // You can perform additional error handling tasks here,
+                // such as logging the error, displaying a notification, etc.
+                const errorMessage = this.errorService.getClientErrorMessage(error.error);
+                this.logger.logError(errorMessage);
+                this.notifier.showError(errorMessage);
 
-        // Rethrow the error to propagate it down the error handling chain
-        return throwError(() => error)
-      })
-    );
-  }
+                // Rethrow the error to propagate it down the error handling chain
+                return throwError(() => error)
+            })
+        );
+    }
 }

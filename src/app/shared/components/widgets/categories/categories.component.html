@@ -3,7 +3,7 @@
 <div class="category-menu section-b-space">
   <h3>{{ title ? title : 'categories' | translate }}</h3>
   <ul>
-    @for (category of categories; track category) {
+    @for (category of categories; track category.id) {
     <li>
       <div class="category-list">
         <img [src]="category?.category_icon ? category?.category_icon?.original_url : 'assets/images/category.png'"

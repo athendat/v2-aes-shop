@@ -1,5 +1,5 @@
 <ul>
-  @for (link of links; track link) {
+  @for (link of links; track $index) {
     <li>
       <a routerLink="/{{link.link}}" class="text-content">{{ link.label | titleCase }}</a>
     </li>

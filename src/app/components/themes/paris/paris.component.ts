@@ -72,15 +72,15 @@ export class ParisComponent {
       }
 
       // Change color for this layout
-      document.documentElement.style.setProperty('--theme-color','#0da487');
-      this.themeOptionService.theme_color = '#0da487';
+    //   document.documentElement.style.setProperty('--theme-color','#0da487');
+    //   this.themeOptionService.theme_color = '#0da487';
     }
   }
 
   ngOnDestroy() {
     if (this.isBrowser) { // For SSR
       // Remove Color
-      document.documentElement.style.removeProperty('--theme-color');
+    //   document.documentElement.style.removeProperty('--theme-color');
     }
   }
 }

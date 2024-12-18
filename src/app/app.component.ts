@@ -1,115 +1,131 @@
-import { Component, NgZone, inject } from '@angular/core';
+import { Component, NgZone, OnDestroy, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ThemeOptionState } from './shared/state/theme-option.state';
 import { Observable } from 'rxjs';
 import { Option } from './shared/interface/theme-option.interface';
-import { Actions, ofActionDispatched, Select } from '@ngxs/store';
+import { Actions, ofActionDispatched, select, Select } from '@ngxs/store';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Meta, Title } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
 import { Logout } from './shared/action/auth.action';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    standalone: true,
+    imports: [RouterModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 
-export class AppComponent {
-  private actions = inject(Actions);
-  private router = inject(Router);
-  private titleService = inject(Title);
-  private ngZone = inject(NgZone);
-  private meta = inject(Meta);
+export class AppComponent implements OnDestroy {
+    private actions = inject(Actions);
+    private router = inject(Router);
+    private titleService = inject(Title);
+    private ngZone = inject(NgZone);
+    private meta = inject(Meta);
 
 
-  @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
+    @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
+    theme = select(ThemeOptionState.themeOptions);
 
-  public favIcon: HTMLLinkElement | null;
-  public isTabInFocus = true;
-  public timeoutId: any;
-  private currentMessageIndex = 0;
-  private messages = ["⚡Vuelve!!", "🎉Ofertas para ti..."];
-  private currentMessage: string;
-  private delay = 1000; // Delay between messages in milliseconds
+    public favIcon: HTMLLinkElement | null;
+    public isTabInFocus = true;
+    public timeoutId: any;
+    private currentMessageIndex = 0;
+    private messages = ["⚡Vuelve!!", "🎉Ofertas para ti..."];
+    private currentMessage: string;
+    private delay = 1000; // Delay between messages in milliseconds
 
-  constructor() {
-    const document = inject<Document>(DOCUMENT);
-    const config = inject(NgbRatingConfig);
+    constructor() {
+        const document = inject<Document>(DOCUMENT);
+        const config = inject(NgbRatingConfig);
 
 
-    config.max = 5;
-    config.readonly = true;
+        config.max = 5;
+        config.readonly = true;
 
-    this.themeOption$.subscribe(theme => {
-      if(theme?.general?.mode === 'dark') {
-        document.getElementsByTagName('html')[0].classList.add(theme?.general && theme?.general?.mode)
-      } else {
-        document.getElementsByTagName('html')[0].classList.remove('dark')
-      }
+        this.themeOption$.subscribe(theme => {
 
-      // Set Direction
-      if(theme?.general?.language_direction === 'rtl'){
-        document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
-        document.body.classList.add('rtl');
-      } else {
-        document.getElementsByTagName('html')[0].removeAttribute('dir');
-        document.body.classList.remove('rtl');
-      }
+            if (theme?.general?.mode === 'dark') {
+                document.getElementsByTagName('html')[0].classList.add(theme?.general && theme?.general?.mode)
+            } else {
+                document.getElementsByTagName('html')[0].classList.remove('dark')
+            }
 
-      // Set Favicon
-      this.favIcon = document.querySelector('#appIcon');
-    //   this.favIcon!.href = theme?.logo?.favicon_icon?.original_url;
+            // Set Direction
+            if (theme?.general?.language_direction === 'rtl') {
+                document.getElementsByTagName('html')[0].setAttribute('dir', 'rtl');
+                document.body.classList.add('rtl');
+            } else {
+                document.getElementsByTagName('html')[0].removeAttribute('dir');
+                document.body.classList.remove('rtl');
+            }
 
-      theme?.seo?.og_title && this.meta.updateTag({property: 'og:title', content: theme?.seo?.og_title});
-      theme?.seo?.og_description && this.meta.updateTag({property: 'og:description', content: theme?.seo?.og_description});
-      theme?.seo?.og_image?.original_url && this.meta.updateTag({property: 'og:image', content: theme?.seo?.og_image?.original_url});
-      theme?.seo?.meta_title && this.meta.updateTag({property: 'title', content: theme?.seo?.meta_title});
-      theme?.seo?.meta_description && this.meta.updateTag({property: 'description', content: theme?.seo?.meta_description});
-      theme?.seo?.meta_tags && this.meta.updateTag({property: 'keywords', content: theme?.seo?.meta_tags});
+            // Set Favicon
+            this.favIcon = document.querySelector('#appIcon');
+            this.setFavicon(theme?.logo?.favicon_icon?.original_url);
+            //   this.favIcon!.href = theme?.logo?.favicon_icon?.original_url;
 
-      document.addEventListener('visibilitychange', () => {
-        this.ngZone.run(() => {
-          this.isTabInFocus = !document.hidden;
-          if(this.isTabInFocus){
-            clearTimeout(this.timeoutId);
-            // Set site title
-            return this.titleService.setTitle(theme?.general?.site_title && theme?.general?.site_tagline
-              ? `${theme?.general?.site_title} | ${theme?.general?.site_tagline}` : 'Resolviste, la mejor plataforma de compras online');
-          } else {
-             this.updateMessage();
-          }
+            theme?.seo?.og_title && this.meta.updateTag({ property: 'og:title', content: theme?.seo?.og_title });
+            theme?.seo?.og_description && this.meta.updateTag({ property: 'og:description', content: theme?.seo?.og_description });
+            theme?.seo?.og_image?.original_url && this.meta.updateTag({ property: 'og:image', content: theme?.seo?.og_image?.original_url });
+            theme?.seo?.meta_title && this.meta.updateTag({ property: 'title', content: theme?.seo?.meta_title });
+            theme?.seo?.meta_description && this.meta.updateTag({ property: 'description', content: theme?.seo?.meta_description });
+            theme?.seo?.meta_tags && this.meta.updateTag({ property: 'keywords', content: theme?.seo?.meta_tags });
+
+            document.addEventListener('visibilitychange', () => {
+                this.ngZone.run(() => {
+                    this.isTabInFocus = !document.hidden;
+                    if (this.isTabInFocus) {
+                        clearTimeout(this.timeoutId);
+                        // Set site title
+                        return this.titleService.setTitle(theme?.general?.site_title && theme?.general?.site_tagline
+                            ? `${theme?.general?.site_title} | ${theme?.general?.site_tagline}` : 'Resolviste, la mejor plataforma de compras online');
+                    } else {
+                        this.updateMessage();
+                    }
+                });
+            });
+
+            document.documentElement.style.setProperty('--theme-color', theme?.general?.primary_color);
+
         });
-      });
-    });
 
-    this.actions.pipe(ofActionDispatched(Logout)).subscribe(() => {
-      this.router.navigate(['/auth/login']);
-    });
+        this.actions.pipe(ofActionDispatched(Logout)).subscribe(() => {
+            this.router.navigate(['/auth/login']);
+        });
 
-  }
+    }
 
-  updateMessage() {
-    // Clear the previous timeout
-    clearTimeout(this.timeoutId);
+    updateMessage() {
+        // Clear the previous timeout
+        clearTimeout(this.timeoutId);
 
-    // Update the current message
-    this.currentMessage = this.messages[this.currentMessageIndex];
-    this.titleService.setTitle(this.currentMessage)
-    // Increment the message index or reset it to 0 if it reaches the end
-    this.currentMessageIndex = (this.currentMessageIndex + 1) % this.messages.length;
+        // Update the current message
+        this.currentMessage = this.messages[this.currentMessageIndex];
+        this.titleService.setTitle(this.currentMessage)
+        // Increment the message index or reset it to 0 if it reaches the end
+        this.currentMessageIndex = (this.currentMessageIndex + 1) % this.messages.length;
 
-    // Set a new timeout to call the function again after the specified delay
-    this.timeoutId = setTimeout(() => {
-      this.updateMessage();
-    }, this.delay);
-  }
+        // Set a new timeout to call the function again after the specified delay
+        this.timeoutId = setTimeout(() => {
+            this.updateMessage();
+        }, this.delay);
+    }
 
-  ngOnDestroy() {
-    // Clear the timeout when the component is destroyed
-    clearTimeout(this.timeoutId);
-  }
+    setFavicon(url: string): void {
+        let link: HTMLLinkElement | null = document.querySelector("link[rel*='icon']");
+        if (!link) {
+            link = document.createElement('link');
+            link.rel = 'icon';
+            document.head.appendChild(link);
+        }
+        link.href = url;
+    }
+
+    ngOnDestroy() {
+        // Clear the timeout when the component is destroyed
+        clearTimeout(this.timeoutId);
+    }
 
 }

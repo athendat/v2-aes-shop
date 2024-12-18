@@ -4,6 +4,7 @@ import { map, Observable } from "rxjs";
 
 import { Params } from "../interface/core.interface";
 import { CategoryModel } from "../interface/category.interface";
+import { RestResponse } from '../types/common.types';
 
 @Injectable({
   providedIn: "root",
@@ -18,15 +19,13 @@ export class CategoryService {
         type: 'product',
     };
 
-    return this.http.get<any>(`/categories`, { params })
+    return this.http.get<RestResponse<any>>(`/categories`, { params })
         .pipe(
             map(({ data }) => {
-
                 return {
-                    data: data!.categories!,
-                    total: data!.categories?.length || 0,
+                    data: data!,
+                    total: data?.length || 0,
                 };
-
             })
         );
   }

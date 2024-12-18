@@ -1,5 +1,4 @@
 import { Routes } from "@angular/router";
-import { Error404Component } from "../../components/page/error404/error404.component";
 import { AuthGuard } from "src/app/core/guard/auth.guard";
 
 export const content: Routes = [
@@ -31,6 +30,6 @@ export const content: Routes = [
     {
         path: '**',
         pathMatch: 'full',
-        component: Error404Component
+        loadComponent: () => import("../../components/page/error404/error404.component").then(c => c.Error404Component),
     }
 ]

@@ -28,73 +28,75 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     styleUrls: ['./layout.component.scss'],
     standalone: true,
     imports: [LoadingBarModule, LoaderComponent, HeaderComponent, RouterOutlet,
-      FooterComponent, RecentPurchasePopupComponent, StickyCartComponent,
-      StickyCompareComponent, BackToTopComponent, NewsletterModalComponent,
-      CookieComponent, ExitModalComponent, AsyncPipe]
+        FooterComponent, RecentPurchasePopupComponent, StickyCartComponent,
+        StickyCompareComponent, BackToTopComponent, NewsletterModalComponent,
+        CookieComponent, ExitModalComponent, AsyncPipe]
 })
 
 export class LayoutComponent {
-  private store = inject(Store);
-  private platformId = inject<Object>(PLATFORM_ID);
-  themeOptionService = inject(ThemeOptionService);
+    private store = inject(Store);
+    private platformId = inject<Object>(PLATFORM_ID);
+    themeOptionService = inject(ThemeOptionService);
 
 
-  @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
-  @Select(ThemeOptionState.cookies) cookies$: Observable<boolean>;
-  @Select(ThemeOptionState.exit) exit$: Observable<boolean>;
+    @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
+    @Select(ThemeOptionState.cookies) cookies$: Observable<boolean>;
+    @Select(ThemeOptionState.exit) exit$: Observable<boolean>;
 
-  public cookies: boolean;
-  public exit: boolean;
-  public isBrowser: boolean;
-  public isLoading: boolean = true;
+    public cookies: boolean;
+    public exit: boolean;
+    public isBrowser: boolean;
+    public isLoading: boolean = true;
 
-  constructor() {
-    this.isBrowser = isPlatformBrowser(this.platformId);
-    this.cookies$.subscribe(res => this.cookies = res);
-    this.exit$.subscribe(res => this.exit = res);
-    this.themeOptionService.preloader = true;
-    this.store.dispatch(new GetUserDetails());
-    const getCategories$ = this.store.dispatch(new GetCategories({ status: 1 }));
-    const getBlog$ = this.store.dispatch(new GetBlogs({ status: 1, paginate: 10 }));
-    const getProduct$ = this.store.dispatch(new GetDealProducts({ status: 1, paginate: 2 }));
-    forkJoin([getCategories$, getBlog$, getProduct$]).subscribe({
-      complete: () => {
-        this.themeOptionService.preloader = false;
-      }
-    });
-  }
-
-  setLogo() {
-    var headerLogo;
-    var footerLogo;
-    var footerClass;
-    if (this.isBrowser) { // For SSR
-      if(window.location.pathname==='/theme/paris' || window.location.pathname==='/theme/osaka') {
-        headerLogo = 'assets/images/logo/1.png';
-        footerLogo = 'assets/images/logo/1.png';
-      } else if(window.location.pathname==='/theme/tokyo') {
-        headerLogo = 'assets/images/logo/2.png';
-        footerLogo = 'assets/images/logo/2.png';
-      } else if(window.location.pathname==='/theme/rome') {
-        headerLogo = 'assets/images/logo/3.png';
-        footerLogo = 'assets/images/logo/3.png';
-      } else if(window.location.pathname==='/theme/madrid') {
-        headerLogo = 'assets/images/logo/4.png';
-        footerLogo = 'assets/images/logo/4.png'
-        footerClass = 'footer-section-2 footer-color-2'
-      } else if(window.location.pathname==='/theme/berlin' || window.location.pathname==='/theme/denver') {
-        headerLogo = 'assets/images/logo/6.png';
-        footerLogo = 'assets/images/logo/4.png'
-        footerClass = 'footer-section-2 footer-color-3'
-      } else {
-        this.themeOption$.subscribe(theme => {
-          headerLogo = theme?.logo?.header_logo?.original_url;
-          footerLogo = theme?.logo?.footer_logo?.original_url;
-          footerClass = theme?.footer.footer_style === 'dark_mode' ? 'footer-section-2 footer-color-3': '';
+    constructor() {
+        this.isBrowser = isPlatformBrowser(this.platformId);
+        this.cookies$.subscribe(res => this.cookies = res);
+        this.exit$.subscribe(res => this.exit = res);
+        this.themeOptionService.preloader = true;
+        this.store.dispatch(new GetUserDetails());
+        const getCategories$ = this.store.dispatch(new GetCategories({ status: 1 }));
+        const getBlog$ = this.store.dispatch(new GetBlogs({ status: 1, paginate: 10 }));
+        const getProduct$ = this.store.dispatch(new GetDealProducts({ status: 1, paginate: 2 }));
+        forkJoin([getCategories$, getBlog$, getProduct$]).subscribe({
+            complete: () => {
+                this.themeOptionService.preloader = false;
+            }
         });
-      }
     }
-    return { header_logo: headerLogo, footer: { footer_logo: footerLogo, footer_class: footerClass }  }
-  }
+
+    setLogo() {
+
+        let headerLogo = '';
+        let footerLogo = '';
+        let footerClass = '';
+
+        if (this.isBrowser) { // For SSR
+            // if (window.location.pathname === '/theme/paris' || window.location.pathname === '/theme/osaka') {
+            //     headerLogo = 'assets/images/logo/1.png';
+            //     footerLogo = 'assets/images/logo/1.png';
+            // } else if (window.location.pathname === '/theme/tokyo') {
+            //     headerLogo = 'assets/images/logo/2.png';
+            //     footerLogo = 'assets/images/logo/2.png';
+            // } else if (window.location.pathname === '/theme/rome') {
+            //     headerLogo = 'assets/images/logo/3.png';
+            //     footerLogo = 'assets/images/logo/3.png';
+            // } else if (window.location.pathname === '/theme/madrid') {
+            //     headerLogo = 'assets/images/logo/4.png';
+            //     footerLogo = 'assets/images/logo/4.png'
+            //     footerClass = 'footer-section-2 footer-color-2'
+            // } else if (window.location.pathname === '/theme/berlin' || window.location.pathname === '/theme/denver') {
+            //     headerLogo = 'assets/images/logo/6.png';
+            //     footerLogo = 'assets/images/logo/4.png'
+            //     footerClass = 'footer-section-2 footer-color-3'
+            // } else {
+                this.themeOption$.subscribe(theme => {
+                    headerLogo = theme?.logo?.header_logo?.original_url;
+                    footerLogo = theme?.logo?.footer_logo?.original_url;
+                    footerClass = theme?.footer.footer_style === 'dark_mode' ? 'footer-section-2 footer-color-3' : '';
+                });
+            // }
+        }
+        return { header_logo: headerLogo, footer: { footer_logo: footerLogo, footer_class: footerClass } }
+    }
 
 }

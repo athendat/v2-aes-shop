@@ -13,60 +13,60 @@ import { isPlatformBrowser } from '@angular/common';
 })
 
 export class LanguageComponent {
-  private translate = inject(TranslateService);
-  private platformId = inject<Object>(PLATFORM_ID);
+    private translate = inject(TranslateService);
+    private platformId = inject<Object>(PLATFORM_ID);
 
 
-  @Input() style: string = 'basic';
+    @Input() style: string = 'basic';
 
-  public active: boolean = false;
-  public languages: any[] = [
-    {
-      language: 'English',
-      code: 'en',
-      icon: 'us'
-    },
-    {
-      language: 'Français',
-      code: 'fr',
-      icon: 'fr'
-    },
-  ]
+    public active: boolean = false;
+    public languages: any[] = [
+        {
+            language: 'English',
+            code: 'en',
+            icon: 'us'
+        },
+        {
+            language: 'Español',
+            code: 'es',
+            icon: 'es'
+        },
+    ]
 
-  public selectedLanguage: any = {
-    language: 'English',
-    code: 'en',
-    icon: 'us'
-  }
-
-  ngOnInit() {
-    if(isPlatformBrowser(this.platformId)){
-      let language = localStorage.getItem("language");
-
-      if(language===null){
-        localStorage.setItem("language", JSON.stringify(this.selectedLanguage));
-        this.translate.use(this.selectedLanguage.code);
-      }else{
-        this.selectedLanguage = JSON.parse(language);
-        this.translate.use(this.selectedLanguage.code);
-      }
+    public selectedLanguage: any = {
+        language: 'Español',
+        code: 'es',
+        icon: 'es'
     }
-  }
 
-  selectLanguage(language: any){
-    this.active = false;
-    this.translate.use(language.code);
-    this.selectedLanguage = language;
-    localStorage.setItem("language", JSON.stringify(this.selectedLanguage));
-  }
+    ngOnInit() {
+        if (isPlatformBrowser(this.platformId)) {
+            let language = localStorage.getItem("language");
 
-  openDropDown(){
-    this.active = !this.active;
-  }
+            if (language === null) {
+                localStorage.setItem("language", JSON.stringify(this.selectedLanguage));
+                this.translate.use(this.selectedLanguage.code);
+            } else {
+                this.selectedLanguage = JSON.parse(language);
+                this.translate.use(this.selectedLanguage.code);
+            }
+        }
+    }
+
+    selectLanguage(language: any) {
+        this.active = false;
+        this.translate.use(language.code);
+        this.selectedLanguage = language;
+        localStorage.setItem("language", JSON.stringify(this.selectedLanguage));
+    }
+
+    openDropDown() {
+        this.active = !this.active;
+    }
 
 
-  hideDropdown(){
-    this.active = false;
-  }
+    hideDropdown() {
+        this.active = false;
+    }
 
 }

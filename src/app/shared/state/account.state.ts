@@ -1,5 +1,5 @@
 import { Injectable, inject } from "@angular/core";
-import { Store, Action, Selector, State, StateContext } from "@ngxs/store";
+import { Store, Action, Selector, State, StateContext, select } from "@ngxs/store";
 import { tap } from "rxjs";
 import {
     GetUserDetails, UpdateUserProfile, UpdateUserPassword,
@@ -10,6 +10,7 @@ import { AccountService } from "../services/account.service";
 import { NotificationService } from "../services/notification.service";
 import { Permission } from "../interface/role.interface";
 import { AddressesService } from "../services/addresses.service";
+import { AuthState } from "./auth.state";
 
 export class AccountStateModel {
     user: AccountUser | null;
@@ -25,6 +26,8 @@ export class AccountStateModel {
 })
 @Injectable()
 export class AccountState {
+
+    isAuthenticated = select(AuthState.isAuthenticated);
 
     #accountService = inject(AccountService);
     #addressService = inject(AddressesService);
@@ -43,6 +46,12 @@ export class AccountState {
 
     @Action(GetUserDetails)
     getUserDetails(ctx: StateContext<AccountStateModel>) {
+
+        // Si el usuario no está autenticado, no se puede obtener los detalles del usuario
+        if (!this.isAuthenticated()) {
+            return;
+        }
+
         return this.#accountService.getUserDetails().pipe(
             tap({
                 next: result => {
