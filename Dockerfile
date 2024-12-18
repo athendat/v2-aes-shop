@@ -1,39 +1,32 @@
-# Etapa 1: Construcción
-FROM node AS builder
-
-# Establecer el directorio de trabajo dentro del contenedor
+# Stage 1: Build the Angular application
+FROM node:alpine AS build
 WORKDIR /app
 
-# Copiar package.json y package-lock.json para instalar dependencias
-COPY package*.json ./
+# Copy package.json and yarn.lock to leverage Docker cache
+COPY package.json yarn.lock ./
 
-# Instalar las dependencias de la aplicación
-RUN npm install --force
+# Install dependencies using Yarn
+RUN yarn install --frozen-lockfile
 
-# Copiar todo el proyecto en el directorio de trabajo
-COPY . .
+# Copy the rest of the application code
+COPY . ./
 
-# Construir la aplicación Angular
-RUN npm run build:ssr
+# Build the application with SSR
+RUN yarn build
 
-# Etapa 2: Servidor de producción
-FROM node
+# Stage 2: Serve the application
+FROM node:alpine
+WORKDIR /app
 
-# Establecer el directorio de trabajo dentro del contenedor
-WORKDIR /usr/src/app
+# Copy the built application from the previous stage
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./
 
-# Copiar los archivos de la etapa de construcción
-COPY --from=builder /app/dist ./dist
+# Puerto de la aplicación
+ENV PORT=${PORT}
 
-# Instalar solo las dependencias de producción
-COPY package*.json ./
-RUN npm install --production --force
-
-# Establecer el entorno como producción
-ENV NODE_ENV=${WEB_NODE_ENV}
-
-# Exponer el puerto en el que correrá la aplicación
+# Expose the port the app runs on
 EXPOSE 4000
 
-# Comando para iniciar la aplicación SSR
-CMD ["npm", "run", "serve:ssr"]
+# Start the application
+CMD ["yarn", "serve:ssr"]
