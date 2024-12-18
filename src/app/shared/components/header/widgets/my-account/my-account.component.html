@@ -1,5 +1,5 @@
 <!-- My Account Basic Style -->
-@if (style == 'basic') {
+@if (style==='basic') {
 <div>
     <div class="delivery-login-box">
         <div class="delivery-icon">
@@ -52,7 +52,7 @@
 
 <!-- My Account Classic Style -->
 <!-- <div class="onhover-dropdown">
-    <a href="javascript:void(0)" class="user-box" *ngIf="style == 'classic'">
+    <a href="javascript:void(0)" class="user-box" *ngIf="style==='classic'">
         <span class="header-icon">
             <i class="ri-user-line"></i>
         </span>
@@ -61,7 +61,7 @@
             <h4 class="mt-1">{{ (isAuthenticated$ | async) ? (user$ | async)?.name : 'User' }}</h4>
         </div>
     </a>
-    <a href="javascript:void(0)" class="header-icon user-icon search-icon" *ngIf="style == 'standard'">
+    <a href="javascript:void(0)" class="header-icon user-icon search-icon" *ngIf="style==='standard'">
         <i class="ri-user-line"></i>
     </a>
 

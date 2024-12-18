@@ -30,7 +30,7 @@ export class AdressesComponent {
   @ViewChild("deleteModal") DeleteModal: DeleteModalComponent;
 
   delete(action: string, data: UserAddress) {
-    if(action == 'delete')
+    if(action==='delete')
       this.store.dispatch(new DeleteAddress(data.id));
   }
 

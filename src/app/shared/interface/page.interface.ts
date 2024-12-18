@@ -12,7 +12,7 @@ export interface Page {
   status: boolean;
   meta_title: string;
   meta_description: string;
-  created_by_id?: number;
+  created_by_id?: string;
   created_at?: string;
   updated_at?: string;
   deleted_at?: string;

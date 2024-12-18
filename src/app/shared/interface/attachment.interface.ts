@@ -14,7 +14,7 @@ export interface Attachment {
     conversions_disk: string;
     size: string;
     original_url: string;
-    created_by_id: number;
+    created_by_id: string;
     created_at?: string;
     updated_at?: string;
     deleted_at?: string;

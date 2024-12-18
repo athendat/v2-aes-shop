@@ -41,14 +41,14 @@
                 @if (qna?.answer) {
                   <li>
                     <a href="javascript:void(0)" (click)="isLogin && feedback(qna, 'liked')">
-                      <span><i class="ri-thumb-up-{{ isLogin ? qna.reaction == 'liked' ? 'fill' : 'line'  : 'fill' }}" [class.theme-color]="qna.reaction == 'liked'"></i> {{ qna.total_likes }}</span>
+                      <span><i class="ri-thumb-up-{{ isLogin ? qna.reaction==='liked' ? 'fill' : 'line'  : 'fill' }}" [class.theme-color]="qna.reaction==='liked'"></i> {{ qna.total_likes }}</span>
                     </a>
                   </li>
                 }
                 @if (qna?.answer) {
                   <li>
                     <a href="javascript:void(0)" (click)="feedback(qna, 'disliked')">
-                      <span><i class="ri-thumb-down-{{ isLogin ? qna.reaction == 'disliked' ? 'fill' : 'line'  : 'fill' }}" [class.theme-color]="qna.reaction == 'disliked'"></i> {{ qna.total_dislikes }}</span>
+                      <span><i class="ri-thumb-down-{{ isLogin ? qna.reaction==='disliked' ? 'fill' : 'line'  : 'fill' }}" [class.theme-color]="qna.reaction==='disliked'"></i> {{ qna.total_dislikes }}</span>
                     </a>
                   </li>
                 }

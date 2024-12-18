@@ -20,7 +20,7 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     styleUrls: ['./cart.component.scss'],
     standalone: true,
     providers:[CurrencySymbolPipe],
-    imports: [BreadcrumbComponent, RouterLink, ButtonComponent, 
+    imports: [BreadcrumbComponent, RouterLink, ButtonComponent,
       NoDataComponent, AsyncPipe, CurrencySymbolPipe, TranslateModule]
 })
 export class CartComponent {
@@ -47,11 +47,11 @@ export class CartComponent {
     this.store.dispatch(new UpdateCart(params));
   }
 
-  delete(id: number) {
+  delete(id: string) {
     this.store.dispatch(new DeleteCart(id));
   }
 
-  addToWishlist(id: number){
+  addToWishlist(id: string){
     this.store.dispatch(new AddToWishlist({ product_id: id }));
   }
 

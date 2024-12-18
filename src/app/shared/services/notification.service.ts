@@ -41,7 +41,7 @@ export class NotificationService {
   }
 
   getNotifications(payload?: Params): Observable<NotificationModel> {
-    return this.http.get<NotificationModel>(`${environment.URL}/notification.json`, { params: payload });
+    return this.http.get<NotificationModel>(`/notification.json`, { params: payload });
   }
 
 }

@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { Params } from "../interface/core.interface";
-import { environment } from "../../../environments/environment";
+
 import { StoresModel } from "../interface/store.interface";
 
 @Injectable({
@@ -15,7 +15,7 @@ export class StoreService {
   public skeletonLoader: boolean = false;
 
   getStores(payload?: Params): Observable<StoresModel> {
-    return this.http.get<StoresModel>(`${environment.URL}/store.json`, { params: payload });
+    return this.http.get<StoresModel>(`/store.json`, { params: payload });
   }
 
 }

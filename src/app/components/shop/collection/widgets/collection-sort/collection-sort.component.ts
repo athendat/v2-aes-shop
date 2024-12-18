@@ -74,13 +74,13 @@ export class CollectionSortComponent {
 
   grid(value: string) {
     if(this.gridArray.includes(value)){
-      if(value == 'collection_3_grid')
+      if(value==='collection_3_grid')
        this.class = "row g-sm-4 g-3 product-list-section row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2";
-      else if(value == 'collection_4_grid')
+      else if(value==='collection_4_grid')
        this.class = "row g-sm-4 g-3 product-list-section row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2";
-      else if(value == 'collection_5_grid')
+      else if(value==='collection_5_grid')
         this.class = "row g-sm-4 g-3 product-list-section row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2";
-      else if(value == 'collection_list_view')
+      else if(value==='collection_list_view')
        this.class = "row g-sm-4 g-3 product-list-section row-cols-xxl-4 row-cols-xl-3 row-cols-lg-2 row-cols-md-3 row-cols-2 list-style";
 
       this.selectedGrid = value;
@@ -94,7 +94,7 @@ export class CollectionSortComponent {
       relativeTo: this.route,
       queryParams: {
         sortBy: data && data.value ? data.value : null,
-        field: data && (data.value == 'asc' || data.value == 'desc') ? 'created_at' : null
+        field: data && (data.value==='asc' || data.value==='desc') ? 'created_at' : null
       },
       queryParamsHandling: 'merge', // preserve the existing query params in the route
       skipLocationChange: false  // do trigger navigation

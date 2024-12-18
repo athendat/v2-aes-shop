@@ -26,8 +26,8 @@
             <ul>
               @for (orderStatus of (orderStatus$ | async)?.data; track orderStatus) {
                 <li [class.active]="orderStatus?.sequence! <= order.order_status.sequence!"
-                        [ngClass]="{'d-none': (orderStatus?.sequence! >= order.order_status.sequence! && order.order_status.slug == 'cancelled') ||
-                                            orderStatus?.slug == 'cancelled'}">
+                        [ngClass]="{'d-none': (orderStatus?.sequence! >= order.order_status.sequence! && order.order_status.slug==='cancelled') ||
+                                            orderStatus?.slug==='cancelled'}">
                   <div class="panel-content">
                     <div class="icon">
                       <img src="assets/svg/tracking/{{orderStatus?.slug}}.svg" class="img-fluid"
@@ -37,7 +37,7 @@
                   </div>
                 </li>
               }
-              @if (order.order_status.slug == 'cancelled') {
+              @if (order.order_status.slug==='cancelled') {
                 <li class="active cancelled-box">
                   <div class="panel-content">
                     <div class="icon">
@@ -91,7 +91,7 @@
                         </td>
                         <td>
                           @if (product?.is_return === 1 && product?.pivot?.is_refunded === 0 &&
-                            order.payment_status === 'COMPLETED' && order.order_status.slug == 'delivered') {
+                            order.payment_status === 'COMPLETED' && order.order_status.slug==='delivered') {
                             <a  href="javascript:void(0)"
                               (click)="refundModal.openModal(product)">
                             {{ 'ask_for_refund' | translate }}

@@ -17,48 +17,48 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     styleUrls: ['./login.component.scss'],
     standalone: true,
     imports: [
-    BreadcrumbComponent,
-    AlertComponent,
-    ReactiveFormsModule,
-    RouterLink,
-    ButtonComponent,
-    TranslateModule
-],
+        BreadcrumbComponent,
+        AlertComponent,
+        ReactiveFormsModule,
+        RouterLink,
+        ButtonComponent,
+        TranslateModule
+    ],
 })
 export class LoginComponent {
-  private store = inject(Store);
-  private router = inject(Router);
-  private formBuilder = inject(FormBuilder);
-  private authService = inject(AuthService);
+    private store = inject(Store);
+    private router = inject(Router);
+    private formBuilder = inject(FormBuilder);
+    private authService = inject(AuthService);
 
 
-  public form: FormGroup;
-  public breadcrumb: Breadcrumb = {
-    title: "Log in",
-    items: [{ label: 'Log in', active: true }]
-  }
-
-  constructor() {
-    this.form = this.formBuilder.group({
-      email: new FormControl('john.customer@example.com', [Validators.required, Validators.email]),
-      password: new FormControl('123456789', [Validators.required]),
-    });
-  }
-
-  submit() {
-    this.form.markAllAsTouched();
-    if(this.form.valid) {
-      this.store.dispatch(new Login(this.form.value)).subscribe({
-        complete: () => {
-          // Navigate to the intended URL after successful login
-          const redirectUrl = this.authService.redirectUrl || '/account/dashboard';
-          this.router.navigateByUrl(redirectUrl);
-
-          // Clear the stored redirect URL
-          this.authService.redirectUrl = undefined;
-        }
-      });
+    public form: FormGroup;
+    public breadcrumb: Breadcrumb = {
+        title: "Log in",
+        items: [{ label: 'Log in', active: true }]
     }
-  }
+
+    constructor() {
+        this.form = this.formBuilder.group({
+            email: new FormControl('john.customer@example.com', [Validators.required, Validators.email]),
+            password: new FormControl('123456789', [Validators.required]),
+        });
+    }
+
+    submit() {
+        this.form.markAllAsTouched();
+        if (this.form.valid) {
+            this.store.dispatch(new Login(this.form.value)).subscribe({
+                complete: () => {
+                    // Navigate to the intended URL after successful login
+                    const redirectUrl = this.authService.redirectUrl || '/account/dashboard';
+                    this.router.navigateByUrl(redirectUrl);
+
+                    // Clear the stored redirect URL
+                    this.authService.redirectUrl = undefined;
+                }
+            });
+        }
+    }
 
 }

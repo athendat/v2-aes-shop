@@ -12,11 +12,11 @@ export interface AccountUser {
     phone: string;
     country_code: string;
     profile_image?: Attachment;
-    profile_image_id?: number;
+    profile_image_id?: string;
     status: boolean;
     email_verified_at: string;
     payment_account: PaymentDetails;
-    role_id: number;
+    role_id: string;
     role_name?: string;
     role?: Role;
     permission: Permission[];

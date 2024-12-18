@@ -14,7 +14,7 @@ export interface Currency {
     thousands_separator: string;
     decimal_separator: string;
     status: boolean;
-    created_by_id: number;
+    created_by_id: string;
     created_at?: string;
     updated_at?: string;
     deleted_at?: string;

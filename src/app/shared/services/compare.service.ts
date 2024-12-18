@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { Observable, of } from 'rxjs';
+
 import { CompareModel } from '../interface/compare.interface';
 
 @Injectable({
@@ -14,7 +14,11 @@ export class CompareService {
   public skeletonLoader: boolean = false;
 
   getCompareItems(): Observable<CompareModel> {
-    return this.http.get<CompareModel>(`${environment.URL}/compare.json`);
+    // return this.http.get<CompareModel>(`/compare.json`);
+    return of({
+        data: [],
+        total: 0
+    })
   }
 
 }

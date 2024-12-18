@@ -27,7 +27,7 @@ export class CollectionCategoryFilterComponent {
   public selectedCategories: string[] = [];
 
   constructor(){
-    this.category$.subscribe(res => this.categories = res?.data?.filter(category => category.type == 'product'));
+    this.category$.subscribe(res => this.categories = res?.data?.filter(category => category.type==='product'));
   }
 
   ngOnChanges() {

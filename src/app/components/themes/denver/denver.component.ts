@@ -35,8 +35,8 @@ export class DenverComponent {
   public productSlider6ItemMargin = data.productSlider6ItemMargin;
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
-      if(this.data?.slug == this.slug) {
+    if (isPlatformBrowser(this.platformId)) { // For SSR
+      if(this.data?.slug===this.slug) {
         // Get Products
         const getProducts$ = this.store.dispatch(new GetProducts({
           status: 1,
@@ -61,7 +61,7 @@ export class DenverComponent {
   }
 
   ngOnDestroy() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       // Remove Color
       document.documentElement.style.removeProperty('--theme-color');
     }

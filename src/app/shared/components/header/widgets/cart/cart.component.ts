@@ -67,7 +67,7 @@ export class CartComponent {
       this.shippingCal = (this.cartTotal * 100) / this.shippingFreeAmt;
       if(this.shippingCal > 100) {
         this.shippingCal = 100;
-        if(this.confetti == 0) {
+        if(this.confetti===0) {
           this.confetti = 1;
           setTimeout(() => {
             this.confetti = 2;
@@ -95,7 +95,7 @@ export class CartComponent {
     this.store.dispatch(new UpdateCart(params));
   }
 
-  delete(id: number) {
+  delete(id: string) {
     this.store.dispatch(new DeleteCart(id));
   }
 

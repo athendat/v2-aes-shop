@@ -8,7 +8,7 @@ export class GetOrders {
 
 export class ViewOrder {
   static readonly type = "[Order] View";
-  constructor(public id: number) {}
+  constructor(public id: string) {}
 }
 
 export class Checkout {
@@ -33,5 +33,5 @@ export class RePayment {
 
 export class VerifyPayment {
   static readonly type = "[Order] Verify";
-  constructor(public id: number) {}
+  constructor(public id: string) {}
 }

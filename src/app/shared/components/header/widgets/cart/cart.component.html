@@ -1,11 +1,11 @@
 <!-- Cart Style Basic -->
-@if (style == 'basic') {
+@if (style==='basic') {
   <app-button
     [type]="'button'"
     [class]="'btn p-0 position-relative header-wishlist'"
     [spinner]="false"
     [id]="'cart_sidebar_btn'"
-    (click)="cartStyle == 'cart_sidebar' && cartToggle(true)">
+    (click)="cartStyle==='cart_sidebar' && cartToggle(true)">
     <i class="ri-shopping-cart-line"></i>
     @if ((cartItem$ | async)?.length) {
       <span class="position-absolute top-0 start-100 translate-middle badge">
@@ -16,9 +16,9 @@
 }
 
 <!-- Cart Style Classic -->
-@if (style == 'classic') {
+@if (style==='classic') {
   <a href="javascript:void(0)" class="header-icon swap-icon"
-    (click)="cartStyle == 'cart_sidebar' && cartToggle(true)"
+    (click)="cartStyle==='cart_sidebar' && cartToggle(true)"
     >
     @if ((cartItem$ | async)?.length) {
       <small class="badge-number badge-light">
@@ -31,7 +31,7 @@
 
 <!-- Cart On Hover -->
 <div class="onhover-div"
-  [ngClass]="{ 'fixed-cart': cartStyle == 'cart_sidebar' }"
+  [ngClass]="{ 'fixed-cart': cartStyle==='cart_sidebar' }"
   [class.show]="(sidebarCartOpen$ | async)">
   <div class="cart-title">
     <h4>{{ 'shopping_cart' | translate }}</h4>
@@ -146,9 +146,9 @@
     </div>
   }
 </div>
-<div class="bg-overlay" [class.show]="cartStyle == 'cart_sidebar' && (sidebarCartOpen$ | async)" (click)="cartStyle == 'cart_sidebar' && cartToggle(false)"></div>
+<div class="bg-overlay" [class.show]="cartStyle==='cart_sidebar' && (sidebarCartOpen$ | async)" (click)="cartStyle==='cart_sidebar' && cartToggle(false)"></div>
 <!-- Free Shipping Celebration -->
-<div class="confetti-wrapper" [class.show]="confetti == 1 && (sidebarCartOpen$ | async)">
+<div class="confetti-wrapper" [class.show]="confetti===1 && (sidebarCartOpen$ | async)">
   @for (item of confettiItems; track item) {
     <div class="confetti-{{item}}"></div>
   }

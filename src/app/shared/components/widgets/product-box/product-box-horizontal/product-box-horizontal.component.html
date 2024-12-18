@@ -65,14 +65,14 @@
       </h5>
       <div class="product-rating">
         <ngb-rating [rate]="product.rating_count"></ngb-rating>
-        @if (product.stock_status == 'in_stock') {
+        @if (product.stock_status==='in_stock') {
           <h6 class="theme-color">
             {{ product.stock_status | titleCase }}
           </h6>
         }
       </div>
       <div class="add-to-cart-box">
-        @if (product.stock_status == 'in_stock') {
+        @if (product.stock_status==='in_stock') {
           <app-button [id]="'add-to-cart'+product.id"
             [class]="'btn btn-add-cart addcart-button'"
             [iconClass]="'ri-add-line'"

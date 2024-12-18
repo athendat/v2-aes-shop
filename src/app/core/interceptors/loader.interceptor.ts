@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
-import { HideLoaderAction, ShowLoaderAction, 
+import { HideLoaderAction, ShowLoaderAction,
          ShowButtonSpinnerAction, HideButtonSpinnerAction } from '../../shared/action/loader.action';
 import { tap } from 'rxjs/operators';
 
@@ -12,9 +12,9 @@ export class LoaderInterceptor implements HttpInterceptor {
 
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    
-    Promise.resolve(null).then(() => { 
-      this.store.dispatch(new ShowLoaderAction(req.method == 'GET' ? true : false));
+
+    Promise.resolve(null).then(() => {
+      this.store.dispatch(new ShowLoaderAction(req.method==='GET' ? true : false));
       this.store.dispatch(new ShowButtonSpinnerAction(req.method != 'GET' ? true : false));
     });
 

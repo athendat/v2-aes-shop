@@ -27,9 +27,9 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss'],
     standalone: true,
-    imports: [LoadingBarModule, LoaderComponent, HeaderComponent, RouterOutlet, 
-      FooterComponent, RecentPurchasePopupComponent, StickyCartComponent, 
-      StickyCompareComponent, BackToTopComponent, NewsletterModalComponent, 
+    imports: [LoadingBarModule, LoaderComponent, HeaderComponent, RouterOutlet,
+      FooterComponent, RecentPurchasePopupComponent, StickyCartComponent,
+      StickyCompareComponent, BackToTopComponent, NewsletterModalComponent,
       CookieComponent, ExitModalComponent, AsyncPipe]
 })
 
@@ -68,21 +68,21 @@ export class LayoutComponent {
     var headerLogo;
     var footerLogo;
     var footerClass;
-    if (this.isBrowser) { // For SSR 
-      if(window.location.pathname == '/theme/paris' || window.location.pathname == '/theme/osaka') {
+    if (this.isBrowser) { // For SSR
+      if(window.location.pathname==='/theme/paris' || window.location.pathname==='/theme/osaka') {
         headerLogo = 'assets/images/logo/1.png';
         footerLogo = 'assets/images/logo/1.png';
-      } else if(window.location.pathname == '/theme/tokyo') {
+      } else if(window.location.pathname==='/theme/tokyo') {
         headerLogo = 'assets/images/logo/2.png';
         footerLogo = 'assets/images/logo/2.png';
-      } else if(window.location.pathname == '/theme/rome') {
+      } else if(window.location.pathname==='/theme/rome') {
         headerLogo = 'assets/images/logo/3.png';
         footerLogo = 'assets/images/logo/3.png';
-      } else if(window.location.pathname == '/theme/madrid') {
+      } else if(window.location.pathname==='/theme/madrid') {
         headerLogo = 'assets/images/logo/4.png';
         footerLogo = 'assets/images/logo/4.png'
         footerClass = 'footer-section-2 footer-color-2'
-      } else if(window.location.pathname == '/theme/berlin' || window.location.pathname == '/theme/denver') {
+      } else if(window.location.pathname==='/theme/berlin' || window.location.pathname==='/theme/denver') {
         headerLogo = 'assets/images/logo/6.png';
         footerLogo = 'assets/images/logo/4.png'
         footerClass = 'footer-section-2 footer-color-3'

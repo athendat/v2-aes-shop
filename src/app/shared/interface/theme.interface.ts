@@ -26,7 +26,7 @@ export interface Content {
   featured_banners: FeaturedBanners;
   main_content: MainContent;
   news_letter: NewsLetter;
-  products_ids: number[];
+  products_ids: string[];
 }
 
 export interface HomeBanner {
@@ -82,7 +82,7 @@ export interface Sidebar {
 export interface CategoriesIconList {
   title: string;
   description?: string;
-  category_ids: number[];
+  category_ids: string[];
   status: boolean;
 }
 
@@ -94,14 +94,14 @@ export interface TwoBanners {
 
 export interface SidebarProducts {
   title: string;
-  product_ids: number[];
+  product_ids: string[];
   status: boolean;
 }
 
 export interface ProductSection {
   title: string;
   description?: string;
-  product_ids: number[];
+  product_ids: string[];
   status: boolean;
 }
 
@@ -109,7 +109,7 @@ export interface CategoriesSection {
   title: string;
   description: string;
   image_url: string;
-  category_ids: number[];
+  category_ids: string[];
   status: boolean;
 }
 
@@ -149,14 +149,14 @@ export interface ContentTokyo {
   full_width_banner: FullWidthBanner;
   slider_products: SliderProductsTokyo;
   news_letter: NewsLetter;
-  products_ids: number[];
+  products_ids: string[];
 }
 
 export interface CategoriesIconListTokyo {
   title: string;
   status: boolean;
   image_url: string;
-  category_ids: number[];
+  category_ids: string[];
 }
 
 export interface MainContentTokyo {
@@ -198,7 +198,7 @@ export interface ContentOsaka {
   slider_products: SliderProductsTokyo;
   featured_blogs: BlogSection;
   news_letter: NewsLetter;
-  products_ids: number[];
+  products_ids: string[];
 }
 
 export interface HomeBannerOsaka {
@@ -238,7 +238,7 @@ export interface ContentRome {
   products_list_1: ProductSection;
   featured_blogs: BlogSection
   news_letter: NewsLetter;
-  products_ids: number[];
+  products_ids: string[];
 }
 
 export interface homeBannerRome {
@@ -274,7 +274,7 @@ export interface MadridContent {
   products_list_6: ProductSection;
   products_list_7: ProductSection;
   featured_blogs: BlogSection;
-  products_ids: number[];
+  products_ids: string[];
 }
 
 export interface HomeBannerMadrid {
@@ -351,7 +351,7 @@ export interface BerlinContent {
   full_width_banner: FullWidthBanner;
   product_list_1: ProductSection;
   news_letter: NewsLetter;
-  products_ids: number[];
+  products_ids: string[];
 }
 
 export interface MainContentBerlin {
@@ -392,7 +392,7 @@ export interface DenverContent {
   products_list_2: ProductSection;
   products_list_3: ProductSection;
   news_letter: NewsLetter;
-  products_ids: number[];
+  products_ids: string[];
 }
 
 export interface SliderProductWithBanner {

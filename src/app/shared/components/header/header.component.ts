@@ -23,7 +23,7 @@ export class HeaderComponent {
 
 
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
-  
+
   @Input() logo?: string | undefined;
 
   public style: string = 'basic_header';
@@ -41,12 +41,12 @@ export class HeaderComponent {
   }
 
   setHeader() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
-      if(window.location.pathname == '/theme/rome') {
+    if (isPlatformBrowser(this.platformId)) { // For SSR
+      if(window.location.pathname==='/theme/rome') {
         this.style = 'standard_header';
-      } else if(window.location.pathname == '/theme/madrid') {
+      } else if(window.location.pathname==='/theme/madrid') {
         this.style = 'classic_header';
-      } else if(window.location.pathname == '/theme/berlin' || window.location.pathname == '/theme/denver') {
+      } else if(window.location.pathname==='/theme/berlin' || window.location.pathname==='/theme/denver') {
         this.style = 'minimal_header';
       } else {
         this.themeOption$.subscribe(theme => {

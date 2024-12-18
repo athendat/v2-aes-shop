@@ -26,7 +26,7 @@ export interface Language {
    code: string;
    icon: string;
  }
- 
+
 export interface DayInterval {
    title: string;
    description: string;
@@ -37,14 +37,14 @@ export interface General {
    dark_logo_image?: Attachment;
    favicon_image?: Attachment;
    tiny_logo_image?: Attachment;
-   light_logo_image_id?: number;
-   dark_logo_image_id?: number;
-   tiny_logo_image_id?: number;
-   favicon_image_id?: number;
+   light_logo_image_id?: string;
+   dark_logo_image_id?: string;
+   tiny_logo_image_id?: string;
+   favicon_image_id?: string;
    site_title: string;
    site_tagline:string;
    default_timezone:string;
-   default_currency_id: number;
+   default_currency_id: string;
    admin_site_language_direction: string;
    min_order_amount: number;
    min_order_free_shipping: number;
@@ -176,7 +176,7 @@ export interface COD {
 export interface Maintenance {
    title: string;
    maintenance_mode: boolean;
-   maintenance_image_id: number;
+   maintenance_image_id: string;
    maintenance_image: Attachment;
    description: string;
 }

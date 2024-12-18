@@ -3,7 +3,7 @@
   <ng-template #recursiveMenu let-menus>
     @for (menu of menus; track menu) {
       <li
-        [ngClass]="[menu.type == 'sub' && menu.children ? 'nav-item dropdown' : 'nav-item', menu.megaMenu ? 'dropdown-mega' : '']"
+        [ngClass]="[menu.type==='sub' && menu.children ? 'nav-item dropdown' : 'nav-item', menu.megaMenu ? 'dropdown-mega' : '']"
         [class.new-nav-item]="menu.badge">
         @if (menu.type === 'sub') {
           <a class="nav-link dropdown-toggle" (click)="toggle(menu)">

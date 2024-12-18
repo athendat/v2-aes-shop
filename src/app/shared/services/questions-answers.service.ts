@@ -15,7 +15,7 @@ export class QuestionsAnswersService {
   public skeletonLoader: boolean = false;
 
   getQuestionAnswers(slug: Params): Observable<QnAModel> {
-    return this.http.get<QnAModel>(`${environment.URL}/questions.json`,  { params: slug });
+    return this.http.get<QnAModel>(`/questions.json`,  { params: slug });
   }
 
 }

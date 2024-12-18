@@ -38,7 +38,7 @@
         </div>
       }
       @if (setting.delivery.same_day_delivery) {
-        <div class="col-12 future-box" [class.show]="deliveryType && deliveryType == 'same_day'"
+        <div class="col-12 future-box" [class.show]="deliveryType && deliveryType==='same_day'"
           >
           <div class="future-option">
             <div class="delivery-items">
@@ -46,7 +46,7 @@
                 <h4>{{ 'select_timing_slot' | translate }}:</h4>
                 <ul>
                   @for (intervals of setting.delivery.same_day_intervals; track intervals; let i = $index) {
-                    <li [class.active]="selectedIndex && (i + 1) == selectedIndex"
+                    <li [class.active]="selectedIndex && (i + 1)===selectedIndex"
                       (click)="setDeliveryInterval(intervals.description!, (i + 1))">
                       <a href="javascript:void(0)">{{intervals.description}}</a>
                     </li>

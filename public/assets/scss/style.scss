@@ -3,11 +3,11 @@
 }
 
 .theme-color-2 {
-  --theme-color: #0baf9a;
+  --theme-color: #0D0BA8;
 }
 
 .theme-color-3 {
-  --theme-color: #239698;
+  --theme-color: #0D0BA8;
 }
 
 .theme-color-4 {
@@ -19,6 +19,7 @@
 }
 
 // utils
+
 @import "utils/mixin/animation";
 @import "utils/mixin/common";
 @import "utils/mixin/breakpoints";

@@ -42,8 +42,8 @@ export class LanguageComponent {
   ngOnInit() {
     if(isPlatformBrowser(this.platformId)){
       let language = localStorage.getItem("language");
-  
-      if(language == null){
+
+      if(language===null){
         localStorage.setItem("language", JSON.stringify(this.selectedLanguage));
         this.translate.use(this.selectedLanguage.code);
       }else{

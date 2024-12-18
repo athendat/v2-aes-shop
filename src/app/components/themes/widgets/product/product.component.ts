@@ -22,7 +22,7 @@ export class ProductComponent {
 
 
   @Input() style: string = 'vertical';
-  @Input() productIds: number[] = [];
+  @Input() productIds: string[] = [];
   @Input() boxClass: string;
   @Input() productStyle: string = "product-modern";
   @Input() layout: string;

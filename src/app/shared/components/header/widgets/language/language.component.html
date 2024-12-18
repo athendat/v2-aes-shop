@@ -1,5 +1,5 @@
 <!-- Language Basic Style -->
-@if (style == 'basic') {
+@if (style==='basic') {
   <div (clickOutside)="hideDropdown()">
     <app-button
       [class]="'btn dropdown-toggle'"
@@ -22,7 +22,7 @@
   </div>
 }
 <!-- Language Standard Style -->
-@if (style == 'standard') {
+@if (style==='standard') {
   <div (clickOutside)="hideDropdown()">
     <app-button
       [class]="'dropdown-toggle'"

@@ -10,18 +10,18 @@ export interface ReviewModel extends PaginateModel {
 export interface Review {
     id: number;
     consumer: User;
-    consumer_id: number;
+    consumer_id: string;
     consumer_name: string;
     description: string;
     product: Product;
-    product_id: number;
+    product_id: string;
     product_name: string;
     rating: number;
     review_image: Attachment;
-    review_image_id: number;
+    review_image_id: string;
     product_review_image: Attachment;
     store: Stores;
-    store_id: number;
+    store_id: string;
     created_at?: string;
     deleted_at?: string;
     updated_at?: string;

@@ -24,7 +24,7 @@ export class ImageLinkComponent {
 
   constructor(){}
 
-  getProductSlug(id: number, products: Product[]){
+  getProductSlug(id: string, products: Product[]){
     let product = products.find(product => product.id === id);
     return product ? product.slug : null;
   }

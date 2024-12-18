@@ -15,7 +15,7 @@ export class CouponService {
   public skeletonLoader: boolean = false;
 
   getCoupons(payload?: Params): Observable<CouponModel> {
-    return this.http.get<CouponModel>(`${environment.URL}/coupon.json`, { params: payload });
+    return this.http.get<CouponModel>(`/coupon.json`, { params: payload });
   }
 
 }

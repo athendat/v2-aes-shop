@@ -3,7 +3,7 @@ import { PaginateModel } from "./core.interface";
 export interface TagModel extends PaginateModel {
     data: Tag[];
 }
-  
+
 export interface Tag {
     id: number;
     name: string;
@@ -11,7 +11,7 @@ export interface Tag {
     description?: string;
     type: string;
     status: boolean;
-    created_by_id: number;
+    created_by_id: string;
     created_at?: string;
     updated_at?: string;
     deleted_at?: string;

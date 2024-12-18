@@ -73,7 +73,7 @@ export class SearchComponent {
       debounceTime(300),
       distinctUntilChanged()) // Adjust the debounce time as needed (in milliseconds)
       .subscribe((inputValue) => {
-      if(inputValue.length == 0){
+      if(inputValue.length===0){
         this.router.navigate([], {
           relativeTo: this.route,
           queryParams: {

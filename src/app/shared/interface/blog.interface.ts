@@ -18,13 +18,13 @@ export interface Blog {
     meta_title: string,
     meta_description: string,
     blog_thumbnail: Attachment;
-    blog_thumbnail_id: number;
+    blog_thumbnail_id: string;
     categories: Category[];
     tags: Tag[];
     is_featured: boolean;
     is_sticky: boolean | number;
     created_by: User;
-    created_by_id: number;
+    created_by_id: string;
     created_at?: string;
     updated_at?: string;
     deleted_at?: string;

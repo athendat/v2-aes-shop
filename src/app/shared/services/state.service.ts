@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { environment } from "../../../environments/environment";
+
 import { States } from "../interface/state.interface";
 
 @Injectable({
@@ -12,7 +12,7 @@ export class StateService {
 
 
   getStates(): Observable<States[]> {
-    return this.http.get<States[]>(`${environment.URL}/state.json`);
+    return this.http.get<States[]>(`/states`);
   }
 
 }

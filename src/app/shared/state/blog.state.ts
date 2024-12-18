@@ -76,7 +76,7 @@ export class BlogState {
     return this.blogService.getBlogs().pipe(
       tap({
         next: results => {
-          const result = results.data.find(blog => blog.slug == slug);
+          const result = results.data.find(blog => blog.slug===slug);
           if(result) {
             const state = ctx.getState();
             ctx.patchState({

@@ -32,8 +32,8 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     styleUrls: ['./checkout.component.scss'],
     standalone: true,
     providers:[CurrencySymbolPipe],
-    imports: [BreadcrumbComponent, AddressBlockComponent, DeliveryBlockComponent, 
-      PaymentBlockComponent, NoDataComponent, ReactiveFormsModule, LoaderComponent, 
+    imports: [BreadcrumbComponent, AddressBlockComponent, DeliveryBlockComponent,
+      PaymentBlockComponent, NoDataComponent, ReactiveFormsModule, LoaderComponent,
       ButtonComponent, AddressModalComponent, AsyncPipe, CurrencySymbolPipe, TranslateModule]
 })
 export class CheckoutComponent {
@@ -101,14 +101,14 @@ export class CheckoutComponent {
     });
   }
 
-  selectShippingAddress(id: number) {
+  selectShippingAddress(id: string) {
     if(id) {
       this.form.controls['shipping_address_id'].setValue(Number(id));
       this.checkout();
     }
   }
 
-  selectBillingAddress(id: number) {
+  selectBillingAddress(id: string) {
     if(id) {
       this.form.controls['billing_address_id'].setValue(Number(id));
       this.checkout();

@@ -63,7 +63,7 @@
                           @for (image of product.product_galleries; track image) {
                             <ng-template carouselSlide [id]="image.id.toString()">
                               <div>
-                                <div class="slider-image" [class.active]="image.id.toString() == activeSlide.toString()">
+                                <div class="slider-image" [class.active]="image.id.toString()===activeSlide.toString()">
                                                           <img [src]="image ? image.original_url
                                                                   : 'assets/images/product.png'" class="img-fluid" alt="{{ product.name }}"
                                     (click)="owlCar.to(activeSlide = image.id.toString())">

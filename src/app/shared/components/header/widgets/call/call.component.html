@@ -1,5 +1,5 @@
 <!-- Call Style Basic -->
-@if (style == 'basic') {
+@if (style==='basic') {
   <a href="javascript:void(0)" class="delivery-login-box">
     <div class="delivery-icon">
       <i class="ri-customer-service-line"></i>
@@ -11,7 +11,7 @@
   </a>
 }
 <!-- Call Style Classic -->
-@if (style == 'classic') {
+@if (style==='classic') {
   <div class="support-box">
     <div class="support-image">
       <img src="assets/images/icon/support.png" class="img-fluid" alt="support">
@@ -23,7 +23,7 @@
   </div>
 }
 <!-- Call Style Standard -->
-@if (style == 'standard') {
+@if (style==='standard') {
   <div class="nav-number">
     <img src="assets/images/icon/music.png" class="img-fluid" alt="support number">
     <span>{{ data?.header?.support_number }}</span>

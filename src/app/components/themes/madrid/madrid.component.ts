@@ -39,8 +39,8 @@ export class MadridComponent {
   public customOptionsItem4 = data.customOptionsItem4;
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
-      if(this.data?.slug == this.slug) {
+    if (isPlatformBrowser(this.platformId)) { // For SSR
+      if(this.data?.slug===this.slug) {
         // Get Products
         const getProducts$ = this.store.dispatch(new GetProducts({
           status: 1,
@@ -71,7 +71,7 @@ export class MadridComponent {
   }
 
   ngOnDestroy() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       // Remove Color
       document.documentElement.style.removeProperty('--theme-color');
     }

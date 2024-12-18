@@ -12,28 +12,28 @@ export interface OrderModel extends PaginateModel {
 }
 
 export interface Order {
-    id: number;
+    id: string;
     order_id: string;
     order_number: number;
     amount: number;
-    store_id: number;
+    store_id: string;
     store: Stores;
-    consumer_id: number;
+    consumer_id: string;
     consumer: User;
     consumer_name: string;
     products: Product[];
-    coupon_id: number;
+    coupon_id: string;
     coupon: Coupon;
     coupon_total_discount: number;
-    billing_address_id: number;
+    billing_address_id: string;
     billing_address: UserAddress;
-    shipping_address_id: number;
+    shipping_address_id: string;
     shipping_address: UserAddress;
     shipping_total: number;
     delivery_interval: string;
-    order_status_id: number;
+    order_status_id: string;
     order_status: OrderStatus;
-    parent_id: number;
+    parent_id: string;
     payment_method: string;
     payment_mode: string;
     payment_status: string;
@@ -47,7 +47,7 @@ export interface Order {
     transactions: TransactionsData[];
     invoice_url: string;
     status: boolean;
-    created_by_id: number;
+    created_by_id: string;
     deleted_at?: string;
     created_at?: string;
     updated_at?: string;
@@ -71,10 +71,10 @@ export interface CheckoutTotal {
 }
 
 export interface CheckoutPayload {
-    consumer_id: number;
+    consumer_id: string;
     products: OrderProduct[];
-    shipping_address_id: number;
-    billing_address_id: number;
+    shipping_address_id: string;
+    billing_address_id: string;
     coupon?: string;
     points_amount?: boolean;
     wallet_balance?: boolean;
@@ -85,14 +85,14 @@ export interface CheckoutPayload {
 
 
 export interface OrderProduct {
-    product_id: number;
-    variation_id: number | null | String;
+    product_id: string;
+    variation_id: string | null | String;
     quantity: number;
 }
 
 export interface PlaceOrder {
     is_redirect: boolean;
-    order_number: string;
+    order_number: number;
     transaction_id: string;
     url: string;
 }

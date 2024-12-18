@@ -13,7 +13,7 @@ export class OrderStatusService {
 
 
   getOrderStatus(payload?: Params): Observable<OrderStatusModel> {
-    return this.http.get<OrderStatusModel>(`${environment.URL}/order-status.json`, { params: payload });
+    return this.http.get<OrderStatusModel>(`/order-status.json`, { params: payload });
   }
 
 }

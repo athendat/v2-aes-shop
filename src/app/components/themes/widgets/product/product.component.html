@@ -1,5 +1,5 @@
 <!-- Vertical Product Box 1 -->
-@if (style == 'vertical') {
+@if (style==='vertical') {
   <ul class="product-list border-0 p-0 sidebar-product d-flex">
     @if (productService.skeletonLoader) {
       @for (item of skeletonItems; track item) {
@@ -18,7 +18,7 @@
 }
 
 <!-- Vertical Product Box 2 -->
-@if (style == 'classic') {
+@if (style==='classic') {
   <div class="best-selling-slider product-wrapper">
     <div class="position-relative">
       <span class="border-effect"></span>
@@ -42,7 +42,7 @@
 }
 
 <!-- Horizontal Product Box -->
-@if (style == 'horizontal') {
+@if (style==='horizontal') {
   <div [class]="!productService.skeletonLoader ? productStyle : ''">
     @if (productService.skeletonLoader) {
       <div class="row row-cols-5 m-0">
@@ -69,8 +69,8 @@
           </owl-carousel-o>
         </div>
       } @else {
-      <div [ngClass]="[showItem === 5 ? 'row g-sm-4 g-3 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2' : '', 
-                      showItem === 6 ? 'row g-sm-4 g-3 row-cols-xl-6 row-cols-lg-5 row-cols-md-4 row-cols-2' : '', 
+      <div [ngClass]="[showItem === 5 ? 'row g-sm-4 g-3 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-2' : '',
+                      showItem === 6 ? 'row g-sm-4 g-3 row-cols-xl-6 row-cols-lg-5 row-cols-md-4 row-cols-2' : '',
                       showItem === 4 ? 'row g-sm-4 g-3 row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2' : '',]">
           <!-- Horizontal Product Box Without Slider -->
           @for (product of products; track product) {

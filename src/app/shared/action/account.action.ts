@@ -23,12 +23,12 @@ export class CreateAddress {
 
 export class UpdateAddress {
   static readonly type = "[Account] Address Edit";
-  constructor(public payload: UserAddress, public id: number) {}
+  constructor(public payload: UserAddress, public id: string) {}
 }
 
 export class DeleteAddress {
   static readonly type = "[Account] Address Delete";
-  constructor(public id: number) {}
+  constructor(public id: string) {}
 }
 
 export class AccountClear {

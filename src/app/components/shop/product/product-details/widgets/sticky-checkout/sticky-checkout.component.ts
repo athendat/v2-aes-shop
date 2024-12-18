@@ -36,7 +36,7 @@ export class StickyCheckoutComponent {
       this.product = changes['product']?.currentValue;
     }
     this.cartItem$.subscribe(items => {
-      this.cartItem = items.find(item => item.product.id == this.product.id)!;
+      this.cartItem = items.find(item => item.product.id===this.product.id)!;
     });
   }
 
@@ -71,5 +71,5 @@ export class StickyCheckoutComponent {
       this.store.dispatch(new AddToCart(params));
     }
   }
-  
+
 }

@@ -20,9 +20,9 @@ export interface Option {
 }
 
 export interface Logo {
-   header_logo_id: number;
-   footer_logo_id: number;
-   favicon_icon_id: number;
+   header_logo_id: string;
+   footer_logo_id: string;
+   favicon_icon_id: string;
    favicon_icon: Attachment;
    header_logo: Attachment;
    footer_logo: Attachment;
@@ -48,7 +48,7 @@ export interface SEO {
    meta_description: string;
    og_title: string;
    og_description: string;
-   og_image_id: number;
+   og_image_id: string;
    og_image: Attachment;
 }
 
@@ -60,7 +60,7 @@ export interface Header {
    page_top_bar_dark: number | boolean;
    support_number: string;
    today_deals: [];
-   category_ids: number[];
+   category_ids: string[];
 }
 
 export interface TopBarContent {

@@ -12,7 +12,7 @@ export class PaymentDetailsService {
 
 
   getPaymentAccount(): Observable<PaymentDetails> {
-    return this.http.get<PaymentDetails>(`${environment.URL}/payment-account.json`);
+    return this.http.get<PaymentDetails>(`/payment-account.json`);
   }
 
 }

@@ -55,7 +55,7 @@ export class ProductContainComponent {
   ngOnChanges(changes: SimpleChanges) {
 
     this.selectedVariation = null;
-    
+
     if(changes['product'] && changes['product'].currentValue) {
       this.product = changes['product']?.currentValue;
     }
@@ -71,7 +71,7 @@ export class ProductContainComponent {
     }, 60000);
 
     this.cartItem$.subscribe(items => {
-      this.cartItem = items.find(item => item.product.id == this.product.id)!;
+      this.cartItem = items.find(item => item.product.id===this.product.id)!;
     });
   }
 
@@ -125,11 +125,11 @@ export class ProductContainComponent {
     }
   }
 
-  addToWishlist(id: number) {
+  addToWishlist(id: string) {
     this.store.dispatch(new AddToWishlist({ product_id: id }));
   }
 
-  addToCompare(id: number) {
+  addToCompare(id: string) {
     this.store.dispatch(new AddToCompare({ product_id: id }));
   }
 

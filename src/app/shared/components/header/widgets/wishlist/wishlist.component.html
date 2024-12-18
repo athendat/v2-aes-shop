@@ -1,12 +1,12 @@
 <!-- Wishlist Basic -->
-@if (style == 'basic') {
+@if (style==='basic') {
   <a [routerLink]="['/wishlist']" class="btn p-0 position-relative header-wishlist">
     <i class="ri-heart-line"></i>
   </a>
 }
 
 <!-- Wishlist Classic -->
-@if (style == 'classic') {
+@if (style==='classic') {
   <a [routerLink]="['/wishlist']" class="header-icon bag-icon">
     @if ((wishlist$ | async)?.total) {
       <small class="badge-number badge-light">{{ (wishlist$ | async)?.total }}</small>

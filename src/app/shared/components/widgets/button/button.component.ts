@@ -27,7 +27,7 @@ export class ButtonComponent {
 
   constructor() {
     this.spinnerStatus$.subscribe(res => {
-      if(res == false) {
+      if(res===false) {
         this.buttonId = null;
       }
     });

@@ -24,7 +24,7 @@ import { RouterLink } from '@angular/router';
     styleUrls: ['./product-box-horizontal.component.scss'],
     standalone: true,
     providers:[CurrencySymbolPipe],
-    imports: [RouterLink, ButtonComponent, NgbRating, 
+    imports: [RouterLink, ButtonComponent, NgbRating,
       ProductDetailModalComponent_1, VariationModalComponent, TranslateModule, TitleCasePipe, CurrencySymbolPipe]
 })
 export class ProductBoxHorizontalComponent {
@@ -53,7 +53,7 @@ export class ProductBoxHorizontalComponent {
 
   ngOnInit() {
     this.cartItem$.subscribe(items => {
-      this.cartItem = items.find(item => item.product.id == this.product.id)!;
+      this.cartItem = items.find(item => item.product.id===this.product.id)!;
     });
   }
 
@@ -69,15 +69,15 @@ export class ProductBoxHorizontalComponent {
     this.store.dispatch(new AddToCart(params));
   }
 
-  addToWishlist(id: number){
+  addToWishlist(id: string){
     this.store.dispatch(new AddToWishlist({ product_id: id }));
   }
 
-  removeWishlist(id: number){
+  removeWishlist(id: string){
     this.store.dispatch(new DeleteWishlist(id));
   }
 
-  addToCompar(id: number){
+  addToCompar(id: string){
     this.store.dispatch(new AddToCompare({ product_id: id }));
   }
 

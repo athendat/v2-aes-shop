@@ -13,7 +13,7 @@ export interface Stores {
   address: string;
   city: string;
   country: Country;
-  country_id: number;
+  country_id: string;
   description: string;
   hide_vendor_email: boolean;
   hide_vendor_phone: boolean;
@@ -21,15 +21,15 @@ export interface Stores {
   product_images: string[];
   slug:string;
   state: States;
-  state_id: number;
+  state_id: string;
   status: boolean;
   total_in_approved_stores: number;
   is_approved: boolean;
   store_logo: Attachment;
-  store_logo_id: number;
+  store_logo_id: string;
   store_name:string;
   vendor: User;
-  vendor_id: number;
+  vendor_id: string;
   facebook: string,
   instagram: string,
   pinterest: string,

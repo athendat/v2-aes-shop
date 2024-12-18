@@ -4,7 +4,7 @@
       <div *ngTemplateOutlet="recursiveCategory; context: { $implicit: data }"></div>
       <ng-template #recursiveCategory let-categories>
         @for (category of categories; track category) {
-          @if (category?.type == 'post') {
+          @if (category?.type==='post') {
             <li>
               <a [routerLink]="['/blogs']" [queryParams]="{category: category?.slug}">
                 <div class="category-name">

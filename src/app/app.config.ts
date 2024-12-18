@@ -1,21 +1,28 @@
-import { CurrencyPipe } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
-import { ApplicationConfig, ErrorHandler, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
-import { provideRouter, RouterModule } from '@angular/router';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
+import { CurrencyPipe, provideCloudinaryLoader } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withFetch, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
+
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-import { NgxsModule } from '@ngxs/store';
+import { provideStore } from '@ngxs/store';
 import { provideToastr } from 'ngx-toastr';
-import { routes } from './app.routes';
-import { GlobalErrorHandler } from './core/error/global-error-handler';
-import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
+import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { withNgxsStoragePlugin } from '@ngxs/storage-plugin';
+
 import { ErrorService } from './shared/services/error.service';
 import { NotificationService } from './shared/services/notification.service';
+
+import { apiUrlInterceptor } from './core/interceptors/api-url.interceptor';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { GlobalErrorHandlerInterceptor } from './core/interceptors/global-error-handler.interceptor';
+import { LoaderInterceptor } from './core/interceptors/loader.interceptor';
+import { ServerInterceptor } from './core/interceptors/server.interceptor';
+
+import { GlobalErrorHandler } from './core/error/global-error-handler';
+
 import { AccountState } from './shared/state/account.state';
 import { AttributeState } from './shared/state/attribute.state';
 import { AuthState } from './shared/state/auth.state';
@@ -28,8 +35,8 @@ import { CouponState } from './shared/state/coupon.state';
 import { CurrencyState } from './shared/state/currency.state';
 import { LoaderState } from './shared/state/loader.state';
 import { NotificationState } from './shared/state/notification.state';
-import { OrderStatusState } from './shared/state/order-status.state';
 import { OrderState } from './shared/state/order.state';
+import { OrderStatusState } from './shared/state/order-status.state';
 import { PageState } from './shared/state/page.state';
 import { PaymentDetailsState } from './shared/state/payment-details.state';
 import { PointState } from './shared/state/point.state';
@@ -45,9 +52,10 @@ import { ThemeOptionState } from './shared/state/theme-option.state';
 import { ThemeState } from './shared/state/theme.state';
 import { WalletState } from './shared/state/wallet.state';
 import { WishlistState } from './shared/state/wishlist.state';
-import { ServerInterceptor } from './core/interceptors/server.interceptor';
-import { GlobalErrorHandlerInterceptor } from './core/interceptors/global-error-handler.interceptor';
-// import { GlobalErrorHandlerInterceptor } from './core/interceptors/global-error-handler.interceptor';
+
+import { routes } from './app.routes';
+
+import { environment } from 'src/environments/environment';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -80,48 +88,56 @@ export const appConfig: ApplicationConfig = {
             multi: true,
         },
         importProvidersFrom(
-            BrowserModule,
-            BrowserAnimationsModule,
             LoadingBarRouterModule,
-            TranslateModule.forRoot({
-                loader: {
-                    provide: TranslateLoader,
-                    useFactory: HttpLoaderFactory,
-                    deps: [HttpClient],
-                },
-                defaultLanguage: 'en',
-            }),
-            NgxsModule.forRoot([
-                LoaderState,
+        ),
+        provideTranslateService({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient],
+            },
+            defaultLanguage: 'es',
+        }),
+        provideRouter(routes,
+            withComponentInputBinding(),
+            withInMemoryScrolling({
+                scrollPositionRestoration: 'enabled',
+            })
+        ),
+        provideCloudinaryLoader(environment.IMAGE_PROVIDER_URL),
+        provideStore(
+            [
                 AccountState,
-                CountryState,
-                StateState,
-                SettingState,
-                CurrencyState,
-                ThemeState,
-                ThemeOptionState,
-                CategoryState,
-                PageState,
                 AttributeState,
-                ProductState,
-                StoreState,
-                CartState,
+                AuthState,
                 BlogState,
-                TagState,
-                WishlistState,
+                CartState,
+                CategoryState,
                 CompareState,
+                CountryState,
+                CouponState,
+                CurrencyState,
+                LoaderState,
+                NotificationState,
                 OrderState,
                 OrderStatusState,
-                WalletState,
-                PointState,
-                RefundState,
+                PageState,
                 PaymentDetailsState,
-                NotificationState,
+                PointState,
+                ProductState,
                 QuestionAnswersState,
+                RefundState,
                 ReviewState,
-                CouponState
-            ]),
-            NgxsStoragePluginModule.forRoot({
+                SettingState,
+                StateState,
+                StoreState,
+                TagState,
+                ThemeOptionState,
+                ThemeState,
+                WalletState,
+                WishlistState,
+            ],
+            withNgxsStoragePlugin({
                 keys: [
                     'auth',
                     'account',
@@ -133,16 +149,18 @@ export const appConfig: ApplicationConfig = {
                     'setting',
                     'notification'
                 ]
-            }),
-            NgxsModule.forFeature([AuthState]),
-            RouterModule.forRoot(routes, {
-                initialNavigation: 'enabledBlocking'
             })
         ),
-        // provideAnimations(),
-        provideHttpClient(withInterceptorsFromDi(), withFetch()),
+        provideAnimationsAsync(),
+        provideHttpClient(
+            withInterceptorsFromDi(),
+            withFetch(),
+            withInterceptors([
+                apiUrlInterceptor
+            ])
+        ),
         provideZoneChangeDetection({ eventCoalescing: true }),
-        provideClientHydration(),
+        provideClientHydration(withEventReplay()),
         provideToastr({
             positionClass: 'toast-top-center',
             preventDuplicates: true

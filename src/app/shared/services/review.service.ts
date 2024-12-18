@@ -13,7 +13,7 @@ export class ReviewService {
 
 
   getReview(slug: Params): Observable<ReviewModel> {
-    return this.http.get<ReviewModel>(`${environment.URL}/review.json`,  { params: slug });
+    return this.http.get<ReviewModel>(`/review.json`,  { params: slug });
   }
 
 }

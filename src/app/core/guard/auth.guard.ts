@@ -36,7 +36,7 @@ export class AuthGuard {
   canActivateChild(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean | UrlTree {
     if (!!this.store.selectSnapshot(state => state.auth && state.auth.access_token)) {
-      if(this.router.url.startsWith('/account') || this.router.url == '/checkout' || this.router.url == '/compare')
+      if(this.router.url.startsWith('/account') || this.router.url==='/checkout' || this.router.url==='/compare')
         this.router.navigate(['/theme/paris']);
       return false;
     }

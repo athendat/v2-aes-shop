@@ -82,13 +82,13 @@
   <app-button
     [class]="'btn btn-md bg-theme'"
     [id]="'buynowbtn'+product.id"
-      [disabled]="(selectedVariation && selectedVariation.stock_status == 'in_stock' || product.stock_status == 'in_stock'
+      [disabled]="(selectedVariation && selectedVariation.stock_status==='in_stock' || product.stock_status==='in_stock'
       && product.type === 'simple') ? false : true"
-      (click)="(selectedVariation && selectedVariation.stock_status == 'in_stock' || product.stock_status == 'in_stock'
+      (click)="(selectedVariation && selectedVariation.stock_status==='in_stock' || product.stock_status==='in_stock'
       && product.type === 'simple') && buyNow(product)">
     {{ 'buy_now' | translate }}
   </app-button>
-  @if ((selectedVariation && selectedVariation.stock_status == 'in_stock' || product.stock_status == 'in_stock'
+  @if ((selectedVariation && selectedVariation.stock_status==='in_stock' || product.stock_status==='in_stock'
     && product.type === 'simple')) {
     <app-button [id]="'addcartbtnVariation'+product.id" [class]="'btn btn-md border-theme-color scroll-button'"
       (click)="addToCart(product)">
@@ -97,10 +97,10 @@
   } @else {
     <app-button [class]="'btn btn-md border-theme-color scroll-button disabled'"
       [id]="'soldoutbtnproductcontain'" [spinner]="false" [disabled]="true">
-      @if (selectedVariation && selectedVariation.stock_status == 'in_stock') {
+      @if (selectedVariation && selectedVariation.stock_status==='in_stock') {
         <i class="ri-shopping-cart-line me-1"></i>
         } {{
-        ((selectedVariation && selectedVariation.stock_status == 'out_of_stock' || product.stock_status == 'out_of_stock' ) ? 'sold_out'
+        ((selectedVariation && selectedVariation.stock_status==='out_of_stock' || product.stock_status==='out_of_stock' ) ? 'sold_out'
         : 'add_to_cart') | translate }}
       </app-button>
     }

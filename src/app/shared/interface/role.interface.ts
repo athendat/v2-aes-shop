@@ -18,7 +18,7 @@ export interface Module {
 
 export interface Permission {
   id: number;
-  permission_id: number;
+  permission_id: string;
   name: string;
   isChecked?: boolean;
   guard_name?: string;

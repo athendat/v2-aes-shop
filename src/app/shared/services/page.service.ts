@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { Observable } from "rxjs";
-import { environment } from "../../../environments/environment";
+
 import { Params } from "../interface/core.interface";
 import { ContactUsModel } from "../interface/page.interface";
 
@@ -15,7 +15,7 @@ export class PageService {
   public skeletonLoader: boolean = false;
 
   getFaqs(): Observable<any> {
-    return this.http.get(`${environment.URL}/faq.json`);
+    return this.http.get(`/faq.json`);
   }
 
 }

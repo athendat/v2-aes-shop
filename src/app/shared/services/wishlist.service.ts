@@ -14,7 +14,7 @@ export class WishlistService {
   public skeletonLoader: boolean = false;
 
   getWishlistItems(): Observable<WishlistModel> {
-    return this.http.get<WishlistModel>(`${environment.URL}/wishlist.json`);
+    return this.http.get<WishlistModel>(`/wishlist.json`);
   }
 
 }

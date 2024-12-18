@@ -31,9 +31,9 @@ export class VariantAttributesComponent {
 
   public cartItem: Cart | null;
   public productQty: number = 1;
-  public attributeValues: number[] = [];
-  public variantIds: number[] = [];
-  public soldOutAttributesIds: number[] = [];
+  public attributeValues: string[] = [];
+  public variantIds: string[] = [];
+  public soldOutAttributesIds: string[] = [];
   public selectedOptions: SelectedVariant[] = [];
   public selectedVariation: Variation | null;
 
@@ -42,18 +42,18 @@ export class VariantAttributesComponent {
       if(changes['product'] && changes['product'].currentValue) {
         this.product = changes['product']?.currentValue;
       }
-  
+
       if(changes['attributes'] && changes['attributes'].currentValue) {
         this.attributes = changes['attributes']?.currentValue;
       }
-  
+
       this.cartItem$.subscribe(items => {
-        this.cartItem = items.find(item => item.product.id == this.product.id)!;
+        this.cartItem = items.find(item => item.product.id===this.product.id)!;
       });
-  
+
       this.checkVariantAvailability(this.product);
     }, 0);
-    
+
   }
 
   checkVariantAvailability(product: Product) {
@@ -79,9 +79,9 @@ export class VariantAttributesComponent {
       // Set First Vatriant Default
       for (const attribute of product?.attributes) {
         if (this.attributeValues.length && attribute?.attribute_values.length) {
-          let values: number[] = [];
+          let values: string[] = [];
           for (const value of attribute.attribute_values) {
-        
+
             if(values.indexOf(value.id) === -1)
               values.push(value.id);
 
@@ -99,7 +99,7 @@ export class VariantAttributesComponent {
     product.variations?.forEach(variation => {
       let attrValues = variation?.attribute_values?.map(attribute_value => attribute_value?.id);
       product?.attributes.filter(attribute => {
-        if(attribute.style == 'image') {
+        if(attribute.style==='image') {
           attribute.attribute_values.filter(attribute_value => {
             if(this.attributeValues.includes(attribute_value.id)) {
               if(attrValues.includes(attribute_value.id)) {
@@ -116,7 +116,7 @@ export class VariantAttributesComponent {
     const index = this.selectedOptions.findIndex(item => Number(item.attribute_id) === Number(value?.attribute_id));
     this.soldOutAttributesIds = [];
     if(index === -1) {
-      this.selectedOptions.push({id: Number(value?.id), attribute_id: Number(value?.attribute_id)});
+      this.selectedOptions.push({id: value?.id, attribute_id: value?.attribute_id});
     } else {
       this.selectedOptions[index].id = value?.id;
     }
@@ -135,15 +135,15 @@ export class VariantAttributesComponent {
         this.checkStockAvailable();
       }
 
-      if(variation.stock_status == 'out_of_stock') {
+      if(variation.stock_status==='out_of_stock') {
         variation?.attribute_values.filter(attr_value =>  {
           if(attrValues.some(value => this.variantIds.includes(value))) {
             if(attrValues.every(value => this.variantIds.includes(value))){
               this.soldOutAttributesIds.push(attr_value.id);
             } else if(!this.variantIds.includes(attr_value.id)) {
               this.soldOutAttributesIds.push(attr_value.id);
-            } 
-          } else if(attrValues.length == 1 && attrValues.includes(attr_value.id)) {
+            }
+          } else if(attrValues.length===1 && attrValues.includes(attr_value.id)) {
             this.soldOutAttributesIds.push(attr_value.id);
           }
         });
@@ -153,7 +153,7 @@ export class VariantAttributesComponent {
     // Set Attribute Value
     this.product?.attributes.filter(attribute => {
       attribute.attribute_values.filter(a_value => {
-        if(a_value.id == value.id) {
+        if(a_value.id===value.id) {
           attribute.selected_value = a_value.value;
         }
       })
@@ -169,5 +169,5 @@ export class VariantAttributesComponent {
       this.product['stock_status']  = this.product?.quantity < this.productQty ? 'out_of_stock' : 'in_stock';
     }
   }
-  
+
 }

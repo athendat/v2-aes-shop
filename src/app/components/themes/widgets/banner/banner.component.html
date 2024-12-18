@@ -1,5 +1,5 @@
 <!-- Banner Horizontal Style-->
-@if (banners.length && style == 'horizontal') {
+@if (banners.length && style==='horizontal') {
   <div class="container-fluid-lg">
     <div class="banner-slider">
       <owl-carousel-o [options]="bannerSlider">
@@ -21,7 +21,7 @@
   </div>
 }
 <!-- Banner Vertical Style-->
-@if (banners?.image_url && style == 'vertical') {
+@if (banners?.image_url && style==='vertical') {
   <div [class]="class">
     <div class="home-contain hover-effect">
       <app-image-link [class]="'banner-contain'" [image]="banners" [bgImage]="false"></app-image-link>
@@ -29,7 +29,7 @@
   </div>
 }
 <!-- Banner Full Width Style-->
-@if (banners?.image_url && style == 'full_width') {
+@if (banners?.image_url && style==='full_width') {
   <div>
     <app-image-link [class]="'banner-contain'" [image]="banners" [bgImage]="false"></app-image-link>
   </div>

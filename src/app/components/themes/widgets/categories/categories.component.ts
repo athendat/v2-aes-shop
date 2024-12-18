@@ -11,20 +11,20 @@ import { CategoriesComponent as CategoriesComponent_1 } from '../../../../shared
 })
 export class CategoriesComponent {
 
-  @Input() categoryIds: number[] = [];
-  @Input() style: string = 'vertical';
-  @Input() title?: string;
-  @Input() image?: string;
-  @Input() theme: string;
-  @Input() sliderOption: OwlOptions;
-  @Input() selectedCategoryId: number;
+    @Input() categoryIds: string[] = [];
+    @Input() style: string = 'vertical';
+    @Input() title?: string;
+    @Input() image?: string;
+    @Input() theme: string;
+    @Input() sliderOption: OwlOptions;
+    @Input() selectedCategoryId: string;
 
-  @Output() selectedCategory: EventEmitter<number> = new EventEmitter();
+    @Output() selectedCategory: EventEmitter<string> = new EventEmitter();
 
-  constructor(){}
+    constructor() { }
 
-  selectCategory(id: number) {
-    this.selectedCategory.emit(id);
-  }
+    selectCategory(id: string) {
+        this.selectedCategory.emit(id);
+    }
 
 }

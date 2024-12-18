@@ -1,6 +1,6 @@
 export interface Wallet {
     id: number;
-    consumer_id: number;
+    consumer_id: string;
     balance: number;
     transactions: Transactions;
     created_at?: string;
@@ -26,9 +26,9 @@ export interface Transactions {
 
 export interface TransactionsData {
     id?: number;
-    wallet_id: number;
-    order_id: number;
-    point_id: number;
+    wallet_id: string;
+    order_id: string;
+    point_id: string;
     amount: number;
     type: string;
     type_status: string;

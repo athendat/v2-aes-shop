@@ -77,11 +77,11 @@ export class DealComponent {
   }
 
 
-  addToWishlist(id: number) {
+  addToWishlist(id: string) {
     this.store.dispatch(new AddToWishlist({ product_id: id }));
   }
 
-  addToCompare(id: number) {
+  addToCompare(id: string) {
     this.store.dispatch(new AddToCompare({ product_id: id }));
   }
 }

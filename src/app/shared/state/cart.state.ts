@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { of, tap } from "rxjs";
-import { GetCartItems, AddToCartLocalStorage, AddToCart, UpdateCart, DeleteCart, 
+import { GetCartItems, AddToCartLocalStorage, AddToCart, UpdateCart, DeleteCart,
     CloseStickyCart, ToggleSidebarCart, ClearCart, ReplaceCart } from "../action/cart.action";
 import { Cart, CartModel } from "../interface/cart.interface";
 import { CartService } from "../services/cart.service";
@@ -89,7 +89,7 @@ export class CartState {
     let salePrice = action.payload.variation ?  action.payload.variation.sale_price : action.payload.product?.sale_price;
     let result: CartModel = {
       items: [{
-        id: Number(Math.floor(Math.random() * 10000).toString().padStart(4, '0')), // Generate Random Id
+        id: Math.floor(Math.random() * 10000).toString().padStart(4, '0'), // Generate Random Id
         quantity: action.payload.quantity,
         sub_total: salePrice ? salePrice * action.payload.quantity : 0,
         product: action.payload.product!,
@@ -102,10 +102,10 @@ export class CartState {
     const state = ctx.getState();
     const cart = [...state.items];
     const index = cart.findIndex(item => item.id === result.items[0].id);
-    
+
     let output = { ...state };
 
-    if (index == -1) {
+    if (index===-1) {
       output.items = [...state.items, ...result.items];
     }
 
@@ -132,14 +132,14 @@ export class CartState {
 
   @Action(UpdateCart)
   update(ctx: StateContext<CartStateModel>, action: UpdateCart) {
-    
+
     const state = ctx.getState();
     const cart = [...state.items];
-    const index = cart.findIndex(item => Number(item.id) === Number(action.payload.id));
+    const index = cart.findIndex(item => item.id === action.payload.id);
 
-    if(cart[index]?.variation && action.payload.variation_id && 
-      Number(cart[index].id) === Number(action.payload.id) &&
-      Number(cart[index]?.variation_id) != Number(action.payload.variation_id)) {
+    if(cart[index]?.variation && action.payload.variation_id &&
+      cart[index].id === action.payload.id &&
+      cart[index]?.variation_id !== action.payload.variation_id) {
         return this.store.dispatch(new ReplaceCart(action.payload));
     }
 
@@ -175,13 +175,13 @@ export class CartState {
 
   @Action(ReplaceCart)
   replace(ctx: StateContext<CartStateModel>, action: ReplaceCart) {
-    
+
     const state = ctx.getState();
     const cart = [...state.items];
     const index = cart.findIndex(item => Number(item.id) === Number(action.payload.id));
 
     // Update Cart If cart id same but variant id is different
-    if(cart[index]?.variation && action.payload.variation_id && 
+    if(cart[index]?.variation && action.payload.variation_id &&
       Number(cart[index].id) === Number(action.payload.id) &&
       Number(cart[index]?.variation_id) != Number(action.payload.variation_id)) {
       cart[index].variation = action.payload.variation!;
@@ -190,7 +190,7 @@ export class CartState {
     }
 
     cart[index].quantity = 0;
-    
+
     const productQty = cart[index]?.variation ? cart[index]?.variation?.quantity : cart[index]?.product?.quantity;
 
     if (productQty < cart[index]?.quantity + action?.payload.quantity) {

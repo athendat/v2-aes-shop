@@ -1925,10 +1925,10 @@
     "@napi-rs/nice-win32-ia32-msvc" "1.0.1"
     "@napi-rs/nice-win32-x64-msvc" "1.0.1"
 
-"@ng-bootstrap/ng-bootstrap@17":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-17.0.0.tgz#b6331b1135fe23b821456ac4b84f9f4d0aadc87b"
-  integrity sha512-hTbBtozJlpevF1RO6J2adCoXiAkMTPV3wmXIyK05dVha4VsKjHibgaL6YldToKoh6ElQnIYkPEIJHX9z5EtyMw==
+"@ng-bootstrap/ng-bootstrap@^17.0.1":
+  version "17.0.1"
+  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-17.0.1.tgz#76e37b738618b42a2e1958f3378cb75f0557d117"
+  integrity sha512-utbm8OXIoqVVYGVzQkOS773ymbjc+UMkXv8lyi7hTqLhCQs0rZ0yA74peqVZRuOGXLHgcSTA7fnJhA80iQOblw==
   dependencies:
     tslib "^2.3.0"
 
@@ -2594,11 +2594,6 @@
   version "4.29.4"
   resolved "https://registry.yarnpkg.com/@types/feather-icons/-/feather-icons-4.29.4.tgz#3c1d0bba09278c88dd35f6ae102aeb293aabf4bd"
   integrity sha512-cvwI455PWx/gJ33XDTIZOdauRy+XCxZggkOT/tAQYZLdySPFATD4RnDC9mxOnCIEaK9kwPm3zZigkAsMkhXb5w==
-
-"@types/googlemaps@^3.43.3":
-  version "3.43.3"
-  resolved "https://registry.yarnpkg.com/@types/googlemaps/-/googlemaps-3.43.3.tgz#70cf962154a160fe78bcd69d6ccc296dd9175b1f"
-  integrity sha512-ZWNoz/O8MPEpiajvj7QiqCY8tTLFNqNZ/a+s+zTV58wFVNAvvqV4bdGfnsjTb5Cs4V6wEsLrX8XRhmnyYJ2Tdg==
 
 "@types/http-errors@*":
   version "2.0.4"

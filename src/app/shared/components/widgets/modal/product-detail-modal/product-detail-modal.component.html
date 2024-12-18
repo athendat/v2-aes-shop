@@ -25,7 +25,7 @@
                     @for (image of product.product_galleries; track image) {
                       <ng-template carouselSlide [id]="image.id.toString()">
                         <div>
-                          <div class="slider-image" [class.active]="image.id.toString() == activeSlide.toString()">
+                          <div class="slider-image" [class.active]="image.id.toString()===activeSlide.toString()">
                                             <img [src]="image ? image.original_url
                                                     : 'assets/images/product.png'" class="img-fluid" [alt]="product.name"
                               (click)="owlCar.to(activeSlide = image.id.toString())">
@@ -107,8 +107,8 @@
                     </app-button>
                   </div>
                 </div>
-                @if ((selectedVariation && selectedVariation.stock_status == 'in_stock'
-                  || product.stock_status == 'in_stock' && product.type && product.type === 'simple')) {
+                @if ((selectedVariation && selectedVariation.stock_status==='in_stock'
+                  || product.stock_status==='in_stock' && product.type && product.type === 'simple')) {
                   <app-button [id]="'addcartDetailsbtnVariation'+product.id"
                     [class]="'btn theme-bg-color view-button icon text-white fw-bold btn-md'"
                     (click)="addToCart(product)"
@@ -121,8 +121,8 @@
                     [id]="'cartDetailsbtnOs'+product.id"
                     [spinner]="false"
                     [disabled]="true">
-                    {{ ((selectedVariation && selectedVariation.stock_status == 'out_of_stock' ||
-                    product.stock_status == 'out_of_stock' ) ? 'sold_out' : 'add_to_cart') | translate }}
+                    {{ ((selectedVariation && selectedVariation.stock_status==='out_of_stock' ||
+                    product.stock_status==='out_of_stock' ) ? 'sold_out' : 'add_to_cart') | translate }}
                   </app-button>
                 }
               </div>

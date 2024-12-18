@@ -9,6 +9,7 @@ export const environment = {
     API_URL: 'http://localhost:9033/api_033',
     // API_URL: 'https://api-mnmas.athendat.site/api_033',
     SOCKET_IO: 'http://localhost:9033',
+    IMAGE_PROVIDER_URL: 'https://res.cloudinary.com/athendat'
 };
 
 /*

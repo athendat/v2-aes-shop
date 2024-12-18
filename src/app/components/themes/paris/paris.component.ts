@@ -23,7 +23,7 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     templateUrl: './paris.component.html',
     styleUrls: ['./paris.component.scss'],
     standalone: true,
-    imports: [HomeBannerComponent, BannerComponent, CategoriesComponent, 
+    imports: [HomeBannerComponent, BannerComponent, CategoriesComponent,
       ProductComponent, TitleComponent, ImageLinkComponent, BlogComponent, NewsletterComponent]
 })
 export class ParisComponent {
@@ -46,8 +46,8 @@ export class ParisComponent {
   }
 
   ngOnInit() {
-    if (this.isBrowser) { // For SSR 
-      if(this.data?.slug == this.slug) {
+    if (this.isBrowser) { // For SSR
+      if(this.data?.slug===this.slug) {
         // Get Products
         const getProducts$ = this.store.dispatch(new GetProducts({
           status: 1,
@@ -78,7 +78,7 @@ export class ParisComponent {
   }
 
   ngOnDestroy() {
-    if (this.isBrowser) { // For SSR 
+    if (this.isBrowser) { // For SSR
       // Remove Color
       document.documentElement.style.removeProperty('--theme-color');
     }

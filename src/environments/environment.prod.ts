@@ -8,6 +8,7 @@ export const environment = {
   URL: 'https://angular.pixelstrap.net/fastkart/assets/data',
   API_URL: 'https://aes-api.resolviste.com/api_033',
   SOCKET_IO: 'https://aes-api.resolviste.com',
+  IMAGE_PROVIDER_URL: 'https://res.cloudinary.com/athendat'
 };
 
 /*

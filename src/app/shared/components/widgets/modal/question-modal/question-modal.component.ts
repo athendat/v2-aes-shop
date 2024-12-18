@@ -16,7 +16,7 @@ import { ButtonComponent } from '../../button/button.component';
     styleUrls: ['./question-modal.component.scss'],
     standalone: true,
     providers:[CurrencySymbolPipe],
-    imports: [ButtonComponent, ReactiveFormsModule, 
+    imports: [ButtonComponent, ReactiveFormsModule,
       FormsModule, TranslateModule, CurrencySymbolPipe]
 })
 export class QuestionModalComponent {
@@ -36,7 +36,7 @@ export class QuestionModalComponent {
   public id: number;
 
   async openModal(product: Product, qna?: QuestionAnswers) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       if(qna){
         this.type = 'edit'
         this.id = qna.id;
@@ -74,7 +74,7 @@ export class QuestionModalComponent {
     }
     let action = new SendQuestion(data)
     if(data.question || data.product_id){
-      if(this.type == 'edit' && this.id) {
+      if(this.type==='edit' && this.id) {
         action = new UpdateQuestionAnswers(data, this.id)
       }
       this.store.dispatch(action).subscribe({

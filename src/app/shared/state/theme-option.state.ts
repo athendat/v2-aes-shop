@@ -69,9 +69,9 @@ export class ThemeOptionState {
     const state = ctx.getState();
     ctx.patchState({
      ...state,
-     cookies: action.slug == 'cookies' ? action.value : state.cookies,
-     exit: action.slug == 'exit' ? action.value : state.exit,
-     newsletter: action.slug == 'newsletter' ? action.value : state.newsletter
+     cookies: action.slug==='cookies' ? action.value : state.cookies,
+     exit: action.slug==='exit' ? action.value : state.exit,
+     newsletter: action.slug==='newsletter' ? action.value : state.newsletter
     });
   }
 

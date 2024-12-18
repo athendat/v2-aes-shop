@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Setting } from '../interface/setting.interface';
+import { RestResponse } from '../types/common.types';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,14 @@ export class SettingService {
 
 
   getSettingOption(): Observable<Setting> {
-    return this.http.get<Setting>(`${environment.URL}/setting.json`);
+    return this.http.get<RestResponse<Setting>>(`/settings`).pipe(
+        filter((response) => {
+
+            //  Comprobar que la respuesta tiene valores
+            return response.data !== undefined;
+        }),
+        map((response) => response.data!)
+    );
   }
 
   async getReCaptchaConfig(): Promise<void> {

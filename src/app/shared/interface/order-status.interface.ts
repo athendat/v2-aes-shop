@@ -9,7 +9,7 @@ export interface OrderStatus {
    name: string;
    sequence: number;
    slug: string;
-   created_by_id: number;
+   created_by_id: string;
    status: boolean;
    deleted_at: string;
    created_at: string;

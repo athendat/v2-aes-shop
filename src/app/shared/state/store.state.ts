@@ -45,7 +45,7 @@ export class StoreState {
     this.storeService.skeletonLoader = true;
     return this.storeService.getStores(action.payload).pipe(
       tap({
-        next: result => { 
+        next: result => {
           ctx.patchState({
             store: {
               data: result.data,
@@ -56,7 +56,7 @@ export class StoreState {
         complete: () => {
           this.storeService.skeletonLoader = false;
         },
-        error: err => { 
+        error: err => {
           throw new Error(err?.error?.message);
         }
       })
@@ -67,9 +67,9 @@ export class StoreState {
   getStoreBySlug(ctx: StateContext<StoreStateModel>, { slug }: GetStoreBySlug) {
     return this.storeService.getStores().pipe(
       tap({
-        next: result => { 
+        next: result => {
           const state = ctx.getState();
-          const store = result.data.find(store => store.slug == slug);
+          const store = result.data.find(store => store.slug===slug);
           if(store){
             ctx.patchState({
               ...state,
@@ -79,7 +79,7 @@ export class StoreState {
             this.router.navigate(['/404']);
           }
         },
-        error: err => { 
+        error: err => {
           this.router.navigate(['/404']);
           throw new Error(err?.error?.message);
         }

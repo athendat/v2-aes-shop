@@ -1,6 +1,6 @@
 export interface PaymentDetails {
     id: number;
-    user_id: number;
+    user_id: string;
     paypal_email: string;
     account_type: string;
     bank_account_no: string;

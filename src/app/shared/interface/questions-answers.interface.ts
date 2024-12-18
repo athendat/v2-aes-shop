@@ -11,7 +11,7 @@ export interface QuestionAnswers   {
     question: string;
     total_dislikes: number;
     total_likes: number;
-    consumer_id: number;
+    consumer_id: string;
     created_at?: string;
     updated_at?: string;
     deleted_at?: string;

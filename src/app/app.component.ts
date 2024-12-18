@@ -31,7 +31,7 @@ export class AppComponent {
   public isTabInFocus = true;
   public timeoutId: any;
   private currentMessageIndex = 0;
-  private messages = ["⚡ Come Back !!", "🎉 Offers for you..."];
+  private messages = ["⚡Vuelve!!", "🎉Ofertas para ti..."];
   private currentMessage: string;
   private delay = 1000; // Delay between messages in milliseconds
 
@@ -61,7 +61,7 @@ export class AppComponent {
 
       // Set Favicon
       this.favIcon = document.querySelector('#appIcon');
-      this.favIcon!.href = theme?.logo?.favicon_icon?.original_url;
+    //   this.favIcon!.href = theme?.logo?.favicon_icon?.original_url;
 
       theme?.seo?.og_title && this.meta.updateTag({property: 'og:title', content: theme?.seo?.og_title});
       theme?.seo?.og_description && this.meta.updateTag({property: 'og:description', content: theme?.seo?.og_description});
@@ -77,7 +77,7 @@ export class AppComponent {
             clearTimeout(this.timeoutId);
             // Set site title
             return this.titleService.setTitle(theme?.general?.site_title && theme?.general?.site_tagline
-              ? `${theme?.general?.site_title} | ${theme?.general?.site_tagline}` : 'FastKart Marketplace: Where Vendors Shine Together')
+              ? `${theme?.general?.site_title} | ${theme?.general?.site_tagline}` : 'Resolviste, la mejor plataforma de compras online');
           } else {
              this.updateMessage();
           }
@@ -111,5 +111,5 @@ export class AppComponent {
     // Clear the timeout when the component is destroyed
     clearTimeout(this.timeoutId);
   }
-  
+
 }

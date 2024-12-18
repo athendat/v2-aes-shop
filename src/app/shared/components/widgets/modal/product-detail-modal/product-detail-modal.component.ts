@@ -21,7 +21,7 @@ import { ButtonComponent } from '../../button/button.component';
     styleUrls: ['./product-detail-modal.component.scss'],
     standalone: true,
     providers:[CurrencySymbolPipe],
-    imports: [ButtonComponent, CarouselModule, NgbRating, 
+    imports: [ButtonComponent, CarouselModule, NgbRating,
       VariantAttributesComponent, TranslateModule, TitleCasePipe, CurrencySymbolPipe]
 })
 export class ProductDetailModalComponent {
@@ -44,18 +44,18 @@ export class ProductDetailModalComponent {
   public selectedVariation: Variation | null;
 
   public activeSlide: string = '0';
-  
+
   public productMainThumbSlider = data.productMainThumbSlider;
   public productThumbSlider = data.productThumbSlider;
 
   ngOnInit() {
     this.cartItem$.subscribe(items => {
-      this.cartItem = items.find(item => item.product.id == this.product.id)!;
+      this.cartItem = items.find(item => item.product.id===this.product.id)!;
     });
   }
 
   async openModal() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.modalOpen = true;
       this.modalService.open(this.productDetailModal, {
         ariaLabelledBy: 'Product-Detail-Modal',
@@ -90,8 +90,8 @@ export class ProductDetailModalComponent {
   addToCart(product: Product) {
     if(product) {
       const params: CartAddOrUpdate = {
-        id: this.cartItem && (this.selectedVariation && this.cartItem?.variation && 
-          this.selectedVariation?.id == this.cartItem?.variation?.id) ? this.cartItem.id : null,
+        id: this.cartItem && (this.selectedVariation && this.cartItem?.variation &&
+          this.selectedVariation?.id===this.cartItem?.variation?.id) ? this.cartItem.id : null,
         product_id: product?.id!,
         product: product ? product : null,
         variation: this.selectedVariation ? this.selectedVariation : null,
@@ -115,5 +115,5 @@ export class ProductDetailModalComponent {
       return `with: ${reason}`;
     }
   }
-  
+
 }

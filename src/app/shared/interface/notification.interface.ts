@@ -8,7 +8,7 @@ export interface Notification {
     id: string;
     type: string;
     notifiable_type: string;
-    notifiable_id: number;
+    notifiable_id: string;
     data: Data;
     read_at?: string;
     created_at?: string;
@@ -21,4 +21,3 @@ export interface Data {
     message: string;
     type: string;
 }
-  

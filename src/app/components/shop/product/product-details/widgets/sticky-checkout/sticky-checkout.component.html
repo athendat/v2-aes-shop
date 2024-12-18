@@ -56,8 +56,8 @@
               </div>
             </div>
             <div class="add-btn">
-              @if ((selectedVariation && selectedVariation.stock_status == 'in_stock'
-                || product.stock_status == 'in_stock' && product.type === 'simple')) {
+              @if ((selectedVariation && selectedVariation.stock_status==='in_stock'
+                || product.stock_status==='in_stock' && product.type === 'simple')) {
                 <app-button
                   [id]="'addcartbtnVariationsticky'+product.id"
                   [class]="'btn theme-bg-color text-white'"
@@ -71,8 +71,8 @@
                   [id]="'soldoutbtncheckout'"
                   [spinner]="false"
                   [disabled]="true">
-                  {{ ((selectedVariation && selectedVariation.stock_status == 'out_of_stock' ||
-                  product.stock_status == 'out_of_stock' ) ? 'sold_out' : 'add_to_cart') | translate  }}
+                  {{ ((selectedVariation && selectedVariation.stock_status==='out_of_stock' ||
+                  product.stock_status==='out_of_stock' ) ? 'sold_out' : 'add_to_cart') | translate  }}
                 </app-button>
               }
             </div>

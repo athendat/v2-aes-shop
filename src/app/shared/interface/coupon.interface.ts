@@ -25,7 +25,7 @@ export interface Coupon {
     products: Product[];
     is_first_order: boolean;
     status: boolean;
-    created_by_id: number;
+    created_by_id: string;
     created_at: string;
     updated_at: string;
     deleted_at: string;
