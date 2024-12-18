@@ -9,7 +9,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     selector: 'app-theme-collection ',
     templateUrl: './collection .component.html',
     styleUrls: ['./collection .component.scss'],
-    standalone: true,
     imports: [CarouselModule, ImageLinkComponent]
 })
 export class CollectionComponent {

@@ -20,7 +20,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     selector: 'app-product-thumbnail',
     templateUrl: './product-thumbnail.component.html',
     styleUrls: ['./product-thumbnail.component.scss'],
-    standalone: true,
     imports: [CarouselModule, NgxImageZoomModule, ProductContainComponent, ProductActionComponent, ProductInformationComponent, ProductDeliveryInformationComponent, PaymentOptionComponent, ProductSocialShareComponent, ProductBundleComponent, ProductDetailsTabsComponent, ProductSidebarComponent, TranslateModule]
 })
 export class ProductThumbnailComponent {

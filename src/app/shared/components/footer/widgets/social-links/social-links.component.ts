@@ -6,7 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-footer-social-links',
     templateUrl: './social-links.component.html',
     styleUrls: ['./social-links.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 

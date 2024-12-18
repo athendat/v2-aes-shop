@@ -13,7 +13,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-newsletter-modal',
     templateUrl: './newsletter-modal.component.html',
     styleUrls: ['./newsletter-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, ReactiveFormsModule, FormsModule, TranslateModule]
 })
 export class NewsletterModalComponent {
@@ -44,7 +43,7 @@ export class NewsletterModalComponent {
   }
 
   async openModal() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.modalOpen = true;
       this.modalService.open(this.NewsletterModal, {
         ariaLabelledBy: 'profile-Modal',

@@ -14,9 +14,8 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-refund-modal',
     templateUrl: './refund-modal.component.html',
     styleUrls: ['./refund-modal.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
-    imports: [ButtonComponent, ReactiveFormsModule, FormsModule, 
+    imports: [ButtonComponent, ReactiveFormsModule, FormsModule,
       Select2Module, TranslateModule, CurrencySymbolPipe]
 })
 export class RefundModalComponent {
@@ -54,7 +53,7 @@ export class RefundModalComponent {
   }
 
   async openModal(product: Product) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.product = product;
       this.form.get('product_id')?.patchValue(product.id);
       this.modalOpen = true;

@@ -6,7 +6,6 @@ import { ImageLinkComponent } from '../../../../../../shared/components/widgets/
     selector: 'app-product-banner',
     templateUrl: './product-banner.component.html',
     styleUrls: ['./product-banner.component.scss'],
-    standalone: true,
     imports: [ImageLinkComponent]
 })
 export class ProductBannerComponent {

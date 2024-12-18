@@ -9,7 +9,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-product-social-share',
     templateUrl: './product-social-share.component.html',
     styleUrls: ['./product-social-share.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 export class ProductSocialShareComponent {

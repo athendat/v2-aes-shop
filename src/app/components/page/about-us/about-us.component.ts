@@ -23,7 +23,6 @@ export interface Clients {
     selector: 'app-about-us',
     templateUrl: './about-us.component.html',
     styleUrls: ['./about-us.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, CarouselModule, RouterLink, AsyncPipe, TranslateModule]
 })
 export class AboutUsComponent {

@@ -12,7 +12,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-exit-modal',
     templateUrl: './exit-modal.component.html',
     styleUrls: ['./exit-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, TranslateModule]
 })
 export class ExitModalComponent {
@@ -46,7 +45,7 @@ export class ExitModalComponent {
   }
 
   async openModal() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       // localStorage.setItem("exit", 'true');
       this.modalOpen = true;
       this.modalService.open(this.ExitModal, {

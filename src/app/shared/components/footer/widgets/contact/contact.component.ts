@@ -6,7 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-footer-contact',
     templateUrl: './contact.component.html',
     styleUrls: ['./contact.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 

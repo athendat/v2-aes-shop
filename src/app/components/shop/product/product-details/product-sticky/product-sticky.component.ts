@@ -17,7 +17,6 @@ import { ProductContainComponent } from '../widgets/product-contain/product-cont
     selector: 'app-product-sticky',
     templateUrl: './product-sticky.component.html',
     styleUrls: ['./product-sticky.component.scss'],
-    standalone: true,
     imports: [ProductContainComponent, ProductActionComponent, ProductInformationComponent, ProductDeliveryInformationComponent, PaymentOptionComponent, ProductSocialShareComponent, ProductBundleComponent, ProductDetailsTabsComponent, ProductSidebarComponent, TranslateModule]
 })
 export class ProductStickyComponent {

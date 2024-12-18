@@ -22,7 +22,6 @@ import { ButtonComponent } from '../../../shared/components/widgets/button/butto
     selector: 'app-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, ReactiveFormsModule, ButtonComponent, SkeletonProductBoxComponent, ProductBoxComponent, NoDataComponent, TranslateModule]
 })
 export class SearchComponent {

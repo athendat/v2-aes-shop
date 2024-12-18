@@ -14,7 +14,6 @@ import { VariantAttributesComponent } from '../../variant-attributes/variant-att
     selector: 'app-variation-modal',
     templateUrl: './variation-modal.component.html',
     styleUrls: ['./variation-modal.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [ButtonComponent, VariantAttributesComponent, TranslateModule, CurrencySymbolPipe]
 })
@@ -35,7 +34,7 @@ export class VariationModalComponent {
   public selectedVariation: Variation | null;
 
   async openModal(item: Cart) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.item = item;
       this.product = item.product;
       this.productQty = item.quantity;

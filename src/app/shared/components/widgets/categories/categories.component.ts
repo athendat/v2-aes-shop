@@ -13,7 +13,6 @@ import { ButtonComponent } from '../button/button.component';
     selector: 'app-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, CarouselModule, ReactiveFormsModule, TranslateModule]
 })
 

@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-seller-store-social-links',
     templateUrl: './seller-store-social-links.component.html',
     styleUrls: ['./seller-store-social-links.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 export class SellerStoreSocialLinksComponent {

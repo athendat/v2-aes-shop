@@ -8,7 +8,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     selector: 'app-theme-banner',
     templateUrl: './banner.component.html',
     styleUrls: ['./banner.component.scss'],
-    standalone: true,
     imports: [CarouselModule, ImageLinkComponent]
 })
 export class BannerComponent {

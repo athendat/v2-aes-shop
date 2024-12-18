@@ -9,7 +9,6 @@ import { NoticeComponent } from '../notice/notice.component';
     selector: 'app-topbar',
     templateUrl: './topbar.component.html',
     styleUrls: ['./topbar.component.scss'],
-    standalone: true,
     imports: [NoticeComponent, LanguageComponent, CurrencyComponent, TranslateModule]
 })
 export class TopbarComponent {

@@ -8,7 +8,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-product-box-vertical',
     templateUrl: './product-box-vertical.component.html',
     styleUrls: ['./product-box-vertical.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [RouterLink, CurrencySymbolPipe]
 })

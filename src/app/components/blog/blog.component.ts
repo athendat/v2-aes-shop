@@ -22,7 +22,6 @@ import { BreadcrumbComponent } from '../../shared/components/widgets/breadcrumb/
     selector: 'app-blogs',
     templateUrl: './blog.component.html',
     styleUrls: ['./blog.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, SkeletonBlogComponent, NgClass, RouterLink, PaginationComponent, NoDataComponent, BlogSidebarComponent, AsyncPipe, DatePipe, SummaryPipe, TranslateModule]
 })
 export class BlogComponent {

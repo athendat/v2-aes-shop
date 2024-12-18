@@ -21,7 +21,6 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     selector: 'app-osaka',
     templateUrl: './osaka.component.html',
     styleUrls: ['./osaka.component.scss'],
-    standalone: true,
     imports: [HomeBannerComponent, TitleComponent, CategoriesComponent, BannerComponent, ProductComponent, CollectionComponent, FourColumnProductComponent, BlogComponent, NewsletterComponent]
 })
 export class OsakaComponent {

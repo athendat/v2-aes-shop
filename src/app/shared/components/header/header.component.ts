@@ -15,7 +15,6 @@ import { MobileMenuComponent } from './widgets/mobile-menu/mobile-menu.component
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    standalone: true,
     imports: [BasicHeaderComponent, ClassicHeaderComponent, StandardHeaderComponent, MinimalHeaderComponent, MobileMenuComponent, AsyncPipe]
 })
 export class HeaderComponent {

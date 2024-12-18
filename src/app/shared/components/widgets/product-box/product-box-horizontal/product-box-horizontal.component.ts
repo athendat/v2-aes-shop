@@ -22,7 +22,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-product-box-horizontal',
     templateUrl: './product-box-horizontal.component.html',
     styleUrls: ['./product-box-horizontal.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [RouterLink, ButtonComponent, NgbRating,
       ProductDetailModalComponent_1, VariationModalComponent, TranslateModule, TitleCasePipe, CurrencySymbolPipe]

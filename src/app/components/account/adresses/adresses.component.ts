@@ -17,7 +17,6 @@ import { ButtonComponent } from '../../../shared/components/widgets/button/butto
     selector: 'app-adresses',
     templateUrl: './adresses.component.html',
     styleUrls: ['./adresses.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, NoDataComponent, AddressModalComponent, DeleteModalComponent, AsyncPipe, TitleCasePipe, TranslateModule]
 })
 export class AdressesComponent {

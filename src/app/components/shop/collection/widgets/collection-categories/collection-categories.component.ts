@@ -6,7 +6,6 @@ import { CategoriesComponent } from '../../../../../shared/components/widgets/ca
     selector: 'app-collection-categories',
     templateUrl: './collection-categories.component.html',
     styleUrls: ['./collection-categories.component.scss'],
-    standalone: true,
     imports: [CategoriesComponent]
 })
 export class CollectionCategoriesComponent {

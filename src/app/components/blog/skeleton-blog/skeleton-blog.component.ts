@@ -5,7 +5,6 @@ import { Component, Input } from '@angular/core';
     selector: 'app-skeleton-blog',
     templateUrl: './skeleton-blog.component.html',
     styleUrls: ['./skeleton-blog.component.scss'],
-    standalone: true,
     imports: []
 })
 export class SkeletonBlogComponent {

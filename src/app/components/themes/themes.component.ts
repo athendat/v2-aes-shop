@@ -13,13 +13,12 @@ import { OsakaComponent } from './osaka/osaka.component';
 import { TokyoComponent } from './tokyo/tokyo.component';
 import { ParisComponent } from './paris/paris.component';
 import { AsyncPipe } from '@angular/common';
-  
+
 @Component({
     selector: 'app-themes',
     templateUrl: './themes.component.html',
     styleUrls: ['./themes.component.scss'],
-    standalone: true,
-    imports: [ParisComponent, TokyoComponent, OsakaComponent, 
+    imports: [ParisComponent, TokyoComponent, OsakaComponent,
       RomeComponent, MadridComponent, BerlinComponent, DenverComponent, AsyncPipe]
 })
 export class ThemesComponent {

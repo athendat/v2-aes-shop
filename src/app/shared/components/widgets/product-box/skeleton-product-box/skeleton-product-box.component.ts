@@ -5,11 +5,10 @@ import { Component, Input } from '@angular/core';
     selector: 'app-skeleton-product-box',
     templateUrl: './skeleton-product-box.component.html',
     styleUrls: ['./skeleton-product-box.component.scss'],
-    standalone: true,
     imports: []
 })
 export class SkeletonProductBoxComponent {
 
   @Input() style: string = 'horizontal';
-  
+
 }

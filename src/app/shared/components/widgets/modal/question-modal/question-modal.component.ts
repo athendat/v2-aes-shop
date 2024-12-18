@@ -14,7 +14,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-question-modal',
     templateUrl: './question-modal.component.html',
     styleUrls: ['./question-modal.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [ButtonComponent, ReactiveFormsModule,
       FormsModule, TranslateModule, CurrencySymbolPipe]

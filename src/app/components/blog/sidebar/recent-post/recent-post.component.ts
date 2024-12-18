@@ -7,7 +7,6 @@ import { SlicePipe, DatePipe } from '@angular/common';
     selector: 'app-recent-post',
     templateUrl: './recent-post.component.html',
     styleUrls: ['./recent-post.component.scss'],
-    standalone: true,
     imports: [RouterLink, SlicePipe, DatePipe]
 })
 export class RecentPostComponent {

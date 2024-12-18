@@ -8,7 +8,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-delete-modal',
     templateUrl: './delete-modal.component.html',
     styleUrls: ['./delete-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, TranslateModule]
 })
 export class DeleteModalComponent {
@@ -25,7 +24,7 @@ export class DeleteModalComponent {
   @Output() deleteItem: EventEmitter<any> = new EventEmitter();
 
   async openModal(action: string, data: any) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.modalOpen = true;
       this.userAction = {
         actionToPerform: action,

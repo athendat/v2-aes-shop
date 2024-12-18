@@ -9,11 +9,10 @@ import { RouterLink } from '@angular/router';
     selector: 'app-header-compare',
     templateUrl: './compare.component.html',
     styleUrls: ['./compare.component.scss'],
-    standalone: true,
     imports: [RouterLink, AsyncPipe]
 })
 export class CompareComponent {
 
   @Select(CompareState.compareTotal) compareTotal$: Observable<number>;
-  
+
 }

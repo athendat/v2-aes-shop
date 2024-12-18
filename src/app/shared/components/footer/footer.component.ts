@@ -11,7 +11,6 @@ import { BasicFooterComponent } from './basic-footer/basic-footer.component';
     selector: 'app-footer',
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.scss'],
-    standalone: true,
     imports: [BasicFooterComponent, AsyncPipe]
 })
 

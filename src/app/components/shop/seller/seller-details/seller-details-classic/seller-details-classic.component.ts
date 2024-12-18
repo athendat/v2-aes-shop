@@ -15,7 +15,6 @@ import { CollectionSidebarComponent } from '../../../collection/widgets/sidebar/
     selector: 'app-seller-details-classic',
     templateUrl: './seller-details-classic.component.html',
     styleUrls: ['./seller-details-classic.component.scss'],
-    standalone: true,
     imports: [CollectionSidebarComponent, SellerStoreLogoComponent, SellerStoreNameComponent, SellerStoreRatingComponent, SellerStoreDescriptionComponent, SellerStoreSocialLinksComponent, RouterLink, CollectionProductsComponent, TranslateModule]
 })
 export class SellerDetailsClassicComponent {

@@ -12,7 +12,6 @@ import { NgStyle, DatePipe } from '@angular/common';
     selector: 'app-product-review',
     templateUrl: './product-review.component.html',
     styleUrls: ['./product-review.component.scss'],
-    standalone: true,
     imports: [NgStyle, ButtonComponent, NgbRating, NoDataComponent, ReviewModalComponent, DatePipe, TranslateModule]
 })
 export class ProductReviewComponent {

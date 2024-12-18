@@ -16,7 +16,6 @@ import { CollectionSortComponent } from '../collection-sort/collection-sort.comp
     selector: 'app-collection-products',
     templateUrl: './collection-products.component.html',
     styleUrls: ['./collection-products.component.scss'],
-    standalone: true,
     imports: [CollectionSortComponent, SkeletonProductBoxComponent, ProductBoxComponent, NoDataComponent, CollectionPaginateComponent, AsyncPipe]
 })
 export class CollectionProductsComponent {

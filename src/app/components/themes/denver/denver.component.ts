@@ -18,7 +18,6 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     selector: 'app-denver',
     templateUrl: './denver.component.html',
     styleUrls: ['./denver.component.scss'],
-    standalone: true,
     imports: [HomeBannerComponent, CategoriesComponent, TitleComponent, ProductComponent, ImageLinkComponent, NgClass, FourColumnProductComponent, NewsletterComponent]
 })
 export class DenverComponent {

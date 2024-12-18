@@ -11,7 +11,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-sticky-compare',
     templateUrl: './sticky-compare.component.html',
     styleUrls: ['./sticky-compare.component.scss'],
-    standalone: true,
     imports: [RouterLink, AsyncPipe, TranslateModule]
 })
 export class StickyCompareComponent {

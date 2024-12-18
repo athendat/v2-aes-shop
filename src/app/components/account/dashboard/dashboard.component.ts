@@ -14,9 +14,8 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
-    imports: [EditProfileModalComponent, ChangePasswordModalComponent, AsyncPipe, 
+    imports: [EditProfileModalComponent, ChangePasswordModalComponent, AsyncPipe,
       TitleCasePipe, CurrencySymbolPipe, TranslateModule]
 })
 export class DashboardComponent {

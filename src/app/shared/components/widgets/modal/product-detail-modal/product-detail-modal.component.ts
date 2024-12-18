@@ -19,7 +19,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-product-detail-modal',
     templateUrl: './product-detail-modal.component.html',
     styleUrls: ['./product-detail-modal.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [ButtonComponent, CarouselModule, NgbRating,
       VariantAttributesComponent, TranslateModule, TitleCasePipe, CurrencySymbolPipe]

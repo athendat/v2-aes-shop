@@ -12,7 +12,6 @@ import { BannerComponent } from '../widgets/banner/banner.component';
     selector: 'app-collection-no-sidebar',
     templateUrl: './collection-no-sidebar.component.html',
     styleUrls: ['./collection-no-sidebar.component.scss'],
-    standalone: true,
     imports: [BannerComponent, CollectionProductsComponent]
 })
 export class CollectionNoSidebarComponent {

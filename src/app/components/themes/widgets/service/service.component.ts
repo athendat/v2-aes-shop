@@ -6,7 +6,6 @@ import { Services } from '../../../../shared/interface/theme.interface';
     selector: 'app-service',
     templateUrl: './service.component.html',
     styleUrls: ['./service.component.scss'],
-    standalone: true,
     imports: []
 })
 export class ServiceComponent {

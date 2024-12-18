@@ -11,7 +11,6 @@ import { ProductComponent } from '../product/product.component';
     selector: 'app-four-column-product',
     templateUrl: './four-column-product.component.html',
     styleUrls: ['./four-column-product.component.scss'],
-    standalone: true,
     imports: [ProductComponent]
 })
 export class FourColumnProductComponent {

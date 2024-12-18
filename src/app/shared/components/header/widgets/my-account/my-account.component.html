@@ -1,45 +1,45 @@
 <!-- My Account Basic Style -->
-@if (style==='basic') {
+@if (style() === 'basic') {
 <div>
     <div class="delivery-login-box">
         <div class="delivery-icon">
-            @if (!(isAuthenticated$ | async)) {
+            @if (!isAuthenticated()) {
             <i class="ri-user-line"></i>
             } @else {
             <div class="user-box">
-                @if ((user$ | async)?.profile_image && (user$ | async)?.profile_image?.original_url) {
-                <img [src]="(user$ | async)?.profile_image?.original_url" class="img-fluid" alt="profile">
+                @if (user()?.profile_image && user()?.profile_image?.original_url) {
+                <img [src]="user()?.profile_image?.original_url" class="img-fluid" alt="profile">
                 } @else {
-                <h3>{{ (user$ | async)?.name?.charAt(0)?.toString()?.toUpperCase() }}</h3>
+                <h3>{{ user()?.name?.charAt(0)?.toString()?.toUpperCase() }}</h3>
                 }
             </div>
             }
         </div>
         <div class="delivery-detail">
-            <h6>{{ 'hi' | translate }}, {{ ((isAuthenticated$ | async) ? (user$ | async)?.name : 'user' | translate) }}
+            <h6>{{ 'hi' | translate }}, {{ (isAuthenticated() ? user()?.name : 'user' | translate) }}
             </h6>
             <h5>{{ 'my_account' | translate }}</h5>
         </div>
     </div>
     <div class="onhover-div onhover-div-login">
         <ul class="user-box-name">
-            @if (!(isAuthenticated$ | async)) {
+            @if (!isAuthenticated()) {
             <li class="product-box-contain">
                 <a [routerLink]="['/auth/login']">{{ 'log_in' | translate }}</a>
             </li>
             }
-            @if (!(isAuthenticated$ | async)) {
+            @if (!isAuthenticated()) {
             <li class="product-box-contain">
                 <a [routerLink]="['/auth/register']">{{ 'register' | translate }}</a>
             </li>
             }
-            @if ((isAuthenticated$ | async)) {
+            @if (isAuthenticated()) {
             <li class="product-box-contain">
                 <a [routerLink]="['/account/dashboard']"><i class="ri-user-line me-2"></i> {{ 'my_account' | translate
                     }}</a>
             </li>
             }
-            @if ((isAuthenticated$ | async)) {
+            @if (isAuthenticated()) {
             <li class="product-box-contain">
                 <a href="javascript:void(0)" (click)="confirmationModal.openModal()"><i
                         class="ri-logout-box-r-line me-2"></i> {{ 'log_out' | translate }}</a>
@@ -58,7 +58,7 @@
         </span>
         <div class="user-name">
             <h6 class="text-content">My Account</h6>
-            <h4 class="mt-1">{{ (isAuthenticated$ | async) ? (user$ | async)?.name : 'User' }}</h4>
+            <h4 class="mt-1">{{ isAuthenticated() ? user()?.name : 'User' }}</h4>
         </div>
     </a>
     <a href="javascript:void(0)" class="header-icon user-icon search-icon" *ngIf="style==='standard'">
@@ -67,16 +67,16 @@
 
     <div class="onhover-div onhover-div-login">
         <ul class="user-box-name">
-            <li class="product-box-contain" *ngIf="!(isAuthenticated$ | async)">
+            <li class="product-box-contain" *ngIf="!isAuthenticated()">
                 <a [routerLink]="['/auth/login']">Log In</a>
             </li>
-            <li class="product-box-contain" *ngIf="!(isAuthenticated$ | async)">
+            <li class="product-box-contain" *ngIf="!isAuthenticated()">
                 <a [routerLink]="['/auth/register']">Register</a>
             </li>
-            <li class="product-box-contain" *ngIf="(isAuthenticated$ | async)">
+            <li class="product-box-contain" *ngIf="isAuthenticated()">
                 <a [routerLink]="['/account/dashboard']"><i class="ri-user-line me-2"></i> {{ 'my_account' | translate }}</a>
             </li>
-            <li class="product-box-contain" *ngIf="(isAuthenticated$ | async)">
+            <li class="product-box-contain" *ngIf="isAuthenticated()">
                 <a href="javascript:void(0)" (click)="confirmationModal.openModal()"><i class="ri-logout-box-r-line me-2"></i> {{ 'logout' | translate }}</a>
             </li>
         </ul>

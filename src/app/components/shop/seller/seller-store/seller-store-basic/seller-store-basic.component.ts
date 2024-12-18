@@ -16,7 +16,6 @@ import { SkeletonSellerStoreComponent } from '../skeleton-seller-store/skeleton-
     selector: 'app-seller-store-basic',
     templateUrl: './seller-store-basic.component.html',
     styleUrls: ['./seller-store-basic.component.scss'],
-    standalone: true,
     imports: [SkeletonSellerStoreComponent, SellerStoreLogoComponent, SellerStoreRatingComponent, SellerStoreNameComponent, SellerStoreProductCountsComponent, SellerContactDetailsComponent, RouterLink, SellerStoreProductsComponent, TranslateModule]
 })
 export class SellerStoreBasicComponent {

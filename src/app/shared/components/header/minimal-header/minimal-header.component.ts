@@ -16,9 +16,8 @@ import { TopbarComponent } from '../widgets/topbar/topbar.component';
     selector: 'app-minimal-header',
     templateUrl: './minimal-header.component.html',
     styleUrls: ['./minimal-header.component.scss'],
-    standalone: true,
-    imports: [TopbarComponent, NavbarMenuButtonComponent, LogoComponent, 
-      ButtonComponent, MenuComponent, SearchComponent, WishlistComponent, 
+    imports: [TopbarComponent, NavbarMenuButtonComponent, LogoComponent,
+      ButtonComponent, MenuComponent, SearchComponent, WishlistComponent,
       CartComponent, MyAccountComponent, TranslateModule]
 })
 export class MinimalHeaderComponent {
@@ -35,7 +34,7 @@ export class MinimalHeaderComponent {
   // @HostListener Decorator
   @HostListener("window:scroll", [])
   onWindowScroll() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       let number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
       if (number >= 150 && window.innerWidth > 400) {
         this.stick = true;

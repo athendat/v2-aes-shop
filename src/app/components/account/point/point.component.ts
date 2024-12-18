@@ -18,9 +18,8 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     selector: 'app-point',
     templateUrl: './point.component.html',
     styleUrls: ['./point.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
-    imports: [PaginationComponent, NoDataComponent, AsyncPipe, 
+    imports: [PaginationComponent, NoDataComponent, AsyncPipe,
       DatePipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]
 })
 export class PointComponent {

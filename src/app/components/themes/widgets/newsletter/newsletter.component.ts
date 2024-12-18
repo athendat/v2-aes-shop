@@ -9,7 +9,6 @@ import { NgStyle } from '@angular/common';
     selector: 'app-newsletter',
     templateUrl: './newsletter.component.html',
     styleUrls: ['./newsletter.component.scss'],
-    standalone: true,
     imports: [NgStyle, ReactiveFormsModule, FormsModule, ButtonComponent, TranslateModule]
 })
 export class NewsletterComponent {

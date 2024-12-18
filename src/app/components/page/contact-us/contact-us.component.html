@@ -13,87 +13,87 @@
                         </div>
                         }
                         @if(contactData) {
-                            <div class="col-xl-12">
-                                <div class="contact-title">
-                                    <h3>{{ 'get_in_touch' | translate }}</h3>
-                                </div>
-                                <div class="contact-detail">
-                                    <div class="row g-4">
-                                        @if(contactData.detail_1.text){
-                                        <div class="col-xxl-6 col-lg-12 col-sm-6">
-                                            <div class="contact-detail-box">
-                                                @if (contactData.detail_1.icon) {
-                                                <div class="contact-icon">
-                                                    <i [class]="contactData.detail_1.icon"></i>
-                                                </div>
-                                                }
-                                                <div class="contact-detail-title">
-                                                    <h4>{{ contactData.detail_1.label }}</h4>
-                                                </div>
-    
-                                                <div class="contact-detail-contain">
-                                                    <p>{{ contactData.detail_1.text }}</p>
-                                                </div>
+                        <div class="col-xl-12">
+                            <div class="contact-title">
+                                <h3>{{ 'get_in_touch' | translate }}</h3>
+                            </div>
+                            <div class="contact-detail">
+                                <div class="row g-4">
+                                    @if(contactData.detail_1.text){
+                                    <div class="col-xxl-6 col-lg-12 col-sm-6">
+                                        <div class="contact-detail-box">
+                                            @if (contactData.detail_1.icon) {
+                                            <div class="contact-icon">
+                                                <i [class]="contactData.detail_1.icon"></i>
+                                            </div>
+                                            }
+                                            <div class="contact-detail-title">
+                                                <h4>{{ contactData.detail_1.label }}</h4>
+                                            </div>
+
+                                            <div class="contact-detail-contain">
+                                                <p>{{ contactData.detail_1.text }}</p>
                                             </div>
                                         </div>
-                                        }
-                                        @if (contactData.detail_2.text) {
-                                        <div class="col-xxl-6 col-lg-12 col-sm-6">
-                                            <div class="contact-detail-box">
-                                                @if (contactData.detail_2.icon) {
-                                                <div class="contact-icon">
-                                                    <i [class]="contactData.detail_2.icon"></i>
-                                                </div>
-                                                }
-                                                <div class="contact-detail-title">
-                                                    <h4>{{ contactData.detail_2.label }}</h4>
-                                                </div>
-    
-                                                <div class="contact-detail-contain">
-                                                    <p>{{ contactData.detail_2.text }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        }
-                                        @if (contactData.detail_3.text) {
-                                        <div class="col-xxl-6 col-lg-12 col-sm-6">
-                                            <div class="contact-detail-box">
-                                                @if (contactData.detail_3.icon) {
-                                                <div class="contact-icon">
-                                                    <i [class]="contactData.detail_3.icon"></i>
-                                                </div>
-                                                }
-                                                <div class="contact-detail-title">
-                                                    <h4>{{ contactData.detail_3.label }}</h4>
-                                                </div>
-    
-                                                <div class="contact-detail-contain">
-                                                    <p>{{ contactData.detail_3.text }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        }
-                                        @if (contactData.detail_4.text) {
-                                        <div class="col-xxl-6 col-lg-12 col-sm-6">
-                                            <div class="contact-detail-box">
-                                                @if (contactData.detail_4.icon) {
-                                                <div class="contact-icon">
-                                                    <i [class]="contactData.detail_4.icon"></i>
-                                                </div>
-                                                }
-                                                <div class="contact-detail-title">
-                                                    <h4>{{ contactData.detail_4.label }}</h4>
-                                                </div>
-    
-                                                <div class="contact-detail-contain">
-                                                    <p>{{ contactData.detail_4.text }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        }
                                     </div>
+                                    }
+                                    @if (contactData.detail_2.text) {
+                                    <div class="col-xxl-6 col-lg-12 col-sm-6">
+                                        <div class="contact-detail-box">
+                                            @if (contactData.detail_2.icon) {
+                                            <div class="contact-icon">
+                                                <i [class]="contactData.detail_2.icon"></i>
+                                            </div>
+                                            }
+                                            <div class="contact-detail-title">
+                                                <h4>{{ contactData.detail_2.label }}</h4>
+                                            </div>
+
+                                            <div class="contact-detail-contain">
+                                                <p>{{ contactData.detail_2.text }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                    @if (contactData.detail_3.text) {
+                                    <div class="col-xxl-6 col-lg-12 col-sm-6">
+                                        <div class="contact-detail-box">
+                                            @if (contactData.detail_3.icon) {
+                                            <div class="contact-icon">
+                                                <i [class]="contactData.detail_3.icon"></i>
+                                            </div>
+                                            }
+                                            <div class="contact-detail-title">
+                                                <h4>{{ contactData.detail_3.label }}</h4>
+                                            </div>
+
+                                            <div class="contact-detail-contain">
+                                                <p>{{ contactData.detail_3.text }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                    @if (contactData.detail_4.text) {
+                                    <div class="col-xxl-6 col-lg-12 col-sm-6">
+                                        <div class="contact-detail-box">
+                                            @if (contactData.detail_4.icon) {
+                                            <div class="contact-icon">
+                                                <i [class]="contactData.detail_4.icon"></i>
+                                            </div>
+                                            }
+                                            <div class="contact-detail-title">
+                                                <h4>{{ contactData.detail_4.label }}</h4>
+                                            </div>
+
+                                            <div class="contact-detail-contain">
+                                                <p>{{ contactData.detail_4.text }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
                                 </div>
                             </div>
+                        </div>
                         }
                     </div>
                 </div>
@@ -182,10 +182,11 @@
                                         placeholder="{{ 'enter_your_message' | translate }}" rows="6"
                                         formControlName="message"></textarea>
                                     <i class="ri-chat-2-fill"></i>
-                                    @if (form.controls['message'].touched && form.controls['message'].errors?.['required']) {
-                                        <div class="invalid-feedback">
-                                            {{ 'message_is_required' | translate }}
-                                        </div>
+                                    @if (form.controls['message'].touched &&
+                                    form.controls['message'].errors?.['required']) {
+                                    <div class="invalid-feedback">
+                                        {{ 'message_is_required' | translate }}
+                                    </div>
                                     }
                                 </div>
                             </div>

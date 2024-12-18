@@ -13,7 +13,6 @@ import { AsyncPipe, SlicePipe } from '@angular/common';
     selector: 'app-sticky-cart',
     templateUrl: './sticky-cart.component.html',
     styleUrls: ['./sticky-cart.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [ButtonComponent, RouterLink, AsyncPipe, SlicePipe, TranslateModule, CurrencySymbolPipe]
 })

@@ -12,7 +12,6 @@ import { PaginationComponent } from '../../../../../shared/components/widgets/pa
     selector: 'app-collection-paginate',
     templateUrl: './collection-paginate.component.html',
     styleUrls: ['./collection-paginate.component.scss'],
-    standalone: true,
     imports: [PaginationComponent, AsyncPipe]
 })
 export class CollectionPaginateComponent {

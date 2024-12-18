@@ -12,7 +12,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-review-modal',
     templateUrl: './review-modal.component.html',
     styleUrls: ['./review-modal.component.scss'],
-    standalone: true,
     imports: [
     ButtonComponent,
     ReactiveFormsModule,
@@ -44,7 +43,7 @@ export class ReviewModalComponent {
   }
 
   async openModal(product: Product, type: string) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.modalOpen = true;
       this.type = type;
       this.product = product;

@@ -16,7 +16,6 @@ import { ProductContainComponent } from '../widgets/product-contain/product-cont
     selector: 'app-product-images',
     templateUrl: './product-images.component.html',
     styleUrls: ['./product-images.component.scss'],
-    standalone: true,
     imports: [ProductContainComponent, ProductActionComponent, ProductInformationComponent, ProductDeliveryInformationComponent, PaymentOptionComponent, ProductSocialShareComponent, ProductBundleComponent, ProductDetailsTabsComponent, TranslateModule]
 })
 export class ProductImagesComponent {

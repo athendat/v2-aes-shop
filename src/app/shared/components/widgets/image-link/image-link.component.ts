@@ -10,7 +10,6 @@ import { NgClass, NgStyle, AsyncPipe } from '@angular/common';
     selector: 'app-image-link',
     templateUrl: './image-link.component.html',
     styleUrls: ['./image-link.component.scss'],
-    standalone: true,
     imports: [NgClass, NgStyle, RouterLink, AsyncPipe]
 })
 export class ImageLinkComponent {

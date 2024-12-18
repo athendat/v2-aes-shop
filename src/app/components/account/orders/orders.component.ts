@@ -17,9 +17,8 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     selector: 'app-orders',
     templateUrl: './orders.component.html',
     styleUrls: ['./orders.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
-    imports: [RouterLink, PaginationComponent, NoDataComponent, 
+    imports: [RouterLink, PaginationComponent, NoDataComponent,
       AsyncPipe, DatePipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]
 })
 export class OrdersComponent {

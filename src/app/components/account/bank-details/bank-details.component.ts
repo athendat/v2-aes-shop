@@ -12,7 +12,6 @@ import { ButtonComponent } from '../../../shared/components/widgets/button/butto
     selector: 'app-bank-details',
     templateUrl: './bank-details.component.html',
     styleUrls: ['./bank-details.component.scss'],
-    standalone: true,
     imports: [ReactiveFormsModule, ButtonComponent, TranslateModule]
 })
 export class BankDetailsComponent {
@@ -20,7 +19,7 @@ export class BankDetailsComponent {
 
 
   @Select(PaymentDetailsState.paymentDetails) paymentDetails$: Observable<PaymentDetails>;
-  
+
   public form: FormGroup;
   public active = 'bank';
 
@@ -49,7 +48,7 @@ export class BankDetailsComponent {
     });
   }
 
-  submit(){    
+  submit(){
     this.form.markAllAsTouched();
     if(this.form.valid){
       this.store.dispatch(new UpdatePaymentDetails(this.form.value))

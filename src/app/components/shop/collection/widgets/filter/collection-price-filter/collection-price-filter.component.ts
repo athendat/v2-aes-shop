@@ -8,7 +8,6 @@ import { CurrencySymbolPipe } from '../../../../../../shared/pipe/currency-symbo
     selector: 'app-collection-price-filter',
     templateUrl: './collection-price-filter.component.html',
     styleUrls: ['./collection-price-filter.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [CurrencySymbolPipe]
 })

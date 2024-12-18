@@ -23,7 +23,6 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     selector: 'app-rome',
     templateUrl: './rome.component.html',
     styleUrls: ['./rome.component.scss'],
-    standalone: true,
     imports: [NgStyle, HomeBannerComponent, TitleComponent, CategoriesComponent, BannerComponent, ProductComponent, ImageLinkComponent, FourColumnProductComponent, BlogComponent, NewsletterComponent]
 })
 export class RomeComponent {

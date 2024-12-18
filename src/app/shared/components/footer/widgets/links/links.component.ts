@@ -7,12 +7,11 @@ import { RouterLink } from '@angular/router';
     selector: 'app-footer-links',
     templateUrl: './links.component.html',
     styleUrls: ['./links.component.scss'],
-    standalone: true,
     imports: [RouterLink, TitleCasePipe]
 })
 
 export class LinksComponent {
-  
+
   @Input() links: Link[] = [];
 
 }

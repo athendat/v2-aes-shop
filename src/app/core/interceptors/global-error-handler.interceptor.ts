@@ -21,7 +21,7 @@ export class GlobalErrorHandlerInterceptor implements HttpInterceptor {
 
                 // You can perform additional error handling tasks here,
                 // such as logging the error, displaying a notification, etc.
-                const errorMessage = this.errorService.getClientErrorMessage(error.error);
+                const errorMessage = this.errorService.getClientErrorMessage(error.error.message);
                 this.logger.logError(errorMessage);
                 this.notifier.showError(errorMessage);
 

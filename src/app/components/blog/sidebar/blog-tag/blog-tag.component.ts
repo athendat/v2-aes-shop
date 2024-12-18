@@ -7,13 +7,12 @@ import { RouterLink } from '@angular/router';
     selector: 'app-blog-tag',
     templateUrl: './blog-tag.component.html',
     styleUrls: ['./blog-tag.component.scss'],
-    standalone: true,
     imports: [RouterLink]
 })
 export class BlogTagComponent {
 
   @Input() tags: Tag[];
-  
+
   constructor(){}
 
 }

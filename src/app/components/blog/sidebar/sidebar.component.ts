@@ -22,7 +22,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-blog-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss'],
-    standalone: true,
     imports: [SkeletonBlogComponent, NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, RecentPostComponent, BlogCategoryComponent, BlogTagComponent, AsyncPipe, TranslateModule]
 })
 export class BlogSidebarComponent {

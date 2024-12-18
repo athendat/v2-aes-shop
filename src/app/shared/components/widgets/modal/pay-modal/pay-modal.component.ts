@@ -15,7 +15,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-pay-modal',
     templateUrl: './pay-modal.component.html',
     styleUrls: ['./pay-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, ReactiveFormsModule, AsyncPipe, UpperCasePipe, TranslateModule]
 })
 export class PayModalComponent {
@@ -33,7 +32,7 @@ export class PayModalComponent {
   public paymentType = new FormControl('', [Validators.required]);
 
   async openModal(order: Order) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.order = order;
       this.modalOpen = true;
       this.modalService.open(this.PayModal, {

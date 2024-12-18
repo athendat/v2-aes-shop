@@ -8,33 +8,32 @@ import { NgClass, AsyncPipe } from '@angular/common';
     selector: 'app-button',
     templateUrl: './button.component.html',
     styleUrls: ['./button.component.scss'],
-    standalone: true,
     imports: [NgClass, AsyncPipe]
 })
 export class ButtonComponent {
 
-  @Input() class: string = 'btn btn-animation w-100 justify-content-center';
-  @Input() iconClass: string | null;
-  @Input() id: string;
-  @Input() label: string;
-  @Input() type:  string  = 'submit';
-  @Input() spinner:  boolean = true;
-  @Input() disabled: boolean = false;
+    @Input() class: string = 'btn btn-animation w-100 justify-content-center';
+    @Input() iconClass: string | null;
+    @Input() id: string;
+    @Input() label: string;
+    @Input() type: string = 'submit';
+    @Input() spinner: boolean = true;
+    @Input() disabled: boolean = false;
 
-  public buttonId: string | null;
+    public buttonId: string | null;
 
-  @Select(LoaderState.buttonSpinner) public spinnerStatus$: Observable<boolean>;
+    @Select(LoaderState.buttonSpinner) public spinnerStatus$: Observable<boolean>;
 
-  constructor() {
-    this.spinnerStatus$.subscribe(res => {
-      if(res===false) {
-        this.buttonId = null;
-      }
-    });
-  }
+    constructor() {
+        this.spinnerStatus$.subscribe(res => {
+            if (res === false) {
+                this.buttonId = null;
+            }
+        });
+    }
 
-  public onClick(id: string) {
-    this.buttonId = id;
-  }
+    public onClick(id: string) {
+        this.buttonId = id;
+    }
 
 }

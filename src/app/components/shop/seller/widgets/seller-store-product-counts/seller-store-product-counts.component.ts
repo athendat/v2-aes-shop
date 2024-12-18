@@ -7,7 +7,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-seller-store-product-counts',
     templateUrl: './seller-store-product-counts.component.html',
     styleUrls: ['./seller-store-product-counts.component.scss'],
-    standalone: true,
     imports: [RouterLink, TranslateModule]
 })
 export class SellerStoreProductCountsComponent {

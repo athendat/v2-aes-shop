@@ -21,7 +21,6 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     selector: 'app-madrid',
     templateUrl: './madrid.component.html',
     styleUrls: ['./madrid.component.scss'],
-    standalone: true,
     imports: [HomeBannerComponent, BannerComponent, TitleComponent, CategoriesComponent, ProductComponent, WalletOfferComponent, DealComponent, ImageLinkComponent, BlogComponent]
 })
 export class MadridComponent {

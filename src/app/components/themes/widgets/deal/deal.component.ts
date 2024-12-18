@@ -18,7 +18,6 @@ import { ProductDetailModalComponent } from '../../../../shared/components/widge
     selector: 'app-deal',
     templateUrl: './deal.component.html',
     styleUrls: ['./deal.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [NgStyle, CarouselModule, NgbRating, CurrencySymbolPipe, TranslateModule]
 })

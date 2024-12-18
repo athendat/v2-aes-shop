@@ -1,16 +1,19 @@
 import { Injectable, inject } from "@angular/core";
-import { Store, Action, Selector, State, StateContext, select } from "@ngxs/store";
-import { tap } from "rxjs";
-import {
-    GetUserDetails, UpdateUserProfile, UpdateUserPassword,
-    CreateAddress, UpdateAddress, DeleteAddress, AccountClear
-} from "../action/account.action";
-import { AccountUser, AccountUserUpdatePassword } from "./../interface/account.interface";
+import { Action, Selector, State, StateContext, select } from "@ngxs/store";
+
 import { AccountService } from "../services/account.service";
 import { NotificationService } from "../services/notification.service";
-import { Permission } from "../interface/role.interface";
 import { AddressesService } from "../services/addresses.service";
+
+import {
+    GetUserDetails, UpdateUserProfile, UpdateUserPassword,
+    CreateAddress, UpdateAddress, DeleteAddress, AccountClear,
+    UpdateUserDetails
+} from "../action/account.action";
 import { AuthState } from "./auth.state";
+
+import { AccountUser, AccountUserUpdatePassword } from "./../interface/account.interface";
+import { Permission } from "../interface/role.interface";
 
 export class AccountStateModel {
     user: AccountUser | null;
@@ -52,20 +55,28 @@ export class AccountState {
             return;
         }
 
-        return this.#accountService.getUserDetails().pipe(
-            tap({
-                next: result => {
-                    ctx.patchState({
-                        user: result,
-                        permissions: result.permission,
-                    });
-                },
-                error: err => {
-                    throw new Error(err?.error?.message);
-                }
-            })
-        );
+        return this.#accountService.getUserDetails().subscribe({
+            next: result => {
+                ctx.patchState({
+                    user: result.data,
+                    permissions: result.data?.role?.permissions || [],
+                });
+            },
+            error: err => {
+                throw new Error(err?.error?.message);
+            }
+        });
+
     }
+
+    @Action(UpdateUserDetails)
+    updateUserDetails(ctx: StateContext<AccountStateModel>, action: UpdateUserDetails) {
+        ctx.patchState({
+            user: action.payload.user,
+            permissions: action.payload.permissions,
+        });
+    }
+
 
     @Action(UpdateUserProfile)
     updateProfile(ctx: StateContext<AccountStateModel>, { payload }: UpdateUserProfile) {

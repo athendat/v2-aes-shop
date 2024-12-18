@@ -8,7 +8,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-confirmation-modal',
     templateUrl: './confirmation-modal.component.html',
     styleUrls: ['./confirmation-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, TranslateModule]
 })
 export class ConfirmationModalComponent {
@@ -24,7 +23,7 @@ export class ConfirmationModalComponent {
   @Output() confirmed: EventEmitter<boolean> = new EventEmitter();
 
   async openModal() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.modalOpen = true;
       this.modalService.open(this.ConfirmationModal, {
         ariaLabelledBy: 'Confirmation-Modal',

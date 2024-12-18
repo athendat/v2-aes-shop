@@ -13,7 +13,6 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-otp',
     templateUrl: './otp.component.html',
     styleUrls: ['./otp.component.scss'],
-    standalone: true,
     imports: [
         BreadcrumbComponent,
         AlertComponent,
@@ -45,13 +44,13 @@ export class OtpComponent {
   submit() {
     this.form.markAllAsTouched();
     if(this.form.valid) {
-      this.store.dispatch(new VerifyEmailOtp({ 
-        email: this.email, 
+      this.store.dispatch(new VerifyEmailOtp({
+        email: this.email,
         token: this.form.value.otp
       })).subscribe(
         {
-          complete: () => { 
-            this.router.navigateByUrl('/auth/update-password'); 
+          complete: () => {
+            this.router.navigateByUrl('/auth/update-password');
           }
         }
       );

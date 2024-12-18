@@ -18,7 +18,6 @@ import { NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordi
     selector: 'app-product-details-accordion',
     templateUrl: './product-details-accordion.component.html',
     styleUrls: ['./product-details-accordion.component.scss'],
-    standalone: true,
     imports: [NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, ProductReviewComponent, QuestionsAnswersComponent, AsyncPipe, TranslateModule]
 })
 export class ProductDetailsAccordionComponent {

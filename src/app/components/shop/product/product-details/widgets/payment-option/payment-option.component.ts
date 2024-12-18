@@ -8,7 +8,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-payment-option',
     templateUrl: './payment-option.component.html',
     styleUrls: ['./payment-option.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 export class PaymentOptionComponent {

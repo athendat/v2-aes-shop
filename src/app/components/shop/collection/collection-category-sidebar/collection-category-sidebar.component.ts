@@ -9,7 +9,6 @@ import { CollectionCategoriesComponent } from '../widgets/collection-categories/
     selector: 'app-collection-category-sidebar',
     templateUrl: './collection-category-sidebar.component.html',
     styleUrls: ['./collection-category-sidebar.component.scss'],
-    standalone: true,
     imports: [CollectionCategoriesComponent, CollectionProductsComponent]
 })
 export class CollectionCategorySidebarComponent {

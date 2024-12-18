@@ -19,7 +19,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     selector: 'app-product-slider',
     templateUrl: './product-slider.component.html',
     styleUrls: ['./product-slider.component.scss'],
-    standalone: true,
     imports: [CarouselModule, ProductContainComponent, ProductActionComponent, ProductInformationComponent, ProductDeliveryInformationComponent, PaymentOptionComponent, ProductSocialShareComponent, ProductBundleComponent, ProductDetailsTabsComponent, ProductSidebarComponent, TranslateModule]
 })
 export class ProductSliderComponent {

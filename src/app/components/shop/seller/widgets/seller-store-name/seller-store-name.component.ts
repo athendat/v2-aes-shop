@@ -7,11 +7,10 @@ import { RouterLink } from '@angular/router';
     selector: 'app-seller-store-name',
     templateUrl: './seller-store-name.component.html',
     styleUrls: ['./seller-store-name.component.scss'],
-    standalone: true,
     imports: [RouterLink, TitleCasePipe]
 })
 export class SellerStoreNameComponent {
 
   @Input() store: Stores;
-  
+
 }

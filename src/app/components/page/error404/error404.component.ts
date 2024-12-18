@@ -12,7 +12,6 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-error404',
     templateUrl: './error404.component.html',
     styleUrls: ['./error404.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, ButtonComponent, AsyncPipe]
 })
 export class Error404Component {

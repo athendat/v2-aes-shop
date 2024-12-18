@@ -14,7 +14,6 @@ import { SkeletonSellerStoreComponent } from '../skeleton-seller-store/skeleton-
     selector: 'app-seller-store-classic',
     templateUrl: './seller-store-classic.component.html',
     styleUrls: ['./seller-store-classic.component.scss'],
-    standalone: true,
     imports: [SkeletonSellerStoreComponent, SellerContactDetailsComponent, SellerStoreNameComponent, SellerStoreRatingComponent, RouterLink, SellerStoreLogoComponent, TranslateModule]
 })
 export class SellerStoreClassicComponent {
@@ -23,5 +22,5 @@ export class SellerStoreClassicComponent {
 
   @Input() stores: Stores[];
   @Input() skeletonItems: number[];
-  
+
 }

@@ -15,7 +15,6 @@ import { NgClass, NgStyle } from '@angular/common';
     selector: 'app-variant-attributes',
     templateUrl: './variant-attributes.component.html',
     styleUrls: ['./variant-attributes.component.scss'],
-    standalone: true,
     imports: [ReactiveFormsModule, NgClass, NgbTooltip, NgStyle, ButtonComponent, TranslateModule]
 })
 export class VariantAttributesComponent {

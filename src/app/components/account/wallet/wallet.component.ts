@@ -16,7 +16,6 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     selector: 'app-wallet',
     templateUrl: './wallet.component.html',
     styleUrls: ['./wallet.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [PaginationComponent, NoDataComponent, AsyncPipe, DatePipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]
 })

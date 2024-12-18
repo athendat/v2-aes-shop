@@ -1,47 +1,51 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { Store } from '@ngxs/store';
-import { Login } from '../../../shared/action/auth.action';
-import { Breadcrumb } from '../../../shared/interface/breadcrumb';
-import { AuthService } from '../../../shared/services/auth.service';
-import { TranslateModule } from '@ngx-translate/core';
-import { ButtonComponent } from '../../../shared/components/widgets/button/button.component';
 
+import { Store } from '@ngxs/store';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { ButtonComponent } from '../../../shared/components/widgets/button/button.component';
 import { AlertComponent } from '../../../shared/components/widgets/alert/alert.component';
 import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcrumb/breadcrumb.component';
+
+import { Login } from '../../../shared/action/auth.action';
+
+import { AuthService } from '../../../shared/services/auth.service';
+
+import { Breadcrumb } from '../../../shared/interface/breadcrumb';
+
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    standalone: true,
     imports: [
-        BreadcrumbComponent,
         AlertComponent,
+        BreadcrumbComponent,
+        ButtonComponent,
         ReactiveFormsModule,
         RouterLink,
-        ButtonComponent,
-        TranslateModule
+        TranslateModule,
     ],
 })
 export class LoginComponent {
-    private store = inject(Store);
-    private router = inject(Router);
-    private formBuilder = inject(FormBuilder);
-    private authService = inject(AuthService);
-
 
     public form: FormGroup;
     public breadcrumb: Breadcrumb = {
-        title: "Log in",
-        items: [{ label: 'Log in', active: true }]
+        title: "sign_in",
+        items: [{ label: 'sign_in', active: true }]
     }
+
+    private authService = inject(AuthService);
+    private formBuilder = inject(FormBuilder);
+    private router = inject(Router);
+    private store = inject(Store);
 
     constructor() {
         this.form = this.formBuilder.group({
-            email: new FormControl('john.customer@example.com', [Validators.required, Validators.email]),
-            password: new FormControl('123456789', [Validators.required]),
+            email: new FormControl('fr20587@gmail.com', [Validators.required, Validators.email]),
+            password: new FormControl('P@ssw0rd', [Validators.required]),
         });
     }
 

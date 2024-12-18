@@ -18,7 +18,6 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [BreadcrumbComponent, RouterLink, ButtonComponent,
       NoDataComponent, AsyncPipe, CurrencySymbolPipe, TranslateModule]

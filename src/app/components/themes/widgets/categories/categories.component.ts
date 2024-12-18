@@ -6,7 +6,6 @@ import { CategoriesComponent as CategoriesComponent_1 } from '../../../../shared
     selector: 'app-theme-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
-    standalone: true,
     imports: [CategoriesComponent_1]
 })
 export class CategoriesComponent {

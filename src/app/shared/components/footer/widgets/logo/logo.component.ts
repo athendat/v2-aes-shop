@@ -8,7 +8,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-footer-logo',
     templateUrl: './logo.component.html',
     styleUrls: ['./logo.component.scss'],
-    standalone: true,
     imports: [RouterLink]
 })
 export class FooterLogoComponent {

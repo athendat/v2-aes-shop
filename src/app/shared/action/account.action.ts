@@ -6,6 +6,12 @@ export class GetUserDetails {
   constructor() {}
 }
 
+export class UpdateUserDetails {
+    static readonly type = '[Account] Update User Details';
+    constructor(public payload: { user: any, permissions: any }) {}
+  }
+  
+
 export class UpdateUserProfile {
   static readonly type = "[Account] User Update";
   constructor(public payload: AccountUser) {}

@@ -13,7 +13,6 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-seller',
     templateUrl: './seller.component.html',
     styleUrls: ['./seller.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, ReactiveFormsModule, FormsModule, TranslateModule]
 })
 export class SellerComponent {

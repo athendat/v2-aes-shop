@@ -21,7 +21,6 @@ import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
     selector: 'app-product-contain',
     templateUrl: './product-contain.component.html',
     styleUrls: ['./product-contain.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [
     NgbRating,

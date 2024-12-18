@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-address-block',
     templateUrl: './address-block.component.html',
     styleUrls: ['./address-block.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 export class AddressBlockComponent {

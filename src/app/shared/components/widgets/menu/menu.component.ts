@@ -16,7 +16,6 @@ import { NgTemplateOutlet, NgClass, DatePipe } from '@angular/common';
     selector: 'app-menu',
     templateUrl: './menu.component.html',
     styleUrls: ['./menu.component.scss'],
-    standalone: true,
     imports: [NgTemplateOutlet, NgClass, RouterLink, ProductBoxComponent, DatePipe, TranslateModule]
 })
 export class MenuComponent {

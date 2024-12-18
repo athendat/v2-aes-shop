@@ -1,4 +1,4 @@
-import { Component, NgZone, OnDestroy, inject } from '@angular/core';
+import { Component, NgZone, OnDestroy, PLATFORM_ID, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ThemeOptionState } from './shared/state/theme-option.state';
 import { Observable } from 'rxjs';
@@ -6,12 +6,11 @@ import { Option } from './shared/interface/theme-option.interface';
 import { Actions, ofActionDispatched, select, Select } from '@ngxs/store';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Meta, Title } from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Logout } from './shared/action/auth.action';
 
 @Component({
     selector: 'app-root',
-    standalone: true,
     imports: [RouterModule],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
@@ -23,7 +22,7 @@ export class AppComponent implements OnDestroy {
     private titleService = inject(Title);
     private ngZone = inject(NgZone);
     private meta = inject(Meta);
-
+    private platformId = inject<Object>(PLATFORM_ID);
 
     @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
     theme = select(ThemeOptionState.themeOptions);
@@ -63,8 +62,11 @@ export class AppComponent implements OnDestroy {
 
             // Set Favicon
             this.favIcon = document.querySelector('#appIcon');
-            this.setFavicon(theme?.logo?.favicon_icon?.original_url);
-            //   this.favIcon!.href = theme?.logo?.favicon_icon?.original_url;
+
+            if (isPlatformBrowser(this.platformId)) {
+                this.setFavicon(theme?.logo?.favicon_icon?.original_url);
+                //   this.favIcon!.href = theme?.logo?.favicon_icon?.original_url;
+            }
 
             theme?.seo?.og_title && this.meta.updateTag({ property: 'og:title', content: theme?.seo?.og_title });
             theme?.seo?.og_description && this.meta.updateTag({ property: 'og:description', content: theme?.seo?.og_description });

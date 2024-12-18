@@ -16,8 +16,7 @@ import { NgClass } from '@angular/common';
     selector: 'app-basic-footer',
     templateUrl: './basic-footer.component.html',
     styleUrls: ['./basic-footer.component.scss'],
-    standalone: true,
-    imports: [NgClass, FooterLogoComponent, AboutComponent, FooterCategoriesComponent, 
+    imports: [NgClass, FooterLogoComponent, AboutComponent, FooterCategoriesComponent,
       LinksComponent, ContactComponent, CopyrightComponent, PaymentOptionsComponent,
       SocialLinksComponent, TranslateModule]
 })

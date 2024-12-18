@@ -10,7 +10,6 @@ import { Option } from '../../../../interface/theme-option.interface';
     selector: 'app-logo',
     templateUrl: './logo.component.html',
     styleUrls: ['./logo.component.scss'],
-    standalone: true,
     imports: [RouterLink,CommonModule]
 })
 export class LogoComponent {

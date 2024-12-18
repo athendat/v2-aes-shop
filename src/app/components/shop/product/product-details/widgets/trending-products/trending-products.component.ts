@@ -11,7 +11,6 @@ import { SlicePipe } from '@angular/common';
     selector: 'app-trending-products',
     templateUrl: './trending-products.component.html',
     styleUrls: ['./trending-products.component.scss'],
-    standalone: true,
     imports: [ProductBoxComponent, SlicePipe, TranslateModule]
 })
 export class TrendingProductsComponent {

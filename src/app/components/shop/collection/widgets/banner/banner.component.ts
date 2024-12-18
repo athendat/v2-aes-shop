@@ -5,7 +5,6 @@ import { Component, Input } from '@angular/core';
     selector: 'app-collection-category-banner',
     templateUrl: './banner.component.html',
     styleUrls: ['./banner.component.scss'],
-    standalone: true,
     imports: []
 })
 export class BannerComponent {

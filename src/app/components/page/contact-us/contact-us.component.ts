@@ -14,7 +14,6 @@ import { ThemeOptionState } from '../../../shared/state/theme-option.state';
     selector: 'app-contact-us',
     templateUrl: './contact-us.component.html',
     styleUrls: ['./contact-us.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, ReactiveFormsModule, ButtonComponent, TranslateModule]
 })
 export class ContactUsComponent {
@@ -25,8 +24,8 @@ export class ContactUsComponent {
   @Select(ThemeOptionState.themeOptions) themeOption$: Observable<Option>;
 
   public breadcrumb: Breadcrumb = {
-    title: "Contact Us",
-    items: [{ label: 'Contact Us', active: true }]
+    title: "contact_us",
+    items: [{ label: 'contact_us', active: true }]
   }
 
   public form: FormGroup;

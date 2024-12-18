@@ -6,7 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-call',
     templateUrl: './call.component.html',
     styleUrls: ['./call.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 
@@ -14,5 +13,5 @@ export class CallComponent {
 
   @Input() data: Option | null;
   @Input() style: string = 'basic';
-  
+
 }

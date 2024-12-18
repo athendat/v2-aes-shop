@@ -6,7 +6,6 @@ import { NgClass } from '@angular/common';
     selector: 'app-pagination',
     templateUrl: './pagination.component.html',
     styleUrls: ['./pagination.component.scss'],
-    standalone: true,
     imports: [NgClass]
 })
 export class PaginationComponent {
@@ -31,7 +30,7 @@ export class PaginationComponent {
 
   // Set Page
   pageSet(page: number) {
-    this.setPage.emit(page);  // Set Page Number  
+    this.setPage.emit(page);  // Set Page Number
   }
 
   // // Get Pager For Pagination
@@ -44,12 +43,12 @@ export class PaginationComponent {
     let paginateRange = 3;
 
     // ensure current page isn't out of range
-    if (Number(currentPage) < 1) { 
-      currentPage = 1; 
-    } else if (Number(currentPage) > Number(totalPages)) { 
-      currentPage = Number(totalPages); 
+    if (Number(currentPage) < 1) {
+      currentPage = 1;
+    } else if (Number(currentPage) > Number(totalPages)) {
+      currentPage = Number(totalPages);
     }
-    
+
     let startPage: number, endPage: number;
     if (Number(totalPages) <= Number(paginateRange)) {
       // Less than or equal to the paginateRange
@@ -90,9 +89,9 @@ export class PaginationComponent {
       pages: pages
     };
 
-  
+
   }
 
 
-  
+
 }

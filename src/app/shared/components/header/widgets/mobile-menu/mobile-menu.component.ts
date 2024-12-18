@@ -7,7 +7,6 @@ import { MobileMenu } from '../../../../../shared/interface/menu.interface';
     selector: 'app-mobile-menu',
     templateUrl: './mobile-menu.component.html',
     styleUrls: ['./mobile-menu.component.scss'],
-    standalone: true,
     imports: [RouterLink]
 })
 export class MobileMenuComponent {

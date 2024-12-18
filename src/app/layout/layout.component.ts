@@ -26,7 +26,6 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     selector: 'app-layout',
     templateUrl: './layout.component.html',
     styleUrls: ['./layout.component.scss'],
-    standalone: true,
     imports: [LoadingBarModule, LoaderComponent, HeaderComponent, RouterOutlet,
         FooterComponent, RecentPurchasePopupComponent, StickyCartComponent,
         StickyCompareComponent, BackToTopComponent, NewsletterModalComponent,

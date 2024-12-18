@@ -11,7 +11,6 @@ import { TitleComponent } from '../../../../../../shared/components/widgets/titl
     selector: 'app-related-products',
     templateUrl: './related-products.component.html',
     styleUrls: ['./related-products.component.scss'],
-    standalone: true,
     imports: [TitleComponent, ProductBoxComponent]
 })
 export class RelatedProductsComponent {

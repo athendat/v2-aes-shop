@@ -14,7 +14,6 @@ import { CommonModule, NgClass } from '@angular/common';
     selector: 'app-theme-product',
     templateUrl: './product.component.html',
     styleUrls: ['./product.component.scss'],
-    standalone: true,
     imports: [SkeletonProductBoxComponent, ProductBoxComponent, CarouselModule, NgClass,CommonModule]
 })
 export class ProductComponent {

@@ -7,11 +7,10 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-product-delivery-information',
     templateUrl: './product-delivery-information.component.html',
     styleUrls: ['./product-delivery-information.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 export class ProductDeliveryInformationComponent {
-  
+
   @Input() product: Product | null;
 
 }

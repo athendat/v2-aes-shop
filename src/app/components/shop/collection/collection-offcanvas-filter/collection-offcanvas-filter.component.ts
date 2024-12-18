@@ -8,7 +8,6 @@ import { CollectionSidebarComponent } from '../widgets/sidebar/sidebar.component
     selector: 'app-collection-offcanvas-filter',
     templateUrl: './collection-offcanvas-filter.component.html',
     styleUrls: ['./collection-offcanvas-filter.component.scss'],
-    standalone: true,
     imports: [CollectionSidebarComponent, CollectionProductsComponent]
 })
 export class CollectionOffCanvasFilterComponent {
@@ -20,5 +19,5 @@ export class CollectionOffCanvasFilterComponent {
   closeCanvasMenu() {
     this.attributeService.offCanvasMenu = false;
   }
-  
+
 }

@@ -10,7 +10,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-header-wishlist',
     templateUrl: './wishlist.component.html',
     styleUrls: ['./wishlist.component.scss'],
-    standalone: true,
     imports: [RouterLink, AsyncPipe]
 })
 export class WishlistComponent {

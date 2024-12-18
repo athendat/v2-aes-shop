@@ -21,37 +21,37 @@ import { TopbarComponent } from '../widgets/topbar/topbar.component';
     selector: 'app-basic-header',
     templateUrl: './basic-header.component.html',
     styleUrls: ['./basic-header.component.scss'],
-    standalone: true,
-    imports: [TopbarComponent, NavbarMenuButtonComponent, LogoComponent, 
-      CategoriesComponent, SearchComponent, SearchBoxComponent, CallComponent, 
-      WishlistComponent, CartComponent, MyAccountComponent, CategoriesBlockComponent,
-       ButtonComponent, MenuComponent, DealComponent, TranslateModule]
+    imports: [TopbarComponent, NavbarMenuButtonComponent, LogoComponent,
+        CategoriesComponent, SearchComponent, SearchBoxComponent, CallComponent,
+        WishlistComponent, CartComponent, MyAccountComponent, CategoriesBlockComponent,
+        ButtonComponent, MenuComponent, DealComponent, TranslateModule]
 })
 export class BasicHeaderComponent {
-  private platformId = inject<Object>(PLATFORM_ID);
 
 
-  @Input() data: Option | null;
-  @Input() logo: string | null | undefined;
-  @Input() sticky: boolean | number | undefined; // Default false
+    @Input() data: Option | null;
+    @Input() logo: string | null | undefined;
+    @Input() sticky: boolean | number | undefined; // Default false
 
-  public stick: boolean = false;
-  public active: boolean = false;
+    public stick: boolean = false;
+    public active: boolean = false;
+    private platformId = inject<Object>(PLATFORM_ID);
 
-  // @HostListener Decorator
-  @HostListener("window:scroll", [])
-  onWindowScroll() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
-      let number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      if (number >= 150 && window.innerWidth > 400) {
-        this.stick = true;
-      } else {
-        this.stick = false;
-      }
+
+    // @HostListener Decorator
+    @HostListener("window:scroll", [])
+    onWindowScroll() {
+        if (isPlatformBrowser(this.platformId)) { // For SSR
+            let number = window.screenY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            if (number >= 150 && window.innerWidth > 400) {
+                this.stick = true;
+            } else {
+                this.stick = false;
+            }
+        }
     }
-  }
 
-  toggle(val: boolean){
-    this.active = val;
-  }
+    toggle(val: boolean) {
+        this.active = val;
+    }
 }

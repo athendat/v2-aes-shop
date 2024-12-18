@@ -14,7 +14,6 @@ import { NgClass, NgStyle } from '@angular/common';
     selector: 'app-product-action',
     templateUrl: './product-action.component.html',
     styleUrls: ['./product-action.component.scss'],
-    standalone: true,
     imports: [NgClass, NgStyle, SizeChartModalComponent, DeliveryReturnModalComponent, QuestionModalComponent, TranslateModule]
 })
 export class ProductActionComponent {

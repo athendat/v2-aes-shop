@@ -16,7 +16,6 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-wishlist',
     templateUrl: './wishlist.component.html',
     styleUrls: ['./wishlist.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, SkeletonProductBoxComponent, ProductBoxComponent, NoDataComponent, AsyncPipe]
 })
 export class WishlistComponent {

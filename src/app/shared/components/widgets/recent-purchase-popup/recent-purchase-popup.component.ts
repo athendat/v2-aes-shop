@@ -11,7 +11,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-recent-purchase-popup',
     templateUrl: './recent-purchase-popup.component.html',
     styleUrls: ['./recent-purchase-popup.component.scss'],
-    standalone: true,
     imports: [RouterLink, TranslateModule]
 })
 export class RecentPurchasePopupComponent {
@@ -27,7 +26,7 @@ export class RecentPurchasePopupComponent {
   public popup_enable: boolean = true;
 
   constructor() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       if(this.popup_enable) {
         setInterval(() => {
           this.show = true;

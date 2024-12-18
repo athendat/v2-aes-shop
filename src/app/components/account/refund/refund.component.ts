@@ -15,7 +15,6 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     selector: 'app-refund',
     templateUrl: './refund.component.html',
     styleUrls: ['./refund.component.scss'],
-    standalone: true,
     imports: [PaginationComponent, NoDataComponent, AsyncPipe, DatePipe, TitleCasePipe, TranslateModule]
 })
 export class RefundComponent {

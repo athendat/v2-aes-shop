@@ -17,7 +17,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'address-modal',
     templateUrl: './address-modal.component.html',
     styleUrls: ['./address-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, ReactiveFormsModule, Select2Module, AsyncPipe, TranslateModule]
 })
 export class AddressModalComponent {

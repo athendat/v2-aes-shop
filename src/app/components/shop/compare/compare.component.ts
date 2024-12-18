@@ -18,7 +18,6 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-compeer',
     templateUrl: './compare.component.html',
     styleUrls: ['./compare.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [BreadcrumbComponent, NgbRating, NoDataComponent,
       AsyncPipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]

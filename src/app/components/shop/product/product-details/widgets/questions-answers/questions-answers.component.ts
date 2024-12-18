@@ -18,7 +18,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-questions-answers',
     templateUrl: './questions-answers.component.html',
     styleUrls: ['./questions-answers.component.scss'],
-    standalone: true,
     imports: [NoDataComponent, QuestionModalComponent, AsyncPipe, TranslateModule]
 })
 export class QuestionsAnswersComponent {

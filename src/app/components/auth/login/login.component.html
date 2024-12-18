@@ -49,11 +49,11 @@
                     <input class="checkbox_animated check-box" type="checkbox" id="remeberme">
                     <label class="form-check-label" for="remeberme">{{ 'remember_me' | translate }}</label>
                   </div>
-                  <a [routerLink]="['/auth/forgot-password']" class="forgot-password">{{ 'forgot_password' | translate }}?</a>
+                  <a [routerLink]="['/auth/forgot-password']" class="forgot-password">{{ 'forgot_password' | translate }}</a>
                 </div>
               </div>
               <div class="col-12">
-                <app-button [id]="'login_btn'">{{ 'log_in' | translate }}</app-button>
+                <app-button [id]="'login_btn'">{{ 'sign_in' | translate }}</app-button>
               </div>
             </form>
           </div>
@@ -61,7 +61,7 @@
             <h6>{{ 'or'| translate}}</h6>
           </div>
           <div class="sign-up-box">
-            <h4>{{ "don't_have_an_account"| translate}}?</h4>
+            <h4>{{ "don't_have_an_account"| translate}}</h4>
             <a [routerLink]="['/auth/register']">{{ 'sign_up'| translate}}</a>
           </div>
         </div>

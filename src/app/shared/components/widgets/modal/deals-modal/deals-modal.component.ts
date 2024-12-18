@@ -12,7 +12,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-deals-modal',
     templateUrl: './deals-modal.component.html',
     styleUrls: ['./deals-modal.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [ButtonComponent, RouterLink, NoDataComponent, TranslateModule, CurrencySymbolPipe]
 })
@@ -26,11 +25,11 @@ export class DealsModalComponent {
 
   @Input() products: Product[];
 
-  public closeResult: string; 
+  public closeResult: string;
   public modalOpen: boolean = false;
 
   async openModal() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.modalOpen = true;
       this.modalService.open(this.dealsModal, {
         ariaLabelledBy: 'Deal-Modal',

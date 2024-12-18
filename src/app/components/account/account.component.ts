@@ -16,7 +16,6 @@ import { BreadcrumbComponent } from '../../shared/components/widgets/breadcrumb/
     selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrls: ['./account.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, SidebarComponent, LoaderComponent, ButtonComponent, RouterOutlet, AsyncPipe, TranslateModule]
 })
 export class AccountComponent {

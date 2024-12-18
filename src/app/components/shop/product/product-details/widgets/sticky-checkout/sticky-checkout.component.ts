@@ -15,7 +15,6 @@ import { VariantAttributesComponent } from '../../../../../../shared/components/
     selector: 'app-sticky-checkout',
     templateUrl: './sticky-checkout.component.html',
     styleUrls: ['./sticky-checkout.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [VariantAttributesComponent, ButtonComponent, CurrencySymbolPipe, TranslateModule]
 })

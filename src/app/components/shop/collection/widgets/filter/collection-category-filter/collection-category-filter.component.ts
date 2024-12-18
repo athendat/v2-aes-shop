@@ -11,7 +11,6 @@ import { CategoryState } from '../../../../../../shared/state/category.state';
     selector: 'app-collection-category-filter',
     templateUrl: './collection-category-filter.component.html',
     styleUrls: ['./collection-category-filter.component.scss'],
-    standalone: true,
     imports: []
 })
 export class CollectionCategoryFilterComponent {

@@ -13,7 +13,6 @@ import { CollectionSidebarComponent } from '../../../collection/widgets/sidebar/
     selector: 'app-seller-details-basic',
     templateUrl: './seller-details-basic.component.html',
     styleUrls: ['./seller-details-basic.component.scss'],
-    standalone: true,
     imports: [CollectionSidebarComponent, SellerStoreLogoComponent, SellerStoreNameComponent, SellerStoreRatingComponent, SellerStoreDescriptionComponent, SellerStoreSocialLinksComponent, CollectionProductsComponent]
 })
 export class SellerDetailsBasicComponent {

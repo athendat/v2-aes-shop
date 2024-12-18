@@ -12,7 +12,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-delivery-return-modal',
     templateUrl: './delivery-return-modal.component.html',
     styleUrls: ['./delivery-return-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, TranslateModule]
 })
 export class DeliveryReturnModalComponent {
@@ -29,7 +28,7 @@ export class DeliveryReturnModalComponent {
   public policy: string;
 
   async openModal(value: string) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.policy = value;
       this.modalOpen = true;
       this.modalService.open(this.DeliveryReturnModal, {

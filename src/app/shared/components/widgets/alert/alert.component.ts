@@ -10,7 +10,6 @@ export interface Alert {
     selector: 'app-alert',
     templateUrl: './alert.component.html',
     styleUrls: ['./alert.component.scss'],
-    standalone: true,
     imports: []
 })
 export class AlertComponent {
@@ -22,7 +21,7 @@ export class AlertComponent {
     message: null
   };
 
-  constructor() { 
+  constructor() {
     this.notificationService.alertSubject.subscribe(alert => {
       this.alert = <Alert>alert;
     })

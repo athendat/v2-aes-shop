@@ -5,7 +5,6 @@ import { ButtonComponent } from '../../../widgets/button/button.component';
     selector: 'app-navbar-menu-button',
     templateUrl: './navbar-menu-button.component.html',
     styleUrls: ['./navbar-menu-button.component.scss'],
-    standalone: true,
     imports: [ButtonComponent]
 })
 export class NavbarMenuButtonComponent {

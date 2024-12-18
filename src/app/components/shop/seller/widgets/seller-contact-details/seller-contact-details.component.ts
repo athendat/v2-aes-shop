@@ -6,7 +6,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-seller-contact-details',
     templateUrl: './seller-contact-details.component.html',
     styleUrls: ['./seller-contact-details.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 export class SellerContactDetailsComponent {

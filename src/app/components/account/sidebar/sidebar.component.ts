@@ -17,7 +17,6 @@ import { ButtonComponent } from '../../../shared/components/widgets/button/butto
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, RouterLinkActive, RouterLink, ConfirmationModalComponent, AsyncPipe, TitleCasePipe, TranslateModule]
 })
 export class SidebarComponent {

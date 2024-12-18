@@ -5,7 +5,6 @@ import { Component, Input } from '@angular/core';
     selector: 'app-title',
     templateUrl: './title.component.html',
     styleUrls: ['./title.component.scss'],
-    standalone: true,
     imports: []
 })
 export class TitleComponent {

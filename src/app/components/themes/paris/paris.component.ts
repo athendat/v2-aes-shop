@@ -22,7 +22,6 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     selector: 'app-paris',
     templateUrl: './paris.component.html',
     styleUrls: ['./paris.component.scss'],
-    standalone: true,
     imports: [HomeBannerComponent, BannerComponent, CategoriesComponent,
       ProductComponent, TitleComponent, ImageLinkComponent, BlogComponent, NewsletterComponent]
 })

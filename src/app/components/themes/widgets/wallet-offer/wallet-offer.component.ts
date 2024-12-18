@@ -11,7 +11,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     selector: 'app-wallet-offer',
     templateUrl: './wallet-offer.component.html',
     styleUrls: ['./wallet-offer.component.scss'],
-    standalone: true,
     imports: [CarouselModule, ReactiveFormsModule, FormsModule, ButtonComponent, TranslateModule]
 })
 export class WalletOfferComponent {

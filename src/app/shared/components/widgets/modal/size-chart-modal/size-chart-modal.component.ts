@@ -9,7 +9,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-size-chart-modal',
     templateUrl: './size-chart-modal.component.html',
     styleUrls: ['./size-chart-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, TranslateModule]
 })
 export class SizeChartModalComponent {
@@ -24,7 +23,7 @@ export class SizeChartModalComponent {
   public image: Attachment;
 
   async openModal(image: Attachment) {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.image = image;
       this.modalOpen = true;
       this.modalService.open(this.SizeChartModal, {

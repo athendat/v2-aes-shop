@@ -9,7 +9,6 @@ import { TitleCasePipe } from '../../../../../../shared/pipe/title-case.pipe';
     selector: 'app-collection-filter',
     templateUrl: './collection-filter.component.html',
     styleUrls: ['./collection-filter.component.scss'],
-    standalone: true,
     imports: [TitleCasePipe, TranslateModule]
 })
 export class CollectionFilterComponent implements OnChanges {

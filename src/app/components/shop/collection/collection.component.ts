@@ -24,11 +24,10 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-collection',
     templateUrl: './collection.component.html',
     styleUrls: ['./collection.component.scss'],
-    standalone: true,
-    imports: [BreadcrumbComponent, CollectionCategorySliderComponent, 
-      CollectionCategorySidebarComponent, CollectionBannerComponent, 
-      CollectionLeftSidebarComponent, CollectionRightSidebarComponent, 
-      CollectionListComponent, CollectionOffCanvasFilterComponent, 
+    imports: [BreadcrumbComponent, CollectionCategorySliderComponent,
+      CollectionCategorySidebarComponent, CollectionBannerComponent,
+      CollectionLeftSidebarComponent, CollectionRightSidebarComponent,
+      CollectionListComponent, CollectionOffCanvasFilterComponent,
       CollectionNoSidebarComponent]
 })
 export class CollectionComponent {

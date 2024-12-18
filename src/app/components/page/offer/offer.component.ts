@@ -15,7 +15,6 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-offer',
     templateUrl: './offer.component.html',
     styleUrls: ['./offer.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, NoDataComponent, AsyncPipe, TranslateModule]
 })
 export class OfferComponent {

@@ -14,7 +14,6 @@ import { ThemeOptionService } from '../../../services/theme-option.service';
     selector: 'app-theme-customizer',
     templateUrl: './theme-customizer.component.html',
     styleUrls: ['./theme-customizer.component.scss'],
-    standalone: true,
     imports: [ClickOutsideDirective, ButtonComponent, NgClass, ReactiveFormsModule, FormsModule, TranslateModule]
 })
 export class ThemeCustomizerComponent {
@@ -42,7 +41,7 @@ export class ThemeCustomizerComponent {
   }
 
   layout(value: string){
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.value = value;
       if(value === 'rtl'){
         document.body.classList.add('rtl');
@@ -53,7 +52,7 @@ export class ThemeCustomizerComponent {
   }
 
   layoutMode(value: string){
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.mode = value;
       if(this.mode === 'dark'){
         document.getElementsByTagName('html')[0].classList.add('dark')
@@ -64,13 +63,13 @@ export class ThemeCustomizerComponent {
   }
 
   customizeThemeColor(event: any){
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
      document.documentElement.style.setProperty('--theme-color', event.target.value);
     }
   }
 
   ngOnDestroy() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       // Remove Color
       document.documentElement.style.removeProperty('--theme-color');
     }

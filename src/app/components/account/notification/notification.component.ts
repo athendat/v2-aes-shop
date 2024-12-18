@@ -12,7 +12,6 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     selector: 'app-notification',
     templateUrl: './notification.component.html',
     styleUrls: ['./notification.component.scss'],
-    standalone: true,
     imports: [NoDataComponent, AsyncPipe, DatePipe, TranslateModule]
 })
 export class NotificationComponent {

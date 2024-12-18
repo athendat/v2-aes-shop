@@ -10,7 +10,6 @@ import { Stores } from '../../../../../shared/interface/store.interface';
     selector: 'app-seller-store-products',
     templateUrl: './seller-store-products.component.html',
     styleUrls: ['./seller-store-products.component.scss'],
-    standalone: true,
     imports: []
 })
 export class SellerStoreProductsComponent {

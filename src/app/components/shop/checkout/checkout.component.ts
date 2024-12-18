@@ -30,7 +30,6 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-checkout',
     templateUrl: './checkout.component.html',
     styleUrls: ['./checkout.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [BreadcrumbComponent, AddressBlockComponent, DeliveryBlockComponent,
       PaymentBlockComponent, NoDataComponent, ReactiveFormsModule, LoaderComponent,

@@ -18,7 +18,6 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     selector: 'app-berlin',
     templateUrl: './berlin.component.html',
     styleUrls: ['./berlin.component.scss'],
-    standalone: true,
     imports: [HomeBannerComponent, ServiceComponent, TitleComponent, ProductComponent, CategoriesComponent, ImageLinkComponent, NewsletterComponent]
 })
 export class BerlinComponent {

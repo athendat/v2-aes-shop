@@ -5,7 +5,6 @@ import { Option } from '../../../../../shared/interface/theme-option.interface';
     selector: 'app-footer-copyright',
     templateUrl: './copyright.component.html',
     styleUrls: ['./copyright.component.scss'],
-    standalone: true,
     imports: []
 })
 

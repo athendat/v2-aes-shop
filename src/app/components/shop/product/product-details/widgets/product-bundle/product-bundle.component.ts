@@ -16,7 +16,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-product-bundle',
     templateUrl: './product-bundle.component.html',
     styleUrls: ['./product-bundle.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [RouterLink, ButtonComponent, CurrencySymbolPipe, TranslateModule]
 })

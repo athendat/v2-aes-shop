@@ -7,7 +7,6 @@ import { TranslateModule } from '@ngx-translate/core';
     selector: 'app-delivery-block',
     templateUrl: './delivery-block.component.html',
     styleUrls: ['./delivery-block.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 export class DeliveryBlockComponent {

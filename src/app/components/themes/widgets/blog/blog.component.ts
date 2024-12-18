@@ -14,7 +14,6 @@ import { NgStyle, DatePipe } from '@angular/common';
     selector: 'app-blog',
     templateUrl: './blog.component.html',
     styleUrls: ['./blog.component.scss'],
-    standalone: true,
     imports: [CarouselModule, SkeletonBlogComponent, RouterLink, NgStyle, DatePipe]
 })
 export class BlogComponent {

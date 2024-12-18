@@ -8,7 +8,6 @@ import { ButtonComponent } from '../../../widgets/button/button.component';
     selector: 'app-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss'],
-    standalone: true,
     imports: [ReactiveFormsModule, ButtonComponent, TranslateModule]
 })
 export class SearchComponent {

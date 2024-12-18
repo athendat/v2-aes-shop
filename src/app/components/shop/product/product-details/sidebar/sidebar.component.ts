@@ -13,7 +13,6 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-product-details-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss'],
-    standalone: true,
     imports: [StoreInformationComponent, TrendingProductsComponent, ProductBannerComponent, AsyncPipe]
 })
 export class ProductSidebarComponent {

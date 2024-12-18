@@ -14,7 +14,6 @@ import { BreadcrumbComponent } from '../../../shared/components/widgets/breadcru
     selector: 'app-update-password',
     templateUrl: './update-password.component.html',
     styleUrls: ['./update-password.component.scss'],
-    standalone: true,
     imports: [
     BreadcrumbComponent,
     AlertComponent,
@@ -58,9 +57,9 @@ export class UpdatePasswordComponent {
           })
       ).subscribe(
         {
-          complete: () => { 
-            this.router.navigateByUrl('/auth/login'); 
-          }     
+          complete: () => {
+            this.router.navigateByUrl('/auth/login');
+          }
         }
       );
     }

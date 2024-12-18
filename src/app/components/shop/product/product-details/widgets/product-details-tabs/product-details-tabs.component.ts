@@ -18,7 +18,6 @@ import { NgbNav, NgbNavItem, NgbNavItemRole, NgbNavLink, NgbNavLinkBase, NgbNavC
     selector: 'app-product-details-tabs',
     templateUrl: './product-details-tabs.component.html',
     styleUrls: ['./product-details-tabs.component.scss'],
-    standalone: true,
     imports: [NgbNav, NgbNavItem, NgbNavItemRole, NgbNavLink, NgbNavLinkBase, NgbNavContent, ProductReviewComponent, QuestionsAnswersComponent, NgbNavOutlet, AsyncPipe, TranslateModule]
 })
 export class ProductDetailsTabsComponent {

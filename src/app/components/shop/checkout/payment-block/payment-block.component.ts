@@ -6,7 +6,6 @@ import { UpperCasePipe } from '@angular/common';
     selector: 'app-payment-block',
     templateUrl: './payment-block.component.html',
     styleUrls: ['./payment-block.component.scss'],
-    standalone: true,
     imports: [UpperCasePipe]
 })
 export class PaymentBlockComponent {

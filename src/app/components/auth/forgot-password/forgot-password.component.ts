@@ -14,7 +14,6 @@ import { BreadcrumbComponent } from "../../../shared/components/widgets/breadcru
     selector: "app-forgot-password",
     templateUrl: "./forgot-password.component.html",
     styleUrls: ["./forgot-password.component.scss"],
-    standalone: true,
     imports: [
     BreadcrumbComponent,
     AlertComponent,
@@ -45,9 +44,9 @@ export class ForgotPasswordComponent {
     this.form.markAllAsTouched();
     if(this.form.valid) {
       this.store.dispatch(new ForgotPassWord(this.form.value)).subscribe({
-        complete: () => { 
-          this.router.navigateByUrl('/auth/otp'); 
-        }     
+        complete: () => {
+          this.router.navigateByUrl('/auth/otp');
+        }
       });
     }
   }

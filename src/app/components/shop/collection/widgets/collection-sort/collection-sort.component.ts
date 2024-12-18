@@ -11,7 +11,6 @@ import { isPlatformBrowser } from '@angular/common';
     selector: 'app-collection-sort',
     templateUrl: './collection-sort.component.html',
     styleUrls: ['./collection-sort.component.scss'],
-    standalone: true,
     imports: [Select2Module, TranslateModule]
 })
 export class CollectionSortComponent {

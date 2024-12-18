@@ -19,7 +19,6 @@ import { HomeBannerComponent } from '../widgets/home-banner/home-banner.componen
     selector: 'app-tokyo',
     templateUrl: './tokyo.component.html',
     styleUrls: ['./tokyo.component.scss'],
-    standalone: true,
     imports: [HomeBannerComponent, CategoriesComponent, BannerComponent, TitleComponent, ProductComponent, ImageLinkComponent, FourColumnProductComponent, NewsletterComponent]
 })
 export class TokyoComponent {

@@ -7,7 +7,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-seller-store-logo',
     templateUrl: './seller-store-logo.component.html',
     styleUrls: ['./seller-store-logo.component.scss'],
-    standalone: true,
     imports: [RouterLink]
 })
 export class SellerStoreLogoComponent {

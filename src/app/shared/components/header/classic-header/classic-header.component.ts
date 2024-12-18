@@ -18,9 +18,8 @@ import { NavbarMenuButtonComponent } from '../widgets/navbar-menu-button/navbar-
     selector: 'app-classic-header',
     templateUrl: './classic-header.component.html',
     styleUrls: ['./classic-header.component.scss'],
-    standalone: true,
-    imports: [NavbarMenuButtonComponent, LogoComponent, SearchComponent, 
-      CallComponent, ButtonComponent, MenuComponent, SearchBoxComponent, 
+    imports: [NavbarMenuButtonComponent, LogoComponent, SearchComponent,
+      CallComponent, ButtonComponent, MenuComponent, SearchBoxComponent,
       CompareComponent, WishlistComponent, CartComponent, MyAccountComponent, TranslateModule]
 })
 export class ClassicHeaderComponent {
@@ -37,7 +36,7 @@ export class ClassicHeaderComponent {
   // @HostListener Decorator
   @HostListener("window:scroll", [])
   onWindowScroll() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       let number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
       if (number >= 150 && window.innerWidth > 400) {
         this.stick = true;

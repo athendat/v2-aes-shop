@@ -20,7 +20,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     selector: 'app-product-accordion',
     templateUrl: './product-accordion.component.html',
     styleUrls: ['./product-accordion.component.scss'],
-    standalone: true,
     imports: [CarouselModule, NgxImageZoomModule, ProductContainComponent, ProductActionComponent, ProductInformationComponent, ProductDeliveryInformationComponent, PaymentOptionComponent, ProductSocialShareComponent, ProductBundleComponent, ProductDetailsAccordionComponent, ProductSidebarComponent, TranslateModule]
 })
 export class ProductAccordionComponent {

@@ -7,7 +7,6 @@ import { NgbRating } from '@ng-bootstrap/ng-bootstrap';
     selector: 'app-seller-store-rating',
     templateUrl: './seller-store-rating.component.html',
     styleUrls: ['./seller-store-rating.component.scss'],
-    standalone: true,
     imports: [NgbRating, TranslateModule]
 })
 export class SellerStoreRatingComponent {

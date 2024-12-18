@@ -20,7 +20,6 @@ import { NgClass, NgStyle, AsyncPipe } from '@angular/common';
     selector: 'app-header-cart',
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.scss'],
-    standalone: true,
     providers:[CurrencySymbolPipe],
     imports: [
     ButtonComponent,

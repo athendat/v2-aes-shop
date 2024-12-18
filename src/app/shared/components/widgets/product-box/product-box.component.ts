@@ -8,11 +8,10 @@ import { ProductBoxVerticalComponent } from './product-box-vertical/product-box-
     selector: 'app-product-box',
     templateUrl: './product-box.component.html',
     styleUrls: ['./product-box.component.scss'],
-    standalone: true,
     imports: [ProductBoxVerticalComponent, ProductBoxHorizontalComponent]
 })
 export class ProductBoxComponent {
-  
+
   @Input() product: Product;
   @Input() style: string  = 'horizontal';
   @Input() class: string;

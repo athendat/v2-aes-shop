@@ -7,7 +7,6 @@ import { NgTemplateOutlet } from '@angular/common';
     selector: 'app-blog-category',
     templateUrl: './blog-category.component.html',
     styleUrls: ['./blog-category.component.scss'],
-    standalone: true,
     imports: [NgTemplateOutlet, RouterLink]
 })
 export class BlogCategoryComponent {

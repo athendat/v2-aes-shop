@@ -10,7 +10,6 @@ import { RouterLink } from '@angular/router';
     selector: 'app-store-information',
     templateUrl: './store-information.component.html',
     styleUrls: ['./store-information.component.scss'],
-    standalone: true,
     imports: [RouterLink, NgbRating, SummaryPipe, TranslateModule]
 })
 export class StoreInformationComponent {

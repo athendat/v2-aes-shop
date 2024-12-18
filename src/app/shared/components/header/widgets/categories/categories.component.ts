@@ -8,11 +8,10 @@ import { ButtonComponent } from '../../../widgets/button/button.component';
     selector: 'app-header-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, CategoriesComponent, TranslateModule]
 })
 export class CategoriesBlockComponent {
 
   @Input() data: Option | null;
 
-} 
+}

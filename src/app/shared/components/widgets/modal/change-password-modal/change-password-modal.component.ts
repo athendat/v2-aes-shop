@@ -12,7 +12,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-change-password-modal',
     templateUrl: './change-password-modal.component.html',
     styleUrls: ['./change-password-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, ReactiveFormsModule, TranslateModule]
 })
 export class ChangePasswordModalComponent {
@@ -28,7 +27,7 @@ export class ChangePasswordModalComponent {
   public modalOpen: boolean = false;
 
   @ViewChild("passwordModal", { static: false }) PasswordModal: TemplateRef<string>;
-  
+
   constructor() {
       this.form = this.formBuilder.group({
         current_password: new FormControl('', [Validators.required]),
@@ -38,7 +37,7 @@ export class ChangePasswordModalComponent {
   }
 
   async openModal() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.modalOpen = true;
       this.modalService.open(this.PasswordModal, {
         ariaLabelledBy: 'password-Modal',

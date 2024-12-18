@@ -20,7 +20,6 @@ import { BreadcrumbComponent } from '../../../../shared/components/widgets/bread
     selector: 'app-seller-store',
     templateUrl: './seller-store.component.html',
     styleUrls: ['./seller-store.component.scss'],
-    standalone: true,
     imports: [BreadcrumbComponent, SellerStoreBasicComponent, SellerStoreClassicComponent, PaginationComponent, AsyncPipe]
 })
 export class SellerStoreComponent {

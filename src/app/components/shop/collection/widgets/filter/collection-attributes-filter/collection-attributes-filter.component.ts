@@ -8,7 +8,6 @@ import { NgStyle } from '@angular/common';
     selector: 'app-collection-attributes-filter',
     templateUrl: './collection-attributes-filter.component.html',
     styleUrls: ['./collection-attributes-filter.component.scss'],
-    standalone: true,
     imports: [NgStyle]
 })
 export class CollectionAttributesComponent {

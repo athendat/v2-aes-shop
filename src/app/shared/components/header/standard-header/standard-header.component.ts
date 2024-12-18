@@ -21,10 +21,9 @@ import { TopbarComponent } from '../widgets/topbar/topbar.component';
     selector: 'app-standard-header',
     templateUrl: './standard-header.component.html',
     styleUrls: ['./standard-header.component.scss'],
-    standalone: true,
-    imports: [TopbarComponent, NavbarMenuButtonComponent, LogoComponent, 
-      SearchComponent, MyAccountComponent, SearchBoxComponent, CompareComponent, 
-      WishlistComponent, CartComponent, CategoriesBlockComponent, ButtonComponent, 
+    imports: [TopbarComponent, NavbarMenuButtonComponent, LogoComponent,
+      SearchComponent, MyAccountComponent, SearchBoxComponent, CompareComponent,
+      WishlistComponent, CartComponent, CategoriesBlockComponent, ButtonComponent,
       MenuComponent, CallComponent, DealComponent, TranslateModule]
 })
 
@@ -42,7 +41,7 @@ export class StandardHeaderComponent {
   // @HostListener Decorator
   @HostListener("window:scroll", [])
   onWindowScroll() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       let number = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
       if (number >= 150 && window.innerWidth > 400) {
         this.stick = true;

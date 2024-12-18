@@ -14,7 +14,6 @@ import { ClickOutsideDirective } from '../../../../directive/out-side-directive'
     selector: 'app-currency',
     templateUrl: './currency.component.html',
     styleUrls: ['./currency.component.scss'],
-    standalone: true,
     imports: [ClickOutsideDirective, ButtonComponent, AsyncPipe]
 })
 export class CurrencyComponent {
@@ -46,7 +45,7 @@ export class CurrencyComponent {
     this.open = false;
     this.store.dispatch(new SelectedCurrency(currency)).subscribe({
       complete: () => {
-        if (isPlatformBrowser(this.platformId)) { // For SSR 
+        if (isPlatformBrowser(this.platformId)) { // For SSR
           window.location.reload();
         }
       }

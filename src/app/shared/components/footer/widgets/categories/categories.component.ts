@@ -10,7 +10,6 @@ import { CategoryState } from '../../../../../shared/state/category.state';
     selector: 'app-footer-categories',
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.scss'],
-    standalone: true,
     imports: [RouterLink]
 })
 

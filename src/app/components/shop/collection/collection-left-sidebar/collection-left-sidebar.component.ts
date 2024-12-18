@@ -13,7 +13,6 @@ import { BannerComponent } from '../widgets/banner/banner.component';
     selector: 'app-collection-left-sidebar',
     templateUrl: './collection-left-sidebar.component.html',
     styleUrls: ['./collection-left-sidebar.component.scss'],
-    standalone: true,
     imports: [BannerComponent, CollectionSidebarComponent, CollectionProductsComponent]
 })
 export class CollectionLeftSidebarComponent {

@@ -9,7 +9,6 @@ import { UpdateSession } from '../../../action/theme-option.action';
     selector: 'app-cookie',
     templateUrl: './cookie.component.html',
     styleUrls: ['./cookie.component.scss'],
-    standalone: true,
     imports: [TranslateModule]
 })
 export class CookieComponent {

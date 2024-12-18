@@ -16,7 +16,6 @@ import { ButtonComponent } from '../../button/button.component';
     selector: 'app-edit-profile-modal',
     templateUrl: './edit-profile-modal.component.html',
     styleUrls: ['./edit-profile-modal.component.scss'],
-    standalone: true,
     imports: [ButtonComponent, ReactiveFormsModule, Select2Module, TranslateModule]
 })
 export class EditProfileModalComponent {
@@ -35,9 +34,9 @@ export class EditProfileModalComponent {
   public flicker: boolean = false;
   public codes = data.countryCodes;
   public isBrowser: boolean;
-  
+
   @ViewChild("profileModal", { static: false }) ProfileModal: TemplateRef<string>;
-  
+
   constructor() {
       this.isBrowser = isPlatformBrowser(this.platformId);
       this.user$.subscribe(user => {
@@ -46,7 +45,7 @@ export class EditProfileModalComponent {
           name: new FormControl(user?.name, [Validators.required]),
           email: new FormControl(user?.email, [Validators.required, Validators.email]),
           phone: new FormControl(user?.phone, [Validators.required, Validators.pattern(/^[0-9]*$/)]),
-          country_code: new FormControl(user?.country_code), 
+          country_code: new FormControl(user?.country_code),
           profile_image_id: new FormControl(user?.profile_image_id),
         });
         this.form?.controls?.['email'].disable();
@@ -55,7 +54,7 @@ export class EditProfileModalComponent {
   }
 
   async openModal() {
-    if (isPlatformBrowser(this.platformId)) { // For SSR 
+    if (isPlatformBrowser(this.platformId)) { // For SSR
       this.modalOpen = true;
       this.modalService.open(this.ProfileModal, {
         ariaLabelledBy: 'profile-Modal',
