@@ -2,7 +2,7 @@ import { Attachment } from "./attachment.interface";
 import { PaginateModel } from "./core.interface";
 
 export interface AttributeModel extends PaginateModel {
-    data: Attribute[];
+    data?: Attribute[];
 }
 
 export interface AttributeValueModel extends PaginateModel {

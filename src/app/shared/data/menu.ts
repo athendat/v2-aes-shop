@@ -782,16 +782,17 @@ export const menu: Menu[] = [
             {
                 title: 'become_seller',
                 type: 'link',
+                label: 'new',
                 path: 'seller/become-seller',
             },
-            // {
-            //     title: 'seller_stores_basic',
-            //     type: 'link',
-            //     label: 'hot',
-            //     path: 'seller/stores',
-            //     params: { layout: 'basic_store' },
-            //     labelClass: 'warning-label',
-            // },
+            {
+                title: 'seller_stores_basic',
+                type: 'link',
+                label: 'hot',
+                path: 'seller/stores',
+                params: { layout: 'basic_store' },
+                labelClass: 'warning-label',
+            },
             // {
             //     title: 'seller_stores_classic',
             //     path: 'seller/stores',

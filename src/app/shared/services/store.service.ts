@@ -1,21 +1,29 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { Params } from "../interface/core.interface";
 
-import { StoresModel } from "../interface/store.interface";
+import { Stores, StoresModel } from "../interface/store.interface";
+import { RestResponse } from "../types/common.types";
 
 @Injectable({
-  providedIn: "root",
+    providedIn: "root",
 })
 export class StoreService {
-  private http = inject(HttpClient);
+    private http = inject(HttpClient);
 
 
-  public skeletonLoader: boolean = false;
+    public skeletonLoader: boolean = false;
 
-  getStores(payload?: Params): Observable<StoresModel> {
-    return this.http.get<StoresModel>(`/store.json`, { params: payload });
-  }
+    getStores(payload?: Params): Observable<StoresModel> {
+        return this.http.get<RestResponse<Stores[]>>(`/stores`, { params: payload }).pipe(
+            map((res) => {
+                return {
+                    data: res.data!,
+                    total: res.data!.length || 0,
+                };
+            })
+        )
+    }
 
 }
