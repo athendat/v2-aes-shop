@@ -4,7 +4,7 @@ import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 
 // Third's Module
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'public/environments/environment';
 
 // Global Variables
 

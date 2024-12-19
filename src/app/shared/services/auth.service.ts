@@ -11,7 +11,7 @@ import { Observable, throwError, tap, of } from "rxjs";
 
 
 // Environment Imports
-import { environment } from "src/environments/environment";
+import { environment } from "public/environments/environment";
 import { AuthUserStateModel, RegisterModal } from "../interface/auth.interface";
 
 // API URL

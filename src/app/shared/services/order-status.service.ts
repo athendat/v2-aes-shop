@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../public/environments/environment';
 import { OrderStatusModel } from '../interface/order-status.interface';
 import { Params } from '../interface/core.interface';
 

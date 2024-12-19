@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CouponModel } from '../interface/coupon.interface';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../public/environments/environment';
 
 @Injectable({
   providedIn: 'root'

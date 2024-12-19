@@ -55,7 +55,7 @@ import { WishlistState } from './shared/state/wishlist.state';
 
 import { routes } from './app.routes';
 
-import { environment } from 'src/environments/environment';
+import { environment } from 'public/environments/environment';
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
