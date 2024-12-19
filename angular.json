@@ -57,6 +57,12 @@
                                     "maximumError": "5mb"
                                 }
                             ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "public/environments/environment.ts",
+                                    "with": "public/environments/environment.prod.ts"
+                                }
+                            ],
                             "outputHashing": "all"
                         },
                         "development": {
