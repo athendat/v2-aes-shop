@@ -4,7 +4,7 @@ import { CanActivateChildFn, CanActivateFn, Router } from '@angular/router';
 import { of, switchMap } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
-export const NoAuthGuard: CanActivateFn | CanActivateChildFn = (route, state) => {
+export const NoauthGuard: CanActivateFn | CanActivateChildFn = (route, state) => {
     const router: Router = inject(Router);
 
     // Check the authentication status

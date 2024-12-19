@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 // Guards
+import { authGuard } from 'src/app/core/guard/auth.guard';
 import { ScrollPositionGuard } from '../../shared/guard/scroll.guard';
 
 // Resolvers
@@ -15,8 +16,11 @@ export default [
     },
     {
         path: 'wishlist',
+        canActivate: [
+            authGuard,
+            ScrollPositionGuard
+        ],
         loadComponent: () => import('./wishlist/wishlist.component').then(c => c.WishlistComponent),
-        canActivate: [ScrollPositionGuard],
     },
     {
         path: 'compare',
