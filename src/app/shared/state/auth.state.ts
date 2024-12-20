@@ -89,8 +89,6 @@ export class AuthState {
     @Action(Login)
     login(ctx: StateContext<AuthStateModel>, action: Login) {
 
-        console.log({ action });
-
         // Si el usuario ya está autenticado, no se puede iniciar sesión
         if (this.store.selectSnapshot(AuthState.isAuthenticated)) {
             this.notificationService.showWarning('Ya has iniciado sesión');

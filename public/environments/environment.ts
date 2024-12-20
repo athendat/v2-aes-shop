@@ -6,8 +6,8 @@ export const environment = {
     production: false,
     baseURL: 'http://localhost:4201/',
     URL: 'http://localhost:4201/assets/data',
-    API_URL: 'http://localhost:9033/api_033',
-    SOCKET_IO: 'http://localhost:9033',
+    API_URL: 'http://localhost:9017/api_033',
+    SOCKET_IO: 'http://localhost:9017',
     IMAGE_PROVIDER_URL: 'https://res.cloudinary.com/athendat'
 };
 

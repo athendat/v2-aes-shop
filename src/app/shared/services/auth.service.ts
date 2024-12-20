@@ -81,8 +81,6 @@ export class AuthService {
      * @param credentials
      */
     login(credentials: AuthUserStateModel): Observable<any> {
-
-        // Inicia sesión
         return this.#httpClient.post<any>(`/auth/sign-in`, credentials);
     }
 

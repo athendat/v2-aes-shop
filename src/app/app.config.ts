@@ -3,7 +3,7 @@ import { CurrencyPipe, provideCloudinaryLoader } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withFetch, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideRouter, withComponentInputBinding, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { provideStore } from '@ngxs/store';
@@ -66,7 +66,6 @@ export const appConfig: ApplicationConfig = {
         CurrencyPipe,
         ErrorService,
         NotificationService,
-        provideRouter(routes),
         {
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
@@ -102,7 +101,8 @@ export const appConfig: ApplicationConfig = {
             withComponentInputBinding(),
             withInMemoryScrolling({
                 scrollPositionRestoration: 'enabled',
-            })
+            }),
+            withViewTransitions()
         ),
         provideCloudinaryLoader(environment.IMAGE_PROVIDER_URL),
         provideStore(
