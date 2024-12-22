@@ -1,47 +1,48 @@
 import { Pipe, PipeTransform, inject } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
-import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
+
+import { select } from '@ngxs/store';
+
 import { SettingState } from '../state/setting.state';
+
 import { Values } from '../interface/setting.interface';
-import { Currency } from '../interface/currency.interface';
+import { CurrencyState } from '../state/currency.state';
+
 
 @Pipe({
-    name: 'currencySymbol',
-    standalone: true
+    name: 'currencySymbol'
 })
-
 export class CurrencySymbolPipe implements PipeTransform {
-  private currencyPipe = inject(CurrencyPipe);
 
 
-  @Select(SettingState.selectedCurrency) selectedCurrency$: Observable<Currency>;
+    selectedCurrency = select(SettingState.selectedCurrency);
+    currencies = select(CurrencyState.currency);
 
-  public symbol: string = '$';
-  public setting: Values;
-  public selectedCurrency: Currency;
+    public symbol: string = '$';
+    public setting: Values;
 
-  constructor() {
-    this.selectedCurrency$.subscribe(currency => this.selectedCurrency = currency);
-  }
+    private currencyPipe = inject(CurrencyPipe);
 
-  transform(value: number | undefined, position: 'before_price' | 'after_price' | string = 'before_price'): string | number {
-    if(!value) {
-      value = 0;
-    };
-    value = Number(value);
-    value = (value * this.selectedCurrency?.exchange_rate);
+    transform(value: number | undefined, position: 'before_price' | 'after_price' | string = 'before_price'): string | number {
+        if (!value) {
+            value = 0;
+        };
 
-    this.symbol = this.selectedCurrency?.symbol || '$';
-    position = this.selectedCurrency?.symbol_position;
+        const currency = this.currencies().data.find(currency => currency.id === this.selectedCurrency()?.id);
 
-    let formattedValue = this.currencyPipe.transform(value, this.symbol);
-    formattedValue = formattedValue?.replace(this.symbol, '')!;
+        value = Number(value);
+        value = (value * currency?.exchange_rate!);
 
-    if (position === 'before_price') {
-      return `${this.symbol} ${formattedValue}`;
-    } else {
-      return `${formattedValue} ${this.symbol}`;
+        this.symbol = currency?.symbol || '$';
+        position = currency?.symbol_position!;
+
+        let formattedValue = this.currencyPipe.transform(value, this.symbol);
+        formattedValue = formattedValue?.replace(this.symbol, '')!;
+
+        if (position === 'before_price') {
+            return `${this.symbol} ${formattedValue}`;
+        } else {
+            return `${formattedValue} ${this.symbol}`;
+        }
     }
-  }
 }

@@ -6,48 +6,48 @@ import { Currency } from "../interface/currency.interface";
 import { CurrencyService } from "../services/currency.service";
 
 export class CurrencyStateModel {
-  currency = {
-    data: [] as Currency[],
-    total: 0
-  }
+    currency = {
+        data: [] as Currency[],
+        total: 0
+    }
 }
 
 @State<CurrencyStateModel>({
-  name: "currency",
-  defaults: {
-    currency: {
-      data: [],
-      total: 0
+    name: "currency",
+    defaults: {
+        currency: {
+            data: [],
+            total: 0
+        },
     },
-  },
 })
 @Injectable()
 export class CurrencyState {
-  private currencyService = inject(CurrencyService);
+    private currencyService = inject(CurrencyService);
 
 
-  @Selector()
-  static currency(state: CurrencyStateModel) {
-    return state.currency;
-  }
+    @Selector()
+    static currency(state: CurrencyStateModel) {
+        return state.currency;
+    }
 
-  @Action(GetCurrencies)
-  getCurrencies(ctx: StateContext<CurrencyStateModel>, action: GetCurrencies) {
-    return this.currencyService.getCurrencies(action.payload).pipe(
-      tap({
-        next: result => {
-          ctx.patchState({
-            currency: {
-              data: result.data,
-              total: result?.total ? result?.total : result.data ? result.data.length : 0
-            }
-          });
-        },
-        error: err => {
-          throw new Error(err?.error?.message);
-        }
-      })
-    );
-  }
-  
+    @Action(GetCurrencies)
+    getCurrencies(ctx: StateContext<CurrencyStateModel>, action: GetCurrencies) {
+        return this.currencyService.getCurrencies(action.payload).pipe(
+            tap({
+                next: result => {
+                    ctx.patchState({
+                        currency: {
+                            data: result.data,
+                            total: result?.total ? result?.total : result.data ? result.data.length : 0
+                        }
+                    });
+                },
+                error: err => {
+                    throw new Error(err?.error?.message);
+                }
+            })
+        );
+    }
+
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { Product } from '../../../../../shared/interface/product.interface';
 import { CurrencySymbolPipe } from '../../../../pipe/currency-symbol.pipe';
 
@@ -13,6 +13,6 @@ import { RouterLink } from '@angular/router';
 })
 export class ProductBoxVerticalComponent {
 
-  @Input() product: Product;
+  product = input<Product>();
 
 }
