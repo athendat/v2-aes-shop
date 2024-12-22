@@ -10,7 +10,7 @@
           (change)="applyFilter($event)">
         <label class="form-check-label" for="price-filter{{price.id}}">
           @if (price?.price) {
-            <span class="name">{{ price.text }} {{ price.price! | currencySymbol }}</span>
+            <span class="name">{{ price.text! | translate }} {{ price.price! | currencySymbol }}</span>
           } @else {
             <span class="name">{{ price.minPrice! | currencySymbol }} - {{ price.maxPrice! | currencySymbol }}</span>
           }

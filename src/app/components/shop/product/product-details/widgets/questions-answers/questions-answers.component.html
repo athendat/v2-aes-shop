@@ -1,7 +1,7 @@
 @if (questionAnswersService.skeletonLoader) {
   <div class="question-answer skeleton-qa">
     <ul>
-      @for (item of skeletonItems; track item) {
+      @for (item of skeletonItems; track $index) {
         <li>
           <div class="question-box">
             <h5></h5>
@@ -25,7 +25,7 @@
   <div class="question-answer">
     @if (questionAnswers.length) {
       <ul>
-        @for (qna of questionAnswers; track qna; let i = $index) {
+        @for (qna of questionAnswers; track qna.id; let i = $index) {
           <li>
             <div class="question-box">
               <h5>{{ 'q' | translate }}{{ i + 1 }}</h5>

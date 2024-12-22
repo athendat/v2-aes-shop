@@ -9,6 +9,9 @@ import {
 import { Product, ProductModel } from "../interface/product.interface";
 import { ProductService } from "../services/product.service";
 import { ThemeOptionService } from "../services/theme-option.service";
+import { SetReviews } from "../action/review.action";
+import { SetQuestions } from "../action/questions-answers.action";
+import { QuestionsAnswersService } from "../services/questions-answers.service";
 
 export class ProductStateModel {
     product = {
@@ -42,6 +45,7 @@ export class ProductState {
     private router = inject(Router);
     private productService = inject(ProductService);
     private themeOptionService = inject(ThemeOptionService);
+    private questionAnswersService = inject(QuestionsAnswersService);
 
 
     @Selector()
@@ -231,24 +235,26 @@ export class ProductState {
     @Action(GetProductBySlug)
     getProductBySlug(ctx: StateContext<ProductStateModel>, { slug }: GetProductBySlug) {
         this.themeOptionService.preloader = true;
-        return this.productService.getProducts().pipe(
+        return this.productService.getProductBySlug(slug).pipe(
             tap({
                 next: results => {
-                    const result = results.data.find(product => product.slug === slug);
 
-                    if (result) {
-                        result.related_products = result.related_products && result.related_products.length ? result.related_products : [];
-                        result.cross_sell_products = result.cross_sell_products && result.cross_sell_products.length ? result.cross_sell_products : [];
-
-                        const ids = [...result.related_products, ...result.cross_sell_products];
-                        const categoryIds = [...result?.categories?.map(category => category.id)];
-                        this.store.dispatch(new GetRelatedProducts({ ids: ids.join(','), category_ids: categoryIds.join(','), status: 1 }));
+                    if (results) {
 
                         const state = ctx.getState();
                         ctx.patchState({
                             ...state,
-                            selectedProduct: result
+                            selectedProduct: results.data,
+                            relatedProducts: results.data?.related_products || [],
                         });
+
+                        // Set Reviews
+                        this.store.dispatch(new SetReviews(results.data?.reviews || []));
+
+                        // Set Questions
+                        this.store.dispatch(new SetQuestions(results.data?.questions || []));
+                        this.questionAnswersService.skeletonLoader = false;
+
                     } else {
                         this.router.navigate(['/404']);
                     }

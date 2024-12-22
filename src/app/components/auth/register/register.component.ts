@@ -73,7 +73,7 @@ export class RegisterComponent {
         } else
             this.store.dispatch(new Register(this.form.value)).subscribe({
                 complete: () => {
-                    this.router.navigateByUrl('/account/dashboard');
+                    this.router.navigateByUrl('/auth/otp');
                 }
             }
             );

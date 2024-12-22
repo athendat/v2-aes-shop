@@ -6,6 +6,7 @@ import { Stores } from "./store.interface";
 import { Tag } from "./tag.interface";
 import { Tax } from "./tax.interface";
 import { Review } from "./review.interface";
+import { QuestionAnswers } from "./questions-answers.interface";
 
 export interface ProductModel extends PaginateModel {
     data: Product[];
@@ -71,13 +72,15 @@ export interface Product {
     attributes: Attribute[];
     attributes_ids: string[];
     is_random_related_products: boolean;
-    related_products: string[];
+    related_products_id: string[];
+    related_products: Product[];
     cross_sell_products: string[];
     pivot?: PivotProduct;
     created_by_id: string;
     is_approved: boolean;
     total_in_approved_products: number;
     published_at: string;
+    questions: QuestionAnswers[];
     reviews: Review[];
     reviews_count: number;
     rating_count: number;

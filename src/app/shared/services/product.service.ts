@@ -45,15 +45,8 @@ export class ProductService {
             );
     }
 
-    findProductBySlug(slug: string): Observable<ProductModel> {
-        return this.http.get<RestResponse<Product>>(`/products/slug/${slug}`).pipe(
-            map((response) => {
-                return {
-                    data: [response.data!],
-                    total: 1,
-                }
-            })
-        );
+    getProductBySlug(slug: string): Observable<RestResponse<Product>> {
+        return this.http.get<RestResponse<Product>>(`/products/slug/${slug}`);
     }
 
     findProductsByIds(ids: string[]): Observable<RestResponse<Product[]>> {

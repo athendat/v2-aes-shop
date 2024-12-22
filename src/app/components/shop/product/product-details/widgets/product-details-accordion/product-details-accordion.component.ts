@@ -1,6 +1,6 @@
-import { Component, Input, SimpleChanges, inject } from '@angular/core';
+import { Component, Input, SimpleChanges, inject, input } from '@angular/core';
 import { Product } from '../../../../../../shared/interface/product.interface';
-import { Select, Store } from '@ngxs/store';
+import { select, Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { QuestionAnswersState } from '../../../../../../shared/state/questions-answers.state';
 import { QnAModel } from '../../../../../../shared/interface/questions-answers.interface';
@@ -18,20 +18,18 @@ import { NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordi
     selector: 'app-product-details-accordion',
     templateUrl: './product-details-accordion.component.html',
     styleUrls: ['./product-details-accordion.component.scss'],
-    imports: [NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, ProductReviewComponent, QuestionsAnswersComponent, AsyncPipe, TranslateModule]
+    imports: [NgbAccordionDirective, NgbAccordionItem, NgbAccordionHeader, NgbAccordionToggle, NgbAccordionButton, NgbCollapse, NgbAccordionCollapse, NgbAccordionBody, ProductReviewComponent, QuestionsAnswersComponent, TranslateModule]
 })
 export class ProductDetailsAccordionComponent {
-  private store = inject(Store);
+    // private store = inject(Store);
 
+    product = input<Product | null>();
+    question = select(QuestionAnswersState.questionsAnswers);
+    review = select(ReviewState.review);
 
-  @Input() product: Product | null;
-
-  @Select(QuestionAnswersState.questionsAnswers) question$: Observable<QnAModel>;
-  @Select(ReviewState.review) review$: Observable<ReviewModel>;
-
-  ngOnChanges(changes: SimpleChanges) {
-    let product = changes['product']?.currentValue;
-    this.store.dispatch(new GetQuestionAnswers({product_id: product.id}));
-    this.store.dispatch(new GetReview({product_id: product.id}));
-  }
+    // ngOnChanges(changes: SimpleChanges) {
+    //     let product = changes['product']?.currentValue;
+    //     this.store.dispatch(new GetQuestionAnswers({ product_id: product.id }));
+    //     this.store.dispatch(new GetReview({ product_id: product.id }));
+    // }
 }

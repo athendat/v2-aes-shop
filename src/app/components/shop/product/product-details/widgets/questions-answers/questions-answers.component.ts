@@ -21,41 +21,41 @@ import { AsyncPipe } from '@angular/common';
     imports: [NoDataComponent, QuestionModalComponent, AsyncPipe, TranslateModule]
 })
 export class QuestionsAnswersComponent {
-  private store = inject(Store);
-  questionAnswersService = inject(QuestionsAnswersService);
+    private store = inject(Store);
+    questionAnswersService = inject(QuestionsAnswersService);
 
 
-  public user: AccountUser;
-  public question = new FormControl();
-  public isLogin: boolean = false;
-  public skeletonItems = Array.from({ length: 5 }, (_, index) => index);
-  private destroy$ = new Subject<void>();
+    public user: AccountUser;
+    public question = new FormControl();
+    public isLogin: boolean = false;
+    public skeletonItems = Array.from({ length: 5 }, (_, index) => index);
+    private destroy$ = new Subject<void>();
 
-  @Input() product: Product;
-  @Input() questionAnswers: QuestionAnswers[];
+    @Input() product: Product;
+    @Input() questionAnswers: QuestionAnswers[];
 
-  @ViewChild("questionModal") QuestionModal: QuestionModalComponent;
+    @ViewChild("questionModal") QuestionModal: QuestionModalComponent;
 
-  @Select(AccountState.user) user$: Observable<AccountUser>;
+    @Select(AccountState.user) user$: Observable<AccountUser>;
 
-  constructor(){
-    this.isLogin = !!this.store.selectSnapshot(state => state.auth && state.auth.access_token)
-    if(this.isLogin){
-      this.store.dispatch(new GetUserDetails());
+    constructor() {
+        this.isLogin = !!this.store.selectSnapshot(state => state.auth && state.auth.access_token)
+        if (this.isLogin) {
+            this.store.dispatch(new GetUserDetails());
+        }
     }
-  }
 
-  feedback(qna: QuestionAnswers, value: string) {
-    const data = {
-      question_and_answer_id : qna.id,
-      reaction: value
+    feedback(qna: QuestionAnswers, value: string) {
+        const data = {
+            question_and_answer_id: qna.id,
+            reaction: value
+        }
+        this.store.dispatch(new Feedback(data, value));
     }
-    this.store.dispatch(new Feedback(data, value));
-  }
 
-  ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
+    ngOnDestroy() {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
 
 }

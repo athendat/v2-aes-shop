@@ -8,7 +8,7 @@ export interface ReviewModel extends PaginateModel {
   data: Review[];
 }
 export interface Review {
-    id: number;
+    id: string;
     consumer: User;
     consumer_id: string;
     consumer_name: string;

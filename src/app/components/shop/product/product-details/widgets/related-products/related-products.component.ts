@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Component, input, Input } from '@angular/core';
+import { select, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Product } from '../../../../../../shared/interface/product.interface';
 import { ProductState } from '../../../../../../shared/state/product.state';
@@ -15,18 +15,17 @@ import { TitleComponent } from '../../../../../../shared/components/widgets/titl
 })
 export class RelatedProductsComponent {
 
-  @Select(ProductState.relatedProducts) relatedProduct$: Observable<Product[]>;
 
-  @Input() product: Product | null;
+    product = input<Product | null>();
+    relatedProducts = select(ProductState.relatedProducts);
 
-  public relatedproducts: Product[] = [];
 
-  ngOnChanges() {
-    if (this.product?.related_products && Array.isArray(this.product?.related_products)) {
-      this.relatedProduct$.subscribe(products => {
-        this.relatedproducts = products.filter(product => this.product?.related_products?.includes(product?.id));
-      });
-    }
-  }
+    // ngOnChanges() {
+    //     if (this.product()?.related_products && Array.isArray(this.product()?.related_products)) {
+    //         this.relatedProduct$.subscribe(products => {
+    //             this.relatedProducts = products.filter(product => this.product()?.related_products_ids?.includes(product?.id));
+    //         });
+    //     }
+    // }
 
 }
