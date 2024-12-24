@@ -13,7 +13,14 @@ export class WalletService {
 
 
   getUserTransaction(payload?: Params): Observable<Wallet> {
-    return this.http.get<Wallet>(`/wallet.json`, { params: payload });
+
+    const params = {
+        page: payload?.['page'] || 1,
+        size: payload?.['paginate'] || 10,
+        sort: payload?.['sortBy'] ?? 'createdAt',
+        order: payload?.['sort'] ?? 'desc',
+    };
+    return this.http.get<Wallet>(`/transactions/user`, { params });
   }
 
 }

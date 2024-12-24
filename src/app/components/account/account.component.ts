@@ -1,41 +1,43 @@
-import { Component, inject } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
-import { LoaderState } from '../../shared/state/loader.state';
-import { Breadcrumb } from '../../shared/interface/breadcrumb';
-import { GetNotification } from '../../shared/action/notification.action';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
+import { select, Store } from '@ngxs/store';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { GetNotification } from '../../shared/action/notification.action';
+import { LoaderState } from '../../shared/state/loader.state';
+
+import { BreadcrumbComponent } from '../../shared/components/widgets/breadcrumb/breadcrumb.component';
 import { ButtonComponent } from '../../shared/components/widgets/button/button.component';
 import { LoaderComponent } from '../../shared/components/widgets/loader/loader.component';
-import { AsyncPipe } from '@angular/common';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { BreadcrumbComponent } from '../../shared/components/widgets/breadcrumb/breadcrumb.component';
+
+import { Breadcrumb } from '../../shared/interface/breadcrumb';
+
 
 @Component({
     selector: 'app-account',
     templateUrl: './account.component.html',
     styleUrls: ['./account.component.scss'],
-    imports: [BreadcrumbComponent, SidebarComponent, LoaderComponent, ButtonComponent, RouterOutlet, AsyncPipe, TranslateModule]
+    imports: [BreadcrumbComponent, SidebarComponent, LoaderComponent, ButtonComponent, RouterOutlet, TranslateModule]
 })
 export class AccountComponent {
-  private store = inject(Store);
 
+    loadingStatus = select(LoaderState.status);
+    open = signal<boolean>(false);
+    breadcrumb = signal<Breadcrumb>({
+        title: "Dashboard",
+        items: [{ label: 'Dashboard', active: false }]
+    });
 
-  @Select(LoaderState.status) loadingStatus$: Observable<boolean>;
+    #store = inject(Store);
 
-  public open: boolean = false;
-  public breadcrumb: Breadcrumb = {
-    title: "Dashboard",
-    items: [{ label: 'Dashboard', active: false }]
-  };
+    constructor() {
+        this.#store.dispatch(new GetNotification());
+    }
 
-  constructor() {
-    this.store.dispatch(new GetNotification());
-  }
-
-  openMenu(value: any){
-    this.open = value;
-  }
+    openMenu(value: any) {
+        this.open.set(value);
+    }
 
 }

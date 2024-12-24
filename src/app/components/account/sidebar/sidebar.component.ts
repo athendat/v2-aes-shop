@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
-import { Store, Select } from '@ngxs/store';
+import { Component, EventEmitter, Input, Output, ViewChild, inject, input, linkedSignal, output, signal, viewChild } from '@angular/core';
+import { Store, Select, select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { User } from '../../../shared/interface/user.interface';
 import { AccountState } from '../../../shared/state/account.state';
@@ -17,33 +17,26 @@ import { ButtonComponent } from '../../../shared/components/widgets/button/butto
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrls: ['./sidebar.component.scss'],
-    imports: [ButtonComponent, RouterLinkActive, RouterLink, ConfirmationModalComponent, AsyncPipe, TitleCasePipe, TranslateModule]
+    imports: [ButtonComponent, RouterLinkActive, RouterLink, ConfirmationModalComponent, TitleCasePipe, TranslateModule]
 })
 export class SidebarComponent {
-  private store = inject(Store);
 
-
-  @Input() show: boolean;
-  @Output() menu: EventEmitter<boolean> = new EventEmitter();
-
-  @Select(NotificationState.notification) notification$: Observable<Notification[]>;
-  @Select(AccountState.user) user$: Observable<User>;
-
-  @ViewChild("confirmationModal") ConfirmationModal: ConfirmationModalComponent;
-
-  public unreadNotificationCount: number;
-
-  constructor() {
-    this.notification$.subscribe((notification) => {
-      this.unreadNotificationCount = notification?.filter(item => !item.read_at).length;
+    ConfirmationModal = viewChild<ConfirmationModalComponent>('confirmationModal');
+    menu = output<boolean>();
+    notification = select(NotificationState.notification);
+    show = input<boolean>();
+    unreadNotificationCount = linkedSignal<number>(() => {
+        return this.notification().filter(item => !item.read_at).length;
     });
-  }
+    user = select(AccountState.user);
 
-  logout() {
-    this.store.dispatch(new Logout());
-  }
+    private store = inject(Store);
 
-  openMenu(value: boolean){
-    this.menu.emit(value)
-  }
+    logout() {
+        this.store.dispatch(new Logout());
+    }
+
+    openMenu(value: boolean) {
+        this.menu.emit(value)
+    }
 }

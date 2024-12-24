@@ -29,7 +29,6 @@ export class CurrencySymbolPipe implements PipeTransform {
         };
 
         const currency = this.currencies().data.find(currency => currency.id === this.selectedCurrency()?.id);
-
         value = Number(value);
         value = (value * currency?.exchange_rate!);
 

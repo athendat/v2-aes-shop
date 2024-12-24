@@ -13,7 +13,7 @@ export class RefundService {
 
 
   getRefunds(payload?: Params): Observable<RefundModel> {
-    return this.http.get<RefundModel>(`/refund.json`, { params: payload });
+    return this.http.get<RefundModel>(`/refunds`, { params: payload });
   }
 
 }

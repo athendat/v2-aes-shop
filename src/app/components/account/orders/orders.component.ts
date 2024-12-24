@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Store, Select } from '@ngxs/store';
+import { Store, Select, select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { OrderState } from '../../../shared/state/order.state';
 import { GetOrders } from '../../../shared/action/order.action';
@@ -17,29 +17,36 @@ import { AsyncPipe, DatePipe } from '@angular/common';
     selector: 'app-orders',
     templateUrl: './orders.component.html',
     styleUrls: ['./orders.component.scss'],
-    providers:[CurrencySymbolPipe],
-    imports: [RouterLink, PaginationComponent, NoDataComponent,
-      AsyncPipe, DatePipe, TitleCasePipe, CurrencySymbolPipe, TranslateModule]
+    providers: [CurrencySymbolPipe],
+    imports: [
+        RouterLink,
+        PaginationComponent,
+        NoDataComponent,
+        DatePipe,
+        TitleCasePipe,
+        CurrencySymbolPipe,
+        TranslateModule
+    ]
 })
 export class OrdersComponent {
-  private store = inject(Store);
 
 
+    order = select(OrderState.order);
 
-  @Select(OrderState.order) order$: Observable<OrderModel>;
+    public filter: Params = {
+        'page': 1, // Current page number
+        'paginate': 10, // Display per page,
+    };
 
-  public filter: Params = {
-    'page': 1, // Current page number
-    'paginate': 10, // Display per page,
-  };
+    private store = inject(Store);
 
-  constructor() {
-    this.store.dispatch(new GetOrders(this.filter));
-  }
+    constructor() {
+        this.store.dispatch(new GetOrders(this.filter));
+    }
 
-  setPaginate(page: number) {
-    this.filter['page'] = page;
-    this.store.dispatch(new GetOrders(this.filter));
-  }
+    setPaginate(page: number) {
+        this.filter['page'] = page;
+        this.store.dispatch(new GetOrders(this.filter));
+    }
 
 }

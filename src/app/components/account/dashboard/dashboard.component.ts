@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { select, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { User, UserAddress } from '../../../shared/interface/user.interface';
 import { AccountState } from '../../../shared/state/account.state';
@@ -14,23 +14,29 @@ import { AsyncPipe } from '@angular/common';
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    providers:[CurrencySymbolPipe],
-    imports: [EditProfileModalComponent, ChangePasswordModalComponent, AsyncPipe,
-      TitleCasePipe, CurrencySymbolPipe, TranslateModule]
+    providers: [CurrencySymbolPipe],
+    imports: [
+        EditProfileModalComponent,
+        ChangePasswordModalComponent,
+        TitleCasePipe,
+        CurrencySymbolPipe,
+        TranslateModule
+    ]
 })
 export class DashboardComponent {
 
-  @Select(AccountState.user) user$: Observable<User>;
+    @Select(AccountState.user) user$: Observable<User>;
+    user = select(AccountState.user);
 
-  @ViewChild("profileModal") ProfileModal: EditProfileModalComponent;
-  @ViewChild("passwordModal") PasswordModal: ChangePasswordModalComponent;
+    @ViewChild("profileModal") ProfileModal: EditProfileModalComponent;
+    @ViewChild("passwordModal") PasswordModal: ChangePasswordModalComponent;
 
-  public address: UserAddress | null;
+    public address: UserAddress | null;
 
-  constructor() {
-    this.user$.subscribe(user => {
-      this.address = user?.address?.length ? user?.address?.[0] : null;
-    });
-  }
+    constructor() {
+        this.user$.subscribe(user => {
+            this.address = user?.address?.length ? user?.address?.[0] : null;
+        });
+    }
 
 }

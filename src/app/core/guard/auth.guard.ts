@@ -73,7 +73,6 @@ export const authGuard: CanActivateFn | CanActivateChildFn = (route, state) => {
         return router.createUrlTree(['/auth/login']);
     }
 
-    console.log({ isAuthenticated: isAuthenticated() });
     if (!!isAuthenticated()) {
 
         if (router.url.startsWith('/account') || router.url === '/checkout' || router.url === '/compare' || router.url === '/wishlist') {

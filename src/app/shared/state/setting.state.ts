@@ -35,25 +35,19 @@ export class SettingState {
 
     @Action(GetSettingOption)
     getSettingOptions(ctx: StateContext<SettingStateModel>) {
-        return this.settingService.getSettingOption().pipe(
-            tap({
-                next: (result) => {
-                    const state = ctx.getState();
-
-                    if (!state.selectedCurrency && result) {
-                        state.selectedCurrency = result?.values?.general?.default_currency;
-                    }
-
-                    ctx.patchState({
-                        ...state,
-                        setting: result.values,
-                    });
-                },
-                error: (err) => {
-                    throw new Error(err?.error?.message);
-                },
-            })
-        );
+        return this.settingService.getSettingOption().subscribe({
+            next: (result) => {
+                const state = ctx.getState();
+                ctx.patchState({
+                    ...state,
+                    selectedCurrency: result?.values?.general?.default_currency,
+                    setting: result.values,
+                });
+            },
+            error: (err) => {
+                throw new Error(err?.error?.message);
+            },
+        });
     }
 
     @Action(SelectedCurrency)

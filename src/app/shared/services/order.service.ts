@@ -15,7 +15,7 @@ export class OrderService {
   public skeletonLoader: boolean = false;
 
   getOrders(payload?: Params): Observable<OrderModel> {
-    return this.http.get<OrderModel>(`/order.json`, { params: payload });
+    return this.http.get<OrderModel>(`/orders`, { params: payload });
   }
 
 }
