@@ -1,10 +1,11 @@
 import { Injectable, inject } from '@angular/core';
-import { Store } from '@ngxs/store';
+import { select, Store } from '@ngxs/store';
 import { UrlTree, Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateFn, CanActivateChildFn } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GetUserDetails } from './../../shared/action/account.action';
 import { AuthService } from './../../shared/services/auth.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
+import { AuthState } from 'src/app/shared/state/auth.state';
 
 // @Injectable({
 //     providedIn: 'root'
@@ -58,6 +59,8 @@ export const authGuard: CanActivateFn | CanActivateChildFn = (route, state) => {
     const authService = inject(AuthService);
     const notificationService = inject(NotificationService);
 
+    const isAuthenticated = select(AuthState.isAuthenticated);
+
     // Store the attempted URL for redirecting after login
     authService.redirectUrl = state.url;
 
@@ -70,10 +73,15 @@ export const authGuard: CanActivateFn | CanActivateChildFn = (route, state) => {
         return router.createUrlTree(['/auth/login']);
     }
 
-    if (!!store.selectSnapshot(state => state.auth && state.auth.access_token)) {
-        if (router.url.startsWith('/account') || router.url === '/checkout' || router.url === '/compare' || router.url === '/wishlist')
-            router.navigate(['/home']);
-        return false;
+    console.log({ isAuthenticated: isAuthenticated() });
+    if (!!isAuthenticated()) {
+
+        if (router.url.startsWith('/account') || router.url === '/checkout' || router.url === '/compare' || router.url === '/wishlist') {
+
+            router.navigate(['/home'])
+
+            return false;
+        }
     }
 
     store.dispatch(new GetUserDetails()).subscribe({

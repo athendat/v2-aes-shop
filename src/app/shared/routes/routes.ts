@@ -12,8 +12,8 @@ export const content: Routes = [
     },
     {
         path: "account",
+        canActivate : [authGuard],
         loadChildren: () => import("../../components/account/account.routes"),
-        canActivate : [authGuard]
     },
     {
         path: "",

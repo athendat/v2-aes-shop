@@ -1,57 +1,47 @@
 import { Routes } from '@angular/router';
-import { AccountComponent } from './account.component';
-import { AdressesComponent } from './adresses/adresses.component';
-import { BankDetailsComponent } from './bank-details/bank-details.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { NotificationComponent } from './notification/notification.component';
-import { OrderDetailsComponent } from './orders/details/details.component';
-import { OrdersComponent } from './orders/orders.component';
-import { PointComponent } from './point/point.component';
-import { RefundComponent } from './refund/refund.component';
-import { WalletComponent } from './wallet/wallet.component';
 
 export default [
-  {
-    path: '',
-    component: AccountComponent,
-    children: [
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
-      {
-        path: 'wallet',
-        component: WalletComponent
-      },
-      {
-        path: 'notifications',
-        component: NotificationComponent
-      },
-      {
-        path: 'bank-details',
-        component: BankDetailsComponent
-      },
-      {
-        path: 'point',
-        component: PointComponent
-      },
-      {
-        path: 'order',
-        component: OrdersComponent
-      },
-      {
-        path: 'order/details/:id',
-        component: OrderDetailsComponent
-      },
-      {
-        path: 'refund',
-        component: RefundComponent
-      },
-      {
-        path: 'addresses',
-        component: AdressesComponent
-      }
-    ]
-  }
+    {
+        path: '',
+        loadComponent: () => import('./account.component').then(c => c.AccountComponent),
+        children: [
+            {
+                path: 'dashboard',
+                loadComponent: () => import('./dashboard/dashboard.component').then(c => c.DashboardComponent),
+            },
+            {
+                path: 'wallet',
+                loadComponent: () => import('./wallet/wallet.component').then(c => c.WalletComponent),
+            },
+            {
+                path: 'notifications',
+                loadComponent: () => import('./notification/notification.component').then(c => c.NotificationComponent),
+            },
+            {
+                path: 'bank-details',
+                loadComponent: () => import('./bank-details/bank-details.component').then(c => c.BankDetailsComponent),
+            },
+            {
+                path: 'point',
+                loadComponent: () => import('./point/point.component').then(c => c.PointComponent),
+            },
+            {
+                path: 'order',
+                loadComponent: () => import('./orders/orders.component').then(c => c.OrdersComponent),
+            },
+            {
+                path: 'order/details/:id',
+                loadComponent: () => import('./orders/details/details.component').then(c => c.OrderDetailsComponent),
+            },
+            {
+                path: 'refund',
+                loadComponent: () => import('./refund/refund.component').then(c => c.RefundComponent),
+            },
+            {
+                path: 'addresses',
+                loadComponent: () => import('./addresses/addresses.component').then(c => c.AddressesComponent)
+            }
+        ]
+    }
 ] as Routes;
 

@@ -14,12 +14,12 @@ import { AsyncPipe } from '@angular/common';
 import { ButtonComponent } from '../../../shared/components/widgets/button/button.component';
 
 @Component({
-    selector: 'app-adresses',
-    templateUrl: './adresses.component.html',
-    styleUrls: ['./adresses.component.scss'],
+    selector: 'app-addresses',
+    templateUrl: './addresses.component.html',
+    styleUrls: ['./addresses.component.scss'],
     imports: [ButtonComponent, NoDataComponent, AddressModalComponent, DeleteModalComponent, AsyncPipe, TitleCasePipe, TranslateModule]
 })
-export class AdressesComponent {
+export class AddressesComponent {
   private store = inject(Store);
 
 
