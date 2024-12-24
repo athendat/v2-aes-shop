@@ -59,7 +59,7 @@ export class NotificationService {
     }
 
     getNotifications(payload?: Params): Observable<NotificationModel> {
-        return this.http.get<NotificationModel>(`/notification`, { params: payload });
+        return this.http.get<NotificationModel>(`/notifications`, { params: payload });
     }
 
 }
